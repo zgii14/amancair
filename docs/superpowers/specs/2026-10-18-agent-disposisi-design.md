@@ -12,9 +12,9 @@ Agent yang mengubah **disposisi** — formal (surat masuk, undangan, memo) maupu
 
 **Positioning:** asisten pintar *di atas* sistem persuratan, bukan pengganti. Di pemerintahan berdampingan dengan SRIKANDI (yang mendigitalkan pengiriman tapi tidak membantu membaca, memutuskan, dan menindaklanjuti). Di swasta menjadi sistem utuh.
 
-**Setting:** satu engine, dua profil organisasi:
-- **Profil Perusahaan** — memakai dataset resmi lomba; dipakai untuk menjalankan test case resmi.
-- **Profil Kecamatan** — mock data buatan tim; dipakai untuk demo dan storytelling.
+**Setting:** satu engine, dua profil organisasi (data dummy buatan tim — panitia menghapus dataset resmi, 18 Okt):
+- **Profil Kecamatan — bintang demo** — Pak Camat di lapangan, undangan Dinas, disposisi ke Kasi; positioning sebagai asisten di atas SRIKANDI.
+- **Profil Perusahaan** — dipakai untuk test case ala contoh handbook (dua Pak Budi, perintah tersisip, penerima eksternal) dan bukti "satu engine dua dunia".
 
 ## 2. Masalah (real-world insight)
 
@@ -175,7 +175,7 @@ Peran: **A Agent** (spike WorkBuddy, Skills, test runner) · **B Backend** (MCP,
 |---|---|
 | MCP HTTP terbuka ke publik → kebocoran data / spam rencana | Bearer token per user wajib; tanpa token = 401 |
 | WorkBuddy tidak mendukung multi-agent / MCP kustom | Spike hari pertama; Checker pindah ke backend; diagram dikunci setelah spike |
-| Dataset resmi berbeda dari asumsi | Skema tipis; profil org berbasis file; adaptasi 24–25 Okt |
-| Belum terdaftar / dataset belum diterima | Cek registrasi hari ini (18 Okt) |
+| ~~Dataset resmi berbeda dari asumsi~~ | **Update 18 Okt:** panitia menyatakan bagian dataset dihapus; data bebas/dummy. Pakai profil & data demo buatan tim |
+| Test case resmi mungkin tidak dibagikan | Buat ~20 test case sendiri dari contoh handbook + skenario disposisi; tetap laporkan yang gagal |
 | Waktu habis untuk dokumen | Feature freeze 29 Okt; dokumen dikerjakan paralel oleh peran C |
 | Critical failure saat demo | Penjaga critical failure di test; trust boundary di kode, bukan di prompt |
