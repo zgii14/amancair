@@ -113,6 +113,18 @@ def buat_app(
         k = p.kontak_by_id(u["username"])
         return {"nama": k.nama, "jabatan": j.nama, "boleh_menyetujui": j.boleh_menyetujui, "profil": u["profil"]}
 
+    @app.get("/api/profil")
+    async def profil_aktif(u: dict = Depends(user_aktif)):
+        p, _, _ = konteks(u)
+        return {
+            "nama_org": p.nama_org,
+            "instruksi_disposisi": p.instruksi_disposisi,
+            "kontak": [
+                {"id": k.id, "nama": k.nama, "jabatan": p.jabatan_by_id(k.jabatan).nama, "email": k.email, "zona": k.zona}
+                for k in p.kontak
+            ],
+        }
+
     @app.get("/api/rencana")
     async def daftar_rencana(status: str | None = None, u: dict = Depends(user_aktif)):
         _, c, j = konteks(u)

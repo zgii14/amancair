@@ -152,7 +152,8 @@ def ajukan(conn: sqlite3.Connection, profil: Profil, rencana: Rencana, now: date
                 continue
             uraian.append(u)
             if p.asal is Asal.SURAT:
-                peringatan.append(f"Aksi {i}: penerima '{p.nilai}' hanya berasal dari isi surat, bukan instruksi pimpinan.")
+                nama = u.kontak.nama if u.kontak else u.email
+                peringatan.append(f"Aksi {i}: penerima {nama} hanya berasal dari isi surat, bukan instruksi pimpinan.")
         per_aksi.append(uraian)
         if a.jenis == "jadwal":
             pel, sar = _cek_jadwal(profil, a, uraian, pengaju, i)

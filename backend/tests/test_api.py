@@ -42,6 +42,14 @@ def test_me(klien):
     assert klien.get("/api/me").json()["boleh_menyetujui"] is True
 
 
+def test_profil_untuk_ui(klien):
+    login(klien)
+    p = klien.get("/api/profil").json()
+    assert "Hadiri dan laporkan" in p["instruksi_disposisi"]
+    assert {"id": "budi_h", "nama": "Budi Hartono", "jabatan": "Manajer Operasional",
+            "email": "budi.hartono@nusantaralogistik.example", "zona": "WITA"} in p["kontak"]
+
+
 def test_setujui_lalu_terkirim_setelah_jeda(klien, conn, profil, now, waktu):
     h = ajukan_pending(conn, profil, now)
     login(klien)
