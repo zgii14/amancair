@@ -1,21 +1,35 @@
+# Profil demo utama (data fiktif). Struktur mengikuti pola kecamatan pada umumnya:
+# Camat -> Sekretaris Camat -> Kasubag/Kasi -> staf.
 id: kecamatan
 nama_org: Kecamatan Sukamaju (fiktif)
 domain_email: [sukamaju.example]
 jabatan:
   - {id: camat, nama: Camat, level: 1, unit: Pimpinan, boleh_menyetujui: true, sifat_boleh: [biasa, segera, rahasia]}
   - {id: sekcam, nama: Sekretaris Camat, level: 2, unit: Sekretariat, sifat_boleh: [biasa, segera, rahasia]}
+  - {id: kasubag_umum, nama: Kasubag Umum dan Kepegawaian, level: 3, unit: Sekretariat}
+  - {id: kasubag_keu, nama: Kasubag Perencanaan dan Keuangan, level: 3, unit: Sekretariat}
   - {id: kasi_pem, nama: Kasi Pemerintahan, level: 3, unit: Pemerintahan}
+  - {id: kasi_trantib, nama: Kasi Ketenteraman dan Ketertiban Umum, level: 3, unit: Trantibum}
+  - {id: kasi_kesos, nama: Kasi Kesejahteraan Sosial, level: 3, unit: Kesejahteraan Sosial}
   - {id: kasi_pel, nama: Kasi Pelayanan Umum, level: 3, unit: Pelayanan}
   - {id: staf_pem, nama: Staf Pemerintahan, level: 4, unit: Pemerintahan}
+  - {id: staf_umum, nama: Pengadministrasi Umum, level: 4, unit: Sekretariat}
 kontak:
   - {id: camat_andi, nama: Andi Mappaseng, jabatan: camat, email: camat@sukamaju.example, zona: WITA}
   - {id: sekcam_nur, nama: Nurhayati, jabatan: sekcam, email: sekcam@sukamaju.example, zona: WITA}
+  - {id: kasubag_umum_rahmat, nama: Rahmat Hidayat, jabatan: kasubag_umum, email: umum@sukamaju.example, zona: WITA}
+  - {id: kasubag_keu_sri, nama: Sri Wahyuni, jabatan: kasubag_keu, email: keuangan@sukamaju.example, zona: WITA}
+  # Dua "Pak Budi": uji klarifikasi di profil kecamatan.
   - {id: kasi_pem_budi, nama: Budi Rahman, jabatan: kasi_pem, email: kasi.pem@sukamaju.example, zona: WITA}
+  - {id: kasi_trantib_budi, nama: Budi Setiawan, jabatan: kasi_trantib, email: kasi.trantib@sukamaju.example, zona: WITA}
+  - {id: kasi_kesos_fatma, nama: Fatmawati, jabatan: kasi_kesos, email: kasi.kesos@sukamaju.example, zona: WITA}
   - {id: kasi_pel_dewi, nama: Dewi Anggraini, jabatan: kasi_pel, email: kasi.pel@sukamaju.example, zona: WITA}
   - {id: staf_pem_rudi, nama: Rudi Hasan, jabatan: staf_pem, email: rudi@sukamaju.example, zona: WITA}
+  - {id: staf_umum_lina, nama: Lina Marlina, jabatan: staf_umum, email: lina@sukamaju.example, zona: WITA}
 aturan:
   jam_kerja: {mulai: "08:00", selesai: "16:00"}
   jumatan: {mulai: "11:30", selesai: "13:00"}
+  # Lengkapi dari SKB libur nasional & cuti bersama 2026 sebelum demo.
   libur: [2026-12-25, 2027-01-01]
 instruksi_disposisi:
   - Setuju
@@ -27,4 +41,26 @@ instruksi_disposisi:
   - Jawab
   - Hadiri dan laporkan
   - Siapkan bahan
-kalender: []
+# Agenda minggu demo. Geser tanggalnya bila demo dilakukan di minggu lain.
+kalender:
+  - id: kc1
+    judul: Kunjungan lapangan Desa Mekar Jaya (banjir)
+    peserta: [camat_andi, kasi_trantib_budi]
+    mulai: "2026-10-26T08:00:00+08:00"
+    selesai: "2026-10-26T12:00:00+08:00"
+  - id: kc2
+    judul: Rapat Forkopimcam kerawanan Pilkades (terbatas)
+    peserta: [camat_andi, sekcam_nur, kasi_trantib_budi]
+    mulai: "2026-10-27T13:00:00+08:00"
+    selesai: "2026-10-27T15:00:00+08:00"
+    sifat: rahasia
+  - id: kc3
+    judul: Musrenbang tingkat kecamatan
+    peserta: [camat_andi, sekcam_nur, kasubag_keu_sri, kasi_pem_budi]
+    mulai: "2026-10-28T09:00:00+08:00"
+    selesai: "2026-10-28T13:00:00+08:00"
+  - id: kc4
+    judul: Pelayanan keliling KTP-el Desa Sukasari
+    peserta: [kasi_pel_dewi, staf_umum_lina]
+    mulai: "2026-10-29T08:30:00+08:00"
+    selesai: "2026-10-29T14:00:00+08:00"

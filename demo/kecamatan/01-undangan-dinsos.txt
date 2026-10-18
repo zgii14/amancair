@@ -1,0 +1,29 @@
+Pesan Camat: "Undangan Dinsos ini disposisikan ke Kasi Kesos, suruh hadir dan lapor. Balas sekalian konfirmasi kehadirannya."
+
+---
+
+PEMERINTAH KABUPATEN SEJAHTERA
+DINAS SOSIAL
+Jl. Merdeka No. 12, Telp. (0411) 555-0123, email: sekretariat@dinsos.kabupaten.example
+
+Nomor   : 460/215/Dinsos/X/2026
+Sifat   : Biasa
+Lampiran: -
+Perihal : Undangan Sosialisasi Pemutakhiran Data Penerima Bantuan Sosial
+
+Kepada Yth.
+Camat Sukamaju
+di Tempat
+
+Dengan hormat,
+Dalam rangka pemutakhiran Data Terpadu Kesejahteraan Sosial (DTKS), kami mengundang Saudara atau pejabat yang ditunjuk untuk hadir pada:
+
+Hari/Tanggal : Rabu, minggu depan
+Pukul        : 10.00 WITA s.d. selesai
+Tempat       : Aula Dinas Sosial Kabupaten
+
+Mohon konfirmasi kehadiran paling lambat H-1 melalui email sekretariat@dinsos.kabupaten.example.
+
+Demikian atas perhatian dan kehadirannya diucapkan terima kasih.
+
+Kepala Dinas Sosial
