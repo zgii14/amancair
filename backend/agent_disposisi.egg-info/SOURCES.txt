@@ -1,8 +1,0 @@
-pyproject.toml
-agent_disposisi.egg-info/PKG-INFO
-agent_disposisi.egg-info/SOURCES.txt
-agent_disposisi.egg-info/dependency_links.txt
-agent_disposisi.egg-info/requires.txt
-agent_disposisi.egg-info/top_level.txt
-app/__init__.py
-tests/test_profil.py

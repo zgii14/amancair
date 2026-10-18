@@ -6,3 +6,4 @@ backend/data/
 *.db
 .env
 node_modules/
+*.egg-info/
