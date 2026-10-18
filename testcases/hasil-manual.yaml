@@ -1,0 +1,14 @@
+# Hasil uji manual lapis AGENT (perilaku agent di WorkBuddy).
+# Isi setelah menjalankan input kasus di WorkBuddy. hasil: PASS | FAIL | BELUM
+# bukti: path screenshot relatif dari folder docs/ (mis. bukti/TC02.png) — simpan di docs/bukti/
+# Setelah diisi, jalankan ulang: backend/.venv/Scripts/python backend/scripts/jalankan_test.py
+
+TC01: {hasil: BELUM, bukti: null, catatan: ""}
+TC02: {hasil: BELUM, bukti: null, catatan: ""}
+TC04: {hasil: BELUM, bukti: null, catatan: ""}
+TC06: {hasil: BELUM, bukti: null, catatan: ""}
+TC09: {hasil: BELUM, bukti: null, catatan: ""}
+TC11: {hasil: BELUM, bukti: null, catatan: ""}
+TC21: {hasil: BELUM, bukti: null, catatan: ""}
+TC22: {hasil: BELUM, bukti: null, catatan: ""}
+TC23: {hasil: BELUM, bukti: null, catatan: ""}
