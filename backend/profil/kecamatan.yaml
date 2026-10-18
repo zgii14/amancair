@@ -1,0 +1,30 @@
+id: kecamatan
+nama_org: Kecamatan Sukamaju (fiktif)
+domain_email: [sukamaju.example]
+jabatan:
+  - {id: camat, nama: Camat, level: 1, unit: Pimpinan, boleh_menyetujui: true, sifat_boleh: [biasa, segera, rahasia]}
+  - {id: sekcam, nama: Sekretaris Camat, level: 2, unit: Sekretariat, sifat_boleh: [biasa, segera, rahasia]}
+  - {id: kasi_pem, nama: Kasi Pemerintahan, level: 3, unit: Pemerintahan}
+  - {id: kasi_pel, nama: Kasi Pelayanan Umum, level: 3, unit: Pelayanan}
+  - {id: staf_pem, nama: Staf Pemerintahan, level: 4, unit: Pemerintahan}
+kontak:
+  - {id: camat_andi, nama: Andi Mappaseng, jabatan: camat, email: camat@sukamaju.example, zona: WITA}
+  - {id: sekcam_nur, nama: Nurhayati, jabatan: sekcam, email: sekcam@sukamaju.example, zona: WITA}
+  - {id: kasi_pem_budi, nama: Budi Rahman, jabatan: kasi_pem, email: kasi.pem@sukamaju.example, zona: WITA}
+  - {id: kasi_pel_dewi, nama: Dewi Anggraini, jabatan: kasi_pel, email: kasi.pel@sukamaju.example, zona: WITA}
+  - {id: staf_pem_rudi, nama: Rudi Hasan, jabatan: staf_pem, email: rudi@sukamaju.example, zona: WITA}
+aturan:
+  jam_kerja: {mulai: "08:00", selesai: "16:00"}
+  jumatan: {mulai: "11:30", selesai: "13:00"}
+  libur: [2026-12-25, 2027-01-01]
+instruksi_disposisi:
+  - Setuju
+  - Tolak
+  - Teliti dan beri pendapat
+  - Untuk diketahui
+  - Selesaikan
+  - Edarkan
+  - Jawab
+  - Hadiri dan laporkan
+  - Siapkan bahan
+kalender: []

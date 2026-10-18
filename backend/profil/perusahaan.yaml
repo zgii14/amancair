@@ -1,0 +1,43 @@
+# Profil sementara. Ganti/selaraskan dengan dataset resmi lomba saat diterima.
+id: perusahaan
+nama_org: PT Nusantara Logistik (fiktif)
+domain_email: [nusantaralogistik.example]
+jabatan:
+  - {id: direktur, nama: Direktur Utama, level: 1, unit: Direksi, boleh_menyetujui: true, sifat_boleh: [biasa, segera, rahasia]}
+  - {id: mgr_keuangan, nama: Manajer Keuangan, level: 2, unit: Keuangan}
+  - {id: mgr_operasional, nama: Manajer Operasional, level: 2, unit: Operasional}
+  - {id: staf_keuangan, nama: Staf Keuangan, level: 3, unit: Keuangan}
+  - {id: staf_operasional, nama: Staf Operasional, level: 3, unit: Operasional}
+kontak:
+  - {id: rina, nama: Rina Wijaya, jabatan: direktur, email: rina@nusantaralogistik.example, zona: WIB}
+  - {id: budi_s, nama: Budi Santoso, jabatan: mgr_keuangan, email: budi.santoso@nusantaralogistik.example, zona: WIB}
+  - {id: budi_h, nama: Budi Hartono, jabatan: mgr_operasional, email: budi.hartono@nusantaralogistik.example, zona: WITA}
+  - {id: sari, nama: Sari Lestari, jabatan: staf_keuangan, email: sari@nusantaralogistik.example, zona: WIB}
+  - {id: yosef, nama: Yosef Wenda, jabatan: staf_operasional, email: yosef@nusantaralogistik.example, zona: WIT}
+aturan:
+  jam_kerja: {mulai: "08:00", selesai: "16:00"}
+  jumatan: {mulai: "11:30", selesai: "13:00"}
+  # Lengkapi dari SKB libur nasional & cuti bersama 2026 sebelum demo.
+  libur: [2026-12-25, 2027-01-01]
+instruksi_disposisi:
+  - Setuju
+  - Tolak
+  - Teliti dan beri pendapat
+  - Untuk diketahui
+  - Selesaikan
+  - Edarkan
+  - Jawab
+  - Hadiri dan laporkan
+  - Siapkan bahan
+kalender:
+  - id: k1
+    judul: Rapat restrukturisasi direksi
+    peserta: [rina]
+    mulai: "2026-10-22T10:00:00+07:00"
+    selesai: "2026-10-22T11:00:00+07:00"
+    sifat: rahasia
+  - id: k2
+    judul: Review anggaran Q4
+    peserta: [rina, budi_s]
+    mulai: "2026-10-21T13:00:00+07:00"
+    selesai: "2026-10-21T14:00:00+07:00"
