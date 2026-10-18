@@ -24,3 +24,9 @@ def conn():
 @pytest.fixture
 def now():
     return datetime(2026, 10, 21, 2, 0, tzinfo=timezone.utc)  # Rabu 09:00 WIB
+
+
+@pytest.fixture
+def ktx(profil, conn, now):
+    from app.tools import Konteks
+    return Konteks(profil=profil, conn=conn, user_id="rina", jam=lambda: now)
