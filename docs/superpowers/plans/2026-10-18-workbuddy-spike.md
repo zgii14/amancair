@@ -21,6 +21,11 @@ Tujuan: membuktikan fitur WorkBuddy yang dipakai desain **sebelum** diagram diku
 - [ ] Apakah output antar agent (handoff) terlihat/terekam? (Bahan audit & demo "genuinely agentic".)
 - Keputusan bila gagal: satu agent dengan 3 Skill berurutan + Checker dipindah ke pemanggilan model terpisah di backend.
 
+## 2b. Export workflow — WAJIB (konfirmasi panitia 21 Okt)
+- [ ] Bisakah Expert Team / workflow / skill di-export menjadi file? Format apa?
+- [ ] Simpan hasil export di `workbuddy/export/` dan commit.
+- Keputusan bila Expert Team kustom tidak ada: satu agent WorkBuddy memakai 3 skill berurutan. **Jangan** pindahkan Checker ke backend (orkestrasi harus tetap di WorkBuddy).
+
 ## 3. Skills (SKILL.md level project)
 - [ ] Lokasi & format file skill yang benar di versi ini (frontmatter apa saja, folder mana).
 - [ ] Buat skill uji: input teks → output JSON terstruktur. Apakah format output bisa dipaksa konsisten?
@@ -46,6 +51,7 @@ Tujuan: membuktikan fitur WorkBuddy yang dipakai desain **sebelum** diagram diku
 |---|---|---|---|
 | 1 | MCP kustom + header auth | | |
 | 2 | Expert Team kustom | | |
+| 2b | Export workflow (wajib) | | |
 | 3 | Skills + export | | |
 | 4 | Mode Plan | | |
 | 5 | Automation | | |

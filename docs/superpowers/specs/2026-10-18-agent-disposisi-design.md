@@ -173,6 +173,7 @@ Peran: **A Agent** (spike WorkBuddy, Skills, test runner) · **B Backend** (MCP,
 
 | Risiko | Mitigasi |
 |---|---|
+| Juri menilai orkestrasi bukan di WorkBuddy | **Konfirmasi panitia (21 Okt):** kombinasi tools/repo eksternal boleh, tetapi orkestrasi agen utama wajib berjalan di WorkBuddy dan file **export workflow WorkBuddy wajib** dilampirkan. Cadangan bila Expert Team kustom tidak ada = satu agent WorkBuddy menjalankan 3 skill berurutan (Checker tetap di WorkBuddy, bukan di backend) |
 | MCP HTTP terbuka ke publik → kebocoran data / spam rencana | Bearer token per user wajib; tanpa token = 401 |
 | WorkBuddy tidak mendukung multi-agent / MCP kustom | Spike hari pertama; Checker pindah ke backend; diagram dikunci setelah spike |
 | ~~Dataset resmi berbeda dari asumsi~~ | **Update 18 Okt:** panitia menyatakan bagian dataset dihapus; data bebas/dummy. Pakai profil & data demo buatan tim |
