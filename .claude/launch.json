@@ -6,7 +6,14 @@
       "runtimeExecutable": "D:\\HACKATHON2\\backend\\.venv\\Scripts\\python.exe",
       "runtimeArgs": ["-m", "uvicorn", "app.api:app_dari_env", "--factory", "--port", "8000"],
       "cwd": "D:\\HACKATHON2\\backend",
-      "env": { "DEMO_PASSWORD": "demo123", "DATA_DIR": "data", "MCP_TOKENS": "tok-rina=perusahaan:rina,tok-camat=kecamatan:camat_andi" },
+      "env": {
+        "DEMO_PASSWORD": "demo123",
+        "DATA_DIR": "data",
+        "MCP_TOKENS": "tok-rina=perusahaan:rina,tok-camat=kecamatan:camat_andi,tok-spj=diskominfo:tim_spj",
+        "SPJ_DRAF_ROOT": "D:\\Agent 2\\spj-agent\\keluar\\draf",
+        "SPJ_SIAP_ROOT": "D:\\HACKATHON2\\backend\\data\\siap-cair",
+        "SPJ_PROFIL": "diskominfo"
+      },
       "port": 8000
     },
     {

@@ -4,13 +4,14 @@ import { useState } from "react";
 import { post } from "@/lib/api";
 
 const AKUN: Record<string, { label: string; contoh: string }> = {
+  diskominfo: { label: "Diskominfo Kab. Sejahtera (SPJ)", contoh: "sri" },
   perusahaan: { label: "PT Nusantara Logistik", contoh: "rina" },
   kecamatan: { label: "Kecamatan Sukamaju", contoh: "camat_andi" },
 };
 
 export default function LoginPage() {
-  const [profil, setProfil] = useState("perusahaan");
-  const [username, setUsername] = useState("rina");
+  const [profil, setProfil] = useState("diskominfo");
+  const [username, setUsername] = useState("sri");
   const [password, setPassword] = useState("");
   const [galat, setGalat] = useState("");
   const [proses, setProses] = useState(false);
@@ -25,7 +26,7 @@ export default function LoginPage() {
     setGalat("");
     try {
       await post("/login", { profil, username: username.trim(), password });
-      window.location.href = "/";
+      window.location.href = profil === "diskominfo" ? "/spj" : "/";
     } catch {
       setGalat("ID pegawai atau kata sandi salah.");
       setProses(false);

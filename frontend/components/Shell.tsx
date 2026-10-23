@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { api, post, type Kontak, type Me, type ProfilOrg, type Rencana } from "@/lib/api";
+import { api, post, type Kontak, type Me, type ProfilOrg } from "@/lib/api";
 
 type Sesi = {
   me: Me;
@@ -20,9 +20,13 @@ export function useSesi(): Sesi {
   return s;
 }
 
-const NAV = [
+const NAV_DISPOSISI = [
   { href: "/", label: "Antrean" },
   { href: "/riwayat", label: "Riwayat" },
+  { href: "/audit", label: "Jejak audit" },
+];
+const NAV_SPJ = [
+  { href: "/spj", label: "SPJ menunggu" },
   { href: "/audit", label: "Jejak audit" },
 ];
 
@@ -33,7 +37,10 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   const [menunggu, setMenunggu] = useState<number | null>(null);
 
   const segarkanHitung = useCallback(() => {
-    api<Rencana[]>("/rencana?status=PENDING").then((r) => setMenunggu(r.length)).catch(() => {});
+    api<Me>("/me")
+      .then((m) => api<unknown[]>(m.profil === "diskominfo" ? "/spj?status=PENDING" : "/rencana?status=PENDING"))
+      .then((r) => setMenunggu(r.length))
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -54,7 +61,10 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   }
 
   const kontak = (id: string) => profil.kontak.find((k) => k.id === id);
+  const NAV = me.profil === "diskominfo" ? NAV_SPJ : NAV_DISPOSISI;
+  const utama = NAV[0].href;
   const aktif = (href: string) => (href === "/" ? pathname === "/" || pathname.startsWith("/rencana") : pathname.startsWith(href));
+
 
   return (
     <SesiContext.Provider value={{ me, profil, kontak, segarkanHitung }}>
@@ -74,7 +84,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             {NAV.map((n) => (
               <Link key={n.href} href={n.href} aria-current={aktif(n.href) ? "page" : undefined}>
                 {n.label}
-                {n.href === "/" && menunggu ? (
+                {n.href === utama && menunggu ? (
                   <span className="hitung" aria-label={`${menunggu} menunggu keputusan`}>{menunggu}</span>
                 ) : null}
               </Link>

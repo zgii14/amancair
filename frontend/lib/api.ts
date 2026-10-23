@@ -81,3 +81,28 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
 export function post<T>(path: string, data?: unknown): Promise<T> {
   return api<T>(path, { method: "POST", body: JSON.stringify(data ?? {}) });
 }
+
+export type Level = "KRITIS" | "TINGGI" | "SEDANG" | "RENDAH";
+export type TemuanSPJ = { level: Level; aturan: string; deskripsi: string; sumber: string | null };
+export type StatusSPJ = "PENDING" | "DICAIRKAN" | "DITOLAK";
+
+export type SPJ = {
+  nomor: string;
+  pegawai: string;
+  tujuan: string;
+  tanggal_spt: string;
+  total_diajukan: number;
+  total_dibayar: number;
+  temuan: TemuanSPJ[];
+  perintah_tersisip: string[];
+  pengaju: string;
+  manifest: Record<string, string>;
+  manifest_hash: string;
+  risiko: "normal" | "tinggi";
+  alasan_risiko: string[];
+  status: StatusSPJ;
+  versi: number;
+  diajukan: string;
+  diputuskan_oleh: string | null;
+  alasan: string | null;
+};
