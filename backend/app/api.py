@@ -11,9 +11,10 @@ from typing import Callable
 
 from fastapi import Cookie, Depends, FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from app import approval, audit, executor, mock_tools
+from app import approval, audit, executor, mock_tools, spj
 from app import rencana as rencana_mod
 from app.db import buka, iso
 from app.mcp_server import app_http, buat_server, parse_tokens
@@ -45,9 +46,11 @@ def buat_app(
     mcp_tokens: dict[str, tuple[str, str]] | None = None,
     origins: list[str] = (),
     interval_outbox: float = 5.0,
+    spj_dirs: dict[str, tuple[Path, Path]] | None = None,
 ) -> FastAPI:
     sesi: dict[str, dict] = {}
-    mcp = buat_server(profil, conns, jam, mcp_tokens) if mcp_tokens else None
+    spj_dirs = spj_dirs or {}
+    mcp = buat_server(profil, conns, jam, mcp_tokens, spj_dirs=spj_dirs) if mcp_tokens else None
     mcp_asgi = app_http(mcp, mcp_tokens) if mcp else None
 
     @asynccontextmanager
@@ -177,6 +180,61 @@ def buat_app(
             raise HTTPException(409, str(e))
         return {"dibatalkan": n}
 
+    # ---------------- SPJ: gerbang persetujuan bendahara ----------------
+
+    def spj_konteks(u: dict):
+        p, c, j = konteks(u)
+        dirs = spj_dirs.get(u["profil"])
+        if dirs is None or not (j.boleh_menyetujui or "rahasia" in j.sifat_boleh):
+            raise HTTPException(404, "SPJ tidak ditemukan")
+        return c, j, dirs
+
+    @app.get("/api/spj")
+    async def daftar_spj(status: str | None = None, u: dict = Depends(user_aktif)):
+        if u["profil"] not in spj_dirs:
+            return []
+        c, _, _ = spj_konteks(u)
+        return spj.daftar(c, status)
+
+    @app.get("/api/spj/{nomor}")
+    async def detail_spj(nomor: str, u: dict = Depends(user_aktif)):
+        c, _, _ = spj_konteks(u)
+        r = spj.ambil(c, nomor)
+        if r is None:
+            raise HTTPException(404, "SPJ tidak ditemukan")
+        return r
+
+    @app.get("/api/spj/{nomor}/berkas/{relatif:path}")
+    async def berkas_spj(nomor: str, relatif: str, u: dict = Depends(user_aktif)):
+        c, _, (draf, _siap) = spj_konteks(u)
+        r = spj.ambil(c, nomor)
+        if r is None or relatif not in r["manifest"]:
+            raise HTTPException(404, "Berkas tidak ditemukan")
+        try:
+            return FileResponse(spj.path_berkas(draf, nomor, relatif))
+        except spj.SPJError:
+            raise HTTPException(404, "Berkas tidak ditemukan")
+
+    @app.post("/api/spj/{nomor}/setujui")
+    async def setujui_spj(nomor: str, body: SetujuiBody, u: dict = Depends(user_aktif)):
+        c, j, (draf, siap) = spj_konteks(u)
+        if not j.boleh_menyetujui:
+            raise HTTPException(403, "Jabatan Anda tidak berwenang menyetujui SPJ")
+        try:
+            return spj.setujui(c, draf, siap, nomor, u["username"], body.konfirmasi_risiko, jam())
+        except spj.SPJError as e:
+            raise HTTPException(428 if "konfirmasi" in str(e) else 409, str(e))
+
+    @app.post("/api/spj/{nomor}/tolak")
+    async def tolak_spj(nomor: str, body: TolakBody, u: dict = Depends(user_aktif)):
+        c, j, _ = spj_konteks(u)
+        if not j.boleh_menyetujui:
+            raise HTTPException(403, "Jabatan Anda tidak berwenang menolak SPJ")
+        try:
+            return spj.tolak(c, nomor, u["username"], body.alasan, jam())
+        except spj.SPJError as e:
+            raise HTTPException(409, str(e))
+
     @app.get("/api/terkirim")
     async def terkirim(u: dict = Depends(user_aktif)):
         _, c, _ = konteks(u)
@@ -210,4 +268,9 @@ def app_dari_env() -> FastAPI:
         if pid not in profil or profil[pid].kontak_by_id(uid) is None:
             raise RuntimeError(f"MCP_TOKENS merujuk user tidak dikenal: {pid}:{uid}")
     origins = [o.strip() for o in os.environ.get("FRONTEND_ORIGIN", "").split(",") if o.strip()]
-    return buat_app(profil, conns, password, mcp_tokens=tokens or None, origins=origins)
+    spj_dirs = {}
+    if os.environ.get("SPJ_DRAF_ROOT"):
+        # siap-cair sengaja di luar folder kerja agen: hanya backend yang bisa menulisnya.
+        siap = Path(os.environ.get("SPJ_SIAP_ROOT", data_dir / "siap-cair"))
+        spj_dirs[os.environ.get("SPJ_PROFIL", "diskominfo")] = (Path(os.environ["SPJ_DRAF_ROOT"]), siap)
+    return buat_app(profil, conns, password, mcp_tokens=tokens or None, origins=origins, spj_dirs=spj_dirs)

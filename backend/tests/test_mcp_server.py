@@ -25,7 +25,7 @@ def test_identitas_dari_header():
 def test_hanya_tool_baca_dan_ajukan(profil, conn, now):
     mcp = buat_server({"perusahaan": profil}, {"perusahaan": conn}, lambda: now, TOKENS)
     nama = {t.name for t in asyncio.run(mcp.list_tools())}
-    assert nama == NAMA_TOOL == {"cari_kontak", "cek_kalender", "cek_aturan", "profil_org", "ajukan_rencana"}
+    assert nama == NAMA_TOOL == {"cari_kontak", "cek_kalender", "cek_aturan", "profil_org", "ajukan_rencana", "ajukan_spj"}
 
 
 def test_http_tanpa_token_401(profil, conn, now):

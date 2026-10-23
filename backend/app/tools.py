@@ -4,9 +4,10 @@ from __future__ import annotations
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime
+from pathlib import Path
 from typing import Callable
 
-from app import rules
+from app import rules, spj
 from app import rencana as rencana_mod
 from app.profil import Jabatan, Profil
 
@@ -17,6 +18,7 @@ class Konteks:
     conn: sqlite3.Connection
     user_id: str
     jam: Callable[[], datetime]
+    spj_draf: Path | None = None
 
 
 def _jabatan_user(ktx: Konteks) -> Jabatan:
@@ -89,3 +91,15 @@ def profil_org(ktx: Konteks) -> dict:
 def ajukan_rencana(ktx: Konteks, rencana: rencana_mod.Rencana) -> dict:
     r = rencana.model_copy(update={"pengaju": ktx.user_id})
     return rencana_mod.ajukan(ktx.conn, ktx.profil, r, ktx.jam()).model_dump()
+
+
+def ajukan_spj(ktx: Konteks, pengajuan: spj.PengajuanSPJ) -> dict:
+    if ktx.spj_draf is None:
+        return {"ok": False, "error": "Gerbang SPJ tidak aktif untuk profil ini"}
+    try:
+        r = spj.ajukan(ktx.conn, ktx.spj_draf, pengajuan, ktx.user_id, ktx.jam())
+    except spj.SPJError as e:
+        return {"ok": False, "error": str(e)}
+    return {"ok": True, "nomor": r["nomor"], "versi": r["versi"], "risiko": r["risiko"], "manifest_hash": r["manifest_hash"],
+            "jumlah_berkas": len(r["manifest"]),
+            "pesan": "Diajukan ke Meja Pimpinan. BELUM dicairkan; menunggu keputusan bendahara."}

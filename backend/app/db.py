@@ -49,6 +49,19 @@ CREATE TABLE IF NOT EXISTS audit_log (
   prev_hash TEXT NOT NULL,
   hash TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS spj (
+  nomor TEXT PRIMARY KEY,
+  pengaju TEXT NOT NULL,
+  data_json TEXT NOT NULL,
+  manifest_json TEXT NOT NULL,
+  manifest_hash TEXT NOT NULL,
+  risiko TEXT NOT NULL,
+  status TEXT NOT NULL,
+  versi INTEGER NOT NULL DEFAULT 1,
+  diajukan TEXT NOT NULL,
+  diputuskan_oleh TEXT,
+  alasan TEXT
+);
 """
 
 

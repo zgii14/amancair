@@ -1,0 +1,20 @@
+# Profil SPJ perjalanan dinas (data fiktif). Selaras dengan D:\Agent 2\spj-agent\data\master.
+id: diskominfo
+nama_org: Dinas Komunikasi dan Informatika Kabupaten Sejahtera (fiktif)
+domain_email: [sejahtera.example]
+jabatan:
+  - {id: kepala_dinas, nama: Kepala Dinas, level: 1, unit: Pimpinan, sifat_boleh: [biasa, segera, rahasia]}
+  - {id: bendahara, nama: Bendahara Pengeluaran, level: 2, unit: Bagian Umum, boleh_menyetujui: true, sifat_boleh: [biasa, segera, rahasia]}
+  - {id: pengelola_spj, nama: Pengelola SPJ (akun agen WorkBuddy), level: 3, unit: Bagian Umum}
+  - {id: staf, nama: Staf, level: 3, unit: Bidang}
+kontak:
+  - {id: sri, nama: Sri Wahyuni, jabatan: bendahara, email: sri.wahyuni@sejahtera.example, zona: WITA}
+  - {id: ahmad, nama: Ahmad Fauzi, jabatan: kepala_dinas, email: ahmad.fauzi@sejahtera.example, zona: WITA}
+  - {id: tim_spj, nama: Tim Agen SPJ, jabatan: pengelola_spj, email: tim.spj@sejahtera.example, zona: WITA}
+  - {id: budi_santoso, nama: Budi Santoso, jabatan: staf, email: budi.santoso@sejahtera.example, zona: WITA}
+aturan:
+  jam_kerja: {mulai: "08:00", selesai: "16:00"}
+  jumatan: {mulai: "11:30", selesai: "13:00"}
+  libur: [2026-06-01, 2026-08-17, 2026-12-25]
+instruksi_disposisi: [Setuju, Tolak, Teliti dan beri pendapat, Untuk diketahui, Selesaikan]
+kalender: []
