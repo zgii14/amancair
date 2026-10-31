@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Meja Pimpinan (frontend)
 
-## Getting Started
+Antarmuka web untuk pejabat yang memutuskan: bendahara meninjau SPJ yang diajukan tim agen, lalu menyetujui atau menolaknya. Dibuat dengan Next.js 15 (App Router) dan React 19, tanpa pustaka UI tambahan.
 
-First, run the development server:
+## Menjalankan
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka http://localhost:3000. Backend harus berjalan di `http://127.0.0.1:8000`, atau atur alamatnya lewat variabel `BACKEND_URL`. Semua panggilan `/api/*` diteruskan ke backend melalui rewrites di `next.config.ts`, sehingga cookie sesi tetap satu origin.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Halaman
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Rute | Isi |
+|---|---|
+| `/login` | Masuk dengan profil organisasi dan ID pegawai |
+| `/spj` | Daftar SPJ yang menunggu keputusan dan yang sudah diputuskan |
+| `/spj/[nomor]` | Lembar SPJ: total, temuan per level risiko, perintah tersisip, berkas dari agen, tombol Setujui/Tolak |
+| `/audit` | Jejak audit dan status rantai hash |
+| `/`, `/rencana/[id]`, `/riwayat` | Halaman prototipe disposisi surat (profil perusahaan dan kecamatan) |
 
-## Learn More
+## Pemeriksaan
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```

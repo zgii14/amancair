@@ -4,8 +4,8 @@
 ✅ Expert Team "spj-agent-team" berhasil diregistrasi di WorkBuddy.
 
 ## Lokasi Registrasi
-- **Expert Directory**: `C:/Users/muham/.workbuddy-ai/plugins/marketplaces/my-experts/plugins/spj-agent-team/`
-- **Marketplace**: `C:/Users/muham/.workbuddy-ai/plugins/marketplaces/my-experts/marketplace.json`
+- **Expert Directory**: `~/.workbuddy-ai/plugins/marketplaces/my-experts/plugins/spj-agent-team/`
+- **Marketplace**: `~/.workbuddy-ai/plugins/marketplaces/my-experts/marketplace.json`
 
 ## Struktur Tim
 
