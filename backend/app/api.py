@@ -3,18 +3,19 @@ from __future__ import annotations
 import asyncio
 import os
 import secrets
+import shutil
 import sqlite3
 from contextlib import AsyncExitStack, asynccontextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
-from fastapi import Cookie, Depends, FastAPI, HTTPException, Response
+from fastapi import Cookie, Depends, FastAPI, Header, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from app import approval, audit, executor, mock_tools, spj
+from app import approval, audit, executor, kasus, mock_tools, spj
 from app import rencana as rencana_mod
 from app.db import buka, iso
 from app.mcp_server import app_http, buat_server, parse_tokens
@@ -48,6 +49,8 @@ def buat_app(
     interval_outbox: float = 5.0,
     spj_dirs: dict[str, tuple[Path, Path]] | None = None,
     mcp_hosts: list[str] | None = None,
+    kasus_root: Path | None = None,
+    jembatan: tuple[str, str] | None = None,
 ) -> FastAPI:
     sesi: dict[str, dict] = {}
     spj_dirs = spj_dirs or {}
@@ -236,6 +239,128 @@ def buat_app(
         except spj.SPJError as e:
             raise HTTPException(409, str(e))
 
+    # ---------------- Kasus: pegawai mengajukan, tim agen memproses ----------------
+
+    def kasus_konteks(u: dict):
+        p, c, j = konteks(u)
+        if u["profil"] not in spj_dirs or kasus_root is None:
+            raise HTTPException(404, "Fitur pengajuan SPJ tidak aktif")
+        pemeriksa = j.boleh_menyetujui or "rahasia" in j.sifat_boleh
+        return p, c, pemeriksa
+
+    def ringkas(c, kid: str, row: dict | None) -> dict:
+        nomor = row["nomor_spj"] if row else kasus.nomor_spj(kid)
+        s = spj.ambil(c, nomor)
+        if s is None and not row:
+            s = spj.ambil(c, nomor + "b")
+        semua = kasus.progres(c, kid)
+        jumlah = len(semua)
+        if s is not None:
+            status = {"PENDING": "MENUNGGU_BENDAHARA"}.get(s["status"], s["status"])
+        elif jumlah or (row and row["status_kasus"] == "DIAMBIL_AGEN"):
+            status = "DIPERIKSA_AGEN"
+        else:
+            status = "DITERIMA"
+        dasar = row or {"id": kid, "nomor_spj": s["nomor"] if s else nomor, "pegawai": None,
+                        "nama_pegawai": s["pegawai"] if s else None, "tujuan": s["tujuan"] if s else None,
+                        "berkas": [], "dibuat": s["diajukan"] if s else None}
+        spj_ringkas = None if s is None else {
+            "nomor": s["nomor"], "status": s["status"], "risiko": s["risiko"], "total_diajukan": s["total_diajukan"],
+            "total_dibayar": s["total_dibayar"], "alasan": s["alasan"], "jumlah_temuan": len(s["temuan"])}
+        return {**dasar, "status": status, "spj": spj_ringkas, "jumlah_progres": jumlah,
+                "aktivitas_terakhir": max((e["waktu"] for e in semua), default=None)}
+
+    def kasus_terlihat(c, p, u, pemeriksa: bool, kid: str) -> dict:
+        row = kasus.ambil(c, kid)
+        hasil = ringkas(c, kid, row)
+        if pemeriksa and (row or hasil["jumlah_progres"] or hasil["spj"]):
+            return hasil
+        nama = p.kontak_by_id(u["username"]).nama
+        if (row and row["pegawai"] == u["username"]) or (not row and hasil["spj"] and hasil["nama_pegawai"] == nama):
+            return hasil
+        raise HTTPException(404, "Pengajuan tidak ditemukan")
+
+    @app.post("/api/kasus")
+    async def ajukan_kasus(body: kasus.PengajuanKasus, u: dict = Depends(user_aktif)):
+        p, c, _ = kasus_konteks(u)
+        try:
+            row = kasus.ajukan(c, kasus_root, u["username"], p.kontak_by_id(u["username"]).nama, body, jam())
+        except kasus.KasusError as e:
+            raise HTTPException(422, str(e))
+        return ringkas(c, row["id"], row)
+
+    @app.get("/api/kasus")
+    async def daftar_kasus(u: dict = Depends(user_aktif)):
+        p, c, pemeriksa = kasus_konteks(u)
+        if pemeriksa:
+            rows = {r["id"]: r for r in kasus.daftar(c)}
+            ids = set(rows) | set(kasus.kasus_dengan_progres(c))
+        else:
+            rows = {r["id"]: r for r in kasus.daftar(c, u["username"])}
+            nama = p.kontak_by_id(u["username"]).nama
+            ids = set(rows) | {"kasus-" + s["nomor"][9:12] for s in spj.daftar(c) if s["pegawai"] == nama}
+        return sorted((ringkas(c, kid, rows.get(kid)) for kid in ids), key=lambda r: r["id"], reverse=True)
+
+    @app.get("/api/kasus/{kid}")
+    async def detail_kasus(kid: str, setelah: int = 0, u: dict = Depends(user_aktif)):
+        p, c, pemeriksa = kasus_konteks(u)
+        hasil = kasus_terlihat(c, p, u, pemeriksa, kid)
+        return {**hasil, "progres": kasus.progres(c, kid, setelah)}
+
+    @app.get("/api/kasus/{kid}/berkas/{nama}")
+    async def berkas_kasus(kid: str, nama: str, u: dict = Depends(user_aktif)):
+        p, c, pemeriksa = kasus_konteks(u)
+        kasus_terlihat(c, p, u, pemeriksa, kid)
+        try:
+            return FileResponse(kasus.path_berkas(kasus_root, kid, nama))
+        except kasus.KasusError:
+            raise HTTPException(404, "Berkas tidak ditemukan")
+
+    # ---------------- Jembatan: skrip di laptop WorkBuddy ----------------
+
+    def jembatan_konteks(authorization: str | None = Header(default=None)):
+        if jembatan is None or kasus_root is None:
+            raise HTTPException(404, "Jembatan tidak aktif")
+        token, pid = jembatan
+        if not authorization or not secrets.compare_digest(authorization, f"Bearer {token}"):
+            raise HTTPException(401, "Token jembatan salah")
+        return conns[pid], spj_dirs[pid][0]
+
+    @app.get("/api/jembatan/kasus")
+    async def jembatan_kasus_baru(k=Depends(jembatan_konteks)):
+        return [r for r in kasus.daftar(k[0]) if r["status_kasus"] == "DITERIMA"]
+
+    @app.get("/api/jembatan/kasus/{kid}/berkas/{nama}")
+    async def jembatan_berkas(kid: str, nama: str, k=Depends(jembatan_konteks)):
+        try:
+            return FileResponse(kasus.path_berkas(kasus_root, kid, nama))
+        except kasus.KasusError:
+            raise HTTPException(404, "Berkas tidak ditemukan")
+
+    @app.post("/api/jembatan/kasus/{kid}/diambil")
+    async def jembatan_diambil(kid: str, k=Depends(jembatan_konteks)):
+        kasus.tandai_diambil(k[0], kid, jam())
+        return {"ok": True}
+
+    @app.post("/api/jembatan/progres")
+    async def jembatan_progres(body: list[kasus.Kejadian], k=Depends(jembatan_konteks)):
+        return {"baru": kasus.catat_progres(k[0], body)}
+
+    @app.post("/api/jembatan/draf/{nomor}")
+    async def jembatan_sinkron_draf(nomor: str, body: dict[str, str], k=Depends(jembatan_konteks)):
+        try:
+            return {"perlu": spj.sinkron_draf(k[1], nomor, body)}
+        except spj.SPJError as e:
+            raise HTTPException(422, str(e))
+
+    @app.put("/api/jembatan/draf/{nomor}/{relatif:path}")
+    async def jembatan_tulis_draf(nomor: str, relatif: str, request: Request, k=Depends(jembatan_konteks)):
+        try:
+            spj.tulis_draf(k[1], nomor, relatif, await request.body())
+        except spj.SPJError as e:
+            raise HTTPException(422, str(e))
+        return {"ok": True}
+
     @app.get("/api/terkirim")
     async def terkirim(u: dict = Depends(user_aktif)):
         _, c, _ = konteks(u)
@@ -274,6 +399,12 @@ def app_dari_env() -> FastAPI:
         # siap-cair sengaja di luar folder kerja agen: hanya backend yang bisa menulisnya.
         siap = Path(os.environ.get("SPJ_SIAP_ROOT", data_dir / "siap-cair"))
         spj_dirs[os.environ.get("SPJ_PROFIL", "diskominfo")] = (Path(os.environ["SPJ_DRAF_ROOT"]), siap)
+    if os.environ.get("SPJ_DRAF_CONTOH"):
+        # Draf contoh di image disalin sekali ke folder draf (di volume) supaya bisa ditimpa jembatan.
+        for draf, _siap in spj_dirs.values():
+            for sumber in Path(os.environ["SPJ_DRAF_CONTOH"]).iterdir():
+                if sumber.is_dir() and not (draf / sumber.name).exists():
+                    shutil.copytree(sumber, draf / sumber.name)
     if os.environ.get("SPJ_SEED_FILE"):
         for pid, (draf, _siap) in spj_dirs.items():
             spj.seed(conns[pid], draf, Path(os.environ["SPJ_SEED_FILE"]), datetime.now(timezone.utc))
@@ -281,5 +412,8 @@ def app_dari_env() -> FastAPI:
     hosts = [h.strip() for h in os.environ.get("MCP_ALLOWED_HOSTS", "").split(",") if h.strip()]
     if os.environ.get("RAILWAY_PUBLIC_DOMAIN"):
         hosts.append(os.environ["RAILWAY_PUBLIC_DOMAIN"])
+    kasus_root = data_dir / "kasus" if spj_dirs else None
+    token_jembatan = os.environ.get("JEMBATAN_TOKEN")
+    jembatan = (token_jembatan, next(iter(spj_dirs))) if token_jembatan and spj_dirs else None
     return buat_app(profil, conns, password, mcp_tokens=tokens or None, origins=origins, spj_dirs=spj_dirs,
-                    mcp_hosts=hosts)
+                    mcp_hosts=hosts, kasus_root=kasus_root, jembatan=jembatan)

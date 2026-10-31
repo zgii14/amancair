@@ -21,8 +21,9 @@ Urutannya penting: **Railway dulu**, karena Vercel butuh URL backend saat build.
 | `railway.json` | Builder Dockerfile, healthcheck `/docs`, 1 replika |
 | `.dockerignore` | Membuang `frontend/`, `node_modules`, `.venv`, data lokal |
 | `backend/seed/spj_demo.json` | Empat SPJ contoh (001, 002, 008, 010) yang otomatis diajukan saat backend menyala, supaya Meja Pimpinan tidak kosong |
+| `scripts/jembatan_workbuddy.py` | Dijalankan di laptop WorkBuddy: mengambil pengajuan pegawai, mengirim progres agen (animasi live), dan mengunggah draf SPJ |
 
-Nilai bawaan di image: `DATA_DIR=/data`, `SPJ_DRAF_ROOT=/app/demo-draf`, `SPJ_SIAP_ROOT=/data/siap-cair`, `SPJ_SEED_FILE=/app/seed/spj_demo.json`.
+Nilai bawaan di image: `DATA_DIR=/data`, `SPJ_DRAF_ROOT=/data/draf`, `SPJ_DRAF_CONTOH=/app/demo-draf` (disalin sekali ke folder draf), `SPJ_SIAP_ROOT=/data/siap-cair`, `SPJ_SEED_FILE=/app/seed/spj_demo.json`.
 
 ## 1. Railway: backend
 
@@ -36,6 +37,7 @@ Nilai bawaan di image: `DATA_DIR=/data`, `SPJ_DRAF_ROOT=/app/demo-draf`, `SPJ_SI
    |---|---|
    | `DEMO_PASSWORD` | sandi login Meja Pimpinan, misalnya `amancair-demo-2026` |
    | `MCP_TOKENS` | `<token-acak>=diskominfo:tim_spj` |
+   | `JEMBATAN_TOKEN` | token acak lain, untuk skrip jembatan |
 
    Buat token acak dengan `openssl rand -hex 24` atau `python -c "import secrets;print(secrets.token_hex(24))"`. Jangan pakai `tok-spj` dari contoh lokal.
 
@@ -108,6 +110,7 @@ vercel --prod
 4. Buka salah satu berkas dari lembar SPJ (misalnya `rekap.xlsx`) untuk memastikan unduhan lewat proxy berjalan.
 5. Setujui SPJ-2026-001, lalu buka `/audit`: harus ada baris `spj_diajukan` dan `spj_dicairkan`, dan rantai hash berstatus utuh.
 6. Coba login sebagai `tim_spj` (akun agen): SPJ tidak bisa dibuka apalagi disetujui.
+7. Keluar, masuk sebagai `budi_santoso` (pegawai). Halaman **SPJ saya** menampilkan SPJ-2026-001 miliknya. Lewat **Ajukan SPJ**, unggah beberapa bukti `.txt` dari `workbuddy-spj/data/kasus/`; pengajuan mendapat nomor baru (SPJ-2026-012 dan seterusnya) dengan status Diterima.
 
 ## 4. Sambungkan WorkBuddy ke backend online
 
@@ -128,12 +131,26 @@ curl -s https://<domain-railway>/mcp/ \
 
 Daftar tool harus memuat `ajukan_spj`.
 
-**Batasan penting.** Backend menghitung sidik dari berkas yang ada di disknya sendiri (`/app/demo-draf`), bukan dari laptop tempat WorkBuddy berjalan. Jadi di versi online, `ajukan_spj` hanya berhasil untuk nomor SPJ yang drafnya sudah ikut di image. Untuk draf baru:
+## 5. Jalankan jembatan di laptop WorkBuddy
 
-- **Demo langsung** (rekam video): jalankan backend lokal dengan `SPJ_DRAF_ROOT` menunjuk ke folder WorkBuddy, seperti di README utama.
-- **Memperbarui versi online**: jalankan `python scripts/sinkron_workbuddy.py`, commit, push. Railway membangun ulang image dengan draf terbaru.
+Backend online tidak bisa membaca folder di laptop. Skrip jembatan menutup celah itu. Jalankan di laptop yang sama dengan WorkBuddy, biarkan terbuka selama demo:
 
-Mengunggah berkas draf lewat MCP belum dibuat; itu langkah berikutnya bila backend dipakai di luar demo.
+```bash
+JEMBATAN_TOKEN=<token-jembatan> python scripts/jembatan_workbuddy.py \
+  --proyek "D:/Agent 2/spj-agent" --server https://<domain-railway>
+```
+
+Hanya butuh Python standar. Setiap 2 detik skrip ini:
+
+1. **Mengambil pengajuan baru** dari pegawai: bukti disalin ke `data/kasus/kasus-0NN/`, SPT ditulis ke `data/spt/SPT-2026-0NN.json`. Setelah itu tinggal minta Case Coordinator memproses kasus tersebut.
+2. **Mengirim progres**: setiap berkas `kerja/<agen>_<kasus>.json` yang muncul atau berubah dikirim sebagai kejadian "selesai" dengan waktu tulis berkasnya, dan setiap baris baru di `log/audit.jsonl` ikut dikirim. Halaman **Proses agen** membaca kejadian ini dan menganimasikan papan agen secara live. Tidak ada progres yang dibuat-buat; kalau berkasnya belum ada, kartunya tidak menyala.
+3. **Mengunggah draf** `keluar/draf/SPJ-*/` (hanya berkas yang berubah). Dengan ini `ajukan_spj` di backend online menghitung sidik dari salinan yang sama dengan yang ada di laptop.
+
+Putaran pertama juga mengirim jejak kasus 001 sampai 011 yang sudah pernah dikerjakan, sehingga papan agen untuk kasus lama bisa diputar ulang (tombol **Putar ulang**).
+
+Catatan urutan: tim agen sebaiknya memanggil `ajukan_spj` setelah jembatan sempat mengunggah draf (beberapa detik). Kalau terlalu cepat, `ajukan_spj` gagal dengan pesan folder draf tidak ditemukan; cukup ulangi. Kalau draf diubah setelah diajukan, pencairan ditolak karena sidik berubah, sama seperti di lokal.
+
+Status jembatan disimpan di `~/.amancair-jembatan.json`. Hapus berkas itu untuk mengirim ulang semua jejak.
 
 ## Masalah yang sering muncul
 
@@ -145,4 +162,6 @@ Mengunggah berkas draf lewat MCP belum dibuat; itu langkah berikutnya bila backe
 | MCP membalas 421 Misdirected Request | Host tidak terdaftar (custom domain) | Tambahkan `MCP_ALLOWED_HOSTS` |
 | MCP membalas 401 | Header token salah | Pastikan `Bearer ` diikuti token yang sama dengan `MCP_TOKENS` |
 | SPJ hilang setelah redeploy | Volume belum dipasang di `/data` | Tambah volume, redeploy |
-| `ajukan_spj` gagal "Folder draf ... tidak ditemukan" | Draf tidak ada di image | Lihat bagian Batasan di atas |
+| `ajukan_spj` gagal "Folder draf ... tidak ditemukan" | Jembatan belum mengunggah draf | Pastikan jembatan berjalan, tunggu beberapa detik, ulangi |
+| Halaman Proses agen kosong | Jembatan belum jalan atau token salah | Jalankan jembatan; galat 401 berarti `JEMBATAN_TOKEN` tidak sama |
+| Pengajuan pegawai tetap "Diterima" | Jembatan belum mengambilnya | Jalankan jembatan; status berubah setelah bukti disalin |

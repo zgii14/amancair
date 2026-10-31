@@ -12,6 +12,10 @@ kontak:
   - {id: ahmad, nama: Ahmad Fauzi, jabatan: kepala_dinas, email: ahmad.fauzi@sejahtera.example, zona: WITA}
   - {id: tim_spj, nama: Tim Agen SPJ, jabatan: pengelola_spj, email: tim.spj@sejahtera.example, zona: WITA}
   - {id: budi_santoso, nama: Budi Santoso, jabatan: staf, email: budi.santoso@sejahtera.example, zona: WITA}
+  - {id: budi_prasetyo, nama: Budi Prasetyo, jabatan: staf, email: budi.prasetyo@sejahtera.example, zona: WITA}
+  - {id: lestari, nama: Lestari Dewi, jabatan: staf, email: lestari.dewi@sejahtera.example, zona: WITA}
+  - {id: dedi, nama: Dedi Kurniawan, jabatan: staf, email: dedi.kurniawan@sejahtera.example, zona: WITA}
+  - {id: bayu, nama: Bayu Wijaya, jabatan: staf, email: bayu.wijaya@sejahtera.example, zona: WITA}
 aturan:
   jam_kerja: {mulai: "08:00", selesai: "16:00"}
   jumatan: {mulai: "11:30", selesai: "13:00"}

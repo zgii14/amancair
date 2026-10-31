@@ -62,6 +62,24 @@ CREATE TABLE IF NOT EXISTS spj (
   diputuskan_oleh TEXT,
   alasan TEXT
 );
+CREATE TABLE IF NOT EXISTS kasus (
+  id TEXT PRIMARY KEY,
+  nomor_spj TEXT NOT NULL,
+  pegawai TEXT NOT NULL,
+  data_json TEXT NOT NULL,
+  berkas_json TEXT NOT NULL,
+  status TEXT NOT NULL,
+  dibuat TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS progres (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  kasus TEXT NOT NULL,
+  agen TEXT NOT NULL,
+  aksi TEXT NOT NULL,
+  pesan TEXT NOT NULL,
+  waktu TEXT NOT NULL,
+  kunci TEXT NOT NULL UNIQUE
+);
 """
 
 

@@ -27,7 +27,12 @@ const NAV_DISPOSISI = [
 ];
 const NAV_SPJ = [
   { href: "/spj", label: "SPJ menunggu" },
+  { href: "/proses", label: "Proses agen" },
   { href: "/audit", label: "Jejak audit" },
+];
+const NAV_PEGAWAI = [
+  { href: "/pengajuan", label: "SPJ saya" },
+  { href: "/pengajuan/baru", label: "Ajukan SPJ" },
 ];
 
 export default function Shell({ children }: { children: React.ReactNode }) {
@@ -38,7 +43,10 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
   const segarkanHitung = useCallback(() => {
     api<Me>("/me")
-      .then((m) => api<unknown[]>(m.profil === "diskominfo" ? "/spj?status=PENDING" : "/rencana?status=PENDING"))
+      .then((m) => {
+        if (m.profil === "diskominfo" && m.jabatan === "Staf") return [];
+        return api<unknown[]>(m.profil === "diskominfo" ? "/spj?status=PENDING" : "/rencana?status=PENDING");
+      })
       .then((r) => setMenunggu(r.length))
       .catch(() => {});
   }, []);
@@ -61,9 +69,13 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   }
 
   const kontak = (id: string) => profil.kontak.find((k) => k.id === id);
-  const NAV = me.profil === "diskominfo" ? NAV_SPJ : NAV_DISPOSISI;
+  const NAV = me.profil !== "diskominfo" ? NAV_DISPOSISI : me.jabatan === "Staf" ? NAV_PEGAWAI : NAV_SPJ;
   const utama = NAV[0].href;
-  const aktif = (href: string) => (href === "/" ? pathname === "/" || pathname.startsWith("/rencana") : pathname.startsWith(href));
+  const aktif = (href: string) => {
+    if (href === "/") return pathname === "/" || pathname.startsWith("/rencana");
+    // "/pengajuan" jangan ikut menyala saat di "/pengajuan/baru"
+    return NAV.some((n) => n.href !== href && n.href.startsWith(href) && pathname.startsWith(n.href)) ? false : pathname.startsWith(href);
+  };
 
 
   return (

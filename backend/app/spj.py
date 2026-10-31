@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import shutil
 import sqlite3
 from datetime import datetime
@@ -117,6 +118,39 @@ def ajukan(conn: sqlite3.Connection, draf_root: Path, p: PengajuanSPJ, pengaju: 
         audit.catat(conn, pengaju, "spj_diajukan",
                     {"nomor": p.nomor, "versi": versi, "manifest_hash": h, "jumlah_berkas": len(m), "risiko": risiko}, now)
     return ambil(conn, p.nomor)
+
+
+NOMOR_SPJ = re.compile(r"^SPJ-\d{4}-\d{3}[a-z]?$")
+
+
+def _path_draf(draf_root: Path, nomor: str, relatif: str) -> Path:
+    if not NOMOR_SPJ.match(nomor):
+        raise SPJError("Nomor SPJ tidak valid")
+    folder = (draf_root / nomor).resolve()
+    p = (folder / relatif).resolve()
+    if folder not in p.parents:
+        raise SPJError("Path berkas tidak valid")
+    return p
+
+
+def sinkron_draf(draf_root: Path, nomor: str, manifest_lokal: dict[str, str]) -> list[str]:
+    """Samakan folder draf di server dengan laptop WorkBuddy.
+
+    Berkas yang tidak ada di laptop dihapus; yang kembalikan adalah daftar berkas yang perlu diunggah.
+    """
+    for rel in [*manifest_lokal, "rekap.xlsx"]:
+        _path_draf(draf_root, nomor, rel)
+    folder = draf_root / nomor
+    server = hitung_manifest(folder) if folder.is_dir() else {}
+    for rel in set(server) - set(manifest_lokal):
+        (folder / rel).unlink()
+    return sorted(rel for rel, h in manifest_lokal.items() if server.get(rel) != h)
+
+
+def tulis_draf(draf_root: Path, nomor: str, relatif: str, data: bytes) -> None:
+    p = _path_draf(draf_root, nomor, relatif)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_bytes(data)
 
 
 def seed(conn: sqlite3.Connection, draf_root: Path, berkas: Path, now: datetime) -> list[str]:

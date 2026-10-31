@@ -41,6 +41,17 @@ Mode stdio dan API harus memakai `DATA_DIR` yang sama agar berbagi database.
 | `SPJ_DRAF_ROOT` | tidak | Folder draf SPJ yang ditulis tim agen WorkBuddy; tanpa ini tool `ajukan_spj` tidak aktif |
 | `SPJ_SIAP_ROOT` | tidak | Folder tujuan pencairan (default `data/siap-cair`). Taruh di luar folder kerja agen |
 | `SPJ_PROFIL` | tidak | Profil organisasi untuk SPJ (default `diskominfo`) |
+| `SPJ_SEED_FILE` | tidak | JSON SPJ contoh yang diajukan otomatis saat start (lihat `seed/spj_demo.json`) |
+| `SPJ_DRAF_CONTOH` | tidak | Folder draf contoh yang disalin sekali ke `SPJ_DRAF_ROOT` bila belum ada |
+| `JEMBATAN_TOKEN` | tidak | Token untuk `scripts/jembatan_workbuddy.py`; tanpa ini endpoint `/api/jembatan/*` mati |
+| `MCP_ALLOWED_HOSTS` | tidak | Host publik tambahan untuk MCP (Railway terdeteksi otomatis lewat `RAILWAY_PUBLIC_DOMAIN`) |
+
+## Pengajuan pegawai dan progres agen
+
+- Pegawai (jabatan Staf) mengunggah bukti lewat `POST /api/kasus` (JSON, berkas base64, maks. 5 MB per berkas, hanya `.txt/.pdf/.jpg/.png`). Berkas disimpan di `DATA_DIR/kasus/<id>/`.
+- Pegawai hanya melihat pengajuannya sendiri. Bendahara dan kepala dinas melihat semuanya.
+- `GET /api/kasus/{id}?setelah=<id-kejadian>` mengembalikan status gabungan (Diterima, Diperiksa tim agen, Menunggu bendahara, Dicairkan, Ditolak) dan kejadian progres baru. Meja Pimpinan memanggilnya tiap 2 detik.
+- Endpoint `/api/jembatan/*` hanya untuk skrip jembatan (bearer `JEMBATAN_TOKEN`; sesi login tidak berlaku): ambil kasus baru, kirim kejadian progres (dedup lewat `kunci`), sinkron draf SPJ.
 
 ## Gerbang persetujuan SPJ
 

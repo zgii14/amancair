@@ -127,6 +127,8 @@ npm install
    DEMO_PASSWORD=demo123 \
    MCP_TOKENS="tok-spj=diskominfo:tim_spj" \
    SPJ_DRAF_ROOT="/path/ke/spj-agent/keluar/draf" \
+   SPJ_SEED_FILE=seed/spj_demo.json \
+   JEMBATAN_TOKEN=tok-jembatan \
      .venv/Scripts/python -m uvicorn app.api:app_dari_env --factory --port 8000
    ```
 
@@ -137,11 +139,19 @@ npm install
    npm run dev
    ```
 
-   Buka http://localhost:3000, pilih profil Diskominfo Kab. Sejahtera, lalu masuk sebagai `sri` (bendahara).
+   Buka http://localhost:3000 dan pilih profil Diskominfo Kab. Sejahtera. Halaman masuk menyediakan akun demo: `sri` (bendahara), `budi_santoso` dan `lestari` (pegawai), `ahmad` (kepala dinas). Semua memakai `DEMO_PASSWORD`.
 
 3. Di WorkBuddy, buka folder `workbuddy-spj/` sebagai proyek dan impor Expert Team dari `export/spj-agent-team/`. Tambahkan konektor MCP kustom ke `http://localhost:8000/mcp/` dengan header `Authorization: Bearer tok-spj`. Langkah lengkapnya ada di [docs/workbuddy/sambung-gerbang-spj.md](docs/workbuddy/sambung-gerbang-spj.md).
 
-4. Minta Case Coordinator memproses satu kasus, misalnya `kasus-006`. Setelah draf selesai, tim memanggil `ajukan_spj` dan SPJ muncul di Meja Pimpinan untuk diputuskan.
+4. Jalankan jembatan supaya pengajuan pegawai sampai ke WorkBuddy dan progres agen tampil live:
+
+   ```bash
+   JEMBATAN_TOKEN=tok-jembatan python scripts/jembatan_workbuddy.py --proyek "/path/ke/spj-agent"
+   ```
+
+5. Masuk sebagai pegawai, ajukan SPJ dengan mengunggah bukti. Jembatan menyalinnya ke `data/kasus/` di proyek WorkBuddy.
+
+6. Minta Case Coordinator memproses kasus tersebut. Halaman **Proses agen** menampilkan tiap agen menyala saat berkas hasilnya muncul. Setelah draf selesai, tim memanggil `ajukan_spj` dan SPJ muncul di Meja Pimpinan untuk diputuskan bendahara.
 
 Prompt yang kami pakai untuk membangun tim dari nol ada di [docs/workbuddy/prompt-spj-lengkap.md](docs/workbuddy/prompt-spj-lengkap.md).
 
@@ -151,7 +161,7 @@ Untuk memasang versi online (backend di Railway, Meja Pimpinan di Vercel), ikuti
 
 ## Pengujian
 
-Tes otomatis backend (140 tes, termasuk skenario keamanan gerbang SPJ):
+Tes otomatis backend (147 tes, termasuk skenario keamanan gerbang SPJ):
 
 ```bash
 cd backend

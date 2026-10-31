@@ -14,7 +14,8 @@ COPY backend/seed ./seed
 COPY workbuddy-spj/keluar/draf ./demo-draf
 
 ENV DATA_DIR=/data \
-    SPJ_DRAF_ROOT=/app/demo-draf \
+    SPJ_DRAF_ROOT=/data/draf \
+    SPJ_DRAF_CONTOH=/app/demo-draf \
     SPJ_SIAP_ROOT=/data/siap-cair \
     SPJ_SEED_FILE=/app/seed/spj_demo.json
 

@@ -106,3 +106,39 @@ export type SPJ = {
   diputuskan_oleh: string | null;
   alasan: string | null;
 };
+
+export type StatusKasus = "DITERIMA" | "DIPERIKSA_AGEN" | "MENUNGGU_BENDAHARA" | "DICAIRKAN" | "DITOLAK";
+export type Progres = { id: number; agen: string; aksi: string; pesan: string; waktu: string };
+export type Kasus = {
+  id: string;
+  nomor_spj: string;
+  pegawai: string | null;
+  nama_pegawai: string | null;
+  tujuan: string | null;
+  maksud?: string;
+  tanggal_berangkat?: string;
+  tanggal_kembali?: string;
+  catatan?: string;
+  berkas: string[];
+  dibuat: string | null;
+  status: StatusKasus;
+  jumlah_progres: number;
+  aktivitas_terakhir: string | null;
+  spj: {
+    nomor: string;
+    status: StatusSPJ;
+    risiko: "normal" | "tinggi";
+    total_diajukan: number;
+    total_dibayar: number;
+    alasan: string | null;
+    jumlah_temuan: number;
+  } | null;
+};
+export type KasusDetail = Kasus & { progres: Progres[] };
+
+/** Tim agen dianggap aktif bila ada kejadian dalam 15 menit terakhir. */
+export function agenAktif(k: Kasus): boolean {
+  if (k.status !== "DIPERIKSA_AGEN") return false;
+  if (!k.aktivitas_terakhir) return true;
+  return Date.now() - new Date(k.aktivitas_terakhir).getTime() < 15 * 60 * 1000;
+}

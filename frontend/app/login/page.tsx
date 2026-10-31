@@ -9,6 +9,14 @@ const AKUN: Record<string, { label: string; contoh: string }> = {
   kecamatan: { label: "Kecamatan Sukamaju", contoh: "camat_andi" },
 };
 
+// Akun dummy untuk demo; semua memakai kata sandi demo yang sama.
+const AKUN_DEMO = [
+  { id: "sri", label: "Sri Wahyuni", peran: "Bendahara" },
+  { id: "budi_santoso", label: "Budi Santoso", peran: "Pegawai" },
+  { id: "lestari", label: "Lestari Dewi", peran: "Pegawai" },
+  { id: "ahmad", label: "Ahmad Fauzi", peran: "Kepala Dinas" },
+];
+
 export default function LoginPage() {
   const [profil, setProfil] = useState("diskominfo");
   const [username, setUsername] = useState("sri");
@@ -25,8 +33,8 @@ export default function LoginPage() {
     setProses(true);
     setGalat("");
     try {
-      await post("/login", { profil, username: username.trim(), password });
-      window.location.href = profil === "diskominfo" ? "/spj" : "/";
+      const me = await post<{ jabatan: string }>("/login", { profil, username: username.trim(), password });
+      window.location.href = profil !== "diskominfo" ? "/" : me.jabatan === "Staf" ? "/pengajuan" : "/spj";
     } catch {
       setGalat("ID pegawai atau kata sandi salah.");
       setProses(false);
@@ -38,7 +46,7 @@ export default function LoginPage() {
       <form onSubmit={masuk} noValidate>
         <div>
           <h1>Meja Pimpinan</h1>
-          <p className="info">Tinjau rencana yang disiapkan agent, lalu putuskan.</p>
+          <p className="info">{profil === "diskominfo" ? "Pegawai mengajukan SPJ, tim agen memeriksa, bendahara memutuskan." : "Tinjau rencana yang disiapkan agent, lalu putuskan."}</p>
         </div>
         <label>
           Organisasi
@@ -54,6 +62,17 @@ export default function LoginPage() {
             ))}
           </select>
         </label>
+        {profil === "diskominfo" && (
+          <fieldset className="akun-demo">
+            <legend>Akun demo</legend>
+            {AKUN_DEMO.map((a) => (
+              <button key={a.id} type="button" aria-pressed={username === a.id} onClick={() => setUsername(a.id)}>
+                <strong>{a.label}</strong>
+                <span>{a.peran}</span>
+              </button>
+            ))}
+          </fieldset>
+        )}
         <label>
           ID pegawai
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />

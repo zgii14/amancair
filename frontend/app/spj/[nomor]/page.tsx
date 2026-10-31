@@ -127,7 +127,8 @@ function LembarSPJ() {
         <section className="bagian" aria-labelledby="berkas">
           <h2 id="berkas">Berkas yang disusun agen</h2>
           <p className="info" style={{ marginBottom: 8 }}>
-            Periksa rincian per angka di rekap dan layar konfirmasi agen sebelum memutuskan.
+            Periksa rincian per angka di rekap dan layar konfirmasi agen sebelum memutuskan.{" "}
+            <Link href={`/proses/kasus-${s.nomor.slice(9, 12)}`}>Lihat proses tim agen →</Link>
           </p>
           <ul style={{ margin: 0, paddingLeft: 18 }}>
             {berkas.filter((b) => !b.startsWith("kerja/")).map((b) => (
