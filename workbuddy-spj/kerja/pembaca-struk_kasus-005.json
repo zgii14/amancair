@@ -1,0 +1,26 @@
+{
+  "item_bukti": [
+    {
+      "id": "B03",
+      "file": "struk_taksi_1.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-16",
+      "kota": "Jakarta",
+      "nama_di_bukti": null,
+      "nominal": 165000,
+      "kutipan": "TOTAL: Rp 165.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "nomor_struk": "GRB-334466"
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-16",
+      "nomor_transaksi": "GRB-334466",
+      "nominal": 165000,
+      "merchant": "GRAB",
+      "rute": "Bandara Soekarno-Hatta - Hotel Pondok Indah"
+    }
+  ]
+}

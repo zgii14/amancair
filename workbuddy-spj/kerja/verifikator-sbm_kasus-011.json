@@ -1,41 +1,65 @@
 {
-  "hasil_verifikasi": [
+  "kasus": "kasus-011",
+  "spt": "SPT-2026-011",
+  "pegawai": {
+    "nama": "Lestari Dewi",
+    "nip": "199507082019042007",
+    "golongan": "III/a"
+  },
+  "tujuan": "Jakarta, Provinsi DKI Jakarta",
+  "tanggal_spt": {
+    "mulai": "2026-10-05",
+    "selesai": "2026-10-07",
+    "jumlah_hari": 3
+  },
+  "sbm": {
+    "pagu_hotel_per_malam": 800000,
+    "uang_harian_per_hari": 400000,
+    "pagu_taksi_per_perjalanan": 250000
+  },
+  "verifikasi": [
     {
-      "id": "B01",
-      "status": "sesuai",
-      "dibayar": 1680000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "tiket_berangkat.txt: Harga Tiket: Rp 1.680.000",
-      "rumus_hitung": "Tiket sesuai bukti riil = 1680000",
-      "level_risiko": null
+      "kode_bukti": "B01",
+      "jenis": "tiket",
+      "penyedia": "Super Air Jet",
+      "rute": "UPG-CGK",
+      "tanggal": "2026-10-05",
+      "nama_pada_bukti": "Lestari Dewi",
+      "jumlah": 1680000,
+      "hasil": "VALID",
+      "catatan": "Tanggal dalam masa SPT, nama sesuai dengan pegawai"
     },
     {
-      "id": "B02",
-      "status": "sesuai",
-      "dibayar": 210000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "struk_bandara_hotel.txt: TOTAL: Rp 210.000",
-      "rumus_hitung": "Taksi dalam pagu = 210,000",
-      "level_risiko": null
+      "kode_bukti": "B02",
+      "jenis": "taksi",
+      "penyedia": "Blue Bird Taxi",
+      "tanggal": "2026-10-05",
+      "rute": "Bandara Soekarno-Hatta - Hotel Grand Java",
+      "jumlah": 210000,
+      "sbm_pagu": 250000,
+      "hasil": "VALID",
+      "catatan": "Tanggal dalam masa SPT, jumlah tidak melebihi pagu SBM"
     },
     {
-      "id": "UH",
-      "status": "sesuai",
-      "dibayar": 1200000,
-      "aturan": "R04",
-      "alasan": "Uang harian 3 hari x 400,000 = 1,200,000",
-      "sumber": "SPT",
-      "rumus_hitung": "3 hari x 400,000 = 1,200,000 (R04)",
-      "level_risiko": null
+      "kode_bukti": null,
+      "jenis": "hotel",
+      "hasil": "TIDAK_ADA_BUKTI",
+      "catatan": "Tidak ada invoice hotel"
+    },
+    {
+      "jenis": "uang_harian",
+      "jumlah_hari": 3,
+      "sbm_per_hari": 400000,
+      "total": 1200000,
+      "hasil": "VALID",
+      "catatan": "Sesuai SBM, tidak memerlukan bukti (R04)"
     }
   ],
-  "uang_harian": {
-    "hari": 3,
-    "tarif": 400000,
-    "total": 1200000,
-    "rumus": "3 hari x 400,000 = 1,200,000 (R04)"
-  },
-  "temuan": []
+  "ringkasan": {
+    "total_tiket": 1680000,
+    "total_taksi": 210000,
+    "total_uang_harian": 1200000,
+    "total_hotel": 0,
+    "grand_total": 3090000
+  }
 }

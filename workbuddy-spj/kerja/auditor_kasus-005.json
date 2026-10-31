@@ -1,0 +1,69 @@
+{
+  "kasus_id": "kasus-005",
+  "timeline": [
+    {
+      "tanggal": "2026-10-16",
+      "events": [
+        {
+          "waktu": "pagi/siang",
+          "jenis": "keberangkatan",
+          "deskripsi": "Penerbangan Lion Air UPG-CGK (JT 782)",
+          "bukti": "B01",
+          "nominal": 1920000
+        },
+        {
+          "waktu": "sore/malam",
+          "jenis": "transportasi_lokal",
+          "deskripsi": "Taksi Grab dari Bandara Soekarno-Hatta ke Hotel Pondok Indah",
+          "bukti": "B03",
+          "nominal": 165000
+        },
+        {
+          "waktu": "malam",
+          "jenis": "check_in_hotel",
+          "deskripsi": "Check-in Hotel Pondok Indah Jakarta (malam ke-1)",
+          "bukti": "B02",
+          "nominal": 770000
+        }
+      ]
+    },
+    {
+      "tanggal": "2026-10-17",
+      "events": [
+        {
+          "waktu": "sepanjang_hari",
+          "jenis": "menginap",
+          "deskripsi": "Menginap di Hotel Pondok Indah Jakarta (malam ke-2)",
+          "bukti": "B02",
+          "nominal": 770000
+        }
+      ]
+    },
+    {
+      "tanggal": "2026-10-18",
+      "events": [
+        {
+          "waktu": "pagi",
+          "jenis": "check_out_hotel",
+          "deskripsi": "Check-out Hotel Pondok Indah Jakarta",
+          "bukti": "B02",
+          "nominal": 0
+        },
+        {
+          "waktu": "sepanjang_hari",
+          "jenis": "kembali",
+          "deskripsi": "Hari ke-3 perjalanan dinas, kembali ke kota asal",
+          "bukti": "SPT",
+          "nominal": 0
+        }
+      ]
+    }
+  ],
+  "kontradiksi": [],
+  "temuan": [],
+  "verifikasi_angka": {
+    "status": "lolos",
+    "detail": "Total biaya: Rp 5.125.000 (Tiket Rp 1.920.000 + Hotel Rp 1.540.000 + Taksi Rp 165.000 + UH Rp 1.500.000). Semua nominal sesuai bukti dan SPT."
+  },
+  "rekomendasi": "lolos"
+}

@@ -1,32 +1,58 @@
 {
   "kasus_id": "kasus-011",
+  "pegawai": "Lestari Dewi",
+  "spt": "SPT-2026-011",
   "timeline": [
     {
-      "tanggal": null,
-      "event": "tiket_berangkat",
-      "sumber": "tiket_berangkat.txt"
+      "tanggal": "2026-10-05",
+      "event": "Keberangkatan pesawat Super Air Jet UPG-CGK",
+      "bukti": "B01",
+      "nominal": 1680000,
+      "status": "VALID"
     },
     {
       "tanggal": "2026-10-05",
-      "event": "SPT_mulai",
-      "sumber": "SPT-2026-011.json"
+      "event": "Penggunaan taksi Blue Bird Taxi",
+      "bukti": "B02",
+      "nominal": 210000,
+      "status": "VALID"
     },
     {
       "tanggal": "2026-10-05",
-      "event": "taksi",
-      "sumber": "struk_bandara_hotel.txt"
+      "event": "Mulai perjalanan dinas ke Jakarta (3 hari)",
+      "bukti": "SPT-2026-011",
+      "nominal": 0,
+      "status": "VALID"
     },
     {
-      "tanggal": "2026-10-07",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-011.json"
+      "tanggal": "2026-10-05 s/d 2026-10-07",
+      "event": "Uang Harian",
+      "bukti": "UH",
+      "nominal": 1200000,
+      "status": "sesuai"
     }
   ],
   "kontradiksi": [],
-  "temuan": [],
+  "temuan": [
+    {
+      "jenis": "struk_ganda",
+      "kode_temuan": "R06",
+      "level_risiko": "KRITIS",
+      "deskripsi": "Struk taksi TX-884721 (5 Okt 2026, Rp 210.000) pernah diajukan di SPJ lain berdasarkan indeks sidik bukti.",
+      "tindak_lanjut": "Eskalasi ke bendahara. Tombol SETUJUI dikunci."
+    },
+    {
+      "jenis": "kurang_bukti",
+      "kode_temuan": null,
+      "level_risiko": "SEDANG",
+      "deskripsi": "Tidak ada bukti penginapan (hotel) untuk perjalanan dinas 3 hari ke Jakarta (5-7 Okt 2026).",
+      "tindak_lanjut": "Perlu justifikasi atau bukti tambahan."
+    }
+  ],
   "verifikasi_angka": {
-    "status": "lolos",
-    "detail": "Angka terverifikasi"
+    "status": "lolos_dengan_catatan",
+    "detail": "Total klaim Rp 3.090.000 terdiri dari tiket Rp 1.680.000 + taksi Rp 210.000 + UH Rp 1.200.000. Perhitungan aritmatika sesuai, namun ada kekurangan bukti hotel dan struk taksi TX-884721 terdeteksi ganda lintas kasus."
   },
-  "rekomendasi": "lolos"
+  "level_risiko": "KRITIS",
+  "rekomendasi": "eskalasi"
 }

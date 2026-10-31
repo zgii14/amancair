@@ -67,5 +67,11 @@
     "total": 2750000,
     "rumus": "5 hari x 550,000 = 2,750,000 (R04)"
   },
-  "temuan": []
+  "temuan": [
+    {
+      "kode": "R10",
+      "level": "TINGGI",
+      "deskripsi": "Total yang diajukan Rp 16.480.000 melebihi Rp 10.000.000. Wajib konfirmasi tambahan bendahara."
+    }
+  ]
 }

@@ -38,7 +38,20 @@
     }
   ],
   "kontradiksi": [],
-  "temuan": [],
+  "temuan": [
+    {
+      "kode_temuan": "R07",
+      "level_risiko": "SEDANG",
+      "deskripsi": "Tanggal 17 Agustus 2026 (Hari Kemerdekaan) berada di dalam masa SPT. Biaya di hari libur nasional di dalam SPT diberi catatan 'perlu justifikasi'.",
+      "tindak_lanjut": "Perlu justifikasi dari atasan mengapa rapat dijadwalkan pada hari libur nasional."
+    },
+    {
+      "kode_temuan": "R10",
+      "level_risiko": "TINGGI",
+      "deskripsi": "Total yang diajukan Rp 13.270.000 melebihi Rp 10.000.000. Wajib konfirmasi tambahan bendahara.",
+      "tindak_lanjut": "Wajib konfirmasi tambahan bendahara sebelum persetujuan."
+    }
+  ],
   "verifikasi_angka": {
     "status": "lolos",
     "detail": "Angka terverifikasi"

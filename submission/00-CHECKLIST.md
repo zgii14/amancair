@@ -7,7 +7,7 @@ Form: https://forms.gle/y1aHBH4BsrytXDxdA
 | 1 | Judul + blurb (< 10 kata) | `01-judul-dan-deskripsi.md` (bagian atas) | ✅ Draf |
 | 2 | Deskripsi lengkap | `01-judul-dan-deskripsi.md` | ✅ Draf |
 | 3 | Lembar akuntabilitas (1 hlm) | `02-lembar-akuntabilitas.md` → ekspor PDF | ✅ Draf |
-| 4 | Hasil uji + screenshot | `03-hasil-uji.md` — **perbarui setelah putaran ulang kasus 002–011**, isi kolom Bukti | 🟡 Menunggu putaran ulang |
+| 4 | Hasil uji + screenshot | `03-hasil-uji.md` (hasil akhir 31 Okt); lampirkan screenshot | 🟡 Tinggal screenshot |
 | 5 | Diagram arsitektur | `04-arsitektur.md` (Mermaid) → render/screenshot jadi PNG | ✅ Draf |
 | 6 | Video 5–8 menit | Rekam sesuai `06-naskah-video.md`, unggah (YouTube unlisted / Drive) | ❌ Belum |
 | 7 | Kode / workflow WorkBuddy | Salin `D:\Agent 2\spj-agent\export\spj-agent-team\` + `skills\` ke repo; push repo publik (GitHub) | ❌ Belum |

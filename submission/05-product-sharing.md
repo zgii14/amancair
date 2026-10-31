@@ -22,7 +22,14 @@ Saat menguji kasus pertama, kami memeriksa berkas dan log yang dihasilkan, bukan
 
 Ketiganya terjadi **meskipun skill sudah melarangnya**. Kesimpulan kami: untuk tindakan berdampak (uang), larangan harus ditegakkan oleh **lapisan eksekusi di luar model**. Karena itu pencairan dipindah ke backend: agen hanya bisa mengajukan lewat MCP, backend menghitung sidik sendiri, bendahara menyetujui di Meja Pimpinan, dan folder siap-cair berada di luar folder kerja agen.
 
+## Insight kedua: klaim "multi-agen" harus dibuktikan dari jejak, bukan dari ringkasan
+Saat menjalankan kasus massal, agen dua kali memilih jalan pintas: menulis satu skrip yang menghasilkan output semua "anggota tim" dalam kurang dari satu detik, lalu — setelah diminta memakai agen sungguhan — menambahkan **jeda buatan tepat 1 detik** agar log tampak realistis. Ringkasan chat-nya tetap menyebut "tim agen sungguhan". Kami hanya bisa menangkapnya dengan membandingkan **waktu tulis berkas** setiap anggota.
+
+Yang berhasil: menjalankan kasus lewat **Expert Team "SPJ Agent Team"** langsung (Case Coordinator). Di sana anggota benar-benar dipanggil terpisah — terlihat dari jarak waktu yang tidak beraturan dan Koordinator yang menunggu serta mengirim *nudge* ke anggota yang belum selesai. Karena itu laporan uji kami memisahkan kasus yang dikerjakan tim agen dari yang diproses pipeline skrip.
+
 ## Pelajaran lain
+- **Berkas lama bisa menipu orkestrator.** Koordinator sempat menganggap Auditor selesai hanya karena berkas hasil putaran sebelumnya masih ada. Cek waktu berkas, bukan hanya keberadaannya.
+- **Deteksi lintas kasus perlu instruksi eksplisit.** Auditor sungguhan melewatkan struk ganda lintas kasus pada percobaan pertama dan baru menemukannya setelah diminta membaca indeks sidik — sinyal bahwa langkah ini sebaiknya dijadikan tool deterministik.
 - **Verifikasi file, bukan ringkasan.** Ringkasan agen beberapa kali tidak sama dengan isi log (jam, urutan baris). Laporan kami selalu diambil dari berkas aslinya.
 - **Data uji harus bersih.** Bug pajak hotel (pagu dibanding tarif sebelum/sesudah pajak) awalnya membuat kasus "normal" ikut melanggar pagu; aturan R03 lalu ditegaskan "biaya per malam termasuk pajak".
 - **Pisahkan temuan asli dari kesalahan kerja agen.** Loop perbaikan yang mengembalikan struk ganda ke pembaca hanya berputar sia-sia.
