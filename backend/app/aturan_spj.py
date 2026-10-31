@@ -78,6 +78,10 @@ def _norm(s: str | None) -> str:
     return re.sub(r"[^a-z]", "", (s or "").lower())
 
 
+def _kata(nama: str) -> set[str]:
+    return set(re.findall(r"[a-z]+", nama.lower()))
+
+
 def _kunci(jenis: str, nomor: str) -> str:
     return jenis + ":" + re.sub(r"[^a-z0-9]", "", nomor.lower())
 
@@ -154,9 +158,19 @@ def periksa(conn: sqlite3.Connection, ref: Referensi, p: Pemeriksaan, pemeriksa:
                 dibayar, status, rumus = 0, "DITAHAN", f"Sudah diajukan di {lain['nomor_spj']} (R06 lintas SPJ)"
 
         if it.jenis in JENIS_IDENTITAS and it.nama_di_bukti and _norm(it.nama_di_bukti) != _norm(peg["nama"]):
-            tambah("KRITIS", "R02", f"Nama di {it.file} \"{it.nama_di_bukti}\" tidak sama dengan pegawai {peg['nama']}",
-                   it.file)
-            dibayar, status, rumus = 0, "DITAHAN", "Nama tidak cocok, ditahan sampai ada penjelasan (R02)"
+            kata_bukti, kata_pegawai = _kata(it.nama_di_bukti), _kata(peg["nama"])
+            if kata_bukti and kata_bukti <= kata_pegawai:
+                # Nama tidak lengkap ("Budi" untuk "Budi Prasetyo"), bukan nama orang lain: dibayar dengan catatan.
+                if p.nip:
+                    tambah("RENDAH", "R02", f"Nama di {it.file} hanya \"{it.nama_di_bukti}\"; identitas {peg['nama']} "
+                                            f"dipastikan pengelola SPJ lewat NIP {peg['nip']}", it.file)
+                else:
+                    tambah("SEDANG", "R02", f"Nama di {it.file} hanya \"{it.nama_di_bukti}\", tidak lengkap; "
+                                            f"pastikan identitas {peg['nama']}", it.file)
+            else:
+                tambah("KRITIS", "R02", f"Nama di {it.file} \"{it.nama_di_bukti}\" tidak sama dengan pegawai {peg['nama']}",
+                       it.file)
+                dibayar, status, rumus = 0, "DITAHAN", "Nama tidak cocok, ditahan sampai ada penjelasan (R02)"
 
         if status == "SESUAI" and it.jenis == "hotel":
             malam = (it.check_out - it.check_in).days

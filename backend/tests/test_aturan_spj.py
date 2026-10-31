@@ -179,3 +179,28 @@ def test_ajukan_dibandingkan_dengan_hasil_periksa(conn, now, tmp_path):
     assert cocok["risiko"] == "normal" and cocok["catatan_backend"] == []
     beda = spj.ajukan(conn, draf, PengajuanSPJ(**base, total_dibayar=9_032_500), "tim_spj", now, wajib_periksa=True)
     assert beda["risiko"] == "tinggi" and "berbeda dengan hitungan backend" in beda["alasan_risiko"][0]
+
+
+def test_005_nama_tidak_lengkap_dibayar_dengan_catatan(conn, now):
+    items = [{"id": "B01", "file": "tiket_berangkat.txt", "jenis": "tiket", "tanggal": "2026-10-16",
+              "nama_di_bukti": "Budi", "nominal": 1_920_000},
+             {"id": "B02", "file": "invoice_hotel.txt", "jenis": "hotel", "check_in": "2026-10-16",
+              "check_out": "2026-10-18", "nama_di_bukti": "Budi", "nominal": 1_540_000},
+             {"id": "B03", "file": "struk_taksi_1.txt", "jenis": "taksi", "tanggal": "2026-10-16", "nominal": 165_000}]
+    base = dict(nomor_spj="SPJ-2026-005b", pegawai="Budi Prasetyo", provinsi="DKI Jakarta",
+                tanggal_berangkat="2026-10-16", tanggal_kembali="2026-10-18", items=items)
+    h = cek(conn, now, nip="197803101999031002", **base)
+    assert (h["total_diajukan"], h["total_dibayar"]) == (5_125_000, 5_125_000)
+    assert aturan(h) == [("R02", "RENDAH"), ("R02", "RENDAH")]
+    tanpa_nip = cek(conn, now, **base)
+    assert tanpa_nip["total_dibayar"] == 5_125_000
+    assert aturan(tanpa_nip) == [("R02", "SEDANG"), ("R02", "SEDANG")]
+
+
+def test_nama_orang_lain_tetap_ditahan_walau_marga_sama(conn, now):
+    h = cek(conn, now, nomor_spj="SPJ-2026-008", pegawai="Bayu Wijaya", nip="199805152022021008", provinsi="DKI Jakarta",
+            tanggal_berangkat="2026-10-06", tanggal_kembali="2026-10-06",
+            items=[{"id": "B01", "file": "boarding_pass.txt", "jenis": "boarding_pass", "tanggal": "2026-10-06",
+                    "nama_di_bukti": "Andi Wijaya"}])
+    assert h["items"][0]["status"] == "DITAHAN"
+    assert ("R02", "KRITIS") in aturan(h)

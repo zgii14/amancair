@@ -18,10 +18,30 @@ cd frontend && npm run dev
 Meja Pimpinan: `http://localhost:3000` → pilih "Diskominfo Kab. Sejahtera (SPJ)", ID `sri`, sandi demo.
 
 ## 2. Tambah konektor MCP di WorkBuddy
-- Konektor kustom (自定义连接器): URL `http://localhost:8000/mcp/`
+Diuji di WorkBuddy AI v5.9.4. Ada dua cara:
+
+**Lewat aplikasi:** sidebar **Experts · Skills · Connectors** → tab **Connectors** → tombol **Custom connectors** (kanan atas) → **MCP Server Management** → **Add MCP**. Isi:
+- Tipe: streamable HTTP
+- URL: `http://localhost:8000/mcp/`
 - Header: `Authorization: Bearer tok-spj`
-- Tool yang muncul harus termasuk `ajukan_spj`.
-- Pastikan folder yang diizinkan WorkBuddy hanya `D:\Agent 2` (bukan `D:\HACKATHON2`).
+
+**Lewat berkas plugin Expert Team:** letakkan `.mcp.json` (pakai titik di depan, bukan `mcp.json`) di folder plugin, misalnya `%USERPROFILE%\.workbuddy-ai\plugins\marketplaces\my-experts\plugins\spj-agent-team\.mcp.json`, lalu tutup WorkBuddy sepenuhnya dan buka lagi:
+
+```json
+{
+  "mcpServers": {
+    "amancair": {
+      "type": "streamable-http",
+      "url": "http://localhost:8000/mcp/",
+      "headers": { "Authorization": "Bearer tok-spj" }
+    }
+  }
+}
+```
+
+Hasil yang benar: di MCP Server Management, `amancair` bertitik hijau dengan **7/7 tools enabled** (termasuk `ajukan_spj` dan `periksa_aturan`), dan log backend menampilkan `POST /mcp/ 200`.
+
+Pastikan folder yang diizinkan WorkBuddy hanya `D:\Agent 2` (bukan `D:\HACKATHON2`).
 
 ## 3. Prompt untuk WorkBuddy (ubah aturan persetujuan)
 

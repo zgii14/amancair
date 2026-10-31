@@ -66,6 +66,11 @@ def ringkas_kerja(p: Path) -> str:
         return "Hasil kerja ditulis"
     if not isinstance(d, dict):
         return "Hasil kerja ditulis"
+    # Format alur periksa_aturan: hasil tool di "hasil", temuan auditor di "temuan_final".
+    if isinstance(d.get("hasil"), dict):
+        d = {**d, **d["hasil"]}
+    if isinstance(d.get("temuan_final"), list):
+        d = {**d, "temuan": d["temuan_final"]}
     bagian = []
     rp = lambda n: f"Rp{int(n):,}".replace(",", ".")  # noqa: E731
     bukti = d.get("item_bukti")

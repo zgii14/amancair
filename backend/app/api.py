@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import re
 import secrets
 import shutil
 import sqlite3
@@ -275,7 +276,8 @@ def buat_app(
     def kasus_terlihat(c, p, u, pemeriksa: bool, kid: str) -> dict:
         row = kasus.ambil(c, kid)
         hasil = ringkas(c, kid, row)
-        if pemeriksa and (row or hasil["jumlah_progres"] or hasil["spj"]):
+        # Pemeriksa boleh membuka kasus yang belum punya aktivitas: papan agen menunggu kejadian pertama.
+        if pemeriksa and re.fullmatch(r"kasus-\d{3}[a-z]?", kid):
             return hasil
         nama = p.kontak_by_id(u["username"]).nama
         if (row and row["pegawai"] == u["username"]) or (not row and hasil["spj"] and hasil["nama_pegawai"] == nama):
