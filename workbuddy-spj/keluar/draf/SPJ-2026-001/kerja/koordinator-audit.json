@@ -1,0 +1,9 @@
+{
+  "waktu": "2026-10-23T12:14:15.262156+08:00",
+  "kasus": "kasus-001",
+  "agen": "koordinator",
+  "aksi": "mulai_proses",
+  "file_dibaca": "pesan_pegawai.txt",
+  "keputusan": "SPT terpilih: SPT-2026-001, Pegawai: Budi Santoso. Rencana: dispatch pembaca-tiket + pembaca-hotel + pembaca-struk (paralel) -> verifikator-sbm -> auditor -> penyusun-spj",
+  "aturan": null
+}

@@ -1,0 +1,19 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           INVOICE HOTEL
+                     HOTEL SENAYAN CITY SUITES
+                   Jl. Asia Afrika No. 8, Jakarta
+================================================================================
+No. Invoice: INV/SCS/2026/0817
+Tanggal: 18 Agustus 2026
+Nama Tamu: Ahmad Fauzi
+Check-in: 15 Agustus 2026
+Check-out: 18 Agustus 2026
+Lama Menginap: 3 malam
+Tipe Kamar: Junior Suite
+Tarif per Malam: Rp 900.000
+Total Biaya Menginap: Rp 2.700.000
+Pajak & Service (10%): Rp 270.000
+TOTAL: Rp 2.970.000
+Status: LUNAS
+================================================================================

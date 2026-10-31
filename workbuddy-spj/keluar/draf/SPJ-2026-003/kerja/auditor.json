@@ -1,0 +1,68 @@
+{
+  "agen": "auditor",
+  "kasus": "kasus-003",
+  "waktu_mulai": "2026-10-31T16:25:41.315044+08:00",
+  "waktu_selesai": "2026-10-31T16:25:41.315044+08:00",
+  "timeline": [
+    {
+      "tanggal": "2026-10-20",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-003.json"
+    },
+    {
+      "tanggal": "2026-10-20",
+      "event": "tiket_berangkat",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "tanggal": "2026-10-20",
+      "event": "hotel_checkin",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-20",
+      "event": "taksi_bandara_hotel",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-22",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-003.json"
+    },
+    {
+      "tanggal": "2026-10-23",
+      "event": "hotel_checkout",
+      "sumber": "invoice_hotel.txt"
+    }
+  ],
+  "kontradiksi": [
+    {
+      "tipe": "hotel_checkout_lewat_SPT",
+      "tingkat": "TINGGI",
+      "deskripsi": "Hotel check-out 23 Okt padahal SPT selesai 22 Okt",
+      "kutipan_a": {
+        "file": "invoice_hotel.txt",
+        "teks": "Check-out: 23 Oktober 2026"
+      },
+      "kutipan_b": {
+        "file": "SPT-2026-003.json",
+        "teks": "tanggal_kembali: 2026-10-22"
+      },
+      "aturan": "R01"
+    }
+  ],
+  "temuan": [
+    {
+      "id_bukti": "B02",
+      "level": "TINGGI",
+      "tipe": "hotel_di_luar_SPT",
+      "aturan": "R01",
+      "deskripsi": "Hotel check-out 23 Okt melebihi tanggal kembali SPT 22 Okt. 1 malam di luar masa SPT tidak dibayar."
+    }
+  ],
+  "verifikasi_angka": {
+    "status": "lolos",
+    "detail": "Angka terverifikasi"
+  },
+  "rekomendasi": "lolos"
+}

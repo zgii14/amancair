@@ -1,0 +1,49 @@
+{
+  "agen": "pembaca-struk",
+  "kasus": "kasus-001",
+  "waktu_mulai": "2026-10-23T12:15:42+08:00",
+  "waktu_selesai": "2026-10-23T12:15:42+08:00",
+  "items": [
+    {
+      "id_bukti": "B04",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "tanggal": "2026-10-05",
+      "kota": null,
+      "merchant": "Blue Bird Taxi",
+      "nomor_struk": "TX-884721",
+      "rute": "Bandara Soekarno-Hatta - Hotel Grand Java",
+      "nominal": 210000,
+      "kutipan_teks": "STRUK BLUE BIRD TAXI\nTanggal: 5 Oktober 2026\nNomor Struk: TX-884721\nNama Pengemudi: Pak Joko\nRute: Bandara Soekarno-Hatta - Hotel Grand Java\nJarak: 32.4 km\nTarif: Rp 185.000\nTambahan Tol: Rp 25.000\nTOTAL: Rp 210.000\nPembayaran: Tunai",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-05",
+        "nomor_transaksi": "TX-884721",
+        "nominal": 210000,
+        "merchant": "Blue Bird Taxi",
+        "rute": "Bandara Soekarno-Hatta - Hotel Grand Java"
+      }
+    },
+    {
+      "id_bukti": "B05",
+      "jenis": "makan",
+      "file_sumber": "struk_makan_1.txt",
+      "tanggal": "2026-10-06",
+      "kota": null,
+      "merchant": "Warung Nasi Buah Batu",
+      "nomor_struk": "WB-1129",
+      "rute": null,
+      "nominal": 82500,
+      "kutipan_teks": "STRUK RESTORAN\nWARUNG NASI BUAH BATU\nTanggal: 6 Oktober 2026\nNomor Struk: WB-1129\nItem:\n  Nasi Goreng Spesial    Rp 45.000\n  Es Teh Manis           Rp 8.000\n  Jus Alpukat            Rp 22.000\nSubtotal: Rp 75.000\nPajak (10%): Rp 7.500\nTOTAL: Rp 82.500",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-06",
+        "nomor_transaksi": "WB-1129",
+        "nominal": 82500,
+        "merchant": "Warung Nasi Buah Batu"
+      }
+    }
+  ]
+}

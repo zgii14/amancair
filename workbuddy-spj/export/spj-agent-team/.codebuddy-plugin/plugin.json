@@ -1,0 +1,111 @@
+{
+  "name": "spj-agent-team",
+  "version": "1.0.0",
+  "description": "AI Agent Team for automating civil servant travel expense reports (SPJ) with accountability, audit trails, and human approval gates.",
+  "author": {
+    "name": "Tim SPJ WorkBuddy",
+    "email": "tim-spj@workbuddy.example"
+  },
+  "agents": [
+    "./agents/spj-agent-team-team-lead.md",
+    "./agents/pembaca-tiket.md",
+    "./agents/pembaca-hotel.md",
+    "./agents/pembaca-struk.md",
+    "./agents/verifikator-sbm.md",
+    "./agents/auditor.md",
+    "./agents/penyusun-spj.md"
+  ],
+  "expertType": "team",
+  "agentName": "spj-agent-team-team-lead",
+  "teamInfo": {
+    "leadAgent": "spj-agent-team-team-lead",
+    "memberAgents": [
+      "pembaca-tiket",
+      "pembaca-hotel",
+      "pembaca-struk",
+      "verifikator-sbm",
+      "auditor",
+      "penyusun-spj"
+    ]
+  },
+  "displayName": {
+    "en": "SPJ Agent Team",
+    "zh": "SPJ 智能体团队"
+  },
+  "profession": {
+    "en": "SPJ Agent Team",
+    "zh": "SPJ 智能体团队"
+  },
+  "displayDescription": {
+    "en": "AI team that automates civil servant travel expense reports with full audit trails and human approval.",
+    "zh": "自动化公务员差旅报销的AI专家团队，具备完整审计追踪、风险分级与人工审批门禁机制。"
+  },
+  "avatar": "avatars/team.png",
+  "categoryId": "10-ProjectQuality",
+  "defaultInitPrompt": {
+    "zh": "Proses kasus SPJ perjalanan dinas baru",
+    "en": "Process a new travel expense report case"
+  },
+  "plugin": "spj-agent-team",
+  "tags": [
+    { "en": "Expense Audit", "zh": "费用审计" },
+    { "en": "Workflow Automation", "zh": "工作流自动化" },
+    { "en": "Accountability", "zh": "可问责性" }
+  ],
+  "quickPrompts": [
+    { "en": "Process a new travel expense report case", "zh": "Proses kasus SPJ perjalanan dinas baru" },
+    { "en": "Verify SBM rules for a case", "zh": "Verifikasi aturan SBM untuk satu kasus" },
+    { "en": "Audit completed case for contradictions", "zh": "Audit kasus selesai untuk kontradiksi" }
+  ],
+  "members": [
+    {
+      "id": "spj-agent-team-team-lead",
+      "displayName": { "en": "Coordinator", "zh": "协调员" },
+      "profession": { "en": "Case Coordinator", "zh": "案件协调员" },
+      "avatar": "avatars/spj-agent-team-team-lead.png",
+      "role": "lead"
+    },
+    {
+      "id": "pembaca-tiket",
+      "displayName": { "en": "Ticket Reader", "zh": "票务读取员" },
+      "profession": { "en": "Document Data Extractor", "zh": "文档数据提取专家" },
+      "avatar": "avatars/pembaca-tiket.png",
+      "role": "member"
+    },
+    {
+      "id": "pembaca-hotel",
+      "displayName": { "en": "Hotel Reader", "zh": "酒店读取员" },
+      "profession": { "en": "Hotel Document Extractor", "zh": "酒店单据提取专家" },
+      "avatar": "avatars/pembaca-hotel.png",
+      "role": "member"
+    },
+    {
+      "id": "pembaca-struk",
+      "displayName": { "en": "Receipt Reader", "zh": "收据读取员" },
+      "profession": { "en": "Receipt Data Extractor", "zh": "收据提取专家" },
+      "avatar": "avatars/pembaca-struk.png",
+      "role": "member"
+    },
+    {
+      "id": "verifikator-sbm",
+      "displayName": { "en": "SBM Verifier", "zh": "SBM 审核员" },
+      "profession": { "en": "Expense Rule Verifier", "zh": "费用规则审核专家" },
+      "avatar": "avatars/verifikator-sbm.png",
+      "role": "member"
+    },
+    {
+      "id": "auditor",
+      "displayName": { "en": "Auditor", "zh": "审计员" },
+      "profession": { "en": "Financial Auditor", "zh": "财务审计专家" },
+      "avatar": "avatars/auditor.png",
+      "role": "member"
+    },
+    {
+      "id": "penyusun-spj",
+      "displayName": { "en": "SPJ Composer", "zh": "SPJ 编制员" },
+      "profession": { "en": "Document Compiler", "zh": "文档编制专家" },
+      "avatar": "avatars/penyusun-spj.png",
+      "role": "member"
+    }
+  ]
+}

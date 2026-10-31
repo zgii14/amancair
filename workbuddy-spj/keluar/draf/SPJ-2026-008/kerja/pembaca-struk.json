@@ -1,0 +1,29 @@
+{
+  "agen": "pembaca-struk",
+  "kasus": "kasus-008",
+  "waktu_mulai": "2026-10-31T16:25:42.641963+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.641963+08:00",
+  "items": [
+    {
+      "id_bukti": "B03",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "tanggal": "2026-10-06",
+      "kota": null,
+      "merchant": "Grab",
+      "nomor_struk": "GRB-556677",
+      "rute": "Bandara Soekarno-Hatta - Hotel Cempaka",
+      "nominal": 155000,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           STRUK TAKSI ONLINE\n                              GRAB\n================================================================================\nTanggal: 6 Oktober 2026\nNomor Pesanan: GRB-556677\nRute: Bandara Soekarno-Hatta - Hotel Cempaka\nTotal: Rp 155.000\nMetode: QRIS\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-06",
+        "nomor_transaksi": "GRB-556677",
+        "nominal": 155000,
+        "merchant": "Grab",
+        "rute": "Bandara Soekarno-Hatta - Hotel Cempaka"
+      }
+    }
+  ]
+}

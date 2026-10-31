@@ -1,0 +1,13 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET WINGS AIR
+================================================================================
+Kode Booking: WNG4455
+Nama Penumpang: Lestari Dewi
+Nomor Tiket: 7788112233445
+Rute: UPG - DPS
+Tanggal: 2 Oktober 2026
+Waktu: 10.00 WITA - 12.30 WITA
+Nomor Penerbangan: IW 1891
+Harga Tiket: Rp 1.450.000
+================================================================================

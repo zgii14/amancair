@@ -1,0 +1,29 @@
+{
+  "agen": "pembaca-struk",
+  "kasus": "kasus-007",
+  "waktu_mulai": "2026-10-31T16:25:42.445923+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.445923+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "tanggal": "2026-10-18",
+      "kota": null,
+      "merchant": "Blue Bird Taxi",
+      "nomor_struk": "TX-55??21",
+      "rute": "Terminal Malengkeri - Hotel Wisata",
+      "nominal": null,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           STRUK BLUE BIRD TAXI\n================================================================================\nTanggal: 18 Oktober 2026\nNomor Struk: TX-55??21\nNama Pengemudi: Pak ???\nRute: Terminal Malengkeri - Hotel Wisata\nJarak: ?? km\nTarif: Rp 1?5.0?0\nTambahan Tol: Rp ??.000\nTOTAL: Rp ???.000\nPembayaran: Tunai\n================================================================================",
+      "yakin": "rendah",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-18",
+        "nomor_transaksi": "TX-55??21",
+        "nominal": null,
+        "merchant": "Blue Bird Taxi",
+        "rute": "Terminal Malengkeri - Hotel Wisata"
+      }
+    }
+  ]
+}

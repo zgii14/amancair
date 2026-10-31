@@ -1,0 +1,24 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-10-20",
+      "kota": "Denpasar",
+      "nama_di_bukti": "Siti Aminah",
+      "nominal": 1650000,
+      "kutipan": "Harga Tiket: Rp 1.650.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "kode_booking": "BATIK8821",
+      "nama_penumpang": "Siti Aminah",
+      "nomor_tiket": "3388112244556",
+      "nominal": 1650000
+    }
+  ]
+}

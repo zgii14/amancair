@@ -1,0 +1,66 @@
+{
+  "agen": "verifikator-sbm",
+  "kasus": "kasus-004",
+  "waktu_mulai": "2026-10-31T16:25:42.247211+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.247211+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "tiket",
+      "file_sumber": "tiket_berangkat.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                         E-TICKET GARUDA INDONESIA\n================================================================================\nKode Booking: GAR0099\nNama Penumpang: Rudi Hartono\nNomor Tiket: 4466778899001\nRute: UPG - CGK\nTanggal: 10 Oktober 2026\nWaktu: 06.00 WITA - 07.30 WIB\nNomor Penerbangan: GA 626\nKelas: Bisnis\nHarga Tiket: Rp 3.200.000\n================================================================================",
+      "kode_aturan": null,
+      "rumus_hitung": "Dibayar sesuai bukti riil (R01 lolos)",
+      "nilai_diajukan": 3200000,
+      "nilai_dibayar": 3200000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B02",
+      "jenis": "hotel",
+      "file_sumber": "invoice_hotel.pdf",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\nINVOICE HOTEL\nTHE GRAND PREMIER JAKARTA\nNo. Invoice: INV/TGP/2026/0555\nNama Tamu: Rudi Hartono\nCheck-in: 10 Oktober 2026\nCheck-out: 12 Oktober 2026\nLama Menginap: 2 malam\nTarif per Malam: Rp 1.200.000\nTOTAL: Rp 2.640.000",
+      "kode_aturan": "R03",
+      "rumus_hitung": "2 malam × pagu 1.000.000 = 2.000.000; diajukan 2.640.000; dipotong 640.000 (R03)",
+      "nilai_diajukan": 2640000,
+      "nilai_dibayar": 2000000,
+      "selisih": 640000,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": "TINGGI",
+      "status": "dipotong",
+      "qty_malam": 2,
+      "pagu": 1000000
+    },
+    {
+      "id_bukti": "B03",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           STRUK BLUE BIRD TAXI\n================================================================================\nTanggal: 10 Oktober 2026\nNomor Struk: TX-771100\nRute: Bandara Soekarno-Hatta - Hotel The Grand Premier\nJarak: 28.5 km\nTarif: Rp 195.000\nTambahan Tol: Rp 35.000\nTOTAL: Rp 230.000\n================================================================================",
+      "kode_aturan": "R05",
+      "rumus_hitung": "MIN(230.000, 250.000) = 230.000 (R05)",
+      "nilai_diajukan": 230000,
+      "nilai_dibayar": 230000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B04",
+      "jenis": "uang_harian",
+      "file_sumber": "SPT-2026-004.json",
+      "kutipan_teks": "lama_hari: 3, provinsi: DKI Jakarta",
+      "kode_aturan": "R04",
+      "rumus_hitung": "3 hari × 500.000 = 1.500.000 (R04, tanpa bukti)",
+      "nilai_diajukan": 1500000,
+      "nilai_dibayar": 1500000,
+      "selisih": 0,
+      "yakin_pembaca": null,
+      "level_risiko": null,
+      "status": "sesuai"
+    }
+  ]
+}

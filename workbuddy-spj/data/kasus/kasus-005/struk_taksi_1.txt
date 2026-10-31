@@ -1,0 +1,11 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           STRUK TAKSI ONLINE
+                              GRAB
+================================================================================
+Tanggal: 16 Oktober 2026
+Nomor Pesanan: GRB-334466
+Rute: Bandara Soekarno-Hatta - Hotel Pondok Indah
+Total: Rp 165.000
+Metode: Tunai
+================================================================================

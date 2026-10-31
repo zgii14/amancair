@@ -1,0 +1,27 @@
+{
+  "item_bukti": [
+    {
+      "id": "B02",
+      "file": "invoice_hotel.txt",
+      "jenis": "hotel",
+      "tanggal_checkin": "2026-10-12",
+      "tanggal_checkout": "2026-10-14",
+      "jumlah_malam_tertulis": 2,
+      "kota": "Jakarta",
+      "nama_di_bukti": "Dedi Kurniawan",
+      "nominal": 1144000,
+      "kutipan": "TOTAL: Rp 1.144.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-12",
+      "nomor_transaksi": "INV/MJ/2026/0901",
+      "nominal": 1144000,
+      "merchant": "HOTEL",
+      "rute": null
+    }
+  ]
+}

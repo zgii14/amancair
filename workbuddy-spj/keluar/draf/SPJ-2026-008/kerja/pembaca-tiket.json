@@ -1,0 +1,27 @@
+{
+  "agen": "pembaca-tiket",
+  "kasus": "kasus-008",
+  "waktu_mulai": "2026-10-31T16:25:42.622766+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.622766+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "tiket",
+      "file_sumber": "tiket_berangkat.txt",
+      "nama_penumpang": "Bayu Wijaya",
+      "tanggal": "2026-10-06",
+      "rute": "Makassar - Jakarta",
+      "kode_booking": "SAJ2233",
+      "nomor_tiket": "9900112233445",
+      "nominal": 1450000,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                         E-TICKET SUPER AIR JET\n================================================================================\nKode Booking: SAJ2233\nNama Penumpang: Bayu Wijaya\nNomor Tiket: 9900112233445\nRute: UPG - CGK\nTanggal: 6 Oktober 2026\nWaktu: 11.00 WITA - 12.30 WIB\nNomor Penerbangan: IU 550\nHarga Tiket: Rp 1.450.000\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "kode_booking": "SAJ2233",
+        "nama_penumpang": "Bayu Wijaya",
+        "nomor_tiket": "9900112233445"
+      }
+    }
+  ]
+}

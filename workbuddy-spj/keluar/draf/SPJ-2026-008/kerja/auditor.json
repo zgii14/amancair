@@ -1,0 +1,68 @@
+{
+  "agen": "auditor",
+  "kasus": "kasus-008",
+  "waktu_mulai": "2026-10-31T16:25:42.659376+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.659376+08:00",
+  "timeline": [
+    {
+      "tanggal": "2026-10-06",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-008.json"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "event": "tiket_berangkat",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "event": "hotel_checkin",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "event": "taksi_bandara_hotel",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "hotel_checkout",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-008.json"
+    }
+  ],
+  "kontradiksi": [
+    {
+      "tipe": "boarding_pass_nama_beda",
+      "tingkat": "KRITIS",
+      "deskripsi": "Boarding pass atas nama Andi Wijaya, sedangkan SPT atas nama Bayu Wijaya",
+      "kutipan_a": {
+        "file": "boarding_pass.txt",
+        "teks": "Nama Penumpang: Andi Wijaya"
+      },
+      "kutipan_b": {
+        "file": "SPT-2026-008.json",
+        "teks": "nama: Bayu Wijaya"
+      },
+      "aturan": "R02"
+    }
+  ],
+  "temuan": [
+    {
+      "id_bukti": "B01",
+      "level": "KRITIS",
+      "tipe": "boarding_pass_nama_beda",
+      "aturan": "R02",
+      "deskripsi": "Boarding pass atas nama 'Andi Wijaya' sedangkan pegawai SPT adalah 'Bayu Wijaya'. Tiket berangkat atas nama benar, tetapi boarding pass tidak cocok."
+    }
+  ],
+  "verifikasi_angka": {
+    "status": "lolos",
+    "detail": "Angka terverifikasi"
+  },
+  "rekomendasi": "lolos"
+}

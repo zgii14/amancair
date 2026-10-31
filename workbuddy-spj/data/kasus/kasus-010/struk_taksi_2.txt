@@ -1,0 +1,12 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           STRUK TAKSI LOKAL
+                          JAYAPURA TRANSPORT
+================================================================================
+Tanggal: 7 Oktober 2026
+Nomor Struk: JT-551101
+Rute: Hotel Swissbel - Lokasi Survey Perbatasan
+Jarak: 42 km
+Tarif: Rp 280.000
+TOTAL: Rp 280.000
+================================================================================

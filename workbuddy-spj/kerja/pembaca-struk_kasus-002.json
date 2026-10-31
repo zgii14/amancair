@@ -1,0 +1,66 @@
+{
+  "item_bukti": [
+    {
+      "id": "B03",
+      "file": "struk_makan_1.txt",
+      "jenis": "makan",
+      "tanggal": "2026-10-13",
+      "kota": "Jakarta",
+      "nama_di_bukti": null,
+      "nominal": 47000,
+      "kutipan": "TOTAL: Rp 47.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "nomor_struk": "KKG-778"
+    },
+    {
+      "id": "B04",
+      "file": "struk_taksi_1.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-12",
+      "kota": "Jakarta",
+      "nama_di_bukti": null,
+      "nominal": 170000,
+      "kutipan": "TOTAL: Rp 170.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "nomor_struk": "TX-990021"
+    },
+    {
+      "id": "B05",
+      "file": "struk_taksi_2.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-12",
+      "kota": "Jakarta",
+      "nama_di_bukti": null,
+      "nominal": 170000,
+      "kutipan": "TOTAL: Rp 170.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "nomor_struk": "TX-990021"
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-13",
+      "nomor_transaksi": "KKG-778",
+      "nominal": 47000,
+      "merchant": "RESTORAN",
+      "rute": null
+    },
+    {
+      "tanggal": "2026-10-12",
+      "nomor_transaksi": "TX-990021",
+      "nominal": 170000,
+      "merchant": "BLUE BIRD TAXI",
+      "rute": "Bandara Soekarno-Hatta - Hotel Melati"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "nomor_transaksi": "TX-990021",
+      "nominal": 170000,
+      "merchant": "BLUE BIRD TAXI",
+      "rute": "Bandara Soekarno-Hatta - Hotel Melati"
+    }
+  ]
+}

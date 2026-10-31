@@ -1,0 +1,31 @@
+{
+  "agen": "pembaca-hotel",
+  "kasus": "kasus-003",
+  "waktu_mulai": "2026-10-31T16:25:41.277122+08:00",
+  "waktu_selesai": "2026-10-31T16:25:41.277122+08:00",
+  "items": [
+    {
+      "id_bukti": "B02",
+      "jenis": "hotel",
+      "file_sumber": "invoice_hotel.txt",
+      "nama_tamu": "Siti Aminah",
+      "tanggal_checkin": "2026-10-20",
+      "tanggal_checkout": "2026-10-23",
+      "jumlah_malam_tertulis": 3,
+      "kota": "Denpasar",
+      "tarif_per_malam": 480000,
+      "pajak_dan_service": 144000,
+      "nominal": 1584000,
+      "nomor_invoice": "INV/SB/2026/1122",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           INVOICE HOTEL\n                      HOTEL SANUR BEACH BALI\n================================================================================\nNo. Invoice: INV/SB/2026/1122\nTanggal: 23 Oktober 2026\nNama Tamu: Siti Aminah\nCheck-in: 20 Oktober 2026\nCheck-out: 23 Oktober 2026\nLama Menginap: 3 malam\nTarif per Malam: Rp 480.000\nTotal Biaya Menginap: Rp 1.440.000\nPajak & Service (10%): Rp 144.000\nTOTAL: Rp 1.584.000\nStatus: LUNAS\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-23",
+        "nomor_transaksi": "INV/SB/2026/1122",
+        "nominal": 1584000,
+        "merchant": "HOTEL SANUR BEACH BALI"
+      }
+    }
+  ]
+}

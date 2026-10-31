@@ -1,0 +1,46 @@
+{
+  "item_bukti": [
+    {
+      "id": "B04",
+      "file": "struk_taksi_1.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-05",
+      "kota": "Jayapura",
+      "nama_di_bukti": null,
+      "nominal": 350000,
+      "kutipan": "TOTAL: Rp 350.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "nomor_struk": "JT-551100"
+    },
+    {
+      "id": "B05",
+      "file": "struk_taksi_2.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-07",
+      "kota": "Jayapura",
+      "nama_di_bukti": null,
+      "nominal": 280000,
+      "kutipan": "TOTAL: Rp 280.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "nomor_struk": "JT-551101"
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-05",
+      "nomor_transaksi": "JT-551100",
+      "nominal": 350000,
+      "merchant": "UNKNOWN",
+      "rute": "Bandara Sentani - Hotel Swissbel"
+    },
+    {
+      "tanggal": "2026-10-07",
+      "nomor_transaksi": "JT-551101",
+      "nominal": 280000,
+      "merchant": "UNKNOWN",
+      "rute": "Hotel Swissbel - Lokasi Survey Perbatasan"
+    }
+  ]
+}

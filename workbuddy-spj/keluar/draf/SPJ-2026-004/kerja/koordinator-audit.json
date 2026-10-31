@@ -1,0 +1,11 @@
+{
+  "waktu": "2026-10-31T16:25:41.799858+08:00",
+  "kasus": "kasus-004",
+  "agen": "koordinator",
+  "aksi": "mulai_proses",
+  "file_dibaca": "pesan_pegawai.txt",
+  "keputusan": "SPT terpilih: SPT-2026-004, Pegawai: Rudi Hartono. Rencana: dispatch pembaca-tiket + pembaca-hotel + pembaca-struk -> verifikator-sbm -> auditor -> penyusun-spj",
+  "aturan": null,
+  "prev_hash": "c3ca0204406d106b4920bfa42f8719845adeca40b10cfba6ec505c1bc3b6d305",
+  "hash": "4b5df619d8805b2a7bab49c4fe0762631aecbb0b30db13cee3d41012a129438a"
+}

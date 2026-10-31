@@ -1,0 +1,92 @@
+{
+  "agen": "verifikator-sbm",
+  "kasus": "kasus-001",
+  "waktu_mulai": "2026-10-23T12:18:02+08:00",
+  "waktu_selesai": "2026-10-23T12:18:02+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "tiket",
+      "file_sumber": "tiket_berangkat.pdf",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\nE-TICKET GARUDA INDONESIA\nKode Booking: ABC123\nNama Penumpang: Budi Santoso\nRute: UPG - CGK (Makassar - Jakarta)\nTanggal: 5 Oktober 2026\nWaktu: 06.30 WITA - 08.00 WIB\nNomor Penerbangan: GA 620\nHarga Tiket: Rp 2.450.000",
+      "kode_aturan": null,
+      "rumus_hitung": "Dibayar sesuai bukti riil (R01 lolos)",
+      "nilai_diajukan": 2450000,
+      "nilai_dibayar": 2450000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B02",
+      "jenis": "tiket",
+      "file_sumber": "tiket_kembali.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                         E-TICKET GARUDA INDONESIA\n================================================================================\nKode Booking: ABC124\nNama Penumpang: Budi Santoso\nNomor Tiket: 1267890123457\nMaskapai: Garuda Indonesia\nRute: CGK - UPG (Jakarta - Makassar)\nTanggal Keberangkatan: 8 Oktober 2026\nWaktu: 17.00 WIB - 20.30 WITA\nNomor Penerbangan: GA 621\nKelas: Ekonomi\nHarga Tiket: Rp 2.380.000\n================================================================================",
+      "kode_aturan": null,
+      "rumus_hitung": "Dibayar sesuai bukti riil (R01 lolos)",
+      "nilai_diajukan": 2380000,
+      "nilai_dibayar": 2380000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B03",
+      "jenis": "hotel",
+      "file_sumber": "invoice_hotel.txt",
+      "kutipan_teks": "No. Invoice: INV/GJ/2026/0847\nNama Tamu: Budi Santoso\nCheck-in: 5 Oktober 2026\nCheck-out: 8 Oktober 2026\nLama Menginap: 3 malam\nTarif per Malam: Rp 700.000\nTotal Biaya Menginap: Rp 2.100.000\nPajak & Service (10%): Rp 210.000\nTOTAL: Rp 2.310.000",
+      "kode_aturan": "R03",
+      "rumus_hitung": "3 malam × pagu 800.000 = 2.400.000; diajukan 2.310.000; dipotong 0",
+      "nilai_diajukan": 2310000,
+      "nilai_dibayar": 2310000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B04",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "kutipan_teks": "STRUK BLUE BIRD TAXI\nTanggal: 5 Oktober 2026\nNomor Struk: TX-884721\nNama Pengemudi: Pak Joko\nRute: Bandara Soekarno-Hatta - Hotel Grand Java\nJarak: 32.4 km\nTarif: Rp 185.000\nTambahan Tol: Rp 25.000\nTOTAL: Rp 210.000\nPembayaran: Tunai",
+      "kode_aturan": "R05",
+      "rumus_hitung": "MIN(210.000, 250.000) = 210.000 (R05)",
+      "nilai_diajukan": 210000,
+      "nilai_dibayar": 210000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B05",
+      "jenis": "makan",
+      "file_sumber": "struk_makan_1.txt",
+      "kutipan_teks": "STRUK RESTORAN\nWARUNG NASI BUAH BATU\nTanggal: 6 Oktober 2026\nNomor Struk: WB-1129\nItem:\n  Nasi Goreng Spesial    Rp 45.000\n  Es Teh Manis           Rp 8.000\n  Jus Alpukat            Rp 22.000\nSubtotal: Rp 75.000\nPajak (10%): Rp 7.500\nTOTAL: Rp 82.500",
+      "kode_aturan": "R11",
+      "rumus_hitung": "0 (sudah termasuk uang harian R04, 4 hari × 400.000)",
+      "nilai_diajukan": 82500,
+      "nilai_dibayar": 0,
+      "selisih": 82500,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": "RENDAH",
+      "status": "ditolak"
+    },
+    {
+      "id_bukti": "B06",
+      "jenis": "uang_harian",
+      "file_sumber": "SPT-2026-001.json",
+      "kutipan_teks": "lama_hari: 4, provinsi: DKI Jakarta",
+      "kode_aturan": "R04",
+      "rumus_hitung": "4 hari × 400.000 = 1.600.000 (R04, tanpa bukti)",
+      "nilai_diajukan": 1600000,
+      "nilai_dibayar": 1600000,
+      "selisih": 0,
+      "yakin_pembaca": null,
+      "level_risiko": null,
+      "status": "sesuai"
+    }
+  ]
+}

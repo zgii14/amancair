@@ -1,0 +1,66 @@
+{
+  "agen": "verifikator-sbm",
+  "kasus": "kasus-003",
+  "waktu_mulai": "2026-10-31T16:25:41.302578+08:00",
+  "waktu_selesai": "2026-10-31T16:25:41.302578+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "tiket",
+      "file_sumber": "tiket_berangkat.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                         E-TICKET BATIK AIR\n================================================================================\nKode Booking: BATIK8821\nNama Penumpang: Siti Aminah\nNomor Tiket: 3388112244556\nRute: UPG - DPS (Makassar - Denpasar)\nTanggal: 20 Oktober 2026\nWaktu: 07.00 WITA - 09.30 WITA\nNomor Penerbangan: ID 6191\nHarga Tiket: Rp 1.650.000\n================================================================================",
+      "kode_aturan": null,
+      "rumus_hitung": "Dibayar sesuai bukti riil (R01 lolos)",
+      "nilai_diajukan": 1650000,
+      "nilai_dibayar": 1650000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B02",
+      "jenis": "hotel",
+      "file_sumber": "invoice_hotel.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           INVOICE HOTEL\n                      HOTEL SANUR BEACH BALI\n================================================================================\nNo. Invoice: INV/SB/2026/1122\nTanggal: 23 Oktober 2026\nNama Tamu: Siti Aminah\nCheck-in: 20 Oktober 2026\nCheck-out: 23 Oktober 2026\nLama Menginap: 3 malam\nTarif per Malam: Rp 480.000\nTotal Biaya Menginap: Rp 1.440.000\nPajak & Service (10%): Rp 144.000\nTOTAL: Rp 1.584.000\nStatus: LUNAS\n================================================================================",
+      "kode_aturan": "R01",
+      "rumus_hitung": "2 malam × (1.584.000 / 3) = 1.056.000; 1 malam di luar SPT ditolak (R01)",
+      "nilai_diajukan": 1584000,
+      "nilai_dibayar": 1056000,
+      "selisih": 528000,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": "TINGGI",
+      "status": "dipotong",
+      "qty_malam": 3,
+      "pagu": 550000
+    },
+    {
+      "id_bukti": "B03",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           STRUK TAKSI ONLINE\n                              GRAB\n================================================================================\nTanggal: 20 Oktober 2026\nNomor Pesanan: GRB-221099\nRute: Bandara Ngurah Rai - Hotel Sanur Beach\nTotal: Rp 145.000\nMetode: QRIS\n================================================================================",
+      "kode_aturan": "R05",
+      "rumus_hitung": "MIN(145.000, 200.000) = 145.000 (R05)",
+      "nilai_diajukan": 145000,
+      "nilai_dibayar": 145000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B04",
+      "jenis": "uang_harian",
+      "file_sumber": "SPT-2026-003.json",
+      "kutipan_teks": "lama_hari: 3, provinsi: Bali",
+      "kode_aturan": "R04",
+      "rumus_hitung": "3 hari × 275.000 = 825.000 (R04, tanpa bukti)",
+      "nilai_diajukan": 825000,
+      "nilai_dibayar": 825000,
+      "selisih": 0,
+      "yakin_pembaca": null,
+      "level_risiko": null,
+      "status": "sesuai"
+    }
+  ]
+}

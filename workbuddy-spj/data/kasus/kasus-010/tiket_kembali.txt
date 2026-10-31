@@ -1,0 +1,13 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET LION AIR
+================================================================================
+Kode Booking: LION8812
+Nama Penumpang: Dedi Kurniawan
+Nomor Tiket: 6677889900113
+Rute: DJJ - UPG (Jayapura - Makassar)
+Tanggal: 9 Oktober 2026
+Waktu: 12.00 WIT - 17.30 WITA
+Nomor Penerbangan: JT 798
+Harga Tiket: Rp 4.200.000
+================================================================================

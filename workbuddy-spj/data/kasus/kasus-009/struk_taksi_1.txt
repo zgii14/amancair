@@ -1,0 +1,12 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           STRUK BLUE BIRD TAXI
+================================================================================
+Tanggal: 15 Agustus 2026
+Nomor Struk: TX-170822
+Rute: Bandara Soekarno-Hatta - Hotel Senayan City
+Jarak: 30.1 km
+Tarif: Rp 210.000
+Tambahan Tol: Rp 40.000
+TOTAL: Rp 250.000
+================================================================================

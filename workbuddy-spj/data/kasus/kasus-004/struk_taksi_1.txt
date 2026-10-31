@@ -1,0 +1,12 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           STRUK BLUE BIRD TAXI
+================================================================================
+Tanggal: 10 Oktober 2026
+Nomor Struk: TX-771100
+Rute: Bandara Soekarno-Hatta - Hotel The Grand Premier
+Jarak: 28.5 km
+Tarif: Rp 195.000
+Tambahan Tol: Rp 35.000
+TOTAL: Rp 230.000
+================================================================================

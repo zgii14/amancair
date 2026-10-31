@@ -1,0 +1,27 @@
+{
+  "agen": "pembaca-tiket",
+  "kasus": "kasus-003",
+  "waktu_mulai": "2026-10-31T16:25:41.264851+08:00",
+  "waktu_selesai": "2026-10-31T16:25:41.264851+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "tiket",
+      "file_sumber": "tiket_berangkat.txt",
+      "nama_penumpang": "Siti Aminah",
+      "tanggal": "2026-10-20",
+      "rute": "Makassar - Denpasar",
+      "kode_booking": "BATIK8821",
+      "nomor_tiket": "3388112244556",
+      "nominal": 1650000,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                         E-TICKET BATIK AIR\n================================================================================\nKode Booking: BATIK8821\nNama Penumpang: Siti Aminah\nNomor Tiket: 3388112244556\nRute: UPG - DPS (Makassar - Denpasar)\nTanggal: 20 Oktober 2026\nWaktu: 07.00 WITA - 09.30 WITA\nNomor Penerbangan: ID 6191\nHarga Tiket: Rp 1.650.000\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "kode_booking": "BATIK8821",
+        "nama_penumpang": "Siti Aminah",
+        "nomor_tiket": "3388112244556"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "agen": "pembaca-struk",
+  "kasus": "kasus-003",
+  "waktu_mulai": "2026-10-31T16:25:41.291497+08:00",
+  "waktu_selesai": "2026-10-31T16:25:41.291497+08:00",
+  "items": [
+    {
+      "id_bukti": "B03",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "tanggal": "2026-10-20",
+      "kota": null,
+      "merchant": "Grab",
+      "nomor_struk": "GRB-221099",
+      "rute": "Bandara Ngurah Rai - Hotel Sanur Beach",
+      "nominal": 145000,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           STRUK TAKSI ONLINE\n                              GRAB\n================================================================================\nTanggal: 20 Oktober 2026\nNomor Pesanan: GRB-221099\nRute: Bandara Ngurah Rai - Hotel Sanur Beach\nTotal: Rp 145.000\nMetode: QRIS\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-20",
+        "nomor_transaksi": "GRB-221099",
+        "nominal": 145000,
+        "merchant": "Grab",
+        "rute": "Bandara Ngurah Rai - Hotel Sanur Beach"
+      }
+    }
+  ]
+}

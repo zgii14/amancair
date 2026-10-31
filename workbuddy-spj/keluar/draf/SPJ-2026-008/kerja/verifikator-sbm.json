@@ -1,0 +1,64 @@
+{
+  "agen": "verifikator-sbm",
+  "kasus": "kasus-008",
+  "waktu_mulai": "2026-10-31T16:25:42.649352+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.649352+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "tiket",
+      "file_sumber": "tiket_berangkat.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                         E-TICKET SUPER AIR JET\n================================================================================\nKode Booking: SAJ2233\nNama Penumpang: Bayu Wijaya\nNomor Tiket: 9900112233445\nRute: UPG - CGK\nTanggal: 6 Oktober 2026\nWaktu: 11.00 WITA - 12.30 WIB\nNomor Penerbangan: IU 550\nHarga Tiket: Rp 1.450.000\n================================================================================",
+      "kode_aturan": null,
+      "rumus_hitung": "Dibayar sesuai bukti riil (R01 lolos)",
+      "nilai_diajukan": 1450000,
+      "nilai_dibayar": 1450000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B02",
+      "jenis": "hotel",
+      "file_sumber": "invoice_hotel.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           INVOICE HOTEL\n                        HOTEL CEMPAKA JAKARTA\n================================================================================\nNo. Invoice: INV/CJ/2026/0707\nTanggal: 8 Oktober 2026\nNama Tamu: Bayu Wijaya\nCheck-in: 6 Oktober 2026\nCheck-out: 8 Oktober 2026\nLama Menginap: 2 malam\nTarif per Malam: Rp 520.000\nTotal Biaya Menginap: Rp 1.040.000\nPajak & Service (10%): Rp 104.000\nTOTAL: Rp 1.144.000\nStatus: LUNAS\n================================================================================",
+      "kode_aturan": "R03",
+      "rumus_hitung": "2 malam × (1.144.000 / 2) = 1.144.000; per malam 572.000 <= pagu 600.000 (R03 lolos)",
+      "nilai_diajukan": 1144000,
+      "nilai_dibayar": 1144000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B03",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           STRUK TAKSI ONLINE\n                              GRAB\n================================================================================\nTanggal: 6 Oktober 2026\nNomor Pesanan: GRB-556677\nRute: Bandara Soekarno-Hatta - Hotel Cempaka\nTotal: Rp 155.000\nMetode: QRIS\n================================================================================",
+      "kode_aturan": "R05",
+      "rumus_hitung": "MIN(155.000, 250.000) = 155.000 (R05)",
+      "nilai_diajukan": 155000,
+      "nilai_dibayar": 155000,
+      "selisih": 0,
+      "yakin_pembaca": "tinggi",
+      "level_risiko": null,
+      "status": "sesuai"
+    },
+    {
+      "id_bukti": "B04",
+      "jenis": "uang_harian",
+      "file_sumber": "SPT-2026-008.json",
+      "kutipan_teks": "lama_hari: 3, provinsi: DKI Jakarta",
+      "kode_aturan": "R04",
+      "rumus_hitung": "3 hari × 300.000 = 900.000 (R04, tanpa bukti)",
+      "nilai_diajukan": 900000,
+      "nilai_dibayar": 900000,
+      "selisih": 0,
+      "yakin_pembaca": null,
+      "level_risiko": null,
+      "status": "sesuai"
+    }
+  ]
+}

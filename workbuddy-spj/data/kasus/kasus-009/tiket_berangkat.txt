@@ -1,0 +1,14 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET GARUDA INDONESIA
+================================================================================
+Kode Booking: GAR5500
+Nama Penumpang: Ahmad Fauzi
+Nomor Tiket: 1100223344556
+Rute: UPG - CGK
+Tanggal: 15 Agustus 2026
+Waktu: 06.30 WITA - 08.00 WIB
+Nomor Penerbangan: GA 640
+Kelas: Eksekutif
+Harga Tiket: Rp 4.100.000
+================================================================================

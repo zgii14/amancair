@@ -1,0 +1,46 @@
+{
+  "agen": "pembaca-tiket",
+  "kasus": "kasus-001",
+  "waktu_mulai": "2026-10-23T12:15:36.894038+08:00",
+  "waktu_selesai": "2026-10-23T12:15:36.894038+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "tiket",
+      "file_sumber": "tiket_berangkat.pdf",
+      "nama_penumpang": "Budi Santoso",
+      "tanggal": "2026-10-05",
+      "rute": "Makassar - Jakarta",
+      "kode_booking": "ABC123",
+      "nomor_tiket": "",
+      "nominal": 2450000,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\nE-TICKET GARUDA INDONESIA\nKode Booking: ABC123\nNama Penumpang: Budi Santoso\nRute: UPG - CGK (Makassar - Jakarta)\nTanggal: 5 Oktober 2026\nWaktu: 06.30 WITA - 08.00 WIB\nNomor Penerbangan: GA 620\nHarga Tiket: Rp 2.450.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "kode_booking": "ABC123",
+        "nama_penumpang": "Budi Santoso",
+        "nomor_tiket": ""
+      }
+    },
+    {
+      "id_bukti": "B02",
+      "jenis": "tiket",
+      "file_sumber": "tiket_kembali.txt",
+      "nama_penumpang": "Budi Santoso",
+      "tanggal": "2026-10-08",
+      "rute": "Jakarta - Makassar",
+      "kode_booking": "ABC124",
+      "nomor_tiket": "1267890123457",
+      "nominal": 2380000,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                         E-TICKET GARUDA INDONESIA\n================================================================================\nKode Booking: ABC124\nNama Penumpang: Budi Santoso\nNomor Tiket: 1267890123457\nMaskapai: Garuda Indonesia\nRute: CGK - UPG (Jakarta - Makassar)\nTanggal Keberangkatan: 8 Oktober 2026\nWaktu: 17.00 WIB - 20.30 WITA\nNomor Penerbangan: GA 621\nKelas: Ekonomi\nHarga Tiket: Rp 2.380.000\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "kode_booking": "ABC124",
+        "nama_penumpang": "Budi Santoso",
+        "nomor_tiket": "1267890123457"
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_watermark": "DATA FIKTIF UNTUK DEMO",
+  "nama_satker": "Dinas Komunikasi dan Informatika Kabupaten Sejahtera",
+  "alamat": "Jl. Merdeka No. 45, Kota Sejahtera, Sulawesi Selatan, 90111",
+  "telepon": "(0411) 555-0199",
+  "email": "diskominfo@sejahtera.example",
+  "zona_waktu": "WITA",
+  "kepala_dinas": {
+    "nama": "Drs. H. Ahmad Fauzi, M.Si.",
+    "nip": "196705121990031002",
+    "jabatan": "Kepala Dinas Komunikasi dan Informatika"
+  },
+  "bendahara": {
+    "nama": "Sri Wahyuni, S.E.",
+    "nip": "198203152006042003",
+    "jabatan": "Bendahara Pengeluaran"
+  }
+}

@@ -1,0 +1,15 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET GARUDA INDONESIA
+================================================================================
+Kode Booking: ABC124
+Nama Penumpang: Budi Santoso
+Nomor Tiket: 1267890123457
+Maskapai: Garuda Indonesia
+Rute: CGK - UPG (Jakarta - Makassar)
+Tanggal Keberangkatan: 8 Oktober 2026
+Waktu: 17.00 WIB - 20.30 WITA
+Nomor Penerbangan: GA 621
+Kelas: Ekonomi
+Harga Tiket: Rp 2.380.000
+================================================================================

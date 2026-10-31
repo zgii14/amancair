@@ -1,0 +1,16 @@
+{
+  "_watermark": "DATA FIKTIF UNTUK DEMO",
+  "nomor_spt": "SPT-2026-001",
+  "pegawai": {
+    "nip": "198501152010011001",
+    "nama": "Budi Santoso",
+    "golongan": "III/c"
+  },
+  "maksud": "Rapat koordinasi SPBE nasional di Kementerian PANRB",
+  "tujuan": "Jakarta",
+  "provinsi": "DKI Jakarta",
+  "tanggal_berangkat": "2026-10-05",
+  "tanggal_kembali": "2026-10-08",
+  "lama_hari": 4,
+  "pejabat_menetapkan": "Drs. H. Ahmad Fauzi, M.Si."
+}

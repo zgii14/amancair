@@ -1,0 +1,9 @@
+{
+  "waktu": "2026-10-23T12:20:00+08:00",
+  "kasus": "kasus-001",
+  "agen": "auditor",
+  "aksi": "audit",
+  "file_dibaca": "semua_bukti + verifikator-sbm.json",
+  "keputusan": "Timeline lolos, kontradiksi: 0, temuan: 1 (RENDAH), rekomendasi: lolos",
+  "aturan": null
+}

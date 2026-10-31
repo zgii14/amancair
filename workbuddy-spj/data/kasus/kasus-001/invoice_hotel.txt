@@ -1,0 +1,19 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           INVOICE HOTEL
+                     GRAND JAVA HOTEL JAKARTA
+                   Jl. Thamrin No. 10, Jakarta Pusat
+================================================================================
+No. Invoice: INV/GJ/2026/0847
+Tanggal Invoice: 8 Oktober 2026
+Nama Tamu: Budi Santoso
+Check-in: 5 Oktober 2026
+Check-out: 8 Oktober 2026
+Lama Menginap: 3 malam
+Tipe Kamar: Deluxe Single
+Tarif per Malam: Rp 700.000
+Total Biaya Menginap: Rp 2.100.000
+Pajak & Service (10%): Rp 210.000
+TOTAL: Rp 2.310.000
+Status: LUNAS
+================================================================================

@@ -1,0 +1,18 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           INVOICE HOTEL
+                     HOTEL SWISSBEL JAYAPURA
+================================================================================
+No. Invoice: INV/SJ/2026/1005
+Tanggal: 9 Oktober 2026
+Nama Tamu: Dedi Kurniawan
+Check-in: 5 Oktober 2026
+Check-out: 9 Oktober 2026
+Lama Menginap: 4 malam
+Tipe Kamar: Superior
+Tarif per Malam: Rp 1.000.000
+Total Biaya Menginap: Rp 4.000.000
+Pajak & Service (10%): Rp 400.000
+TOTAL: Rp 4.400.000
+Status: LUNAS
+================================================================================

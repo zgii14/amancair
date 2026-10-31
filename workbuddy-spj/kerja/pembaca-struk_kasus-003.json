@@ -1,0 +1,18 @@
+{
+  "item_bukti": [
+    {
+      "id": "B03",
+      "file": "struk_taksi_1.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-20",
+      "kota": "Denpasar",
+      "nama_di_bukti": null,
+      "nominal": null,
+      "kutipan": null,
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "nomor_struk": null
+    }
+  ],
+  "sidik": []
+}

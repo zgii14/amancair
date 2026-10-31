@@ -1,0 +1,11 @@
+{
+  "waktu": "2026-10-31T16:25:41.250678+08:00",
+  "kasus": "kasus-003",
+  "agen": "koordinator",
+  "aksi": "mulai_proses",
+  "file_dibaca": "pesan_pegawai.txt",
+  "keputusan": "SPT terpilih: SPT-2026-003, Pegawai: Siti Aminah. Rencana: dispatch pembaca-tiket + pembaca-hotel + pembaca-struk -> verifikator-sbm -> auditor -> penyusun-spj",
+  "aturan": null,
+  "prev_hash": "9082c4f74262c5a8b4f3dc4ab7eb9e283f1112ef1b29902ad1160593fe8ce910",
+  "hash": "67365a172512e44a3ac07b5c6d53be8a32c44d37ecc2139bf2246d5d9d883e14"
+}

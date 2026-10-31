@@ -1,0 +1,13 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET LION AIR
+================================================================================
+Kode Booking: LION9900
+Nama Penumpang: Budi
+Nomor Tiket: 5566778899002
+Rute: UPG - CGK
+Tanggal: 16 Oktober 2026
+Waktu: 08.00 WITA - 09.30 WIB
+Nomor Penerbangan: JT 782
+Harga Tiket: Rp 1.920.000
+================================================================================

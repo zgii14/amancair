@@ -1,0 +1,13 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         BOARDING PASS
+                     SUPER AIR JET
+================================================================================
+Nama Penumpang: Andi Wijaya
+Nomor Penerbangan: IU 550
+Rute: UPG - CGK
+Tanggal: 6 Oktober 2026
+Waktu Boarding: 10.20 WITA
+Gate: 4
+Seat: 12A
+================================================================================

@@ -1,0 +1,17 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           INVOICE HOTEL
+                      HOTEL SANUR BEACH BALI
+================================================================================
+No. Invoice: INV/SB/2026/1122
+Tanggal: 23 Oktober 2026
+Nama Tamu: Siti Aminah
+Check-in: 20 Oktober 2026
+Check-out: 23 Oktober 2026
+Lama Menginap: 3 malam
+Tarif per Malam: Rp 480.000
+Total Biaya Menginap: Rp 1.440.000
+Pajak & Service (10%): Rp 144.000
+TOTAL: Rp 1.584.000
+Status: LUNAS
+================================================================================

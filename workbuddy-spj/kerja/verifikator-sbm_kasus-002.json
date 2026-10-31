@@ -1,0 +1,79 @@
+{
+  "hasil_verifikasi": [
+    {
+      "id": "B01",
+      "status": "sesuai",
+      "dibayar": 1850000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "tiket_berangkat.txt: Harga Tiket: Rp 1.850.000",
+      "rumus_hitung": "Tiket sesuai bukti riil = 1850000",
+      "level_risiko": null
+    },
+    {
+      "id": "B02",
+      "status": "sesuai",
+      "dibayar": 1144000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "invoice_hotel.txt: TOTAL: Rp 1.144.000",
+      "rumus_hitung": "2 malam x 572,000 = 1,144,000; dalam pagu 800,000",
+      "level_risiko": null
+    },
+    {
+      "id": "B03",
+      "status": "ditolak",
+      "dibayar": 0,
+      "aturan": "R11",
+      "alasan": "Biaya makan sudah termasuk uang harian (R04)",
+      "sumber": "struk_makan_1.txt: TOTAL: Rp 47.000",
+      "rumus_hitung": "nilai_dibayar = 0 (R11)",
+      "level_risiko": "RENDAH"
+    },
+    {
+      "id": "B04",
+      "status": "sesuai",
+      "dibayar": 170000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "struk_taksi_1.txt: TOTAL: Rp 170.000",
+      "rumus_hitung": "Taksi dalam pagu = 170,000",
+      "level_risiko": null
+    },
+    {
+      "id": "B05",
+      "status": "ditolak",
+      "dibayar": 0,
+      "aturan": "R06",
+      "alasan": "Struk ganda — hanya satu yang dihitung",
+      "sumber": "struk_taksi_2.txt: TOTAL: Rp 170.000",
+      "rumus_hitung": "nilai_dibayar = 0 (R06 — ganda)",
+      "level_risiko": "SEDANG"
+    },
+    {
+      "id": "UH",
+      "status": "sesuai",
+      "dibayar": 1200000,
+      "aturan": "R04",
+      "alasan": "Uang harian 3 hari x 400,000 = 1,200,000",
+      "sumber": "SPT",
+      "rumus_hitung": "3 hari x 400,000 = 1,200,000 (R04)",
+      "level_risiko": null
+    }
+  ],
+  "uang_harian": {
+    "hari": 3,
+    "tarif": 400000,
+    "total": 1200000,
+    "rumus": "3 hari x 400,000 = 1,200,000 (R04)"
+  },
+  "temuan": [
+    {
+      "id": "B05",
+      "level": "SEDANG",
+      "tipe": "struk_ganda",
+      "deskripsi": "Struk struk_taksi_2.txt identik dalam kasus ini (nomor TX-990021) — hanya satu yang dihitung",
+      "aturan": "R06"
+    }
+  ]
+}

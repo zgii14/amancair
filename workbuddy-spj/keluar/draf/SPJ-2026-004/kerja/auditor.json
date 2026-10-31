@@ -1,0 +1,53 @@
+{
+  "agen": "auditor",
+  "kasus": "kasus-004",
+  "waktu_mulai": "2026-10-31T16:25:42.257283+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.257283+08:00",
+  "timeline": [
+    {
+      "tanggal": "2026-10-10",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-004.json"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "tiket_berangkat",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "hotel_checkin",
+      "sumber": "invoice_hotel.pdf"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "taksi_bandara_hotel",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "hotel_checkout",
+      "sumber": "invoice_hotel.pdf"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-004.json"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan": [
+    {
+      "id_bukti": "B02",
+      "level": "TINGGI",
+      "tipe": "hotel_melebihi_pagu",
+      "aturan": "R03",
+      "deskripsi": "Biaya hotel per malam Rp 1.320.000 melebihi pagu SBM Rp 1,000,000 (Jakarta, Gol IV). Kelebihan Rp 640,000 tidak dibayar."
+    }
+  ],
+  "verifikasi_angka": {
+    "status": "lolos",
+    "detail": "Angka terverifikasi"
+  },
+  "rekomendasi": "lolos"
+}

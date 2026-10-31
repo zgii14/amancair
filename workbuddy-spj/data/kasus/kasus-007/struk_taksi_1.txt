@@ -1,0 +1,14 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           STRUK BLUE BIRD TAXI
+================================================================================
+Tanggal: 18 Oktober 2026
+Nomor Struk: TX-55??21
+Nama Pengemudi: Pak ???
+Rute: Terminal Malengkeri - Hotel Wisata
+Jarak: ?? km
+Tarif: Rp 1?5.0?0
+Tambahan Tol: Rp ??.000
+TOTAL: Rp ???.000
+Pembayaran: Tunai
+================================================================================

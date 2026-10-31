@@ -1,0 +1,36 @@
+{
+  "agen": "verifikator-sbm",
+  "kasus": "kasus-007",
+  "waktu_mulai": "2026-10-31T16:25:42.455787+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.455787+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           STRUK BLUE BIRD TAXI\n================================================================================\nTanggal: 18 Oktober 2026\nNomor Struk: TX-55??21\nNama Pengemudi: Pak ???\nRute: Terminal Malengkeri - Hotel Wisata\nJarak: ?? km\nTarif: Rp 1?5.0?0\nTambahan Tol: Rp ??.000\nTOTAL: Rp ???.000\nPembayaran: Tunai\n================================================================================",
+      "kode_aturan": "R08",
+      "rumus_hitung": "Nominal tidak terbaca → perlu_cek_manusia (R08)",
+      "nilai_diajukan": 0,
+      "nilai_dibayar": 0,
+      "selisih": 0,
+      "yakin_pembaca": "rendah",
+      "level_risiko": "SEDANG",
+      "status": "perlu_cek_manusia"
+    },
+    {
+      "id_bukti": "B02",
+      "jenis": "uang_harian",
+      "file_sumber": "SPT-2026-007.json",
+      "kutipan_teks": "lama_hari: 2, provinsi: Sulawesi Selatan",
+      "kode_aturan": "R04",
+      "rumus_hitung": "2 hari × 200.000 = 400.000 (R04, tanpa bukti)",
+      "nilai_diajukan": 400000,
+      "nilai_dibayar": 400000,
+      "selisih": 0,
+      "yakin_pembaca": null,
+      "level_risiko": null,
+      "status": "sesuai"
+    }
+  ]
+}

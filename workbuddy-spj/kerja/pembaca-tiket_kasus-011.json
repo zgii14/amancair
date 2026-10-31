@@ -1,0 +1,24 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket",
+      "tanggal": null,
+      "kota": "Jakarta",
+      "nama_di_bukti": "Lestari Dewi",
+      "nominal": 1680000,
+      "kutipan": "Harga Tiket: Rp 1.680.000",
+      "yakin": "rendah",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "kode_booking": "SAJ7788",
+      "nama_penumpang": "Lestari Dewi",
+      "nomor_tiket": "3344556677889",
+      "nominal": 1680000
+    }
+  ]
+}

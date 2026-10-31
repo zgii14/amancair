@@ -1,0 +1,27 @@
+{
+  "item_bukti": [
+    {
+      "id": "B02",
+      "file": "invoice_hotel.txt",
+      "jenis": "hotel",
+      "tanggal_checkin": "2026-10-02",
+      "tanggal_checkout": "2026-10-04",
+      "jumlah_malam_tertulis": null,
+      "kota": "Denpasar",
+      "nama_di_bukti": "Lestari Dewi",
+      "nominal": 1496000,
+      "kutipan": "TOTAL: Rp 1.496.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-02",
+      "nomor_transaksi": "INV/KP/2026/0331",
+      "nominal": 1496000,
+      "merchant": "HOTEL",
+      "rute": null
+    }
+  ]
+}

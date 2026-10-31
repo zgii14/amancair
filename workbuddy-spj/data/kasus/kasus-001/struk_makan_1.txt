@@ -1,0 +1,15 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           STRUK RESTORAN
+                        WARUNG NASI BUAH BATU
+================================================================================
+Tanggal: 6 Oktober 2026
+Nomor Struk: WB-1129
+Item:
+  Nasi Goreng Spesial    Rp 45.000
+  Es Teh Manis           Rp 8.000
+  Jus Alpukat            Rp 22.000
+Subtotal: Rp 75.000
+Pajak (10%): Rp 7.500
+TOTAL: Rp 82.500
+================================================================================

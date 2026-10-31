@@ -1,0 +1,51 @@
+{
+  "hasil_verifikasi": [
+    {
+      "id": "B01",
+      "status": "sesuai",
+      "dibayar": 1450000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "tiket_berangkat.txt: Harga Tiket: Rp 1.450.000",
+      "rumus_hitung": "Tiket sesuai bukti riil = 1450000",
+      "level_risiko": null
+    },
+    {
+      "id": "B02",
+      "status": "sesuai",
+      "dibayar": 1496000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "invoice_hotel.txt: TOTAL: Rp 1.496.000",
+      "rumus_hitung": "2 malam x 748,000 = 1,496,000; dalam pagu 750,000",
+      "level_risiko": null
+    },
+    {
+      "id": "B03",
+      "status": "ditolak",
+      "dibayar": 0,
+      "aturan": "R11",
+      "alasan": "Biaya makan sudah termasuk uang harian (R04)",
+      "sumber": "struk_makan_1.txt: TOTAL: Rp 83.000",
+      "rumus_hitung": "nilai_dibayar = 0 (R11)",
+      "level_risiko": "RENDAH"
+    },
+    {
+      "id": "UH",
+      "status": "sesuai",
+      "dibayar": 1125000,
+      "aturan": "R04",
+      "alasan": "Uang harian 3 hari x 375,000 = 1,125,000",
+      "sumber": "SPT",
+      "rumus_hitung": "3 hari x 375,000 = 1,125,000 (R04)",
+      "level_risiko": null
+    }
+  ],
+  "uang_harian": {
+    "hari": 3,
+    "tarif": 375000,
+    "total": 1125000,
+    "rumus": "3 hari x 375,000 = 1,125,000 (R04)"
+  },
+  "temuan": []
+}

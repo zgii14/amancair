@@ -1,0 +1,26 @@
+{
+  "item_bukti": [
+    {
+      "id": "B03",
+      "file": "struk_makan_1.txt",
+      "jenis": "makan",
+      "tanggal": "2026-10-03",
+      "kota": "Denpasar",
+      "nama_di_bukti": null,
+      "nominal": 83000,
+      "kutipan": "TOTAL: Rp 83.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "nomor_struk": "WTP-441"
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-03",
+      "nomor_transaksi": "WTP-441",
+      "nominal": 83000,
+      "merchant": "RESTORAN",
+      "rute": null
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "kasus_id": "kasus-011",
+  "timeline": [
+    {
+      "tanggal": null,
+      "event": "tiket_berangkat",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "tanggal": "2026-10-05",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-011.json"
+    },
+    {
+      "tanggal": "2026-10-05",
+      "event": "taksi",
+      "sumber": "struk_bandara_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-07",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-011.json"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan": [],
+  "rekomendasi": "lolos"
+}

@@ -1,0 +1,16 @@
+{
+  "_watermark": "DATA FIKTIF UNTUK DEMO",
+  "nomor_spt": "SPT-2026-004",
+  "pegawai": {
+    "nip": "197502281996121006",
+    "nama": "Rudi Hartono",
+    "golongan": "IV/c"
+  },
+  "maksud": "Rapat kerja teknis aplikasi pemerintah daerah",
+  "tujuan": "Jakarta",
+  "provinsi": "DKI Jakarta",
+  "tanggal_berangkat": "2026-10-10",
+  "tanggal_kembali": "2026-10-12",
+  "lama_hari": 3,
+  "pejabat_menetapkan": "Drs. H. Ahmad Fauzi, M.Si."
+}

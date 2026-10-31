@@ -1,0 +1,27 @@
+{
+  "agen": "pembaca-tiket",
+  "kasus": "kasus-004",
+  "waktu_mulai": "2026-10-31T16:25:41.815679+08:00",
+  "waktu_selesai": "2026-10-31T16:25:41.815679+08:00",
+  "items": [
+    {
+      "id_bukti": "B01",
+      "jenis": "tiket",
+      "file_sumber": "tiket_berangkat.txt",
+      "nama_penumpang": "Rudi Hartono",
+      "tanggal": "2026-10-10",
+      "rute": "Makassar - Jakarta",
+      "kode_booking": "GAR0099",
+      "nomor_tiket": "4466778899001",
+      "nominal": 3200000,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                         E-TICKET GARUDA INDONESIA\n================================================================================\nKode Booking: GAR0099\nNama Penumpang: Rudi Hartono\nNomor Tiket: 4466778899001\nRute: UPG - CGK\nTanggal: 10 Oktober 2026\nWaktu: 06.00 WITA - 07.30 WIB\nNomor Penerbangan: GA 626\nKelas: Bisnis\nHarga Tiket: Rp 3.200.000\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "kode_booking": "GAR0099",
+        "nama_penumpang": "Rudi Hartono",
+        "nomor_tiket": "4466778899001"
+      }
+    }
+  ]
+}

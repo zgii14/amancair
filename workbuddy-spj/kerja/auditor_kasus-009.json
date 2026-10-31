@@ -1,0 +1,47 @@
+{
+  "kasus_id": "kasus-009",
+  "timeline": [
+    {
+      "tanggal": "2026-08-15",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-009.json"
+    },
+    {
+      "tanggal": "2026-08-15",
+      "event": "tiket_berangkat",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "tanggal": "2026-08-15",
+      "event": "hotel_checkin",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-08-15",
+      "event": "taksi",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-08-18",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-009.json"
+    },
+    {
+      "tanggal": "2026-08-18",
+      "event": "tiket_kembali",
+      "sumber": "tiket_kembali.txt"
+    },
+    {
+      "tanggal": "2026-08-18",
+      "event": "hotel_checkout",
+      "sumber": "invoice_hotel.txt"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan": [],
+  "verifikasi_angka": {
+    "status": "lolos",
+    "detail": "Angka terverifikasi"
+  },
+  "rekomendasi": "lolos"
+}

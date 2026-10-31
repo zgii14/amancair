@@ -1,0 +1,13 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET LION AIR
+================================================================================
+Kode Booking: LION4455
+Nama Penumpang: Dedi Kurniawan
+Nomor Tiket: 2267100554433
+Rute: UPG - CGK
+Tanggal: 12 Oktober 2026
+Waktu: 09.00 WITA - 10.30 WIB
+Nomor Penerbangan: JT 778
+Harga Tiket: Rp 1.850.000
+================================================================================

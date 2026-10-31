@@ -1,0 +1,9 @@
+{
+  "waktu": "2026-10-23T12:15:30+08:00",
+  "kasus": "kasus-001",
+  "agen": "pembaca-hotel",
+  "aksi": "ekstrak",
+  "file_dibaca": "invoice_hotel.txt",
+  "keputusan": "B03: hotel 3 malam, Rp 2.310.000",
+  "aturan": null
+}

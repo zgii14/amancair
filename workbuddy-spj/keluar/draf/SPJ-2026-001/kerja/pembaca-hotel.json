@@ -1,0 +1,31 @@
+{
+  "agen": "pembaca-hotel",
+  "kasus": "kasus-001",
+  "waktu_mulai": "2026-10-23T12:15:30+08:00",
+  "waktu_selesai": "2026-10-23T12:15:30+08:00",
+  "items": [
+    {
+      "id_bukti": "B03",
+      "jenis": "hotel",
+      "file_sumber": "invoice_hotel.txt",
+      "nama_tamu": "Budi Santoso",
+      "tanggal_checkin": "2026-10-05",
+      "tanggal_checkout": "2026-10-08",
+      "jumlah_malam_tertulis": 3,
+      "kota": "Jakarta",
+      "tarif_per_malam": 700000,
+      "pajak_dan_service": 210000,
+      "nominal": 2310000,
+      "nomor_invoice": "INV/GJ/2026/0847",
+      "kutipan_teks": "No. Invoice: INV/GJ/2026/0847\nNama Tamu: Budi Santoso\nCheck-in: 5 Oktober 2026\nCheck-out: 8 Oktober 2026\nLama Menginap: 3 malam\nTarif per Malam: Rp 700.000\nTotal Biaya Menginap: Rp 2.100.000\nPajak & Service (10%): Rp 210.000\nTOTAL: Rp 2.310.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-08",
+        "nomor_transaksi": "INV/GJ/2026/0847",
+        "nominal": 2310000,
+        "merchant": "GRAND JAVA HOTEL JAKARTA"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET SUPER AIR JET
+================================================================================
+Kode Booking: SAJ2233
+Nama Penumpang: Bayu Wijaya
+Nomor Tiket: 9900112233445
+Rute: UPG - CGK
+Tanggal: 6 Oktober 2026
+Waktu: 11.00 WITA - 12.30 WIB
+Nomor Penerbangan: IU 550
+Harga Tiket: Rp 1.450.000
+================================================================================

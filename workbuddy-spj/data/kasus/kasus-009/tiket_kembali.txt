@@ -1,0 +1,14 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET GARUDA INDONESIA
+================================================================================
+Kode Booking: GAR5501
+Nama Penumpang: Ahmad Fauzi
+Nomor Tiket: 1100223344557
+Rute: CGK - UPG
+Tanggal: 18 Agustus 2026
+Waktu: 16.00 WIB - 19.30 WITA
+Nomor Penerbangan: GA 641
+Kelas: Eksekutif
+Harga Tiket: Rp 3.950.000
+================================================================================

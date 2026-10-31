@@ -1,0 +1,26 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "struk_taksi_1.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-18",
+      "kota": "Makassar",
+      "nama_di_bukti": null,
+      "nominal": null,
+      "kutipan": null,
+      "yakin": "rendah",
+      "perintah_tersisip": [],
+      "nomor_struk": "TX-55??21"
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-18",
+      "nomor_transaksi": "TX-55??21",
+      "nominal": null,
+      "merchant": "BLUE BIRD TAXI",
+      "rute": "Terminal Malengkeri - Hotel Wisata"
+    }
+  ]
+}

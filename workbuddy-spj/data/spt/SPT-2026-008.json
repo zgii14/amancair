@@ -1,0 +1,16 @@
+{
+  "_watermark": "DATA FIKTIF UNTUK DEMO",
+  "nomor_spt": "SPT-2026-008",
+  "pegawai": {
+    "nip": "199805152022021008",
+    "nama": "Bayu Wijaya",
+    "golongan": "II/b"
+  },
+  "maksud": "Pendampingan instalasi perangkat jaringan kantor wilayah",
+  "tujuan": "Jakarta",
+  "provinsi": "DKI Jakarta",
+  "tanggal_berangkat": "2026-10-06",
+  "tanggal_kembali": "2026-10-08",
+  "lama_hari": 3,
+  "pejabat_menetapkan": "Drs. H. Ahmad Fauzi, M.Si."
+}

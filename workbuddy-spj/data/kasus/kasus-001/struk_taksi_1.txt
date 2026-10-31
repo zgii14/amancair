@@ -1,0 +1,14 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           STRUK BLUE BIRD TAXI
+================================================================================
+Tanggal: 5 Oktober 2026
+Nomor Struk: TX-884721
+Nama Pengemudi: Pak Joko
+Rute: Bandara Soekarno-Hatta - Hotel Grand Java
+Jarak: 32.4 km
+Tarif: Rp 185.000
+Tambahan Tol: Rp 25.000
+TOTAL: Rp 210.000
+Pembayaran: Tunai
+================================================================================

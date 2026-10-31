@@ -1,0 +1,9 @@
+{
+  "waktu": "2026-10-23T12:15:36.894038+08:00",
+  "kasus": "kasus-001",
+  "agen": "pembaca-tiket",
+  "aksi": "ekstrak",
+  "file_dibaca": "tiket_berangkat.pdf, tiket_kembali.txt",
+  "keputusan": "B01: Rp 2.450.000 | B02: Rp 2.380.000",
+  "aturan": null
+}

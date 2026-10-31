@@ -1,0 +1,11 @@
+{
+  "waktu": "2026-10-31T16:25:42.413829+08:00",
+  "kasus": "kasus-007",
+  "agen": "koordinator",
+  "aksi": "mulai_proses",
+  "file_dibaca": "pesan_pegawai.txt",
+  "keputusan": "SPT terpilih: SPT-2026-007, Pegawai: Nurul Hidayah. Rencana: dispatch pembaca-struk -> verifikator-sbm -> auditor -> penyusun-spj",
+  "aturan": null,
+  "prev_hash": "79dc45c66e6bb17581c972b8e91dc19ecff275739a0fb8b2cf48060b1c2cd0b5",
+  "hash": "2eb381f5ec3a13eb495609ea85c5760ab742d383783ac23d2fab70d30094b71c"
+}

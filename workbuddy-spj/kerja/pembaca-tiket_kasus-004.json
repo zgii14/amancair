@@ -1,0 +1,24 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-10-10",
+      "kota": "Jakarta",
+      "nama_di_bukti": "Rudi Hartono",
+      "nominal": 3200000,
+      "kutipan": "Harga Tiket: Rp 3.200.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "kode_booking": "GAR0099",
+      "nama_penumpang": "Rudi Hartono",
+      "nomor_tiket": "4466778899001",
+      "nominal": 3200000
+    }
+  ]
+}

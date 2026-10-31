@@ -1,0 +1,11 @@
+{
+  "waktu": "2026-10-31T16:25:42.613462+08:00",
+  "kasus": "kasus-008",
+  "agen": "koordinator",
+  "aksi": "mulai_proses",
+  "file_dibaca": "pesan_pegawai.txt",
+  "keputusan": "SPT terpilih: SPT-2026-008, Pegawai: Bayu Wijaya. Rencana: dispatch pembaca-tiket + pembaca-hotel + pembaca-struk -> verifikator-sbm -> auditor -> penyusun-spj",
+  "aturan": null,
+  "prev_hash": "0da727640a785b0f97c7a9f17ccbab0c130aa3ccd8343a6b634a93ea0d34e901",
+  "hash": "e281dc0835006b8b5cabe034dbf78db90f78c296b50c9798a4a445a574a0b2e3"
+}

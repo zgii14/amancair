@@ -1,0 +1,9 @@
+{
+  "waktu": "2026-10-23T12:18:02+08:00",
+  "kasus": "kasus-001",
+  "agen": "verifikator-sbm",
+  "aksi": "verifikasi",
+  "file_dibaca": "sbm.xlsx + SPT-2026-001.json",
+  "keputusan": "Pagu H:800000 T:250000 UH:400000; R11 diterapkan (makan=0); semua lolos",
+  "aturan": "R03,R04,R05,R11"
+}

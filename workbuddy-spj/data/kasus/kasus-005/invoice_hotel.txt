@@ -1,0 +1,18 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           INVOICE HOTEL
+                        HOTEL PONDOK INDAH
+                         Jl. Gatot Subroto
+================================================================================
+No. Invoice: INV/PI/2026/0606
+Tanggal: 18 Oktober 2026
+Nama Tamu: Budi
+Check-in: 16 Oktober 2026
+Check-out: 18 Oktober 2026
+Lama Menginap: 2 malam
+Tarif per Malam: Rp 700.000
+Total Biaya Menginap: Rp 1.400.000
+Pajak & Service (10%): Rp 140.000
+TOTAL: Rp 1.540.000
+Status: LUNAS
+================================================================================

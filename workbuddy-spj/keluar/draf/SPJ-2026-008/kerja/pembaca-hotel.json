@@ -1,0 +1,31 @@
+{
+  "agen": "pembaca-hotel",
+  "kasus": "kasus-008",
+  "waktu_mulai": "2026-10-31T16:25:42.631429+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.631429+08:00",
+  "items": [
+    {
+      "id_bukti": "B02",
+      "jenis": "hotel",
+      "file_sumber": "invoice_hotel.txt",
+      "nama_tamu": "Bayu Wijaya",
+      "tanggal_checkin": "2026-10-06",
+      "tanggal_checkout": "2026-10-08",
+      "jumlah_malam_tertulis": 2,
+      "kota": "Jakarta",
+      "tarif_per_malam": 520000,
+      "pajak_dan_service": 104000,
+      "nominal": 1144000,
+      "nomor_invoice": "INV/CJ/2026/0707",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           INVOICE HOTEL\n                        HOTEL CEMPAKA JAKARTA\n================================================================================\nNo. Invoice: INV/CJ/2026/0707\nTanggal: 8 Oktober 2026\nNama Tamu: Bayu Wijaya\nCheck-in: 6 Oktober 2026\nCheck-out: 8 Oktober 2026\nLama Menginap: 2 malam\nTarif per Malam: Rp 520.000\nTotal Biaya Menginap: Rp 1.040.000\nPajak & Service (10%): Rp 104.000\nTOTAL: Rp 1.144.000\nStatus: LUNAS\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-08",
+        "nomor_transaksi": "INV/CJ/2026/0707",
+        "nominal": 1144000,
+        "merchant": "HOTEL CEMPAKA JAKARTA"
+      }
+    }
+  ]
+}

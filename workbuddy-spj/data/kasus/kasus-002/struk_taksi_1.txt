@@ -1,0 +1,14 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           STRUK BLUE BIRD TAXI
+================================================================================
+Tanggal: 12 Oktober 2026
+Nomor Struk: TX-990021
+Nama Pengemudi: Pak Budi
+Rute: Bandara Soekarno-Hatta - Hotel Melati
+Jarak: 31.2 km
+Tarif: Rp 150.000
+Tambahan Tol: Rp 20.000
+TOTAL: Rp 170.000
+Pembayaran: Tunai
+================================================================================

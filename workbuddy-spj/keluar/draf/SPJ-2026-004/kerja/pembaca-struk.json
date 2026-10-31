@@ -1,0 +1,29 @@
+{
+  "agen": "pembaca-struk",
+  "kasus": "kasus-004",
+  "waktu_mulai": "2026-10-31T16:25:42.238808+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.238808+08:00",
+  "items": [
+    {
+      "id_bukti": "B03",
+      "jenis": "taksi",
+      "file_sumber": "struk_taksi_1.txt",
+      "tanggal": "2026-10-10",
+      "kota": null,
+      "merchant": "Blue Bird Taxi",
+      "nomor_struk": "TX-771100",
+      "rute": "Bandara Soekarno-Hatta - Hotel The Grand Premier",
+      "nominal": 230000,
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\n================================================================================\n                           STRUK BLUE BIRD TAXI\n================================================================================\nTanggal: 10 Oktober 2026\nNomor Struk: TX-771100\nRute: Bandara Soekarno-Hatta - Hotel The Grand Premier\nJarak: 28.5 km\nTarif: Rp 195.000\nTambahan Tol: Rp 35.000\nTOTAL: Rp 230.000\n================================================================================",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-10",
+        "nomor_transaksi": "TX-771100",
+        "nominal": 230000,
+        "merchant": "Blue Bird Taxi",
+        "rute": "Bandara Soekarno-Hatta - Hotel The Grand Premier"
+      }
+    }
+  ]
+}

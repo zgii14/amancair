@@ -1,0 +1,31 @@
+{
+  "agen": "pembaca-hotel",
+  "kasus": "kasus-004",
+  "waktu_mulai": "2026-10-31T16:25:42.229036+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.229036+08:00",
+  "items": [
+    {
+      "id_bukti": "B02",
+      "jenis": "hotel",
+      "file_sumber": "invoice_hotel.pdf",
+      "nama_tamu": "Rudi Hartono",
+      "tanggal_checkin": "2026-10-10",
+      "tanggal_checkout": "2026-10-12",
+      "jumlah_malam_tertulis": 2,
+      "kota": "Jakarta",
+      "tarif_per_malam": 1200000,
+      "pajak_dan_service": 0,
+      "nominal": 2640000,
+      "nomor_invoice": "INV/TGP/2026/0555",
+      "kutipan_teks": "DATA FIKTIF UNTUK DEMO\nINVOICE HOTEL\nTHE GRAND PREMIER JAKARTA\nNo. Invoice: INV/TGP/2026/0555\nNama Tamu: Rudi Hartono\nCheck-in: 10 Oktober 2026\nCheck-out: 12 Oktober 2026\nLama Menginap: 2 malam\nTarif per Malam: Rp 1.200.000\nTOTAL: Rp 2.640.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": [],
+      "sidik": {
+        "tanggal": "2026-10-12",
+        "nomor_transaksi": "INV/TGP/2026/0555",
+        "nominal": 2640000,
+        "merchant": "THE GRAND PREMIER JAKARTA"
+      }
+    }
+  ]
+}

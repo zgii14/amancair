@@ -1,0 +1,13 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET LION AIR
+================================================================================
+Kode Booking: LION8811
+Nama Penumpang: Dedi Kurniawan
+Nomor Tiket: 6677889900112
+Rute: UPG - DJJ (Makassar - Jayapura)
+Tanggal: 5 Oktober 2026
+Waktu: 05.00 WITA - 10.30 WIT
+Nomor Penerbangan: JT 797
+Harga Tiket: Rp 4.500.000
+================================================================================

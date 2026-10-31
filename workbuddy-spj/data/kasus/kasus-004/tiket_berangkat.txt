@@ -1,0 +1,14 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                         E-TICKET GARUDA INDONESIA
+================================================================================
+Kode Booking: GAR0099
+Nama Penumpang: Rudi Hartono
+Nomor Tiket: 4466778899001
+Rute: UPG - CGK
+Tanggal: 10 Oktober 2026
+Waktu: 06.00 WITA - 07.30 WIB
+Nomor Penerbangan: GA 626
+Kelas: Bisnis
+Harga Tiket: Rp 3.200.000
+================================================================================

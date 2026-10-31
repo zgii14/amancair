@@ -1,0 +1,38 @@
+{
+  "agen": "auditor",
+  "kasus": "kasus-007",
+  "waktu_mulai": "2026-10-31T16:25:42.466008+08:00",
+  "waktu_selesai": "2026-10-31T16:25:42.466008+08:00",
+  "timeline": [
+    {
+      "tanggal": "2026-10-18",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-007.json"
+    },
+    {
+      "tanggal": "2026-10-18",
+      "event": "struk_taksi",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-19",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-007.json"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan": [
+    {
+      "id_bukti": "B01",
+      "level": "SEDANG",
+      "tipe": "nominal_tidak_terbaca",
+      "aturan": "R08",
+      "deskripsi": "Nominal taksi pada struk TX-55??21 tidak terbaca (blur/luntur). Status: perlu_cek_manusia."
+    }
+  ],
+  "verifikasi_angka": {
+    "status": "lolos",
+    "detail": "Angka terverifikasi (taksi=0 karena tidak terbaca)"
+  },
+  "rekomendasi": "lolos"
+}

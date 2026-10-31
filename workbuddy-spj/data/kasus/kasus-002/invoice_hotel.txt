@@ -1,0 +1,17 @@
+DATA FIKTIF UNTUK DEMO
+================================================================================
+                           INVOICE HOTEL
+                        HOTEL MELATI JAKARTA
+================================================================================
+No. Invoice: INV/MJ/2026/0901
+Tanggal: 14 Oktober 2026
+Nama Tamu: Dedi Kurniawan
+Check-in: 12 Oktober 2026
+Check-out: 14 Oktober 2026
+Lama: 2 malam
+Tarif per Malam: Rp 520.000
+Total: Rp 1.040.000
+Pajak (10%): Rp 104.000
+TOTAL: Rp 1.144.000
+Status: LUNAS
+================================================================================

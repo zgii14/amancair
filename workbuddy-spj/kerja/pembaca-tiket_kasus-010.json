@@ -1,0 +1,42 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-10-05",
+      "kota": "Jayapura",
+      "nama_di_bukti": "Dedi Kurniawan",
+      "nominal": 4500000,
+      "kutipan": "Harga Tiket: Rp 4.500.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    },
+    {
+      "id": "B02",
+      "file": "tiket_kembali.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-10-09",
+      "kota": "Jayapura",
+      "nama_di_bukti": "Dedi Kurniawan",
+      "nominal": 4200000,
+      "kutipan": "Harga Tiket: Rp 4.200.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "kode_booking": "LION8811",
+      "nama_penumpang": "Dedi Kurniawan",
+      "nomor_tiket": "6677889900112",
+      "nominal": 4500000
+    },
+    {
+      "kode_booking": "LION8812",
+      "nama_penumpang": "Dedi Kurniawan",
+      "nomor_tiket": "6677889900113",
+      "nominal": 4200000
+    }
+  ]
+}

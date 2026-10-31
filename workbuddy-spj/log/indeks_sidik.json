@@ -1,0 +1,58 @@
+{
+  "kasus-001": [
+    {
+      "jenis": "tiket",
+      "sidik": {
+        "kode_booking": "ABC123",
+        "nama_penumpang": "Budi Santoso",
+        "nomor_tiket": ""
+      },
+      "id_bukti": "B01",
+      "file_sumber": "tiket_berangkat.pdf"
+    },
+    {
+      "jenis": "tiket",
+      "sidik": {
+        "kode_booking": "ABC124",
+        "nama_penumpang": "Budi Santoso",
+        "nomor_tiket": "1267890123457"
+      },
+      "id_bukti": "B02",
+      "file_sumber": "tiket_kembali.txt"
+    },
+    {
+      "jenis": "hotel",
+      "sidik": {
+        "tanggal": "2026-10-08",
+        "nomor_transaksi": "INV/GJ/2026/0847",
+        "nominal": 2310000,
+        "merchant": "GRAND JAVA HOTEL JAKARTA"
+      },
+      "id_bukti": "B03",
+      "file_sumber": "invoice_hotel.txt"
+    },
+    {
+      "jenis": "taksi",
+      "sidik": {
+        "tanggal": "2026-10-05",
+        "nomor_transaksi": "TX-884721",
+        "nominal": 210000,
+        "merchant": "Blue Bird Taxi",
+        "rute": "Bandara Soekarno-Hatta - Hotel Grand Java"
+      },
+      "id_bukti": "B04",
+      "file_sumber": "struk_taksi_1.txt"
+    },
+    {
+      "jenis": "makan",
+      "sidik": {
+        "tanggal": "2026-10-06",
+        "nomor_transaksi": "WB-1129",
+        "nominal": 82500,
+        "merchant": "Warung Nasi Buah Batu"
+      },
+      "id_bukti": "B05",
+      "file_sumber": "struk_makan_1.txt"
+    }
+  ]
+}
