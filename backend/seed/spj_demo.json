@@ -1,0 +1,50 @@
+{
+  "_catatan": "Data fiktif. Diajukan otomatis saat backend demo dinyalakan dengan SPJ_SEED_FILE. Angka dan temuan diambil dari hasil kerja tim agen WorkBuddy di workbuddy-spj/.",
+  "pengaju": "tim_spj",
+  "pengajuan": [
+    {
+      "nomor": "SPJ-2026-001",
+      "pegawai": "Budi Santoso",
+      "tujuan": "Jakarta",
+      "tanggal_spt": "2026-10-05 s.d. 2026-10-08",
+      "total_diajukan": 9032500,
+      "total_dibayar": 8950000,
+      "temuan": [
+        {"level": "RENDAH", "aturan": "R11", "deskripsi": "Struk makan Rp82.500 tidak dibayar karena biaya makan sudah termasuk uang harian.", "sumber": "struk_makan_1.txt"}
+      ]
+    },
+    {
+      "nomor": "SPJ-2026-002",
+      "pegawai": "Dedi Kurniawan",
+      "tujuan": "Jakarta",
+      "tanggal_spt": "2026-10-12 s.d. 2026-10-14",
+      "total_diajukan": 4581000,
+      "total_dibayar": 4364000,
+      "temuan": [
+        {"level": "SEDANG", "aturan": "R06", "deskripsi": "Struk taksi TX-990021 dilampirkan dua kali dalam SPJ yang sama; dihitung sekali (selisih Rp217.000).", "sumber": "struk_taksi_1.txt, struk_taksi_2.txt"}
+      ]
+    },
+    {
+      "nomor": "SPJ-2026-008",
+      "pegawai": "Bayu Wijaya",
+      "tujuan": "Jakarta",
+      "tanggal_spt": "2026-10-06 s.d. 2026-10-08",
+      "total_diajukan": 3649000,
+      "total_dibayar": 3649000,
+      "temuan": [
+        {"level": "KRITIS", "aturan": "R02", "deskripsi": "Boarding pass atas nama Andi Wijaya, bukan Bayu Wijaya. Klaim tiket ditahan sampai ada penjelasan.", "sumber": "boarding_pass.txt"}
+      ]
+    },
+    {
+      "nomor": "SPJ-2026-010",
+      "pegawai": "Dedi Kurniawan",
+      "tujuan": "Jayapura",
+      "tanggal_spt": "2026-10-05 s.d. 2026-10-09",
+      "total_diajukan": 16480000,
+      "total_dibayar": 16480000,
+      "temuan": [
+        {"level": "TINGGI", "aturan": "R10", "deskripsi": "Total Rp16.480.000 melewati batas Rp10.000.000; wajib konfirmasi tambahan bendahara.", "sumber": "rekap.xlsx"}
+      ]
+    }
+  ]
+}

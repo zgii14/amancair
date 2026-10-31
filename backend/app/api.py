@@ -47,10 +47,11 @@ def buat_app(
     origins: list[str] = (),
     interval_outbox: float = 5.0,
     spj_dirs: dict[str, tuple[Path, Path]] | None = None,
+    mcp_hosts: list[str] | None = None,
 ) -> FastAPI:
     sesi: dict[str, dict] = {}
     spj_dirs = spj_dirs or {}
-    mcp = buat_server(profil, conns, jam, mcp_tokens, spj_dirs=spj_dirs) if mcp_tokens else None
+    mcp = buat_server(profil, conns, jam, mcp_tokens, spj_dirs=spj_dirs, allowed_hosts=mcp_hosts) if mcp_tokens else None
     mcp_asgi = app_http(mcp, mcp_tokens) if mcp else None
 
     @asynccontextmanager
@@ -273,4 +274,12 @@ def app_dari_env() -> FastAPI:
         # siap-cair sengaja di luar folder kerja agen: hanya backend yang bisa menulisnya.
         siap = Path(os.environ.get("SPJ_SIAP_ROOT", data_dir / "siap-cair"))
         spj_dirs[os.environ.get("SPJ_PROFIL", "diskominfo")] = (Path(os.environ["SPJ_DRAF_ROOT"]), siap)
-    return buat_app(profil, conns, password, mcp_tokens=tokens or None, origins=origins, spj_dirs=spj_dirs)
+    if os.environ.get("SPJ_SEED_FILE"):
+        for pid, (draf, _siap) in spj_dirs.items():
+            spj.seed(conns[pid], draf, Path(os.environ["SPJ_SEED_FILE"]), datetime.now(timezone.utc))
+    # Railway mengisi RAILWAY_PUBLIC_DOMAIN otomatis; MCP_ALLOWED_HOSTS untuk domain lain.
+    hosts = [h.strip() for h in os.environ.get("MCP_ALLOWED_HOSTS", "").split(",") if h.strip()]
+    if os.environ.get("RAILWAY_PUBLIC_DOMAIN"):
+        hosts.append(os.environ["RAILWAY_PUBLIC_DOMAIN"])
+    return buat_app(profil, conns, password, mcp_tokens=tokens or None, origins=origins, spj_dirs=spj_dirs,
+                    mcp_hosts=hosts)

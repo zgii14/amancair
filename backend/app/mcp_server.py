@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Callable
 
 from mcp.server.fastmcp import Context, FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 from starlette.responses import JSONResponse
 
 from app import tools
@@ -43,8 +44,14 @@ def buat_server(
     tokens: dict[str, tuple[str, str]],
     default: tuple[str, str] | None = None,
     spj_dirs: dict[str, tuple[Path, Path]] | None = None,
+    allowed_hosts: list[str] | None = None,
 ) -> FastMCP:
-    mcp = FastMCP("agent-disposisi", stateless_http=True, streamable_http_path="/")
+    # FastMCP hanya menerima Host localhost secara default; domain publik (mis. Railway) harus didaftarkan.
+    keamanan = TransportSecuritySettings(
+        enable_dns_rebinding_protection=True,
+        allowed_hosts=["127.0.0.1:*", "localhost:*", "[::1]:*", *(allowed_hosts or [])],
+    )
+    mcp = FastMCP("agent-disposisi", stateless_http=True, streamable_http_path="/", transport_security=keamanan)
     spj_dirs = spj_dirs or {}
 
     def ktx(ctx: Context) -> tools.Konteks:

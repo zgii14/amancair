@@ -147,9 +147,11 @@ Prompt yang kami pakai untuk membangun tim dari nol ada di [docs/workbuddy/promp
 
 Sandi dan token di atas (`demo123`, `tok-spj`) hanya untuk demo lokal. Ganti sebelum menjalankan di tempat lain.
 
+Untuk memasang versi online (backend di Railway, Meja Pimpinan di Vercel), ikuti [docs/deploy.md](docs/deploy.md).
+
 ## Pengujian
 
-Tes otomatis backend (137 tes, termasuk skenario keamanan gerbang SPJ):
+Tes otomatis backend (140 tes, termasuk skenario keamanan gerbang SPJ):
 
 ```bash
 cd backend

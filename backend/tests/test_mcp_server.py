@@ -33,3 +33,20 @@ def test_http_tanpa_token_401(profil, conn, now):
     klien = TestClient(app_http(mcp, TOKENS))
     assert klien.post("/", json={}).status_code == 401
     assert klien.post("/", json={}, headers={"Authorization": "Bearer salah"}).status_code == 401
+
+
+def _init(klien, host):
+    body = {"jsonrpc": "2.0", "id": 1, "method": "initialize",
+            "params": {"protocolVersion": "2025-03-26", "capabilities": {}, "clientInfo": {"name": "uji", "version": "0"}}}
+    return klien.post("/", json=body, headers={"Authorization": "Bearer tok-rina", "Host": host,
+                                               "Accept": "application/json, text/event-stream"})
+
+
+def test_host_publik_harus_didaftarkan(profil, conn, now):
+    mcp = buat_server({"perusahaan": profil}, {"perusahaan": conn}, lambda: now, TOKENS)
+    with TestClient(app_http(mcp, TOKENS)) as klien:
+        assert _init(klien, "amancair.up.railway.app").status_code == 421
+    mcp = buat_server({"perusahaan": profil}, {"perusahaan": conn}, lambda: now, TOKENS,
+                      allowed_hosts=["amancair.up.railway.app"])
+    with TestClient(app_http(mcp, TOKENS)) as klien:
+        assert _init(klien, "amancair.up.railway.app").status_code == 200

@@ -119,6 +119,18 @@ def ajukan(conn: sqlite3.Connection, draf_root: Path, p: PengajuanSPJ, pengaju: 
     return ambil(conn, p.nomor)
 
 
+def seed(conn: sqlite3.Connection, draf_root: Path, berkas: Path, now: datetime) -> list[str]:
+    """Ajukan SPJ contoh untuk demo online. Yang sudah ada di database dilewati."""
+    data = json.loads(berkas.read_text(encoding="utf-8"))
+    baru = []
+    for item in data["pengajuan"]:
+        p = PengajuanSPJ(**item)
+        if ambil(conn, p.nomor) is None:
+            ajukan(conn, draf_root, p, data["pengaju"], now)
+            baru.append(p.nomor)
+    return baru
+
+
 def setujui(conn: sqlite3.Connection, draf_root: Path, siap_root: Path, nomor: str, oleh: str,
             konfirmasi_risiko: bool, now: datetime) -> dict:
     r = ambil(conn, nomor)

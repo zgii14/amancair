@@ -123,3 +123,19 @@ def test_path_berkas_aman(dirs):
     assert spj.path_berkas(draf, "SPJ-2026-001", "kerja/auditor.json").name == "auditor.json"
     with pytest.raises(SPJError):
         spj.path_berkas(draf, "SPJ-2026-001", "../../rahasia.txt")
+
+
+def test_seed_demo_idempoten(conn, dirs, now, tmp_path):
+    draf, _ = dirs
+    berkas = tmp_path / "seed.json"
+    berkas.write_text(pengajuan().model_dump_json().join(['{"pengaju": "tim_spj", "pengajuan": [', ']}']), encoding="utf-8")
+    assert spj.seed(conn, draf, berkas, now) == ["SPJ-2026-001"]
+    assert spj.seed(conn, draf, berkas, now) == []
+    assert spj.ambil(conn, "SPJ-2026-001")["pengaju"] == "tim_spj"
+
+
+def test_seed_demo_cocok_dengan_draf_di_repo(conn, now):
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[2]
+    hasil = spj.seed(conn, root / "workbuddy-spj" / "keluar" / "draf", root / "backend" / "seed" / "spj_demo.json", now)
+    assert hasil == ["SPJ-2026-001", "SPJ-2026-002", "SPJ-2026-008", "SPJ-2026-010"]
