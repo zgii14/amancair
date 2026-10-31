@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir .
 
 COPY backend/profil ./profil
 COPY backend/seed ./seed
+COPY backend/referensi ./referensi
 COPY workbuddy-spj/keluar/draf ./demo-draf
 
 ENV DATA_DIR=/data \

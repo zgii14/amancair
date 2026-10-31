@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from app import approval, audit, executor, kasus, mock_tools, spj
+from app import approval, aturan_spj, audit, executor, kasus, mock_tools, spj
 from app import rencana as rencana_mod
 from app.db import buka, iso
 from app.mcp_server import app_http, buat_server, parse_tokens
@@ -51,10 +51,12 @@ def buat_app(
     mcp_hosts: list[str] | None = None,
     kasus_root: Path | None = None,
     jembatan: tuple[str, str] | None = None,
+    referensi: dict[str, aturan_spj.Referensi] | None = None,
 ) -> FastAPI:
     sesi: dict[str, dict] = {}
     spj_dirs = spj_dirs or {}
-    mcp = buat_server(profil, conns, jam, mcp_tokens, spj_dirs=spj_dirs, allowed_hosts=mcp_hosts) if mcp_tokens else None
+    mcp = buat_server(profil, conns, jam, mcp_tokens, spj_dirs=spj_dirs, allowed_hosts=mcp_hosts,
+                      referensi=referensi) if mcp_tokens else None
     mcp_asgi = app_http(mcp, mcp_tokens) if mcp else None
 
     @asynccontextmanager
@@ -412,8 +414,15 @@ def app_dari_env() -> FastAPI:
     hosts = [h.strip() for h in os.environ.get("MCP_ALLOWED_HOSTS", "").split(",") if h.strip()]
     if os.environ.get("RAILWAY_PUBLIC_DOMAIN"):
         hosts.append(os.environ["RAILWAY_PUBLIC_DOMAIN"])
+    referensi = {}
+    if spj_dirs:
+        folder = Path(os.environ.get("SPJ_REFERENSI", Path(__file__).resolve().parents[1] / "referensi" / "spj"))
+        ref = aturan_spj.Referensi.muat(folder)
+        for pid in spj_dirs:
+            aturan_spj.isi_sidik_awal(conns[pid], ref)
+            referensi[pid] = ref
     kasus_root = data_dir / "kasus" if spj_dirs else None
     token_jembatan = os.environ.get("JEMBATAN_TOKEN")
     jembatan = (token_jembatan, next(iter(spj_dirs))) if token_jembatan and spj_dirs else None
     return buat_app(profil, conns, password, mcp_tokens=tokens or None, origins=origins, spj_dirs=spj_dirs,
-                    mcp_hosts=hosts, kasus_root=kasus_root, jembatan=jembatan)
+                    mcp_hosts=hosts, kasus_root=kasus_root, jembatan=jembatan, referensi=referensi)

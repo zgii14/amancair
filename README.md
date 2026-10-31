@@ -161,7 +161,7 @@ Untuk memasang versi online (backend di Railway, Meja Pimpinan di Vercel), ikuti
 
 ## Pengujian
 
-Tes otomatis backend (147 tes, termasuk skenario keamanan gerbang SPJ):
+Tes otomatis backend (161 tes, termasuk skenario keamanan gerbang SPJ):
 
 ```bash
 cd backend

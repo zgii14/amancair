@@ -80,6 +80,18 @@ CREATE TABLE IF NOT EXISTS progres (
   waktu TEXT NOT NULL,
   kunci TEXT NOT NULL UNIQUE
 );
+CREATE TABLE IF NOT EXISTS sidik_bukti (
+  kunci TEXT NOT NULL,
+  nomor_spj TEXT NOT NULL,
+  file TEXT,
+  sumber TEXT NOT NULL,
+  PRIMARY KEY (kunci, nomor_spj)
+);
+CREATE TABLE IF NOT EXISTS pemeriksaan (
+  nomor_spj TEXT PRIMARY KEY,
+  hasil_json TEXT NOT NULL,
+  waktu TEXT NOT NULL
+);
 """
 
 

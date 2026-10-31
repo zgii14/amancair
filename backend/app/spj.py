@@ -44,6 +44,8 @@ class PengajuanSPJ(BaseModel):
     total_dibayar: int = Field(ge=0)
     temuan: list[Temuan] = []
     perintah_tersisip: list[str] = []
+    # Diisi backend saat diajukan (selisih dengan periksa_aturan); isian dari agen diabaikan.
+    catatan_backend: list[str] = []
 
 
 def _sha(p: Path) -> str:
@@ -59,7 +61,8 @@ def hash_manifest(m: dict[str, str]) -> str:
 
 
 def _risiko(p: PengajuanSPJ) -> tuple[str, list[str]]:
-    alasan = [f"Temuan {t.level}: {t.aturan} {t.deskripsi}" for t in p.temuan if t.level in LEVEL_TINGGI]
+    alasan = [f"Pemeriksaan backend: {c}" for c in p.catatan_backend]
+    alasan += [f"Temuan {t.level}: {t.aturan} {t.deskripsi}" for t in p.temuan if t.level in LEVEL_TINGGI]
     if p.perintah_tersisip:
         alasan.append("Ada perintah tersisip di dokumen")
     if p.total_diajukan > BATAS_TOTAL_RISIKO:
@@ -96,7 +99,16 @@ def path_berkas(draf_root: Path, nomor: str, relatif: str) -> Path:
     return p
 
 
-def ajukan(conn: sqlite3.Connection, draf_root: Path, p: PengajuanSPJ, pengaju: str, now: datetime) -> dict:
+def ajukan(conn: sqlite3.Connection, draf_root: Path, p: PengajuanSPJ, pengaju: str, now: datetime,
+           wajib_periksa: bool = False) -> dict:
+    """wajib_periksa: bandingkan dengan hasil periksa_aturan (dipakai jalur MCP; seed demo tidak)."""
+    from app import aturan_spj
+
+    catatan = []
+    if wajib_periksa:
+        catatan = aturan_spj.selisih_dengan_pengajuan(aturan_spj.ambil_pemeriksaan(conn, p.nomor), p.total_dibayar,
+                                                      {t.aturan for t in p.temuan})
+    p = p.model_copy(update={"catatan_backend": catatan})
     folder = draf_root / p.nomor
     if not (folder / "rekap.xlsx").is_file():
         raise SPJError(f"Folder draf {p.nomor} atau rekap.xlsx tidak ditemukan")

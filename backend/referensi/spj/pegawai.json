@@ -1,0 +1,66 @@
+{
+ "_watermark": "DATA FIKTIF UNTUK DEMO",
+ "_sumber": "workbuddy-spj/data dan log/indeks_sidik.json",
+ "data": [
+  {
+   "nip": "198501152010011001",
+   "nama": "Budi Santoso",
+   "golongan": "III/c",
+   "jabatan": "Analis Kebijakan Ahli Pertama"
+  },
+  {
+   "nip": "197803101999031002",
+   "nama": "Budi Prasetyo",
+   "golongan": "IV/a",
+   "jabatan": "Kepala Bidang Infrastruktur"
+  },
+  {
+   "nip": "199005052015022003",
+   "nama": "Siti Aminah",
+   "golongan": "II/d",
+   "jabatan": "Pranata Komputer"
+  },
+  {
+   "nip": "196705121990031002",
+   "nama": "Ahmad Fauzi",
+   "golongan": "IV/b",
+   "jabatan": "Kepala Dinas"
+  },
+  {
+   "nip": "198203152006042003",
+   "nama": "Sri Wahyuni",
+   "golongan": "III/b",
+   "jabatan": "Bendahara Pengeluaran"
+  },
+  {
+   "nip": "198712042009041004",
+   "nama": "Dedi Kurniawan",
+   "golongan": "III/d",
+   "jabatan": "Analis Jaringan"
+  },
+  {
+   "nip": "199210202018032005",
+   "nama": "Nurul Hidayah",
+   "golongan": "II/c",
+   "jabatan": "Penyusun Layanan"
+  },
+  {
+   "nip": "197502281996121006",
+   "nama": "Rudi Hartono",
+   "golongan": "IV/c",
+   "jabatan": "Kepala Bidang Layanan Digital"
+  },
+  {
+   "nip": "199507082019042007",
+   "nama": "Lestari Dewi",
+   "golongan": "III/a",
+   "jabatan": "Pengelola Data"
+  },
+  {
+   "nip": "199805152022021008",
+   "nama": "Bayu Wijaya",
+   "golongan": "II/b",
+   "jabatan": "Teknisi Jaringan"
+  }
+ ]
+}

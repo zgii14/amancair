@@ -1,0 +1,21 @@
+{
+ "_watermark": "DATA FIKTIF UNTUK DEMO",
+ "_sumber": "workbuddy-spj/data dan log/indeks_sidik.json",
+ "data": [
+  {
+   "tanggal": "2026-06-01",
+   "nama": "Hari Lahir Pancasila",
+   "jenis": "libur_nasional"
+  },
+  {
+   "tanggal": "2026-08-17",
+   "nama": "Hari Kemerdekaan RI",
+   "jenis": "libur_nasional"
+  },
+  {
+   "tanggal": "2026-12-25",
+   "nama": "Hari Raya Natal",
+   "jenis": "libur_nasional"
+  }
+ ]
+}

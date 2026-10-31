@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Callable
 
-from app import rules, spj
+from app import aturan_spj, rules, spj
 from app import rencana as rencana_mod
 from app.profil import Jabatan, Profil
 
@@ -19,6 +19,16 @@ class Konteks:
     user_id: str
     jam: Callable[[], datetime]
     spj_draf: Path | None = None
+    referensi: aturan_spj.Referensi | None = None
+
+
+def periksa_aturan(ktx: Konteks, pemeriksaan: aturan_spj.Pemeriksaan) -> dict:
+    if ktx.referensi is None:
+        return {"ok": False, "error": "Pemeriksaan aturan SPJ tidak aktif untuk profil ini"}
+    try:
+        return {"ok": True, **aturan_spj.periksa(ktx.conn, ktx.referensi, pemeriksaan, ktx.user_id, ktx.jam())}
+    except aturan_spj.AturanError as e:
+        return {"ok": False, "error": str(e)}
 
 
 def _jabatan_user(ktx: Konteks) -> Jabatan:
@@ -97,9 +107,9 @@ def ajukan_spj(ktx: Konteks, pengajuan: spj.PengajuanSPJ) -> dict:
     if ktx.spj_draf is None:
         return {"ok": False, "error": "Gerbang SPJ tidak aktif untuk profil ini"}
     try:
-        r = spj.ajukan(ktx.conn, ktx.spj_draf, pengajuan, ktx.user_id, ktx.jam())
+        r = spj.ajukan(ktx.conn, ktx.spj_draf, pengajuan, ktx.user_id, ktx.jam(), wajib_periksa=ktx.referensi is not None)
     except spj.SPJError as e:
         return {"ok": False, "error": str(e)}
     return {"ok": True, "nomor": r["nomor"], "versi": r["versi"], "risiko": r["risiko"], "manifest_hash": r["manifest_hash"],
-            "jumlah_berkas": len(r["manifest"]),
+            "jumlah_berkas": len(r["manifest"]), "catatan_backend": r["catatan_backend"],
             "pesan": "Diajukan ke Meja Pimpinan. BELUM dicairkan; menunggu keputusan bendahara."}

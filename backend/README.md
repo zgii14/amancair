@@ -46,6 +46,17 @@ Mode stdio dan API harus memakai `DATA_DIR` yang sama agar berbagi database.
 | `JEMBATAN_TOKEN` | tidak | Token untuk `scripts/jembatan_workbuddy.py`; tanpa ini endpoint `/api/jembatan/*` mati |
 | `MCP_ALLOWED_HOSTS` | tidak | Host publik tambahan untuk MCP (Railway terdeteksi otomatis lewat `RAILWAY_PUBLIC_DOMAIN`) |
 
+## Tool `periksa_aturan` (R01–R11)
+
+Tool MCP yang menghitung aturan SPJ secara deterministik dari data bukti yang dibaca agen: malam hotel dan pagu SBM, masa SPT, kesesuaian nama, pagu taksi, makan (sudah termasuk uang harian), uang harian, hari libur nasional, struk ganda termasuk lintas SPJ, perintah tersisip, kelengkapan bukti hotel, dan batas Rp10 juta.
+
+- Data acuan ada di `referensi/spj/` (SBM, pegawai, libur, indeks sidik awal), disalin dari `workbuddy-spj/data/`. Ganti lewat `SPJ_REFERENSI`.
+- Nama pegawai kembar ditolak dengan daftar kandidat; agen harus bertanya lalu mengulang dengan `nip`.
+- Hasil terakhir disimpan per nomor SPJ. Saat `ajukan_spj` lewat MCP, backend membandingkan `total_dibayar` dan temuan KRITIS/TINGGI dengan hasil itu. Kalau berbeda, atau SPJ diajukan tanpa pemeriksaan, SPJ otomatis berisiko tinggi dengan alasan "Pemeriksaan backend: ..." di Meja Pimpinan.
+- Kasus uji 001–011 dengan angka dari bukti asli ada di `tests/test_aturan_spj.py`.
+
+Prompt untuk mengubah skill tim di WorkBuddy: [docs/workbuddy/prompt-periksa-aturan.md](../docs/workbuddy/prompt-periksa-aturan.md).
+
 ## Pengajuan pegawai dan progres agen
 
 - Pegawai (jabatan Staf) mengunggah bukti lewat `POST /api/kasus` (JSON, berkas base64, maks. 5 MB per berkas, hanya `.txt/.pdf/.jpg/.png`). Berkas disimpan di `DATA_DIR/kasus/<id>/`.

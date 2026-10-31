@@ -1,0 +1,90 @@
+{
+ "_watermark": "DATA FIKTIF UNTUK DEMO",
+ "_sumber": "workbuddy-spj/data dan log/indeks_sidik.json",
+ "data": [
+  {
+   "provinsi": "Sulawesi Selatan",
+   "golongan": "II",
+   "pagu_hotel": 450000,
+   "uang_harian": 200000,
+   "pagu_taksi": 150000
+  },
+  {
+   "provinsi": "Sulawesi Selatan",
+   "golongan": "III",
+   "pagu_hotel": 550000,
+   "uang_harian": 250000,
+   "pagu_taksi": 150000
+  },
+  {
+   "provinsi": "Sulawesi Selatan",
+   "golongan": "IV",
+   "pagu_hotel": 700000,
+   "uang_harian": 300000,
+   "pagu_taksi": 150000
+  },
+  {
+   "provinsi": "DKI Jakarta",
+   "golongan": "II",
+   "pagu_hotel": 600000,
+   "uang_harian": 300000,
+   "pagu_taksi": 250000
+  },
+  {
+   "provinsi": "DKI Jakarta",
+   "golongan": "III",
+   "pagu_hotel": 800000,
+   "uang_harian": 400000,
+   "pagu_taksi": 250000
+  },
+  {
+   "provinsi": "DKI Jakarta",
+   "golongan": "IV",
+   "pagu_hotel": 1000000,
+   "uang_harian": 500000,
+   "pagu_taksi": 250000
+  },
+  {
+   "provinsi": "Bali",
+   "golongan": "II",
+   "pagu_hotel": 550000,
+   "uang_harian": 275000,
+   "pagu_taksi": 200000
+  },
+  {
+   "provinsi": "Bali",
+   "golongan": "III",
+   "pagu_hotel": 750000,
+   "uang_harian": 375000,
+   "pagu_taksi": 200000
+  },
+  {
+   "provinsi": "Bali",
+   "golongan": "IV",
+   "pagu_hotel": 950000,
+   "uang_harian": 475000,
+   "pagu_taksi": 200000
+  },
+  {
+   "provinsi": "Papua",
+   "golongan": "II",
+   "pagu_hotel": 800000,
+   "uang_harian": 400000,
+   "pagu_taksi": 400000
+  },
+  {
+   "provinsi": "Papua",
+   "golongan": "III",
+   "pagu_hotel": 1100000,
+   "uang_harian": 550000,
+   "pagu_taksi": 400000
+  },
+  {
+   "provinsi": "Papua",
+   "golongan": "IV",
+   "pagu_hotel": 1400000,
+   "uang_harian": 700000,
+   "pagu_taksi": 400000
+  }
+ ]
+}

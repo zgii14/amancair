@@ -1,0 +1,36 @@
+{
+ "_watermark": "DATA FIKTIF UNTUK DEMO",
+ "_sumber": "workbuddy-spj/data dan log/indeks_sidik.json",
+ "data": [
+  {
+   "nomor_spj": "SPJ-2026-001",
+   "jenis": "tiket",
+   "nomor_bukti": "ABC123",
+   "file": "tiket_berangkat.pdf"
+  },
+  {
+   "nomor_spj": "SPJ-2026-001",
+   "jenis": "tiket",
+   "nomor_bukti": "ABC124",
+   "file": "tiket_kembali.txt"
+  },
+  {
+   "nomor_spj": "SPJ-2026-001",
+   "jenis": "hotel",
+   "nomor_bukti": "INV/GJ/2026/0847",
+   "file": "invoice_hotel.txt"
+  },
+  {
+   "nomor_spj": "SPJ-2026-001",
+   "jenis": "taksi",
+   "nomor_bukti": "TX-884721",
+   "file": "struk_taksi_1.txt"
+  },
+  {
+   "nomor_spj": "SPJ-2026-001",
+   "jenis": "makan",
+   "nomor_bukti": "WB-1129",
+   "file": "struk_makan_1.txt"
+  }
+ ]
+}

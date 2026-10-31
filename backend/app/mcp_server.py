@@ -15,9 +15,10 @@ from app import tools
 from app.db import buka
 from app.profil import Profil, muat_profil
 from app.rencana import Rencana
+from app.aturan_spj import Pemeriksaan, Referensi
 from app.spj import PengajuanSPJ
 
-NAMA_TOOL = {"cari_kontak", "cek_kalender", "cek_aturan", "profil_org", "ajukan_rencana", "ajukan_spj"}
+NAMA_TOOL = {"cari_kontak", "cek_kalender", "cek_aturan", "profil_org", "ajukan_rencana", "ajukan_spj", "periksa_aturan"}
 
 
 def parse_tokens(s: str) -> dict[str, tuple[str, str]]:
@@ -45,6 +46,7 @@ def buat_server(
     default: tuple[str, str] | None = None,
     spj_dirs: dict[str, tuple[Path, Path]] | None = None,
     allowed_hosts: list[str] | None = None,
+    referensi: dict[str, Referensi] | None = None,
 ) -> FastMCP:
     # FastMCP hanya menerima Host localhost secara default; domain publik (mis. Railway) harus didaftarkan.
     keamanan = TransportSecuritySettings(
@@ -62,7 +64,8 @@ def buat_server(
             raise PermissionError("Token MCP tidak valid")
         profil_id, user_id = ident
         draf = spj_dirs.get(profil_id, (None, None))[0]
-        return tools.Konteks(profil=profil[profil_id], conn=conns[profil_id], user_id=user_id, jam=jam, spj_draf=draf)
+        return tools.Konteks(profil=profil[profil_id], conn=conns[profil_id], user_id=user_id, jam=jam, spj_draf=draf,
+                             referensi=(referensi or {}).get(profil_id))
 
     @mcp.tool()
     def cari_kontak(kata: str, ctx: Context) -> list[dict]:
@@ -96,6 +99,15 @@ def buat_server(
         mencairkan apa pun; pencairan hanya dilakukan backend setelah bendahara menekan Setujui. Jangan mengubah berkas
         draf setelah diajukan — perubahan membatalkan pengajuan dan harus diajukan ulang."""
         return tools.ajukan_spj(ktx(ctx), pengajuan)
+
+    @mcp.tool()
+    def periksa_aturan(pemeriksaan: Pemeriksaan, ctx: Context) -> dict:
+        """Hitung aturan SPJ R01-R11 secara deterministik dari data bukti yang sudah dibaca agen: malam hotel dan pagu,
+        masa SPT, kesesuaian nama, taksi, makan, uang harian, hari libur, struk ganda (termasuk lintas SPJ), perintah
+        tersisip, dan batas Rp10 juta. Pakai hasil tool ini apa adanya untuk total dan temuan; jangan menghitung ulang
+        sendiri. Bila nama pegawai kembar, tool menolak dan menyebut kandidatnya: tanyakan ke pengelola SPJ, lalu ulangi
+        dengan nip. Saat ajukan_spj, backend membandingkan pengajuan dengan hasil terakhir tool ini."""
+        return tools.periksa_aturan(ktx(ctx), pemeriksaan)
 
     return mcp
 

@@ -1,4 +1,4 @@
-# Checklist Pengumpulan — AmanCair (batas 1 Nov 2026)
+# Checklist Pengumpulan — AmanCair (batas 7 Nov 2026, diperpanjang dari 1 Nov)
 
 Form: https://forms.gle/y1aHBH4BsrytXDxdA
 
