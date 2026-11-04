@@ -204,3 +204,19 @@ def test_nama_orang_lain_tetap_ditahan_walau_marga_sama(conn, now):
                     "nama_di_bukti": "Andi Wijaya"}])
     assert h["items"][0]["status"] == "DITAHAN"
     assert ("R02", "KRITIS") in aturan(h)
+
+
+def test_pemilik_asli_struk_tidak_dituduh_ganda_saat_diperiksa_ulang(conn, now):
+    aturan_spj.isi_sidik_awal(conn, REF)  # TX-884721 tercatat lebih dulu di SPJ-2026-001
+    h011 = cek(conn, now, nomor_spj="SPJ-2026-011", pegawai="Lestari Dewi", provinsi="DKI Jakarta",
+               tanggal_berangkat="2026-10-05", tanggal_kembali="2026-10-07",
+               items=[{"id": "B01", "file": "struk_bandara_hotel.txt", "jenis": "taksi", "tanggal": "2026-10-05",
+                       "nominal": 210_000, "nomor_bukti": "TX-884721"}])
+    assert ("R06", "KRITIS") in aturan(h011)
+    assert aturan(kasus_001(conn, now)) == [("R11", "RENDAH")]
+    assert ("R06", "KRITIS") in aturan(cek(conn, now, nomor_spj="SPJ-2026-011", pegawai="Lestari Dewi",
+                                           provinsi="DKI Jakarta", tanggal_berangkat="2026-10-05",
+                                           tanggal_kembali="2026-10-07",
+                                           items=[{"id": "B01", "file": "struk_bandara_hotel.txt", "jenis": "taksi",
+                                                   "tanggal": "2026-10-05", "nominal": 210_000,
+                                                   "nomor_bukti": "TX-884721"}]))

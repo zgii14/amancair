@@ -150,8 +150,13 @@ def periksa(conn: sqlite3.Connection, ref: Referensi, p: Pemeriksaan, pemeriksa:
             continue
         if kunci:
             terlihat[kunci] = it.file
-            lain = conn.execute("SELECT nomor_spj, file FROM sidik_bukti WHERE kunci=? AND nomor_spj<>?",
-                                (kunci, p.nomor_spj)).fetchone()
+            # Hanya SPJ yang lebih dulu tercatat memakai struk ini yang dihitung; pemilik asli tidak dituduh ganda
+            # saat diperiksa ulang.
+            milik_sendiri = conn.execute("SELECT MIN(rowid) FROM sidik_bukti WHERE kunci=? AND nomor_spj=?",
+                                         (kunci, p.nomor_spj)).fetchone()[0]
+            lain = conn.execute("SELECT nomor_spj, file FROM sidik_bukti WHERE kunci=? AND nomor_spj<>? AND rowid<?"
+                                " ORDER BY rowid LIMIT 1",
+                                (kunci, p.nomor_spj, milik_sendiri or 2**62)).fetchone()
             if lain:
                 tambah("KRITIS", "R06", f"{it.file} (nomor {it.nomor_bukti}) sudah pernah diajukan di {lain['nomor_spj']}",
                        it.file)
