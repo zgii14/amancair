@@ -1,0 +1,76 @@
+{
+  "kasus_id": "kasus-004",
+  "spt_terpilih": "SPT-2026-004",
+  "pegawai": {
+    "nip": "197502281996121006",
+    "nama": "Rudi Hartono",
+    "golongan": "IV/c"
+  },
+  "tujuan": "Jakarta",
+  "tanggal_spt": {
+    "berangkat": "2026-10-10",
+    "kembali": "2026-10-12",
+    "lama_hari": 3
+  },
+  "arsip_lama": {
+    "folder": "arsip/uji-lama-004/",
+    "isi": ["SPJ-2026-004 (draf lama)", "pembaca-tiket_kasus-004.json"],
+    "catatan": "Dipindahkan, tidak dihapus."
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt"], "id": ["B01"] },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.pdf"], "id": ["B02"], "catatan": "PDF, dibaca lewat workbuddy-pdf" },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt"], "id": ["B03"], "catatan": "kasus ini tidak memuat struk makan" }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "13:42:20", "selesai": "13:42:36", "durasi_detik": 16, "berkas": "kerja/pembaca-tiket_kasus-004.json" },
+    { "agen": "pembaca-struk", "mulai": "13:42:20", "selesai": "13:42:47", "durasi_detik": 27, "berkas": "kerja/pembaca-struk_kasus-004.json" },
+    { "agen": "pembaca-hotel", "mulai": "13:42:20", "selesai": "13:43:00", "durasi_detik": 40, "berkas": "kerja/pembaca-hotel_kasus-004.json" },
+    { "agen": "verifikator-sbm", "mulai": "13:43:01", "selesai": "13:43:58", "durasi_detik": 57, "berkas": "kerja/verifikator-sbm_kasus-004.json" },
+    { "agen": "auditor", "mulai": "13:43:59", "selesai": "13:45:37", "durasi_detik": 98, "berkas": "kerja/auditor_kasus-004.json" },
+    { "agen": "penyusun-spj", "mulai": "13:45:38", "selesai": "13:46:46", "durasi_detik": 68, "berkas": "keluar/draf/SPJ-2026-004/" }
+  ],
+  "total_durasi": { "mulai": "13:42:20", "selesai": "13:46:46", "durasi_detik": 266, "durasi": "4 menit 26 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 7570000,
+    "total_dibayar": 6930000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 3200000, "dibayar": 3200000, "status": "SESUAI", "alasan": "kelas Bisnis dibayar penuh; tidak ada aturan/pagu pesawat di R01-R11 maupun SBM" },
+      { "id": "B02", "jenis": "hotel", "diajukan": 2640000, "dibayar": 2000000, "status": "DIPOTONG", "alasan": "R03: 2 malam x min(1.320.000, pagu 1.000.000)" },
+      { "id": "B03", "jenis": "taksi", "diajukan": 230000, "dibayar": 230000, "status": "SESUAI" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 1500000, "dibayar": 1500000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "TINGGI", "aturan": "R03", "sumber": "invoice_hotel.pdf" }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 1,
+    "temuan_auditor": 0,
+    "temuan_final_auditor": 1,
+    "temuan_manual": 0,
+    "catatan": "Auditor tidak menambah temuan. Kelas kabin Bisnis, R07 akhir pekan, dan selisih rekonsiliasi invoice dicatat sebagai catatan (tanpa level), bukan temuan."
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "dipanggil": true,
+    "nomor": "SPJ-2026-004",
+    "versi": 1,
+    "ok": true,
+    "risiko": "tinggi",
+    "manifest_hash": "24aba2b1d033ac04fa17a661067ede1cebf09f392fd1578c8a8b3631c9cb3cb5",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "Invoice hotel berupa PDF; Pembaca mengekstrak lewat workbuddy-pdf dan memverifikasi dengan 3 mode (txt, md-plain, structure).",
+    "PDF tidak mencetak baris pajak/subtotal terpisah: tarif 1.200.000 x 2 malam = 2.400.000, tetapi TOTAL 2.640.000 (selisih 240.000). Auditor menolak menyimpulkan pajak tanpa bukti cetak dan mencatatnya sebagai rekonsiliasi, bukan salah baca.",
+    "R03 memotong 2 malam x (1.320.000 - 1.000.000) = 640.000. Atribusi pagu, bukan masa SPT.",
+    "Kelas Bisnis pada tiket tidak dapat dinilai: aturan/bisnis.json tidak memuat aturan kelas kabin, sbm.xlsx tidak memuat pagu pesawat, dan skema periksa_aturan tidak punya field kelas. Keputusan Koordinator: dibayar sesuai bukti, dicatat sebagai keterbatasan cakupan aturan.",
+    "10-11 Oktober 2026 jatuh pada Sabtu-Minggu (di dalam masa SPT). R07 meminta catatan 'perlu justifikasi' untuk biaya di akhir pekan di dalam SPT; tool tidak mengeluarkan catatan itu dan dampak uangnya nol, sehingga dicatat auditor sebagai catatan_auditor, bukan temuan.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

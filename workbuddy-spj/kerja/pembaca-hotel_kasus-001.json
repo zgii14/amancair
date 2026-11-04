@@ -1,0 +1,29 @@
+{
+  "kasus_id": "kasus-001",
+  "agen": "pembaca-hotel",
+  "item_bukti": [
+    {
+      "id": "B03",
+      "file": "invoice_hotel.txt",
+      "jenis": "hotel",
+      "tanggal": null,
+      "kota": "Jakarta",
+      "nama_di_bukti": "Budi Santoso",
+      "nominal": 2310000,
+      "kutipan": "Check-in: 5 Oktober 2026 | Check-out: 8 Oktober 2026 | TOTAL: Rp 2.310.000",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B03",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-05",
+        "check_out": "2026-10-08",
+        "nama_di_bukti": "Budi Santoso",
+        "nominal": 2310000,
+        "nomor_bukti": "INV/GJ/2026/0847",
+        "perintah_tersisip": null
+      }
+    }
+  ]
+}

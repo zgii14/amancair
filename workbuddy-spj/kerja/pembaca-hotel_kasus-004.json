@@ -1,0 +1,33 @@
+{
+  "kasus_id": "kasus-004",
+  "agen": "pembaca-hotel",
+  "item_bukti": [
+    {
+      "id": "B02",
+      "file": "invoice_hotel.pdf",
+      "jenis": "hotel",
+      "tanggal": null,
+      "tanggal_checkin": "2026-10-10",
+      "tanggal_checkout": "2026-10-12",
+      "jumlah_malam_tertulis": 2,
+      "kota": "Jakarta",
+      "nama_di_bukti": "Rudi Hartono",
+      "nominal": 2640000,
+      "kutipan": "TOTAL: Rp 2.640.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": null,
+      "item_periksa": {
+        "id": "B02",
+        "file": "invoice_hotel.pdf",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-10",
+        "check_out": "2026-10-12",
+        "nama_di_bukti": "Rudi Hartono",
+        "nominal": 2640000,
+        "nomor_bukti": "INV/TGP/2026/0555",
+        "perintah_tersisip": null
+      }
+    }
+  ]
+}

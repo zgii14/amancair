@@ -1,56 +1,44 @@
 {
-  "kasus_id": "kasus-001",
   "timeline": [
     {
       "tanggal": "2026-10-05",
-      "event": "SPT_mulai",
+      "event": "SPT-2026-001 mulai: perjalanan dinas Budi Santoso ke Jakarta (Rapat koordinasi SPBE nasional), lama 4 hari",
       "sumber": "SPT-2026-001.json"
     },
     {
       "tanggal": "2026-10-05",
-      "event": "tiket_berangkat",
+      "event": "Tiket berangkat Garuda Indonesia GA 620 UPG-CGK, 06.30 WITA - 08.00 WIB, kode booking ABC123, Rp 2.450.000",
       "sumber": "tiket_berangkat.pdf"
     },
     {
       "tanggal": "2026-10-05",
-      "event": "hotel_checkin",
-      "sumber": "invoice_hotel.txt"
-    },
-    {
-      "tanggal": "2026-10-05",
-      "event": "taksi_bandara_hotel",
+      "event": "Taksi Blue Bird TX-884721 Bandara Soekarno-Hatta - Hotel Grand Java, 32.4 km, Rp 210.000",
       "sumber": "struk_taksi_1.txt"
     },
     {
+      "tanggal": "2026-10-05",
+      "event": "Hotel check-in Grand Java Hotel Jakarta, Deluxe Single, tarif Rp 700.000/malam, invoice INV/GJ/2026/0847",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
       "tanggal": "2026-10-06",
-      "event": "makan",
+      "event": "Struk makan Warung Nasi Buah Batu WB-1129, subtotal Rp 75.000 + pajak Rp 7.500 = Rp 82.500",
       "sumber": "struk_makan_1.txt"
     },
     {
       "tanggal": "2026-10-08",
-      "event": "hotel_checkout",
+      "event": "Hotel check-out, lama menginap 3 malam, TOTAL invoice Rp 2.310.000 (termasuk pajak & service Rp 210.000)",
       "sumber": "invoice_hotel.txt"
     },
     {
       "tanggal": "2026-10-08",
-      "event": "tiket_kembali",
+      "event": "Tiket kembali Garuda Indonesia GA 621 CGK-UPG, 17.00 WIB - 20.30 WITA, kode booking ABC124, Rp 2.380.000",
       "sumber": "tiket_kembali.txt"
     },
     {
       "tanggal": "2026-10-08",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-001.json"
+      "event": "SPT-2026-001 selesai: tanggal kembali sesuai tiket kembali",
+      "sumber": "SPT-2026-001.json, tiket_kembali.txt"
     }
-  ],
-  "kontradiksi": [],
-  "temuan": [
-    {
-      "id_bukti": "B05",
-      "level": "RENDAH",
-      "tipe": "makan",
-      "aturan": "R11",
-      "deskripsi": "Struk makan ditolak karena biaya makan sudah termasuk dalam uang harian (R04), tidak dapat diajukan terpisah."
-    }
-  ],
-  "rekomendasi": "lolos"
+  ]
 }

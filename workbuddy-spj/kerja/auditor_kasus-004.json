@@ -1,0 +1,193 @@
+{
+  "kasus_id": "kasus-004",
+  "agen": "auditor",
+  "sumber_hasil": "kerja/verifikator-sbm_kasus-004.json",
+  "waktu_hasil_tool": "2026-11-04T13:43:51+07:00",
+  "timeline": [
+    {
+      "tanggal": "2026-10-10",
+      "event": "Masa SPT mulai (Sabtu). Pegawai berangkat UPG - CGK 06.00 WITA - 07.30 WIB, kode booking GAR0099, nomor tiket 4466778899001, Kelas Bisnis, harga tiket Rp3.200.000. Tiket berangkat jatuh tepat pada tanggal_berangkat SPT (bukan H-1).",
+      "sumber": "tiket_berangkat.txt, SPT-2026-004.json"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "Blue Bird Taxi Bandara Soekarno-Hatta - Hotel The Grand Premier, 28.5 km, nomor struk TX-771100; tarif Rp195.000 + tambahan tol Rp35.000 = TOTAL Rp230.000 (aritmetika internal dokumen konsisten).",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "Check-in The Grand Premier Jakarta atas nama Rudi Hartono, invoice INV/TGP/2026/0555.",
+      "sumber": "invoice_hotel.pdf"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "Sabtu 10 Okt dan Minggu 11 Okt 2026 adalah akhir pekan yang jatuh DI DALAM masa SPT (10-12 Okt).",
+      "sumber": "SPT-2026-004.json"
+    },
+    {
+      "tanggal": "2026-10-11",
+      "event": "Malam ke-2 menginap (11 Okt -> check-out 12 Okt), masih di dalam masa SPT.",
+      "sumber": "invoice_hotel.pdf, SPT-2026-004.json"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "Check-out hotel, bertepatan dengan tanggal_kembali SPT (2026-10-12). Masa SPT berakhir; tidak ada tiket pulang CGK-UPG maupun boarding pass di folder kasus.",
+      "sumber": "invoice_hotel.pdf, SPT-2026-004.json, isi folder kasus-004"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "Rentang menginap 10 s.d. 12 Okt = 2 malam. Dokumen mencetak \"Tarif per Malam: Rp 1.200.000\" dan \"TOTAL: Rp 2.640.000\"; tidak ada baris subtotal/pajak yang tercetak. pesan_pegawai.txt menyatakan hotel dekat lokasi rapat dan mahal karena peak season.",
+      "sumber": "invoice_hotel.pdf, pesan_pegawai.txt"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan_tool": [
+    {
+      "level": "TINGGI",
+      "aturan": "R03",
+      "deskripsi": "Hotel Rp1.320.000/malam (termasuk pajak) melewati pagu Rp1.000.000; kelebihan tidak dibayar",
+      "sumber": "invoice_hotel.pdf"
+    }
+  ],
+  "catatan_auditor": [
+    {
+      "tipe": "kelengkapan_item",
+      "item": "B01, B02, B03",
+      "deskripsi": "Folder kasus-004 berisi tepat 4 berkas: 3 berkas bukti biaya (tiket_berangkat.txt, invoice_hotel.pdf, struk_taksi_1.txt) + 1 pesan_pegawai.txt. Tool memproses 3 item (B01 tiket, B02 hotel, B03 taksi) = 3 berkas bukti biaya. Tidak ada item terlewat dan tidak ada item tanpa berkas.",
+      "tindakan": "Tidak ada tindakan; jumlah item sesuai.",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "kelengkapan_bukti",
+      "item": "tiket kembali",
+      "deskripsi": "Tidak ada tiket pulang CGK-UPG maupun boarding pass di folder, padahal SPT menetapkan tanggal_kembali 2026-10-12. Tidak ada nilai yang diklaim untuk tiket pulang sehingga tidak ada kerugian; perjalanan pulang tidak dapat diverifikasi.",
+      "tindakan": "Bukan item terlewat dan tidak dibuat temuan; cukup konfirmasi bendahara apakah perjalanan pulang ditanggung sumber lain / tidak diajukan.",
+      "status": "perlu_konfirmasi_bendahara"
+    },
+    {
+      "tipe": "kelengkapan_bukti",
+      "item": "struk makan",
+      "deskripsi": "Tidak ada struk makan di folder kasus. Sesuai R11, biaya makan sudah termasuk uang harian (R04) sehingga ketiadaan struk makan bukan kekurangan bukti.",
+      "tindakan": "Tidak ada tindakan.",
+      "status": "bukan_temuan"
+    },
+    {
+      "tipe": "salah_baca",
+      "item": "B01, B02, B03",
+      "deskripsi": "Pembacaan tanggal, nominal, dan nama ketiga item cocok dengan kutipan dokumen (PDF invoice dibaca ulang mandiri dengan workbuddy-pdf): B01 tanggal 2026-10-10 = \"Tanggal: 10 Oktober 2026\", nominal 3.200.000 = \"Harga Tiket: Rp 3.200.000\"; B02 check_in 2026-10-10 / check_out 2026-10-12 = \"Check-in: 10 Oktober 2026\" / \"Check-out: 12 Oktober 2026\", nominal 2.640.000 = \"TOTAL: Rp 2.640.000\"; B03 tanggal 2026-10-10 = \"Tanggal: 10 Oktober 2026\", nominal 230.000 = \"TOTAL: Rp 230.000\" (bukan Tarif Rp195.000 - pembacaan TOTAL sudah benar). Tidak ditemukan salah baca tanggal/nominal/nama.",
+      "tindakan": "Tidak ada; tidak ada yang perlu dikembalikan ke pembaca.",
+      "status": "bersih"
+    },
+    {
+      "tipe": "nomor_bukti",
+      "item": "B01, B02, B03",
+      "deskripsi": "nomor_bukti terisi untuk semua bukti dan cocok dengan dokumen: B01 \"GAR0099\" (\"Kode Booking: GAR0099\"), B02 \"INV/TGP/2026/0555\" (\"No. Invoice: INV/TGP/2026/0555\"), B03 \"TX-771100\" (\"Nomor Struk: TX-771100\").",
+      "tindakan": "Tidak ada tindakan.",
+      "status": "lengkap"
+    },
+    {
+      "tipe": "pembacaan_nominal",
+      "item": "B02",
+      "deskripsi": "Nominal tool Rp2.640.000 sudah benar = baris \"TOTAL: Rp 2.640.000\" apa adanya dari PDF. PDF tidak mencetak baris subtotal maupun baris pajak/service, sehingga tidak ada baris pajak yang boleh dikarang dan pajak tidak boleh dianggap 'tertinggal' hanya karena tidak tercetak.",
+      "tindakan": "Tidak ada koreksi.",
+      "status": "benar"
+    },
+    {
+      "tipe": "rekonsiliasi_dokumen",
+      "item": "B02",
+      "deskripsi": "PDF mencetak \"Tarif per Malam: Rp 1.200.000\" untuk 2 malam, sedangkan \"TOTAL: Rp 2.640.000\". 2 x Rp1.200.000 = Rp2.400.000, jadi ada selisih Rp240.000 yang tidak dijelaskan oleh baris tercetak mana pun (dokumen tidak mencetak subtotal/pajak). Saya TIDAK menyebut selisih ini sebagai 'pajak 10%' karena baris tersebut tidak tercetak. Angka Rp1.320.000 pada temuan tool juga BUKAN angka yang tercetak di PDF, melainkan hasil definisi R03 (TOTAL / jumlah malam). Saya tidak menghitung ulang potongan.",
+      "tindakan": "Tanpa dampak pada nilai klaim (nominal klaim = TOTAL tercetak). Bendahara cukup mengetahui bahwa rincian per malam tidak tercetak sehingga pembanding R03 bersifat turunan aturan, bukan angka dokumen.",
+      "status": "perlu_diketahui_bendahara"
+    },
+    {
+      "tipe": "atribusi_potongan",
+      "item": "B02",
+      "deskripsi": "Potongan B02 (Rp2.640.000 -> Rp2.000.000, selisih Rp640.000) berasal dari PAGU (R03), bukan masa SPT (R01). check_in 2026-10-10 dan check_out 2026-10-12 tepat di dalam masa SPT 2026-10-10 s.d. 2026-10-12, dan 2 malam = lama_hari 3 - 1, sehingga R01 tidak terpicu. Nilai per malam (Rp1.320.000 = TOTAL / 2 malam) melewati pagu hotel Rp1.000.000. Kesimpulan R03 tetap sama walaupun dipakai angka tercetak \"Tarif per Malam: Rp 1.200.000\", karena keduanya di atas pagu Rp1.000.000.",
+      "tindakan": "Tidak ada koreksi atribusi; label R03 pada temuan tool sudah tepat.",
+      "status": "benar"
+    },
+    {
+      "tipe": "kesesuaian_nama",
+      "item": "B01, B02, B03",
+      "deskripsi": "B01 \"Nama Penumpang: Rudi Hartono\" dan B02 \"Nama Tamu: Rudi Hartono\" sama dengan nama pegawai di SPT (NIP 197502281996121006, golongan IV/c). B03 nama_di_bukti kosong karena struk Blue Bird tidak memuat kolom nama penumpang, jadi bukan nama yang berbeda; R02 hanya mengikat tiket/boarding pass/invoice hotel.",
+      "tindakan": "Tidak ada tindakan; bukan pelanggaran R02.",
+      "status": "bukan_temuan"
+    },
+    {
+      "tipe": "konsistensi_nama_hotel",
+      "item": "B02 vs B03",
+      "deskripsi": "Struk taksi menulis \"Rute: Bandara Soekarno-Hatta - Hotel The Grand Premier\", invoice menulis \"THE GRAND PREMIER JAKARTA\". Ini entitas yang sama, invoice hanya menambahkan kota; tidak ada dua hotel berbeda dan tidak ada kontradiksi. Kota juga konsisten (Jakarta) pada ketiga bukti.",
+      "tindakan": "Tidak ada tindakan; tidak dibuat temuan.",
+      "status": "konsisten"
+    },
+    {
+      "tipe": "kelas_kabin",
+      "item": "B01",
+      "deskripsi": "Tiket mencantumkan \"Kelas: Bisnis\" dengan harga Rp3.200.000 dan dibayar penuh oleh tool. Sesuai keputusan koordinator: aturan/bisnis.json tidak memuat aturan kelas kabin, SBM tidak memuat pagu pesawat, dan skema periksa_aturan tidak punya field kelas. Karena itu kelas Bisnis hanya dicatat sebagai keterangan, tanpa potongan, dan tidak dijadikan temuan. Saya tidak mengarang pagu pesawat.",
+      "tindakan": "Catat sebagai keterbatasan cakupan aturan (celah aturan, bukan kesalahan agen); perlu kebijakan pagu kelas kabin bila ingin dinilai.",
+      "status": "keterbatasan_aturan"
+    },
+    {
+      "tipe": "pesan_pegawai",
+      "item": "pesan_pegawai.txt",
+      "deskripsi": "Isi pesan \"Hotelnya dekat lokasi rapat, agak mahal soalnya peak season. Semoga bisa di-cover.\" COCOK dengan bukti (hotel memang di atas pagu), sehingga tidak memenuhi kriteria RENDAH \"pesan pegawai tidak cocok bukti\". Pesan juga bukan perintah tersisip (R09) karena tidak berisi instruksi menyetujui/mengubah nilai; kata \"Semoga bisa di-cover\" adalah harapan, bukan perintah. Akibatnya sudah ditangani temuan R03 tool (kelebihan Rp640.000 tidak dibayar).",
+      "tindakan": "Sengaja TIDAK dijadikan temuan berlabel AUDITOR agar tidak menduplikasi temuan R03 tool; dicatat sebagai catatan_auditor saja.",
+      "status": "dijadikan_catatan"
+    },
+    {
+      "tipe": "R07_hari_libur",
+      "item": "2026-10-10 s.d. 2026-10-12",
+      "deskripsi": "Tidak ada tanggal kasus ini di data/libur/libur.json (hanya 2026-06-01, 2026-08-17, 2026-12-25). Namun 2026-10-10 adalah Sabtu dan 2026-10-11 Minggu, yaitu akhir pekan yang berada DI DALAM masa SPT. Menurut R07, biaya di akhir pekan di dalam SPT tidak ditolak tetapi diberi catatan 'perlu justifikasi'; tool mencatat 'tidak ada temuan hari libur' (benar bahwa tidak ada penolakan) namun catatan justifikasi itu belum terekam.",
+      "tindakan": "Tidak dibuat temuan (R07 mensyaratkan catatan, bukan penolakan, dan tidak ada dampak nilai). Bendahara perlu mencatat 'perlu justifikasi' untuk menginap yang mencakup Sabtu-Minggu; pesan pegawai (peak season) dapat dipakai sebagai bahan justifikasi.",
+      "status": "perlu_justifikasi"
+    },
+    {
+      "tipe": "R06_struk_ganda",
+      "item": "semua bukti",
+      "deskripsi": "Tidak ada struk ganda di dalam kasus: hanya 1 tiket (GAR0099 / nomor tiket 4466778899001), 1 invoice hotel (INV/TGP/2026/0555), dan 1 struk taksi (TX-771100). Tidak ada nomor/tanggal/nominal yang berulang.",
+      "tindakan": "Tidak ada tindakan. Sinyal struk ganda lintas kasus tidak diperiksa karena auditor dilarang membaca kasus lain; bila koordinator menemukannya, itu INDIKASI untuk diputuskan bendahara.",
+      "status": "tidak_ada"
+    },
+    {
+      "tipe": "R08_nominal_tidak_terbaca",
+      "item": "B01, B02, B03",
+      "deskripsi": "PDF invoice berhasil diekstrak sebagai teks penuh (1 halaman) dan seluruh baris nominal terbaca; dua berkas lain berupa teks jelas. Ketiga pembaca menandai yakin \"tinggi\". Tidak ada nominal buram atau perlu tebak.",
+      "tindakan": "Tidak ada tindakan; tidak dibuat temuan.",
+      "status": "tidak_terpicu"
+    },
+    {
+      "tipe": "R09_perintah_tersisip",
+      "item": "semua bukti",
+      "deskripsi": "Tidak ada teks perintah di dalam bukti maupun pesan pegawai. perintah_tersisip kosong pada ketiga item.",
+      "tindakan": "Tidak ada tindakan; tidak dibuat temuan.",
+      "status": "tidak_terpicu"
+    },
+    {
+      "tipe": "R10_konfirmasi_tambahan",
+      "item": "seluruh kasus",
+      "deskripsi": "Total diajukan Rp7.570.000 masih di bawah Rp10.000.000, dan tidak ada item berstatus DITOLAK / nilai_dibayar 0 (B02 hanya DIPOTONG, dibayar Rp2.000.000). Kedua pemicu R10 tidak terpenuhi.",
+      "tindakan": "Tidak dibuat temuan. Bendahara tetap perlu tahu adanya potongan Rp640.000 atas kelebihan pagu hotel (sudah tercakup temuan R03 tool).",
+      "status": "tidak_terpicu"
+    },
+    {
+      "tipe": "R01_masa_spt",
+      "item": "B01, B02, B03",
+      "deskripsi": "Seluruh tanggal bukti berada di dalam masa SPT 2026-10-10 s.d. 2026-10-12: tiket 2026-10-10 (tepat tanggal berangkat), check_in 2026-10-10, check_out 2026-10-12 (tepat tanggal kembali), struk taksi 2026-10-10. Tidak ada bukti bertanggal di luar masa SPT.",
+      "tindakan": "Tidak ada tindakan; R01 tidak terpicu.",
+      "status": "sesuai"
+    }
+  ],
+  "temuan_final": [
+    {
+      "level": "TINGGI",
+      "aturan": "R03",
+      "deskripsi": "Hotel Rp1.320.000/malam (termasuk pajak) melewati pagu Rp1.000.000; kelebihan tidak dibayar",
+      "sumber": "invoice_hotel.pdf"
+    }
+  ],
+  "loop": {
+    "iterasi": 1,
+    "maks": 3
+  },
+  "rekomendasi": "lolos"
+}

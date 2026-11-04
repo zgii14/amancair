@@ -1,10 +1,60 @@
 {
+  "kasus_id": "kasus-002",
   "agen": "penyusun-spj",
-  "kasus": "kasus-002",
-  "spj_no": "SPJ-2026-002",
-  "waktu": "2026-10-23T13:49:04.220226+08:00",
+  "nomor_spj": "SPJ-2026-002",
+  "versi_pengajuan": 2,
   "total_diajukan": 4581000,
   "total_dibayar": 4364000,
-  "selisih": 217000,
-  "rekap_hash": "c251aeede882b81d14a978271fca296afa3e77d110404e47d64f23b456e985f2"
+  "berkas_draf": [
+    "draf_spj.docx",
+    "layar_konfirmasi.html",
+    "rekap.xlsx",
+    "timeline.json"
+  ],
+  "ringkasan_skrip": {
+    "nomor": "SPJ-2026-002",
+    "pegawai": "Dedi Kurniawan",
+    "tujuan": "Jakarta",
+    "tanggal_spt": "2026-10-12 s.d. 2026-10-14",
+    "total_diajukan": 4581000,
+    "total_dibayar": 4364000,
+    "temuan": [
+      {
+        "level": "TINGGI",
+        "aturan": "AUDITOR",
+        "deskripsi": "Wajib konfirmasi tambahan bendahara (R10): ada item yang tidak dibayar — struk_taksi_2.txt ditandai ganda (Rp170.000) dan struk_makan_1.txt termasuk uang harian (Rp47.000). Tool periksa_aturan tidak mengeluarkan temuan R10 pada kasus ini.",
+        "sumber": "aturan/bisnis.json: \"Total yang diajukan > Rp10.000.000 atau ada item ditolak → wajib konfirmasi tambahan bendahara.\""
+      },
+      {
+        "level": "SEDANG",
+        "aturan": "R06",
+        "deskripsi": "struk_taksi_2.txt sama dengan struk_taksi_1.txt (nomor TX-990021); dihitung sekali",
+        "sumber": "struk_taksi_1.txt, struk_taksi_2.txt"
+      },
+      {
+        "level": "RENDAH",
+        "aturan": "R11",
+        "deskripsi": "Struk makan struk_makan_1.txt Rp47.000 tidak dibayar; sudah termasuk uang harian",
+        "sumber": "struk_makan_1.txt"
+      }
+    ],
+    "perintah_tersisip": [],
+    "berkas": [
+      "draf_spj.docx",
+      "layar_konfirmasi.html",
+      "rekap.xlsx",
+      "timeline.json"
+    ]
+  },
+  "balasan_ajukan_spj": {
+    "ok": true,
+    "nomor": "SPJ-2026-002",
+    "versi": 2,
+    "risiko": "tinggi",
+    "manifest_hash": "0549e74c26dfab0771213f074be68a35cb4cb743c1be98cb6b8dc1e2ce367754",
+    "jumlah_berkas": 4,
+    "catatan_backend": [],
+    "pesan": "Diajukan ke Meja Pimpinan. BELUM dicairkan; menunggu keputusan bendahara."
+  },
+  "catatan": "Dokumen disusun tools/susun_dokumen.py kasus-002 (stdout dipakai apa adanya, tanpa pembulatan/penyaringan). Berkas draf di keluar/draf/SPJ-2026-002/: draf_spj.docx, layar_konfirmasi.html, rekap.xlsx, timeline.json — tidak diubah setelah pengajuan. Urutan layar konfirmasi TINGGI (AUDITOR/R10) -> SEDANG (R06) -> RENDAH (R11); tidak ada temuan KRITIS pada kasus ini. Tidak ada penulisan ke keluar/siap-cair dan tidak ada penandaan siap cair."
 }

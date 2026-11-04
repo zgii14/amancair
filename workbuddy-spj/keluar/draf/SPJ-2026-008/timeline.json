@@ -2,33 +2,33 @@
   "timeline": [
     {
       "tanggal": "2026-10-06",
-      "event": "SPT_mulai",
-      "sumber": "SPT-2026-008.json"
+      "event": "Masa SPT mulai (Selasa). Tiket Super Air Jet kode booking SAJ2233 a.n. Bayu Wijaya, nomor tiket 9900112233445, rute UPG - CGK, penerbangan IU 550, 11.00 WITA - 12.30 WIB, harga tiket Rp1.450.000. Tiket berangkat tepat pada tanggal_berangkat SPT (bukan H-1).",
+      "sumber": "tiket_berangkat.txt, SPT-2026-008.json"
     },
     {
       "tanggal": "2026-10-06",
-      "event": "tiket_berangkat",
-      "sumber": "tiket_berangkat.txt"
+      "event": "Boarding pass Super Air Jet penerbangan IU 550, rute UPG - CGK, atas nama \"Andi Wijaya\" (bukan Bayu Wijaya), waktu boarding 10.20 WITA, Gate 4, Seat 12A. Dokumen tidak memuat baris harga.",
+      "sumber": "boarding_pass.txt"
     },
     {
       "tanggal": "2026-10-06",
-      "event": "hotel_checkin",
-      "sumber": "invoice_hotel.txt"
-    },
-    {
-      "tanggal": "2026-10-06",
-      "event": "taksi_bandara_hotel",
+      "event": "Taksi Grab Bandara Soekarno-Hatta - Hotel Cempaka, nomor pesanan GRB-556677, Rp155.000, metode QRIS.",
       "sumber": "struk_taksi_1.txt"
     },
     {
-      "tanggal": "2026-10-08",
-      "event": "hotel_checkout",
+      "tanggal": "2026-10-06",
+      "event": "Check-in Hotel Cempaka Jakarta atas nama Bayu Wijaya, invoice INV/CJ/2026/0707.",
       "sumber": "invoice_hotel.txt"
     },
     {
       "tanggal": "2026-10-08",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-008.json"
+      "event": "Check-out hotel (bertepatan dengan tanggal_kembali SPT) dan tanggal penerbitan invoice, status LUNAS. Rentang 6-8 Okt = 2 malam; tarif Rp520.000/malam + pajak & service Rp104.000 = TOTAL Rp1.144.000 (aritmetika internal dokumen konsisten).",
+      "sumber": "invoice_hotel.txt, SPT-2026-008.json"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "Masa SPT berakhir. Tidak ada tiket pulang CGK-UPG maupun boarding pass pulang di folder. pesan_pegawai.txt menyatakan boarding pass yang dipakai adalah tiket teman yang batal (\"Boarding pass-nya pakai tiket teman saya yang batal, tapi saya yang naik. Semoga gak masalah ya bu.\").",
+      "sumber": "SPT-2026-008.json, pesan_pegawai.txt, isi folder kasus-008"
     }
   ]
 }

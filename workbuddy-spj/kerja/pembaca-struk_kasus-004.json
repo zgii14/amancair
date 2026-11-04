@@ -1,0 +1,38 @@
+{
+  "kasus_id": "kasus-004",
+  "agen": "pembaca-struk",
+  "item_bukti": [
+    {
+      "id": "B03",
+      "file": "struk_taksi_1.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-10",
+      "kota": "Jakarta",
+      "nama_di_bukti": "",
+      "nominal": 230000,
+      "kutipan": "Tanggal: 10 Oktober 2026 | Nomor Struk: TX-771100 | Rute: Bandara Soekarno-Hatta - Hotel The Grand Premier | Jarak: 28.5 km | Tarif: Rp 195.000 | Tambahan Tol: Rp 35.000 | TOTAL: Rp 230.000",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B03",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-10",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 230000,
+        "nomor_bukti": "TX-771100",
+        "perintah_tersisip": null
+      }
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-10",
+      "nomor_transaksi": "TX-771100",
+      "nominal": 230000,
+      "merchant": "BLUE BIRD TAXI",
+      "rute": "Bandara Soekarno-Hatta - Hotel The Grand Premier"
+    }
+  ]
+}

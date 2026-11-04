@@ -1,79 +1,137 @@
 {
-  "hasil_verifikasi": [
-    {
-      "id": "B01",
-      "status": "sesuai",
-      "dibayar": 1850000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "tiket_berangkat.txt: Harga Tiket: Rp 1.850.000",
-      "rumus_hitung": "Tiket sesuai bukti riil = 1850000",
-      "level_risiko": null
-    },
-    {
-      "id": "B02",
-      "status": "sesuai",
-      "dibayar": 1144000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "invoice_hotel.txt: TOTAL: Rp 1.144.000",
-      "rumus_hitung": "2 malam x 572,000 = 1,144,000; dalam pagu 800,000",
-      "level_risiko": null
-    },
-    {
-      "id": "B03",
-      "status": "ditolak",
-      "dibayar": 0,
-      "aturan": "R11",
-      "alasan": "Biaya makan sudah termasuk uang harian (R04)",
-      "sumber": "struk_makan_1.txt: TOTAL: Rp 47.000",
-      "rumus_hitung": "nilai_dibayar = 0 (R11)",
-      "level_risiko": "RENDAH"
-    },
-    {
-      "id": "B04",
-      "status": "sesuai",
-      "dibayar": 170000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "struk_taksi_1.txt: TOTAL: Rp 170.000",
-      "rumus_hitung": "Taksi dalam pagu = 170,000",
-      "level_risiko": null
-    },
-    {
-      "id": "B05",
-      "status": "ditolak",
-      "dibayar": 0,
-      "aturan": "R06",
-      "alasan": "Struk ganda — hanya satu yang dihitung",
-      "sumber": "struk_taksi_2.txt: TOTAL: Rp 170.000",
-      "rumus_hitung": "nilai_dibayar = 0 (R06 — ganda)",
-      "level_risiko": "SEDANG"
-    },
-    {
-      "id": "UH",
-      "status": "sesuai",
-      "dibayar": 1200000,
-      "aturan": "R04",
-      "alasan": "Uang harian 3 hari x 400,000 = 1,200,000",
-      "sumber": "SPT",
-      "rumus_hitung": "3 hari x 400,000 = 1,200,000 (R04)",
-      "level_risiko": null
+  "kasus_id": "kasus-002",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-11-04T13:24:31+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-002",
+      "pegawai": "Dedi Kurniawan",
+      "nip": null,
+      "provinsi": "DKI Jakarta",
+      "tanggal_berangkat": "2026-10-12",
+      "tanggal_kembali": "2026-10-14",
+      "jumlah_item": 5
     }
-  ],
-  "uang_harian": {
-    "hari": 3,
-    "tarif": 400000,
-    "total": 1200000,
-    "rumus": "3 hari x 400,000 = 1,200,000 (R04)"
   },
-  "temuan": [
-    {
-      "id": "B05",
-      "level": "SEDANG",
-      "tipe": "struk_ganda",
-      "deskripsi": "Struk struk_taksi_2.txt identik dalam kasus ini (nomor TX-990021) — hanya satu yang dihitung",
-      "aturan": "R06"
-    }
-  ]
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-002",
+    "pegawai": {
+      "nama": "Dedi Kurniawan",
+      "nip": "198712042009041004",
+      "golongan": "III/d"
+    },
+    "sbm": {
+      "provinsi": "DKI Jakarta",
+      "golongan": "III",
+      "pagu_hotel": 800000,
+      "uang_harian": 400000,
+      "pagu_taksi": 250000
+    },
+    "uang_harian": {
+      "hari": 3,
+      "tarif": 400000,
+      "total": 1200000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-12",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Dedi Kurniawan",
+        "nominal": 1850000,
+        "nomor_bukti": "LION4455",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1850000,
+        "nilai_dibayar": 1850000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-12",
+        "check_out": "2026-10-14",
+        "nama_di_bukti": "Dedi Kurniawan",
+        "nominal": 1144000,
+        "nomor_bukti": "INV/MJ/2026/0901",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1144000,
+        "nilai_dibayar": 1144000,
+        "status": "SESUAI",
+        "rumus": "2 dari 2 malam x min(Rp572.000, pagu Rp800.000)"
+      },
+      {
+        "id": "B03",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-12",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 170000,
+        "nomor_bukti": "TX-990021",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 170000,
+        "nilai_dibayar": 170000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B04",
+        "file": "struk_taksi_2.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-12",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 170000,
+        "nomor_bukti": "TX-990021",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 170000,
+        "nilai_dibayar": 0,
+        "status": "GANDA",
+        "rumus": "Struk ganda, tidak dihitung lagi (R06)"
+      },
+      {
+        "id": "B05",
+        "file": "struk_makan_1.txt",
+        "jenis": "makan",
+        "tanggal": "2026-10-13",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 47000,
+        "nomor_bukti": "KKG-778",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 47000,
+        "nilai_dibayar": 0,
+        "status": "TERMASUK_UANG_HARIAN",
+        "rumus": "Makan sudah termasuk uang harian (R11)"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "SEDANG",
+        "aturan": "R06",
+        "deskripsi": "struk_taksi_2.txt sama dengan struk_taksi_1.txt (nomor TX-990021); dihitung sekali",
+        "sumber": "struk_taksi_1.txt, struk_taksi_2.txt"
+      },
+      {
+        "level": "RENDAH",
+        "aturan": "R11",
+        "deskripsi": "Struk makan struk_makan_1.txt Rp47.000 tidak dibayar; sudah termasuk uang harian",
+        "sumber": "struk_makan_1.txt"
+      }
+    ],
+    "total_diajukan": 4581000,
+    "total_dibayar": 4364000
+  },
+  "penjelasan": "Respons mcp__amancair__periksa_aturan disimpan apa adanya (tanpa pangkas, pembulatan, atau pengurutan ulang). Kelima item dari tiga Pembaca dikirim utuh: B01 tiket, B02 hotel, B03/B04 taksi (dua berkas berbeda dengan nomor struk sama TX-990021, dikirim sebagai dua item terpisah), B05 makan. SBM terpakai: DKI Jakarta, Golongan III -> pagu_hotel Rp800.000/malam, uang_harian Rp400.000/hari, pagu_taksi Rp250.000/trip. Uang harian 3 hari x Rp400.000 = Rp1.200.000 (R04). R03 hotel: Rp1.144.000 / 2 malam = Rp572.000/malam <= pagu Rp800.000, tidak ada potongan. R05 taksi: Rp170.000 <= pagu Rp250.000. R06: tool menandai B04 GANDA (nomor TX-990021 sama dengan B03), dibayar Rp0, temuan level SEDANG. R11: B05 makan Rp47.000 termasuk uang harian, dibayar Rp0, temuan level RENDAH. R01: seluruh tanggal bukti (2026-10-12 s.d. 2026-10-13) berada di dalam masa SPT (2026-10-12 s.d. 2026-10-14). R07: tidak ada temuan hari libur. Total diajukan Rp4.581.000, total dibayar Rp4.364.000 (selisih Rp217.000 = Rp170.000 struk ganda + Rp47.000 makan). Angka total tool sudah mencakup uang harian Rp1.200.000: jumlah nilai item Rp3.381.000 + Rp1.200.000 = Rp4.581.000 diajukan; Rp3.164.000 + Rp1.200.000 = Rp4.364.000 dibayar. Tidak ada penulisan ke keluar/siap-cair dan tidak ada penandaan siap cair."
 }

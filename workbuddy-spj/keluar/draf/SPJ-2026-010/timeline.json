@@ -1,48 +1,24 @@
 {
-  "kasus_id": "kasus-010",
   "timeline": [
     {
       "tanggal": "2026-10-05",
-      "event": "SPT_mulai",
-      "sumber": "SPT-2026-010.json"
-    },
-    {
-      "tanggal": "2026-10-05",
-      "event": "tiket_berangkat",
-      "sumber": "tiket_berangkat.txt"
-    },
-    {
-      "tanggal": "2026-10-05",
-      "event": "hotel_checkin",
-      "sumber": "invoice_hotel.txt"
-    },
-    {
-      "tanggal": "2026-10-05",
-      "event": "taksi",
-      "sumber": "struk_taksi_1.txt"
+      "event": "SPT mulai; penerbangan UPG-DJJ (JT 797); taksi Bandara Sentani ke Hotel Swissbel; check-in hotel",
+      "sumber": "SPT-2026-010.json, tiket_berangkat.txt, struk_taksi_1.txt, invoice_hotel.txt"
     },
     {
       "tanggal": "2026-10-07",
-      "event": "taksi",
+      "event": "Taksi dari Hotel Swissbel ke lokasi survey perbatasan",
       "sumber": "struk_taksi_2.txt"
     },
     {
       "tanggal": "2026-10-09",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-010.json"
-    },
-    {
-      "tanggal": "2026-10-09",
-      "event": "tiket_kembali",
-      "sumber": "tiket_kembali.txt"
-    },
-    {
-      "tanggal": "2026-10-09",
-      "event": "hotel_checkout",
+      "event": "Check-out hotel setelah 4 malam",
       "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-09",
+      "event": "Penerbangan DJJ-UPG (JT 798); SPT berakhir",
+      "sumber": "tiket_kembali.txt, SPT-2026-010.json"
     }
-  ],
-  "kontradiksi": [],
-  "temuan": [],
-  "rekomendasi": "lolos"
+  ]
 }

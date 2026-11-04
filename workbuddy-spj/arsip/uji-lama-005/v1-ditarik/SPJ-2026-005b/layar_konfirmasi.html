@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layar Konfirmasi SPJ - SPJ-2026-005b</title>
+<style>
+  :root { --ink:#1a1a2e; --muted:#5b6577; --line:#dde3ec; --crit:#991b1b; --low:#92400e; }
+  * { box-sizing:border-box; }
+  body { font-family:'Segoe UI',Arial,sans-serif; margin:0; padding:32px 16px; background:#eef1f6; color:var(--ink); }
+  .container { max-width:960px; margin:0 auto; background:#fff; padding:36px 40px; border-radius:10px;
+                box-shadow:0 2px 14px rgba(20,30,60,.10); }
+  .top { display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+          border-bottom:3px solid var(--ink); padding-bottom:16px; }
+  h1 { font-size:21px; margin:0 0 4px; }
+  .nomor { font-family:Consolas,monospace; font-size:13px; color:var(--muted); letter-spacing:.4px; }
+  .tag { font-size:11px; font-weight:700; letter-spacing:.6px; text-transform:uppercase;
+          background:#fef3c7; color:#92400e; border:1px solid #fcd34d; padding:6px 10px; border-radius:5px; white-space:nowrap; }
+  .identitas { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0 6px; }
+  .field { background:#f7f9fc; border:1px solid var(--line); border-radius:6px; padding:10px 12px; }
+  .field .k { font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); }
+  .field .v { font-size:14px; font-weight:600; margin-top:3px; }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:.7px; color:var(--muted);
+        margin:30px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top; }
+  th { background:#eef2f7; font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:#3d4757; }
+  td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr.total td { font-weight:700; background:#f1f5fb; }
+  td.ok { color:#166534; }
+  td.cut { color:#9a3412; }
+  .totals { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px; }
+  .money { border-radius:8px; padding:14px 16px; border:1px solid var(--line); background:#f7f9fc; }
+  .money .k { font-size:11px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); }
+  .money .v { font-size:22px; font-weight:700; margin-top:4px; font-variant-numeric:tabular-nums; }
+  .money.bayar { background:#eef7f0; border-color:#bfe0c6; }
+  .money.bayar .v { color:#166534; }
+  ul.temuan { list-style:none; margin:0; padding:0; }
+  ul.temuan li { border:1px solid var(--line); border-left-width:5px; border-radius:6px;
+                  padding:12px 14px; margin-bottom:10px; font-size:13px; background:#fff; }
+  li.t-kritis { border-left-color:var(--crit); background:#fef2f2; }
+  li.t-tinggi { border-left-color:#c2410c; background:#fff7ed; }
+  li.t-sedang { border-left-color:#a16207; background:#fefce8; }
+  li.t-rendah { border-left-color:var(--low); background:#fffbeb; }
+  .badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.6px;
+            padding:2px 7px; border-radius:3px; color:#fff; vertical-align:1px; }
+  .b-kritis { background:var(--crit); } .b-tinggi { background:#c2410c; }
+  .b-sedang { background:#a16207; } .b-rendah { background:#92400e; }
+  .src { margin-top:6px; font-size:11px; color:var(--muted); font-family:Consolas,monospace; }
+  .note { margin-top:26px; border:1px solid #c7d2fe; background:#eef2ff; border-radius:8px; padding:14px 16px; font-size:13px; }
+  .note strong { display:block; margin-bottom:5px; }
+  .foot { margin-top:22px; font-size:11px; color:var(--muted); border-top:1px solid var(--line); padding-top:12px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top">
+    <div>
+      <h1>Layar Konfirmasi SPJ</h1>
+      <div class="nomor">SPJ-2026-005b &middot; Diajukan ke Meja Pimpinan</div>
+    </div>
+    <div class="tag">Menunggu keputusan bendahara</div>
+  </div>
+
+  <div class="identitas">
+    <div class="field"><div class="k">Pegawai</div><div class="v">Budi Prasetyo</div></div>
+    <div class="field"><div class="k">NIP</div><div class="v">197803101999031002</div></div>
+    <div class="field"><div class="k">Golongan</div><div class="v">IV/a</div></div>
+    <div class="field"><div class="k">Tujuan</div><div class="v">Jakarta</div></div>
+  </div>
+  <div class="identitas" style="grid-template-columns:2fr 1fr 1fr;">
+    <div class="field"><div class="k">Maksud</div><div class="v">Rapat teknis infrastruktur data center nasional</div></div>
+    <div class="field"><div class="k">Tanggal SPT</div><div class="v">16&ndash;18 Oktober 2026</div></div>
+    <div class="field"><div class="k">Lama</div><div class="v">3 hari</div></div>
+  </div>
+
+  <div class="totals">
+    <div class="money"><div class="k">Total diajukan</div><div class="v">Rp 5.125.000</div></div>
+    <div class="money bayar"><div class="k">Total dibayar (hasil verifikasi)</div><div class="v">Rp 1.665.000</div></div>
+  </div>
+
+  <h2>Rincian item</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Jenis</th><th>File sumber</th><th class="num">Diajukan</th><th class="num">Dibayar</th><th class="num">Selisih</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>B01</td><td>tiket</td><td>tiket_berangkat.txt</td><td class='num'>Rp 1.920.000</td><td class='num'>Rp 0</td><td class='num'>Rp 1.920.000</td><td class='cut'><strong>DITAHAN</strong></td></tr><tr><td>B02</td><td>hotel</td><td>invoice_hotel.txt</td><td class='num'>Rp 1.540.000</td><td class='num'>Rp 0</td><td class='num'>Rp 1.540.000</td><td class='cut'><strong>DITAHAN</strong></td></tr><tr><td>B03</td><td>taksi</td><td>struk_taksi_1.txt</td><td class='num'>Rp 165.000</td><td class='num'>Rp 165.000</td><td class='num'>Rp 0</td><td class='ok'><strong>SESUAI</strong></td></tr><tr><td>UH</td><td>uang_harian</td><td>hasil.uang_harian (3 hari)</td><td class='num'>Rp 1.500.000</td><td class='num'>Rp 1.500.000</td><td class='num'>Rp 0</td><td class='ok'><strong>sesuai</strong></td></tr>
+      <tr class="total"><td colspan="3">TOTAL</td><td class="num">Rp 5.125.000</td><td class="num">Rp 1.665.000</td><td class="num">Rp 3.460.000</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Temuan (3) &mdash; diurutkan KRITIS &rarr; RENDAH</h2>
+  <ul class="temuan">
+    <li class='t-kritis'><span class='badge b-kritis'>KRITIS</span> <strong>R02</strong> — Nama di tiket_berangkat.txt &quot;Budi&quot; tidak sama dengan pegawai Budi Prasetyo<div class='src'>Sumber: tiket_berangkat.txt</div></li><li class='t-kritis'><span class='badge b-kritis'>KRITIS</span> <strong>R02</strong> — Nama di invoice_hotel.txt &quot;Budi&quot; tidak sama dengan pegawai Budi Prasetyo<div class='src'>Sumber: invoice_hotel.txt</div></li><li class='t-tinggi'><span class='badge b-tinggi'>TINGGI</span> <strong>R10</strong> — Wajib konfirmasi tambahan bendahara: ada item ditolak atau ditahan<div class='src'>Sumber: -</div></li>
+  </ul>
+
+  <div class="note">
+    <strong>Keputusan dan pencairan ada di bendahara, bukan agen.</strong>
+    Layar ini hanya menampilkan hasil verifikasi. Agen tidak menyetujui, tidak mencairkan, dan tidak menandai &ldquo;siap cair&rdquo;.
+    Keputusan atas tiap temuan dan pencairan dilakukan oleh bendahara di <em>Meja Pimpinan</em>.
+    Item B01 dan B02 berstatus DITAHAN (nilai dibayar Rp 0) sampai ada penjelasan atas temuan R02.
+  </div>
+
+  <div class="foot">
+    Sumber angka: <code>kerja/verifikator-sbm_kasus-005.json</code> (respons <code>periksa_aturan</code> terakhir) &middot;
+    audit: <code>kerja/auditor_kasus-005.json</code> (rekomendasi: lolos) &middot;
+    DATA FIKTIF UNTUK DEMO.
+  </div>
+</div>
+</body>
+</html>

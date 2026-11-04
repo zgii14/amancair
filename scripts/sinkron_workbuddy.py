@@ -23,6 +23,11 @@ def main() -> None:
     memori = SUMBER / ".workbuddy-ai" / "memory"
     if memori.is_dir():
         shutil.copytree(memori, TUJUAN / "_bukti-workbuddy" / "memory", ignore=ABAIKAN)
+    # Jalur folder pribadi pengguna tidak ikut ke repo publik.
+    for f in TUJUAN.rglob("*.md"):
+        teks = f.read_text(encoding="utf-8", errors="ignore")
+        if "Users/muham/" in teks:
+            f.write_text(teks.replace("C:/Users/muham/", "~/"), encoding="utf-8")
     n = sum(1 for p in TUJUAN.rglob("*") if p.is_file())
     print(f"Disalin {n} berkas ke {TUJUAN.relative_to(REPO)}")
 

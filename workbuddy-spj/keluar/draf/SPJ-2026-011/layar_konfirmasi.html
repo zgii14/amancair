@@ -1,252 +1,36 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Layar Konfirmasi SPJ-2026-011</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f6fa;
-      margin: 0;
-      padding: 20px;
-      color: #2c3e50;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 32px;
-    }
-    h1 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: #1a237e;
-    }
-    .section {
-      margin-bottom: 24px;
-    }
-    .section-title {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 8px;
-      color: #34495e;
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 4px;
-    }
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-    }
-    .info-label {
-      color: #7f8c8d;
-    }
-    .info-value {
-      font-weight: 500;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 8px;
-    }
-    th, td {
-      text-align: left;
-      padding: 10px 12px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    th {
-      background: #f0f2f5;
-      font-weight: 600;
-      color: #2c3e50;
-    }
-    tr:last-child td {
-      border-bottom: 2px solid #1a237e;
-    }
-    .total-row td {
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: #1a237e;
-      border-top: 2px solid #1a237e;
-      border-bottom: none;
-    }
-    .temuan-box {
-      background: #fff8e1;
-      border-left: 4px solid #ffa000;
-      padding: 12px 16px;
-      border-radius: 4px;
-      margin-bottom: 12px;
-    }
-    .temuan-box.kritis {
-      background: #ffebee;
-      border-left: 4px solid #c62828;
-    }
-    .temuan-level {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      background: #ffa000;
-      color: #fff;
-      margin-left: 8px;
-    }
-    .temuan-level.kritis {
-      background: #c62828;
-    }
-    .status-badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 16px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      background: #fff3e0;
-      color: #e65100;
-      border: 1px solid #ffb74d;
-    }
-    .btn-group {
-      display: flex;
-      gap: 12px;
-      margin-top: 24px;
-      justify-content: flex-end;
-    }
-    .btn {
-      padding: 10px 20px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-    .btn-primary {
-      background: #1a237e;
-      color: #fff;
-    }
-    .btn-primary:disabled {
-      background: #b0bec5;
-      color: #fff;
-      cursor: not-allowed;
-    }
-    .btn-secondary {
-      background: #eceff1;
-      color: #37474f;
-    }
-    .selisih-zero {
-      color: #2e7d32;
-      font-weight: 700;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Layar Konfirmasi SPJ</h1>
-
-    <div class="section">
-      <div class="section-title">Identitas Pegawai & SPT</div>
-      <div class="info-row">
-        <span class="info-label">Nama</span>
-        <span class="info-value">Lestari Dewi</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Nomor SPT</span>
-        <span class="info-value">SPT-2026-011</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Nomor SPJ</span>
-        <span class="info-value">SPJ-2026-011</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Tanggal</span>
-        <span class="info-value">5 Oktober 2026</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Tujuan</span>
-        <span class="info-value">Jakarta</span>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Rincian Item Bukti</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Kode</th>
-            <th>Jenis Bukti</th>
-            <th style="text-align:right">Nominal (Rp)</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>B01</td>
-            <td>Tiket Perjalanan</td>
-            <td style="text-align:right">1.680.000</td>
-            <td>Sesuai</td>
-          </tr>
-          <tr>
-            <td>B02</td>
-            <td>Taksi</td>
-            <td style="text-align:right">210.000</td>
-            <td>Sesuai</td>
-          </tr>
-          <tr>
-            <td>UH</td>
-            <td>Uang Harian (3 hari x Rp 400.000)</td>
-            <td style="text-align:right">1.200.000</td>
-            <td>Sesuai</td>
-          </tr>
-          <tr class="total-row">
-            <td colspan="2">Total</td>
-            <td style="text-align:right">3.090.000</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Temuan Audit</div>
-      <div class="temuan-box kritis">
-        <strong>R06 — Struk ganda (Taksi TX-884721)</strong>
-        <span class="temuan-level kritis">Kritis</span>
-        <p style="margin:6px 0 0 0; color:#555;">Struk taksi TX-884721 pernah diajukan di SPJ lain (terdeteksi via indeks_sidik.json).</p>
-      </div>
-      <div class="temuan-box">
-        <strong>Kurang bukti hotel</strong>
-        <span class="temuan-level">Sedang</span>
-        <p style="margin:6px 0 0 0; color:#555;">Tidak ada invoice hotel untuk perjalanan dinas 3 hari ke Jakarta.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Ringkasan Keuangan</div>
-      <div class="info-row">
-        <span class="info-label">Total Diajukan</span>
-        <span class="info-value">Rp 3.090.000</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Total Dibayar</span>
-        <span class="info-value">Rp 3.090.000</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Selisih</span>
-        <span class="info-value selisih-zero">Rp 0</span>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Status SPJ</div>
-      <span class="status-badge">Eskalasi ke Bendahara</span>
-    </div>
-
-    <div class="btn-group">
-      <button class="btn btn-secondary">Kembali</button>
-      <button class="btn btn-primary" disabled>Konfirmasi & Lanjutkan</button>
-    </div>
-  </div>
-</body>
-</html>
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPJ-2026-011 – Ringkasan Pemeriksaan</title>
+<style>
+body{font-family:"Times New Roman",Times,serif;font-size:16px;color:#000;background:#f4f4f4;margin:0;padding:24px 12px}
+.kertas{max-width:820px;margin:0 auto;background:#fff;padding:32px 40px;border:1px solid #ccc}
+.kop{text-align:center;border-bottom:3px double #000;padding-bottom:8px;margin-bottom:16px}
+.kop b{display:block} .kop small{font-size:13px}
+h1{font-size:17px;text-align:center;margin:0} .nomor{text-align:center;margin:2px 0 18px}
+h2{font-size:16px;margin:22px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{border:1px solid #000;padding:5px 7px;vertical-align:top} th{background:#e6e6e6}
+.data td{border:none;padding:2px 4px} .data td:first-child{width:170px}
+.c{text-align:center} .r{text-align:right;white-space:nowrap} tfoot td{font-weight:bold}
+.t-kritis td{background:#fbe5e1} .t-tinggi td{background:#fdf1dc}
+.bayar{margin-top:10px;font-weight:bold} .catatan{font-size:13px;font-style:italic;margin-top:24px}
+</style></head><body><div class="kertas">
+<div class="kop"><b>PEMERINTAH KABUPATEN SEJAHTERA</b><b>DINAS KOMUNIKASI DAN INFORMATIKA KABUPATEN SEJAHTERA</b><small>Jl. Merdeka No. 45, Kota Sejahtera, Sulawesi Selatan, 90111</small></div>
+<h1>RINGKASAN PEMERIKSAAN<br>SURAT PERTANGGUNGJAWABAN PERJALANAN DINAS</h1>
+<p class="nomor">Nomor: SPJ-2026-011</p>
+<h2>A. Data Pegawai dan Perjalanan</h2>
+<table class="data">
+<tr><td>Nama</td><td>: Lestari Dewi</td></tr><tr><td>NIP</td><td>: 199507082019042007</td></tr>
+<tr><td>Golongan</td><td>: III/a</td></tr><tr><td>Maksud perjalanan</td><td>: Rapat teknis pengelolaan data pemerintah daerah</td></tr>
+<tr><td>Tujuan</td><td>: Jakarta, DKI Jakarta</td></tr>
+<tr><td>Tanggal</td><td>: 5–7 Oktober 2026</td></tr>
+<tr><td>Dasar penugasan</td><td>: SPT-2026-011</td></tr></table>
+<h2>B. Rincian Biaya</h2>
+<table><thead><tr><th>No</th><th>Uraian</th><th>Diminta</th><th>Layak dibayar</th><th>Status</th><th>Keterangan</th></tr></thead>
+<tbody><tr><td class=c>1</td><td>Tiket pesawat, 5 Oktober 2026</td><td class=r>Rp1.680.000</td><td class=r>Rp1.680.000</td><td>Layak</td><td>Sesuai bukti</td></tr><tr><td class=c>2</td><td>Taksi, 5 Oktober 2026</td><td class=r>Rp210.000</td><td class=r>Rp0</td><td>Ditahan</td><td>Bukti sudah dipakai di SPJ-2026-001, ditahan</td></tr><tr><td class=c>3</td><td>Uang harian, 3 hari × Rp400.000</td><td class=r>Rp1.200.000</td><td class=r>Rp1.200.000</td><td>Layak</td><td>Sesuai tarif provinsi tujuan, tanpa bukti</td></tr></tbody><tfoot><tr><td></td><td>Jumlah</td><td class=r>Rp3.090.000</td>
+<td class=r>Rp2.880.000</td><td colspan=2></td></tr></tfoot></table>
+<p class="bayar">Jumlah layak dibayar: Rp2.880.000<br><i>(Dua juta delapan ratus delapan puluh ribu rupiah)</i></p>
+<h2>C. Hal yang Perlu Diperhatikan</h2><table><thead><tr><th>No</th><th>Hal</th><th>Tingkat</th><th>Penjelasan</th><th>Tindak lanjut</th></tr></thead><tbody><tr class='t-kritis'><td class=c>1</td><td>Bukti ganda</td><td>Sangat penting</td><td>Struk nomor TX-884721 sudah pernah diajukan pada SPJ-2026-001, sehingga tidak dapat dibayar lagi (bukti: struk_bandara_hotel.txt).</td><td>Tahan pembayaran bagian ini sampai ada penjelasan.</td></tr><tr class='t-tinggi'><td class=c>2</td><td>Perlu persetujuan khusus</td><td>Penting</td><td>Perlu persetujuan khusus bendahara karena ada bagian yang ditolak atau ditahan</td><td>Bendahara memberi persetujuan khusus sebelum dibayar.</td></tr><tr class='t-sedang'><td class=c>3</td><td>Bukti belum lengkap</td><td>Perlu dicek</td><td>Perjalanan 3 hari tanpa bukti penginapan; perlu justifikasi atau bukti tambahan</td><td>Minta penjelasan atau bukti tambahan dari pegawai.</td></tr></tbody></table>
+<p class="catatan">Keputusan ada pada Bendahara Pengeluaran di Meja Pimpinan. Ringkasan ini disusun dengan bantuan
+sistem pemeriksaan otomatis dan belum menjadi dasar pembayaran. DATA FIKTIF UNTUK DEMO.</p>
+</div></body></html>

@@ -1,0 +1,67 @@
+{
+  "kasus_id": "kasus-007",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-11-04T13:51:50+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-007",
+      "pegawai": "Nurul Hidayah",
+      "nip": null,
+      "provinsi": "Sulawesi Selatan",
+      "tanggal_berangkat": "2026-10-18",
+      "tanggal_kembali": "2026-10-19",
+      "jumlah_item": 1
+    }
+  },
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-007",
+    "pegawai": {
+      "nama": "Nurul Hidayah",
+      "nip": "199210202018032005",
+      "golongan": "II/c"
+    },
+    "sbm": {
+      "provinsi": "Sulawesi Selatan",
+      "golongan": "II",
+      "pagu_hotel": 450000,
+      "uang_harian": 200000,
+      "pagu_taksi": 150000
+    },
+    "uang_harian": {
+      "hari": 2,
+      "tarif": 200000,
+      "total": 400000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-18",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 0,
+        "nomor_bukti": "TX-55??21",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 0,
+        "nilai_dibayar": 0,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "SEDANG",
+        "aturan": "KELENGKAPAN",
+        "deskripsi": "Perjalanan 2 hari tanpa bukti penginapan; perlu justifikasi atau bukti tambahan",
+        "sumber": null
+      }
+    ],
+    "total_diajukan": 400000,
+    "total_dibayar": 400000
+  },
+  "penjelasan": "Respons mcp__amancair__periksa_aturan disimpan apa adanya (tanpa pangkas, pembulatan, atau pengurutan ulang). Satu item dikirim sesuai brief: B01 struk_taksi_1.txt, taksi, tanggal 2026-10-18, nama_di_bukti kosong, nominal null (TIDAK ditebak), nomor_bukti apa adanya 'TX-55??21'. SBM terpakai: Sulawesi Selatan, Golongan II -> pagu_hotel Rp450.000/malam, uang_harian Rp200.000/hari, pagu_taksi Rp150.000/trip. Uang harian 2 hari x Rp200.000 = Rp400.000 (R04), dan itulah satu-satunya komponen yang dibayar: total_diajukan Rp400.000 = total_dibayar Rp400.000. PENTING - PERILAKU TOOL ATAS NOMINAL NULL: input dikirim nominal null, tetapi tool mengembalikan item B01 dengan nominal 0, nilai_diajukan 0, nilai_dibayar 0, status 'SESUAI', dan rumus 'Dibayar sesuai bukti'. Tool TIDAK mengeluarkan temuan R08 dan TIDAK memberi status PERLU_CEK_MANUSIA, padahal struk buram (TOTAL: Rp ???.000) dan itulah alasan nominal dikirim null. Jadi hasil tool untuk B01 TIDAK mencerminkan bahwa nominalnya tidak terbaca; status 'SESUAI' di sini berarti 'tidak ada yang dibayar', bukan 'bukti sesuai'. Sesuai aturan peran, nominal tidak terbaca -> perlu_cek_manusia, sehingga B01 WAJIB ditandai perlu dicek petugas di luar hasil tool; saya tidak menambahkan atau mengubah temuan di dalam hasil karena hasil harus utuh. Temuan yang dikeluarkan tool: SEDANG/KELENGKAPAN 'Perjalanan 2 hari tanpa bukti penginapan; perlu justifikasi atau bukti tambahan' (sumber null) - konsisten dengan folder kasus yang hanya berisi pesan_pegawai.txt dan struk_taksi_1.txt, tanpa tiket, tanpa invoice hotel, tanpa boarding pass; kekosongan ini tidak ditambal dan tidak dikarang. Tidak ada penulisan ke keluar/siap-cair dan tidak ada penandaan siap cair."
+}

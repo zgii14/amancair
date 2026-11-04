@@ -1,0 +1,74 @@
+{
+  "kasus_id": "kasus-003",
+  "spt_terpilih": "SPT-2026-003",
+  "pegawai": {
+    "nip": "199005052015022003",
+    "nama": "Siti Aminah",
+    "golongan": "II/d"
+  },
+  "tujuan": "Denpasar",
+  "tanggal_spt": {
+    "berangkat": "2026-10-20",
+    "kembali": "2026-10-22",
+    "lama_hari": 3
+  },
+  "arsip_lama": {
+    "folder": "arsip/uji-lama-003/",
+    "isi": ["SPJ-2026-003 (draf lama)", "pembaca-hotel_kasus-003.json", "pembaca-struk_kasus-003.json", "pembaca-tiket_kasus-003.json"],
+    "catatan": "Dipindahkan, tidak dihapus."
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt"], "id": ["B01"] },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.txt"], "id": ["B02"] },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt"], "id": ["B03"], "catatan": "kasus ini tidak memuat struk makan" }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "13:32:05", "selesai": "13:32:42", "durasi_detik": 37, "berkas": "kerja/pembaca-tiket_kasus-003.json" },
+    { "agen": "pembaca-hotel", "mulai": "13:32:05", "selesai": "13:32:58", "durasi_detik": 53, "berkas": "kerja/pembaca-hotel_kasus-003.json" },
+    { "agen": "pembaca-struk", "mulai": "13:32:05", "selesai": "13:33:20", "durasi_detik": 75, "berkas": "kerja/pembaca-struk_kasus-003.json" },
+    { "agen": "verifikator-sbm", "mulai": "13:33:21", "selesai": "13:34:13", "durasi_detik": 52, "berkas": "kerja/verifikator-sbm_kasus-003.json" },
+    { "agen": "auditor", "mulai": "13:34:14", "selesai": "13:40:27", "durasi_detik": 373, "berkas": "kerja/auditor_kasus-003.json", "catatan": "percobaan auditor-2b gagal karena error jaringan 502/ENOTFOUND tanpa berkas hasil; dilanjutkan auditor-3" },
+    { "agen": "penyusun-spj", "mulai": "13:40:28", "selesai": "13:41:17", "durasi_detik": 49, "berkas": "keluar/draf/SPJ-2026-003/" }
+  ],
+  "total_durasi": { "mulai": "13:32:05", "selesai": "13:41:17", "durasi_detik": 552, "durasi": "9 menit 12 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 4204000,
+    "total_dibayar": 3676000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 1650000, "dibayar": 1650000, "status": "SESUAI" },
+      { "id": "B02", "jenis": "hotel", "diajukan": 1584000, "dibayar": 1056000, "status": "DIPOTONG", "alasan": "R01: 2 dari 3 malam; 1 malam (23 Okt) di luar masa SPT. Bukan R03 - tarif 528.000/malam masih di bawah pagu 550.000" },
+      { "id": "B03", "jenis": "taksi", "diajukan": 145000, "dibayar": 145000, "status": "SESUAI" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 825000, "dibayar": 825000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "TINGGI", "aturan": "R01", "sumber": "invoice_hotel.txt" }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 1,
+    "temuan_auditor": 0,
+    "temuan_final_auditor": 1,
+    "temuan_manual": 0,
+    "catatan": "Auditor tidak menambah temuan: pengakuan pegawai soal extend 1 hari cocok dengan bukti, dan akibatnya sudah ditangani R01 tool. R10 tidak terpicu karena tidak ada item dibayar 0."
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "dipanggil": true,
+    "nomor": "SPJ-2026-003",
+    "versi": 1,
+    "ok": true,
+    "risiko": "tinggi",
+    "manifest_hash": "d680441a0b7c526f6f5f3ce91e5fb49d7afe8c8cfc8963615021582582fff3b1",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "check_out hotel 2026-10-23 melewati tanggal_kembali SPT 2026-10-22; Pembaca mencatat apa adanya, tool memotong 1 malam lewat R01.",
+    "Tidak ada tiket kembali maupun boarding pass untuk kaki pulang; tidak ada biaya kembali diklaim sehingga tidak menjadi temuan (catatan auditor: perlu_konfirmasi_bendahara).",
+    "Cacat redaksi pada keluaran templat: kalimat temuan terbaca '1 malam di di luar masa SPT' (kata 'di' ganda) di rekap.xlsx sheet 2 dan layar_konfirmasi.html. Berasal dari fungsi bersih() di tools/susun_dokumen.py yang menghapus nama berkas lalu menyisakan preposisi. Tidak diubah karena berkas draf tidak boleh disentuh setelah pengajuan.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

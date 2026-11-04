@@ -1,56 +1,39 @@
 {
-  "kasus_id": "kasus-002",
   "timeline": [
     {
       "tanggal": "2026-10-12",
-      "event": "SPT_mulai",
+      "event": "SPT_mulai: SPT-2026-002, Dedi Kurniawan (III/d), tujuan Jakarta / DKI Jakarta, 2026-10-12 s.d. 2026-10-14, lama_hari 3",
       "sumber": "SPT-2026-002.json"
     },
     {
       "tanggal": "2026-10-12",
-      "event": "tiket_berangkat",
+      "event": "tiket_berangkat: LION Air JT 778, UPG - CGK, 09.00 WITA - 10.30 WIB, penumpang Dedi Kurniawan, Rp1.850.000",
       "sumber": "tiket_berangkat.txt"
     },
     {
       "tanggal": "2026-10-12",
-      "event": "hotel_checkin",
+      "event": "taksi_bandara: Blue Bird TX-990021, Bandara Soekarno-Hatta - Hotel Melati, 31.2 km, Rp150.000 + tol Rp20.000 = Rp170.000 (tunai)",
+      "sumber": "struk_taksi_1.txt, struk_taksi_2.txt"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "hotel_checkin: Hotel Melati Jakarta, tamu Dedi Kurniawan, invoice INV/MJ/2026/0901",
       "sumber": "invoice_hotel.txt"
     },
     {
-      "tanggal": "2026-10-12",
-      "event": "taksi",
-      "sumber": "struk_taksi_1.txt"
-    },
-    {
-      "tanggal": "2026-10-12",
-      "event": "taksi",
-      "sumber": "struk_taksi_2.txt"
-    },
-    {
       "tanggal": "2026-10-13",
-      "event": "makan",
+      "event": "struk_makan: Kantin Karyawan GKM KKG-778, Nasi Campur Rp35.000 + Es Jeruk Rp12.000 = Rp47.000",
       "sumber": "struk_makan_1.txt"
     },
     {
       "tanggal": "2026-10-14",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-002.json"
+      "event": "hotel_checkout: 2 malam, tarif Rp520.000/malam, pajak 10% Rp104.000, TOTAL Rp1.144.000, status LUNAS; invoice bertanggal 14 Oktober 2026",
+      "sumber": "invoice_hotel.txt"
     },
     {
       "tanggal": "2026-10-14",
-      "event": "hotel_checkout",
-      "sumber": "invoice_hotel.txt"
+      "event": "SPT_selesai: tanggal_kembali SPT 2026-10-14 (tidak ada bukti tiket kembali di folder kasus)",
+      "sumber": "SPT-2026-002.json"
     }
-  ],
-  "kontradiksi": [],
-  "temuan": [
-    {
-      "id": "B05",
-      "level": "SEDANG",
-      "tipe": "struk_ganda",
-      "deskripsi": "Struk struk_taksi_2.txt identik dalam kasus ini (nomor TX-990021) — hanya satu yang dihitung",
-      "aturan": "R06"
-    }
-  ],
-  "rekomendasi": "lolos"
+  ]
 }

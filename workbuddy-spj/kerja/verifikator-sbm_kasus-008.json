@@ -1,0 +1,121 @@
+{
+  "kasus_id": "kasus-008",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-11-04T13:54:41+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-008",
+      "pegawai": "Bayu Wijaya",
+      "nip": null,
+      "provinsi": "DKI Jakarta",
+      "tanggal_berangkat": "2026-10-06",
+      "tanggal_kembali": "2026-10-08",
+      "jumlah_item": 4
+    }
+  },
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-008",
+    "pegawai": {
+      "nama": "Bayu Wijaya",
+      "nip": "199805152022021008",
+      "golongan": "II/b"
+    },
+    "sbm": {
+      "provinsi": "DKI Jakarta",
+      "golongan": "II",
+      "pagu_hotel": 600000,
+      "uang_harian": 300000,
+      "pagu_taksi": 250000
+    },
+    "uang_harian": {
+      "hari": 3,
+      "tarif": 300000,
+      "total": 900000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-06",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Bayu Wijaya",
+        "nominal": 1450000,
+        "nomor_bukti": "SAJ2233",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1450000,
+        "nilai_dibayar": 1450000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "boarding_pass.txt",
+        "jenis": "boarding_pass",
+        "tanggal": "2026-10-06",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Andi Wijaya",
+        "nominal": 0,
+        "nomor_bukti": "IU 550",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 0,
+        "nilai_dibayar": 0,
+        "status": "DITAHAN",
+        "rumus": "Nama tidak cocok, ditahan sampai ada penjelasan (R02)"
+      },
+      {
+        "id": "B03",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-06",
+        "check_out": "2026-10-08",
+        "nama_di_bukti": "Bayu Wijaya",
+        "nominal": 1144000,
+        "nomor_bukti": "INV/CJ/2026/0707",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1144000,
+        "nilai_dibayar": 1144000,
+        "status": "SESUAI",
+        "rumus": "2 dari 2 malam x min(Rp572.000, pagu Rp600.000)"
+      },
+      {
+        "id": "B04",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-06",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 155000,
+        "nomor_bukti": "GRB-556677",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 155000,
+        "nilai_dibayar": 155000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "KRITIS",
+        "aturan": "R02",
+        "deskripsi": "Nama di boarding_pass.txt \"Andi Wijaya\" tidak sama dengan pegawai Bayu Wijaya",
+        "sumber": "boarding_pass.txt"
+      },
+      {
+        "level": "TINGGI",
+        "aturan": "R10",
+        "deskripsi": "Wajib konfirmasi tambahan bendahara: ada item ditolak atau ditahan",
+        "sumber": null
+      }
+    ],
+    "total_diajukan": 3649000,
+    "total_dibayar": 3649000
+  },
+  "penjelasan": "Respons mcp__amancair__periksa_aturan disimpan apa adanya (tanpa pangkas, pembulatan, atau pengurutan ulang). Empat item dikirim dari tiga Pembaca: B01 tiket, B02 boarding_pass, B03 hotel, B04 taksi. SBM terpakai: DKI Jakarta, Golongan II -> pagu_hotel Rp600.000/malam, uang_harian Rp300.000/hari, pagu_taksi Rp250.000/trip. Uang harian 3 hari x Rp300.000 = Rp900.000 (R04). R02/identitas: boarding pass B02 tercatat atas nama \"Andi Wijaya\" sedangkan pegawai SPT adalah \"Bayu Wijaya\", sehingga tool menahan B02 dengan status DITAHAN dan temuan level KRITIS R02; ini temuan terberat di kasus ini. Perlu dicatat: B02 tetap dibayar 0 karena boarding pass tidak memuat nominal harga (nominal null dari Pembaca, dikembalikan tool sebagai 0), sehingga total_dibayar SAMA dengan total_diajukan Rp3.649.000. Artinya KRITIS di sini TIDAK mengurangi pembayaran apa pun - nilainya nol sejak awal - melainkan murni temuan keabsahan dokumen/identitas yang harus diselesaikan lewat konfirmasi, bukan lewat potongan. R03 hotel: Rp1.144.000 / 2 malam = Rp572.000/malam (termasuk pajak) <= pagu Rp600.000, tidak ada potongan. R05 taksi: Rp155.000 <= pagu Rp250.000, sesuai. R01: seluruh tanggal bukti 2026-10-06 dan check_in/check_out 2026-10-06 s.d. 2026-10-08 berada di dalam masa SPT. R10: tool mewajibkan konfirmasi tambahan bendahara karena ada item ditahan (TINGGI). R07: tidak ada temuan hari libur. R11: tidak ada bukti makan. Rekonsiliasi: item 1.450.000 + 0 + 1.144.000 + 155.000 = Rp2.749.000, ditambah uang harian Rp900.000 = Rp3.649.000. Tidak ada penulisan ke keluar/siap-cair dan tidak ada penandaan siap cair."
+}

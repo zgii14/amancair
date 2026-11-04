@@ -1,0 +1,72 @@
+{
+  "hasil_verifikasi": [
+    {
+      "id": "B01",
+      "status": "sesuai",
+      "dibayar": 4100000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "tiket_berangkat.txt: Harga Tiket: Rp 4.100.000",
+      "rumus_hitung": "Tiket sesuai bukti riil = 4100000",
+      "level_risiko": null
+    },
+    {
+      "id": "B02",
+      "status": "sesuai",
+      "dibayar": 3950000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "tiket_kembali.txt: Harga Tiket: Rp 3.950.000",
+      "rumus_hitung": "Tiket sesuai bukti riil = 3950000",
+      "level_risiko": null
+    },
+    {
+      "id": "B03",
+      "status": "sesuai",
+      "dibayar": 2970000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "invoice_hotel.txt: TOTAL: Rp 2.970.000",
+      "rumus_hitung": "3 malam x 990,000 = 2,970,000; dalam pagu 1,000,000",
+      "level_risiko": null
+    },
+    {
+      "id": "B04",
+      "status": "sesuai",
+      "dibayar": 250000,
+      "aturan": null,
+      "alasan": "Sesuai",
+      "sumber": "struk_taksi_1.txt: TOTAL: Rp 250.000",
+      "rumus_hitung": "Taksi dalam pagu = 250,000",
+      "level_risiko": null
+    },
+    {
+      "id": "UH",
+      "status": "sesuai",
+      "dibayar": 2000000,
+      "aturan": "R04",
+      "alasan": "Uang harian 4 hari x 500,000 = 2,000,000",
+      "sumber": "SPT",
+      "rumus_hitung": "4 hari x 500,000 = 2,000,000 (R04)",
+      "level_risiko": null
+    }
+  ],
+  "uang_harian": {
+    "hari": 4,
+    "tarif": 500000,
+    "total": 2000000,
+    "rumus": "4 hari x 500,000 = 2,000,000 (R04)"
+  },
+  "temuan": [
+    {
+      "kode": "R07",
+      "level": "SEDANG",
+      "deskripsi": "Tanggal 17 Agustus 2026 (Hari Kemerdekaan) berada di dalam masa SPT. Biaya di hari libur nasional di dalam SPT diberi catatan 'perlu justifikasi'."
+    },
+    {
+      "kode": "R10",
+      "level": "TINGGI",
+      "deskripsi": "Total yang diajukan Rp 13.270.000 melebihi Rp 10.000.000. Wajib konfirmasi tambahan bendahara."
+    }
+  ]
+}

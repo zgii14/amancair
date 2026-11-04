@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# USANG: jangan dipakai. Hitungan aturan dipindah ke tool MCP periksa_aturan.
 """
 Orkestrasi kasus SPJ — mensimulasikan tim agen untuk satu kasus.
 Menulis file kerja agen + audit line ke log/audit.jsonl.

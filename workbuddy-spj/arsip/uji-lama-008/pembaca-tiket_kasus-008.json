@@ -1,0 +1,36 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-10-06",
+      "kota": "Jakarta",
+      "nama_di_bukti": "Bayu Wijaya",
+      "nominal": 1450000,
+      "kutipan": "Harga Tiket: Rp 1.450.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    },
+    {
+      "id": "B02",
+      "file": "boarding_pass.txt",
+      "jenis": "boarding_pass",
+      "tanggal": "2026-10-06",
+      "kota": "Jakarta",
+      "nama_di_bukti": null,
+      "nominal": null,
+      "kutipan": "Penerbangan: IU 550",
+      "yakin": "rendah",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "kode_booking": "SAJ2233",
+      "nama_penumpang": "Bayu Wijaya",
+      "nomor_tiket": "9900112233445",
+      "nominal": 1450000
+    }
+  ]
+}

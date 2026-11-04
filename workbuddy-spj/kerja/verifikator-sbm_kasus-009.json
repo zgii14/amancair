@@ -1,72 +1,121 @@
 {
-  "hasil_verifikasi": [
-    {
-      "id": "B01",
-      "status": "sesuai",
-      "dibayar": 4100000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "tiket_berangkat.txt: Harga Tiket: Rp 4.100.000",
-      "rumus_hitung": "Tiket sesuai bukti riil = 4100000",
-      "level_risiko": null
-    },
-    {
-      "id": "B02",
-      "status": "sesuai",
-      "dibayar": 3950000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "tiket_kembali.txt: Harga Tiket: Rp 3.950.000",
-      "rumus_hitung": "Tiket sesuai bukti riil = 3950000",
-      "level_risiko": null
-    },
-    {
-      "id": "B03",
-      "status": "sesuai",
-      "dibayar": 2970000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "invoice_hotel.txt: TOTAL: Rp 2.970.000",
-      "rumus_hitung": "3 malam x 990,000 = 2,970,000; dalam pagu 1,000,000",
-      "level_risiko": null
-    },
-    {
-      "id": "B04",
-      "status": "sesuai",
-      "dibayar": 250000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "struk_taksi_1.txt: TOTAL: Rp 250.000",
-      "rumus_hitung": "Taksi dalam pagu = 250,000",
-      "level_risiko": null
-    },
-    {
-      "id": "UH",
-      "status": "sesuai",
-      "dibayar": 2000000,
-      "aturan": "R04",
-      "alasan": "Uang harian 4 hari x 500,000 = 2,000,000",
-      "sumber": "SPT",
-      "rumus_hitung": "4 hari x 500,000 = 2,000,000 (R04)",
-      "level_risiko": null
+  "kasus_id": "kasus-009",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-10-31T21:22:05+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-009",
+      "pegawai": "Ahmad Fauzi",
+      "nip": null,
+      "provinsi": "DKI Jakarta",
+      "tanggal_berangkat": "2026-08-15",
+      "tanggal_kembali": "2026-08-18",
+      "jumlah_item": 4
     }
-  ],
-  "uang_harian": {
-    "hari": 4,
-    "tarif": 500000,
-    "total": 2000000,
-    "rumus": "4 hari x 500,000 = 2,000,000 (R04)"
   },
-  "temuan": [
-    {
-      "kode": "R07",
-      "level": "SEDANG",
-      "deskripsi": "Tanggal 17 Agustus 2026 (Hari Kemerdekaan) berada di dalam masa SPT. Biaya di hari libur nasional di dalam SPT diberi catatan 'perlu justifikasi'."
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-009",
+    "pegawai": {
+      "nama": "Ahmad Fauzi",
+      "nip": "196705121990031002",
+      "golongan": "IV/b"
     },
-    {
-      "kode": "R10",
-      "level": "TINGGI",
-      "deskripsi": "Total yang diajukan Rp 13.270.000 melebihi Rp 10.000.000. Wajib konfirmasi tambahan bendahara."
-    }
-  ]
+    "sbm": {
+      "provinsi": "DKI Jakarta",
+      "golongan": "IV",
+      "pagu_hotel": 1000000,
+      "uang_harian": 500000,
+      "pagu_taksi": 250000
+    },
+    "uang_harian": {
+      "hari": 4,
+      "tarif": 500000,
+      "total": 2000000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-08-15",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Ahmad Fauzi",
+        "nominal": 4100000,
+        "nomor_bukti": "GAR5500",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 4100000,
+        "nilai_dibayar": 4100000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "tiket_kembali.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-08-18",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Ahmad Fauzi",
+        "nominal": 3950000,
+        "nomor_bukti": "GAR5501",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 3950000,
+        "nilai_dibayar": 3950000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B03",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-08-15",
+        "check_out": "2026-08-18",
+        "nama_di_bukti": "Ahmad Fauzi",
+        "nominal": 2970000,
+        "nomor_bukti": "INV/SCS/2026/0817",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 2970000,
+        "nilai_dibayar": 2970000,
+        "status": "SESUAI",
+        "rumus": "3 dari 3 malam x min(Rp990.000, pagu Rp1.000.000)"
+      },
+      {
+        "id": "B04",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-08-15",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 250000,
+        "nomor_bukti": "TX-170822",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 250000,
+        "nilai_dibayar": 250000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "SEDANG",
+        "aturan": "R07",
+        "deskripsi": "Masa SPT mencakup 2026-08-17 (Hari Kemerdekaan RI); perlu justifikasi perjalanan di hari libur",
+        "sumber": null
+      },
+      {
+        "level": "TINGGI",
+        "aturan": "R10",
+        "deskripsi": "Wajib konfirmasi tambahan bendahara: total Rp13.270.000 di atas Rp10.000.000",
+        "sumber": null
+      }
+    ],
+    "total_diajukan": 13270000,
+    "total_dibayar": 13270000
+  },
+  "penjelasan": "Seluruh empat item bukti (B01, B02, B03, B04) dinyatakan SESUAI oleh tool periksa_aturan; angka pada berkas ini disalin apa adanya dari balasan tool. Dua temuan perlu ditindaklanjuti: R07 (SEDANG) terkait perjalanan pada hari libur nasional dan R10 (TINGGI) terkait kewajiban konfirmasi tambahan bendahara karena nilai total melampaui batas. Status akhir: perlu_cek_manusia."
 }

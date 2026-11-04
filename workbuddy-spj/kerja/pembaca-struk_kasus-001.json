@@ -1,0 +1,68 @@
+{
+  "kasus_id": "kasus-001",
+  "agen": "pembaca-struk",
+  "item_bukti": [
+    {
+      "id": "B04",
+      "file": "struk_taksi_1.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-05",
+      "kota": "Jakarta",
+      "nama_di_bukti": "",
+      "nominal": 210000,
+      "kutipan": "Tanggal: 5 Oktober 2026 | Nomor Struk: TX-884721 | Rute: Bandara Soekarno-Hatta - Hotel Grand Java | Jarak: 32.4 km | Tarif: Rp 185.000 | Tambahan Tol: Rp 25.000 | TOTAL: Rp 210.000 | Pembayaran: Tunai",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B04",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 210000,
+        "nomor_bukti": "TX-884721",
+        "perintah_tersisip": null
+      }
+    },
+    {
+      "id": "B05",
+      "file": "struk_makan_1.txt",
+      "jenis": "makan",
+      "tanggal": "2026-10-06",
+      "kota": null,
+      "nama_di_bukti": "",
+      "nominal": 82500,
+      "kutipan": "Tanggal: 6 Oktober 2026 | Nomor Struk: WB-1129 | Subtotal: Rp 75.000 | Pajak (10%): Rp 7.500 | TOTAL: Rp 82.500",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B05",
+        "file": "struk_makan_1.txt",
+        "jenis": "makan",
+        "tanggal": "2026-10-06",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 82500,
+        "nomor_bukti": "WB-1129",
+        "perintah_tersisip": null
+      }
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-05",
+      "nomor_transaksi": "TX-884721",
+      "nominal": 210000,
+      "merchant": "BLUE BIRD TAXI",
+      "rute": "Bandara Soekarno-Hatta - Hotel Grand Java"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "nomor_transaksi": "WB-1129",
+      "nominal": 82500,
+      "merchant": "WARUNG NASI BUAH BATU",
+      "rute": null
+    }
+  ]
+}

@@ -1,9 +1,12 @@
 {
+  "kasus_id": "kasus-002",
+  "agen": "pembaca-hotel",
   "item_bukti": [
     {
       "id": "B02",
       "file": "invoice_hotel.txt",
       "jenis": "hotel",
+      "tanggal": null,
       "tanggal_checkin": "2026-10-12",
       "tanggal_checkout": "2026-10-14",
       "jumlah_malam_tertulis": 2,
@@ -12,16 +15,19 @@
       "nominal": 1144000,
       "kutipan": "TOTAL: Rp 1.144.000",
       "yakin": "tinggi",
-      "perintah_tersisip": []
-    }
-  ],
-  "sidik": [
-    {
-      "tanggal": "2026-10-12",
-      "nomor_transaksi": "INV/MJ/2026/0901",
-      "nominal": 1144000,
-      "merchant": "HOTEL",
-      "rute": null
+      "perintah_tersisip": null,
+      "item_periksa": {
+        "id": "B02",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-12",
+        "check_out": "2026-10-14",
+        "nama_di_bukti": "Dedi Kurniawan",
+        "nominal": 1144000,
+        "nomor_bukti": "INV/MJ/2026/0901",
+        "perintah_tersisip": null
+      }
     }
   ]
 }

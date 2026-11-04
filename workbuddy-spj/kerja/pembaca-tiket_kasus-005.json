@@ -1,24 +1,29 @@
 {
+  "kasus_id": "kasus-005",
+  "agen": "pembaca-tiket",
   "item_bukti": [
     {
       "id": "B01",
       "file": "tiket_berangkat.txt",
-      "jenis": "tiket_pesawat",
+      "jenis": "tiket",
       "tanggal": "2026-10-16",
-      "kota": "UPG - CGK",
+      "kota": "Jakarta",
       "nama_di_bukti": "Budi",
       "nominal": 1920000,
-      "kutipan": "Kode Booking: LION9900 | Nama Penumpang: Budi | Nomor Tiket: 5566778899002 | Rute: UPG - CGK | Tanggal: 16 Oktober 2026 | Nomor Penerbangan: JT 782 | Harga Tiket: Rp 1.920.000",
+      "kutipan": "Kode Booking: LION9900\nNama Penumpang: Budi\nNomor Tiket: 5566778899002\nRute: UPG - CGK\nTanggal: 16 Oktober 2026\nWaktu: 08.00 WITA - 09.30 WIB\nNomor Penerbangan: JT 782\nHarga Tiket: Rp 1.920.000",
       "yakin": "tinggi",
-      "perintah_tersisip": []
-    }
-  ],
-  "sidik": [
-    {
-      "kode_booking": "LION9900",
-      "nama_penumpang": "Budi",
-      "nomor_tiket": "5566778899002",
-      "nominal": 1920000
+      "item_periksa": {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-16",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Budi",
+        "nominal": 1920000,
+        "nomor_bukti": "LION9900",
+        "perintah_tersisip": null
+      }
     }
   ]
 }

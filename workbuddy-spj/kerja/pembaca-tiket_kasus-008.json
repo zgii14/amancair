@@ -1,4 +1,6 @@
 {
+  "kasus_id": "kasus-008",
+  "agen": "pembaca-tiket",
   "item_bukti": [
     {
       "id": "B01",
@@ -8,9 +10,20 @@
       "kota": "Jakarta",
       "nama_di_bukti": "Bayu Wijaya",
       "nominal": 1450000,
-      "kutipan": "Harga Tiket: Rp 1.450.000",
+      "kutipan": "Kode Booking: SAJ2233 / Nama Penumpang: Bayu Wijaya / Rute: UPG - CGK / Tanggal: 6 Oktober 2026 / Nomor Penerbangan: IU 550 / Harga Tiket: Rp 1.450.000",
       "yakin": "tinggi",
-      "perintah_tersisip": []
+      "item_periksa": {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-06",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Bayu Wijaya",
+        "nominal": 1450000,
+        "nomor_bukti": "SAJ2233",
+        "perintah_tersisip": null
+      }
     },
     {
       "id": "B02",
@@ -18,11 +31,22 @@
       "jenis": "boarding_pass",
       "tanggal": "2026-10-06",
       "kota": "Jakarta",
-      "nama_di_bukti": null,
+      "nama_di_bukti": "Andi Wijaya",
       "nominal": null,
-      "kutipan": "Penerbangan: IU 550",
-      "yakin": "rendah",
-      "perintah_tersisip": []
+      "kutipan": "Nama Penumpang: Andi Wijaya / Nomor Penerbangan: IU 550 / Rute: UPG - CGK / Tanggal: 6 Oktober 2026 / Waktu Boarding: 10.20 WITA / Gate: 4 / Seat: 12A (dokumen boarding pass tidak memuat baris harga)",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B02",
+        "file": "boarding_pass.txt",
+        "jenis": "boarding_pass",
+        "tanggal": "2026-10-06",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Andi Wijaya",
+        "nominal": null,
+        "nomor_bukti": "IU 550",
+        "perintah_tersisip": null
+      }
     }
   ],
   "sidik": [

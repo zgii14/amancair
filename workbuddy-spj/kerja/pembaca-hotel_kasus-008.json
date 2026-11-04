@@ -1,0 +1,33 @@
+{
+  "kasus_id": "kasus-008",
+  "agen": "pembaca-hotel",
+  "item_bukti": [
+    {
+      "id": "B03",
+      "file": "invoice_hotel.txt",
+      "jenis": "hotel",
+      "tanggal": null,
+      "tanggal_checkin": "2026-10-06",
+      "tanggal_checkout": "2026-10-08",
+      "jumlah_malam_tertulis": 2,
+      "kota": "Jakarta",
+      "nama_di_bukti": "Bayu Wijaya",
+      "nominal": 1144000,
+      "kutipan": "TOTAL: Rp 1.144.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": null,
+      "item_periksa": {
+        "id": "B03",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-06",
+        "check_out": "2026-10-08",
+        "nama_di_bukti": "Bayu Wijaya",
+        "nominal": 1144000,
+        "nomor_bukti": "INV/CJ/2026/0707",
+        "perintah_tersisip": null
+      }
+    }
+  ]
+}

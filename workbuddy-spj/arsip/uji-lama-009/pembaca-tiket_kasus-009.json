@@ -1,0 +1,42 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-08-15",
+      "kota": "Jakarta",
+      "nama_di_bukti": "Ahmad Fauzi",
+      "nominal": 4100000,
+      "kutipan": "Harga Tiket: Rp 4.100.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    },
+    {
+      "id": "B02",
+      "file": "tiket_kembali.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-08-18",
+      "kota": "Jakarta",
+      "nama_di_bukti": "Ahmad Fauzi",
+      "nominal": 3950000,
+      "kutipan": "Harga Tiket: Rp 3.950.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "kode_booking": "GAR5500",
+      "nama_penumpang": "Ahmad Fauzi",
+      "nomor_tiket": "1100223344556",
+      "nominal": 4100000
+    },
+    {
+      "kode_booking": "GAR5501",
+      "nama_penumpang": "Ahmad Fauzi",
+      "nomor_tiket": "1100223344557",
+      "nominal": 3950000
+    }
+  ]
+}

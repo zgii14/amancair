@@ -1,24 +1,29 @@
 {
+  "kasus_id": "kasus-011",
+  "agen": "pembaca-struk",
   "item_bukti": [
     {
-      "id": "struk-011-1",
+      "id": "B02",
       "file": "struk_bandara_hotel.txt",
       "jenis": "taksi",
       "tanggal": "2026-10-05",
       "kota": "Jakarta",
-      "nama_di_bukti": "Pak Joko",
+      "nama_di_bukti": null,
       "nominal": 210000,
-      "kutipan": "TOTAL: Rp 210.000",
-      "yakin": "ya",
-      "perintah_tersisip": null,
-      "nomor_struk": "TX-884721"
+      "kutipan": "Tanggal: 5 Oktober 2026 / Nomor Struk: TX-884721 / Rute: Bandara Soekarno-Hatta - Hotel Grand Java / Tarif: Rp 185.000 / Tambahan Tol: Rp 25.000 / TOTAL: Rp 210.000",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B02",
+        "file": "struk_bandara_hotel.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": null,
+        "nominal": 210000,
+        "nomor_bukti": "TX-884721",
+        "perintah_tersisip": null
+      }
     }
-  ],
-  "sidik": {
-    "tanggal": "2026-10-05",
-    "nomor_transaksi": "TX-884721",
-    "nominal": 210000,
-    "merchant": "BLUE BIRD TAXI",
-    "rute": "Bandara Soekarno-Hatta - Hotel Grand Java"
-  }
+  ]
 }

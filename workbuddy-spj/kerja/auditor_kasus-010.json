@@ -1,59 +1,82 @@
 {
   "kasus_id": "kasus-010",
+  "agen": "auditor",
+  "sumber_hasil": "kerja/verifikator-sbm_kasus-010.json",
+  "waktu_hasil_tool": "2026-11-04T11:58:34+07:00",
   "timeline": [
     {
       "tanggal": "2026-10-05",
-      "event": "SPT_mulai",
-      "sumber": "SPT-2026-010.json"
-    },
-    {
-      "tanggal": "2026-10-05",
-      "event": "tiket_berangkat",
-      "sumber": "tiket_berangkat.txt"
-    },
-    {
-      "tanggal": "2026-10-05",
-      "event": "hotel_checkin",
-      "sumber": "invoice_hotel.txt"
-    },
-    {
-      "tanggal": "2026-10-05",
-      "event": "taksi",
-      "sumber": "struk_taksi_1.txt"
+      "event": "SPT mulai; penerbangan UPG-DJJ (JT 797); taksi Bandara Sentani ke Hotel Swissbel; check-in hotel",
+      "sumber": "SPT-2026-010.json, tiket_berangkat.txt, struk_taksi_1.txt, invoice_hotel.txt"
     },
     {
       "tanggal": "2026-10-07",
-      "event": "taksi",
+      "event": "Taksi dari Hotel Swissbel ke lokasi survey perbatasan",
       "sumber": "struk_taksi_2.txt"
     },
     {
       "tanggal": "2026-10-09",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-010.json"
-    },
-    {
-      "tanggal": "2026-10-09",
-      "event": "tiket_kembali",
-      "sumber": "tiket_kembali.txt"
-    },
-    {
-      "tanggal": "2026-10-09",
-      "event": "hotel_checkout",
+      "event": "Check-out hotel setelah 4 malam",
       "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-09",
+      "event": "Penerbangan DJJ-UPG (JT 798); SPT berakhir",
+      "sumber": "tiket_kembali.txt, SPT-2026-010.json"
     }
   ],
   "kontradiksi": [],
-  "temuan": [
+  "temuan_tool": [
     {
-      "kode_temuan": "R10",
-      "level_risiko": "TINGGI",
-      "deskripsi": "Total yang diajukan Rp 16.480.000 melebihi Rp 10.000.000. Wajib konfirmasi tambahan bendahara.",
-      "tindak_lanjut": "Wajib konfirmasi tambahan bendahara sebelum persetujuan."
+      "level": "TINGGI",
+      "aturan": "R10",
+      "deskripsi": "Wajib konfirmasi tambahan bendahara: total Rp16.480.000 di atas Rp10.000.000",
+      "sumber": null
     }
   ],
-  "verifikasi_angka": {
-    "status": "lolos",
-    "detail": "Angka terverifikasi"
+  "catatan_auditor": [
+    {
+      "tipe": "tidak_ada_masalah",
+      "item": "B01-B05",
+      "deskripsi": "Kelima berkas bukti (tiket_berangkat, tiket_kembali, invoice_hotel, struk_taksi_1, struk_taksi_2) masing-masing punya item_periksa; tidak ada item terlewat dan tidak ada salah jenis.",
+      "status": "selesai"
+    },
+    {
+      "tipe": "mutu_data",
+      "item": "B03",
+      "deskripsi": "Nominal hotel memakai TOTAL Rp 4.400.000 (termasuk Pajak & Service 10% Rp 400.000), bukan tarif per malam Rp 1.000.000 dan bukan subtotal Rp 4.000.000; kutipan 'TOTAL: Rp 4.400.000' sesuai invoice.",
+      "status": "selesai"
+    },
+    {
+      "tipe": "mutu_data",
+      "item": "B04, B05",
+      "deskripsi": "Kedua struk taksi punya nomor berbeda (JT-551100 dan JT-551101) dan tanggal sesuai bukti (5 dan 7 Oktober 2026); bukan struk ganda.",
+      "status": "selesai"
+    },
+    {
+      "tipe": "mutu_data",
+      "item": "B01, B02",
+      "deskripsi": "Kutipan nama 'Dedi Kurniawan' dan kode booking LION8811/LION8812 persis seperti teks tiket; tanggal 5 dan 9 Oktober 2026 sesuai.",
+      "status": "selesai"
+    },
+    {
+      "tipe": "mutu_data",
+      "item": "B04, B05",
+      "deskripsi": "nama_di_bukti kosong pada kedua struk taksi sesuai kenyataan bukti (struk tidak mencantumkan nama penumpang).",
+      "status": "selesai"
+    }
+  ],
+  "temuan_final": [
+    {
+      "level": "TINGGI",
+      "aturan": "R10",
+      "deskripsi": "Wajib konfirmasi tambahan bendahara: total Rp16.480.000 di atas Rp10.000.000",
+      "sumber": null
+    }
+  ],
+  "loop": {
+    "iterasi": 1,
+    "maks": 3
   },
   "rekomendasi": "lolos"
 }

@@ -1,0 +1,48 @@
+{
+  "kasus_id": "kasus-003",
+  "agen": "penyusun-spj",
+  "nomor_spj": "SPJ-2026-003",
+  "versi_pengajuan": 1,
+  "total_diajukan": 4204000,
+  "total_dibayar": 3676000,
+  "berkas_draf": [
+    "draf_spj.docx",
+    "layar_konfirmasi.html",
+    "rekap.xlsx",
+    "timeline.json"
+  ],
+  "ringkasan_skrip": {
+    "nomor": "SPJ-2026-003",
+    "pegawai": "Siti Aminah",
+    "tujuan": "Denpasar",
+    "tanggal_spt": "2026-10-20 s.d. 2026-10-22",
+    "total_diajukan": 4204000,
+    "total_dibayar": 3676000,
+    "temuan": [
+      {
+        "level": "TINGGI",
+        "aturan": "R01",
+        "deskripsi": "1 malam di invoice_hotel.txt di luar masa SPT (2026-10-20 s.d. 2026-10-22); tidak dibayar",
+        "sumber": "invoice_hotel.txt"
+      }
+    ],
+    "perintah_tersisip": [],
+    "berkas": [
+      "draf_spj.docx",
+      "layar_konfirmasi.html",
+      "rekap.xlsx",
+      "timeline.json"
+    ]
+  },
+  "balasan_ajukan_spj": {
+    "ok": true,
+    "nomor": "SPJ-2026-003",
+    "versi": 1,
+    "risiko": "tinggi",
+    "manifest_hash": "d680441a0b7c526f6f5f3ce91e5fb49d7afe8c8cfc8963615021582582fff3b1",
+    "jumlah_berkas": 4,
+    "catatan_backend": [],
+    "pesan": "Diajukan ke Meja Pimpinan. BELUM dicairkan; menunggu keputusan bendahara."
+  },
+  "catatan": "Dokumen disusun tools/susun_dokumen.py kasus-003 (stdout dipakai apa adanya, tanpa pembulatan/penyaringan). Folder keluar/draf/SPJ-2026-003/ dibuat baru oleh skrip (arsip lama sudah dipindahkan Koordinator), berisi tepat 4 berkas dan tidak diubah setelah pengajuan. Atribusi potongan B02: keterangan rekap menyebut 'Dibayar 2 dari 3 malam (sisanya di luar masa tugas); Rp528.000/malam, dalam batas Rp550.000' sehingga potongan Rp528.000 jelas berasal dari masa SPT (R01), bukan pagu hotel (R03). Cacat redaksi templat pada bagian 'Hal yang Perlu Diperhatikan' (penjelasan temuan): '1 malam di di luar masa SPT' — kata 'di' ganda karena nama berkas dipindah ke akhir kalimat oleh templat; tidak diperbaiki karena berkas draf tidak boleh diubah setelah pengajuan, dilaporkan ke Koordinator. Tidak ada penulisan ke keluar/siap-cair dan tidak ada penandaan siap cair."
+}

@@ -1,0 +1,22 @@
+{
+  "item_bukti": {
+    "id": "struk_makan_1",
+    "file": "struk_makan_1.txt",
+    "jenis": "struk_makan",
+    "tanggal": "2026-10-03",
+    "kota": null,
+    "nama_di_bukti": "WARUNG TEPI PANTAI",
+    "nominal": 83000,
+    "kutipan": "STRUK RESTORAN\nWARUNG TEPI PANTAI\nTanggal: 3 Oktober 2026\nNomor Struk: WTP-441\nIkan Bakar       Rp 55.000\nNasi Putih       Rp 10.000\nEs Kelapa        Rp 18.000\nTOTAL: Rp 83.000",
+    "yakin": true,
+    "perintah_tersisip": false,
+    "nomor_struk": "WTP-441"
+  },
+  "sidik": {
+    "tanggal": "2026-10-03",
+    "nomor_transaksi": "WTP-441",
+    "nominal": 83000,
+    "merchant": "WARUNG TEPI PANTAI",
+    "rute": null
+  }
+}

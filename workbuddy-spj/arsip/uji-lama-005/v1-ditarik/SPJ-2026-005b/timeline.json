@@ -1,0 +1,12 @@
+[
+  {
+    "tanggal": "2026-10-16",
+    "event": "Tanggal berangkat menurut SPT; penerbangan Lion Air JT 782 rute UPG - CGK pukul 08.00 WITA - 09.30 WIB (kode booking LION9900); check-in hotel Pondok Indah; perjalanan taksi Bandara Soekarno-Hatta - Hotel Pondok Indah (GRB-334466)",
+    "sumber": "data/spt/SPT-2026-005b.json (\"tanggal_berangkat\": \"2026-10-16\"); data/kasus/kasus-005/tiket_berangkat.txt (\"Tanggal: 16 Oktober 2026\", \"Waktu: 08.00 WITA - 09.30 WIB\"); data/kasus/kasus-005/invoice_hotel.txt (\"Check-in: 16 Oktober 2026\"); data/kasus/kasus-005/struk_taksi_1.txt (\"Tanggal: 16 Oktober 2026\")"
+  },
+  {
+    "tanggal": "2026-10-18",
+    "event": "Check-out hotel setelah 2 malam; tanggal penerbitan invoice hotel; tanggal kembali menurut SPT",
+    "sumber": "data/kasus/kasus-005/invoice_hotel.txt (\"Check-out: 18 Oktober 2026\", \"Lama Menginap: 2 malam\", \"Tanggal: 18 Oktober 2026\"); data/spt/SPT-2026-005b.json (\"tanggal_kembali\": \"2026-10-18\")"
+  }
+]

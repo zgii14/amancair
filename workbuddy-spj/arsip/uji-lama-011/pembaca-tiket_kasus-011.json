@@ -1,0 +1,24 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket_pesawat",
+      "tanggal": "2026-10-05",
+      "kota": "UPG - CGK",
+      "nama_di_bukti": "Lestari Dewi",
+      "nominal": 1680000,
+      "kutipan": "Kode Booking: SAJ7788 | Nama Penumpang: Lestari Dewi | Nomor Tiket: 3344556677889 | Rute: UPG - CGK (Makassar - Jakarta) | Tanggal Keberangkatan: 5 Oktober 2026 | Waktu: 07.00 WITA - 08.30 WIB | Nomor Penerbangan: IU 552 | Harga Tiket: Rp 1.680.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "kode_booking": "SAJ7788",
+      "nama_penumpang": "Lestari Dewi",
+      "nomor_tiket": "3344556677889",
+      "nominal": 1680000
+    }
+  ]
+}

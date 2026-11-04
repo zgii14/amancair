@@ -1,0 +1,27 @@
+{
+  "item_bukti": [
+    {
+      "id": "B02",
+      "file": "invoice_hotel.txt",
+      "jenis": "hotel",
+      "tanggal_checkin": "2026-10-16",
+      "tanggal_checkout": "2026-10-18",
+      "jumlah_malam_tertulis": 2,
+      "kota": "Jakarta",
+      "nama_di_bukti": "Budi",
+      "nominal": 1540000,
+      "kutipan": "TOTAL: Rp 1.540.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-16",
+      "nomor_transaksi": "INV/PI/2026/0606",
+      "nominal": 1540000,
+      "merchant": "HOTEL",
+      "rute": null
+    }
+  ]
+}

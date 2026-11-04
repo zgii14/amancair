@@ -1,4 +1,6 @@
 {
+  "kasus_id": "kasus-003",
+  "agen": "pembaca-tiket",
   "item_bukti": [
     {
       "id": "B01",
@@ -8,9 +10,20 @@
       "kota": "Denpasar",
       "nama_di_bukti": "Siti Aminah",
       "nominal": 1650000,
-      "kutipan": "Harga Tiket: Rp 1.650.000",
+      "kutipan": "Kode Booking: BATIK8821 / Rute: UPG - DPS (Makassar - Denpasar) / Tanggal: 20 Oktober 2026 / Nomor Penerbangan: ID 6191 / Harga Tiket: Rp 1.650.000",
       "yakin": "tinggi",
-      "perintah_tersisip": []
+      "item_periksa": {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-20",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Siti Aminah",
+        "nominal": 1650000,
+        "nomor_bukti": "BATIK8821",
+        "perintah_tersisip": null
+      }
     }
   ],
   "sidik": [

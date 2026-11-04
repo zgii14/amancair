@@ -2,33 +2,38 @@
   "timeline": [
     {
       "tanggal": "2026-10-10",
-      "event": "SPT_mulai",
-      "sumber": "SPT-2026-004.json"
+      "event": "Masa SPT mulai (Sabtu). Pegawai berangkat UPG - CGK 06.00 WITA - 07.30 WIB, kode booking GAR0099, nomor tiket 4466778899001, Kelas Bisnis, harga tiket Rp3.200.000. Tiket berangkat jatuh tepat pada tanggal_berangkat SPT (bukan H-1).",
+      "sumber": "tiket_berangkat.txt, SPT-2026-004.json"
     },
     {
       "tanggal": "2026-10-10",
-      "event": "tiket_berangkat",
-      "sumber": "tiket_berangkat.txt"
-    },
-    {
-      "tanggal": "2026-10-10",
-      "event": "hotel_checkin",
-      "sumber": "invoice_hotel.pdf"
-    },
-    {
-      "tanggal": "2026-10-10",
-      "event": "taksi_bandara_hotel",
+      "event": "Blue Bird Taxi Bandara Soekarno-Hatta - Hotel The Grand Premier, 28.5 km, nomor struk TX-771100; tarif Rp195.000 + tambahan tol Rp35.000 = TOTAL Rp230.000 (aritmetika internal dokumen konsisten).",
       "sumber": "struk_taksi_1.txt"
     },
     {
-      "tanggal": "2026-10-12",
-      "event": "hotel_checkout",
+      "tanggal": "2026-10-10",
+      "event": "Check-in The Grand Premier Jakarta atas nama Rudi Hartono, invoice INV/TGP/2026/0555.",
       "sumber": "invoice_hotel.pdf"
     },
     {
-      "tanggal": "2026-10-12",
-      "event": "SPT_selesai",
+      "tanggal": "2026-10-10",
+      "event": "Sabtu 10 Okt dan Minggu 11 Okt 2026 adalah akhir pekan yang jatuh DI DALAM masa SPT (10-12 Okt).",
       "sumber": "SPT-2026-004.json"
+    },
+    {
+      "tanggal": "2026-10-11",
+      "event": "Malam ke-2 menginap (11 Okt -> check-out 12 Okt), masih di dalam masa SPT.",
+      "sumber": "invoice_hotel.pdf, SPT-2026-004.json"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "Check-out hotel, bertepatan dengan tanggal_kembali SPT (2026-10-12). Masa SPT berakhir; tidak ada tiket pulang CGK-UPG maupun boarding pass di folder kasus.",
+      "sumber": "invoice_hotel.pdf, SPT-2026-004.json, isi folder kasus-004"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "Rentang menginap 10 s.d. 12 Okt = 2 malam. Dokumen mencetak \"Tarif per Malam: Rp 1.200.000\" dan \"TOTAL: Rp 2.640.000\"; tidak ada baris subtotal/pajak yang tercetak. pesan_pegawai.txt menyatakan hotel dekat lokasi rapat dan mahal karena peak season.",
+      "sumber": "invoice_hotel.pdf, pesan_pegawai.txt"
     }
   ]
 }

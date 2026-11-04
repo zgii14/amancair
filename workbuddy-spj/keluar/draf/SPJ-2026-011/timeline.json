@@ -1,0 +1,14 @@
+{
+  "timeline": [
+    {
+      "tanggal": "2026-10-05",
+      "event": "SPT mulai; penerbangan UPG-CGK (IU 552) 07.00 WITA-08.30 WIB; taksi Bandara Soekarno-Hatta ke Hotel Grand Java Rp 210.000",
+      "sumber": "SPT-2026-011.json, tiket_berangkat.txt, struk_bandara_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-07",
+      "event": "SPT berakhir; tidak ada bukti check-out hotel maupun tiket kembali",
+      "sumber": "SPT-2026-011.json"
+    }
+  ]
+}

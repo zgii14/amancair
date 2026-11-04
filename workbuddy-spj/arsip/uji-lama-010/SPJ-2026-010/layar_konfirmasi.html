@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layar Konfirmasi SPJ-2026-010</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 16px; background: #f5f5f5; color: #333; }
+  .card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+  .header { background: #2F5496; color: #fff; text-align: center; padding: 20px; border-radius: 12px; margin-bottom: 16px; }
+  .header h1 { margin: 0; font-size: 1.3rem; }
+  .summary { display: flex; justify-content: space-between; flex-wrap: wrap; }
+  .summary-item { flex: 1; min-width: 120px; text-align: center; padding: 10px; }
+  .summary-item .label { font-size: 0.8rem; color: #666; }
+  .summary-item .value { font-size: 1.2rem; font-weight: bold; }
+  .temuan-rendah { border-left: 4px solid #388e3c; background: #e8f5e9; }
+  .temuan-sedang { border-left: 4px solid #f9a825; background: #fffde7; }
+  .temuan-tinggi { border-left: 4px solid #d32f2f; background: #ffebee; }
+  .temuan-kritis { border-left: 4px solid #b71c1c; background: #ffcdd2; }
+  .temuan-none { border-left: 4px solid #2F5496; background: #e3f2fd; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; color: #fff; }
+  .badge-rendah { background: #388e3c; }
+  .badge-sedang { background: #f9a825; color: #000; }
+  .badge-tinggi { background: #d32f2f; }
+  .badge-kritis { background: #b71c1c; }
+  .hash { font-family: monospace; font-size: 0.7rem; color: #666; word-break: break-all; }
+  .instruksi { background: #e8f5e9; border: 1px solid #388e3c; border-radius: 8px; padding: 12px; margin-top: 16px; }
+  .instruksi code { background: #fff; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+  .watermark { text-align: center; color: #d32f2f; font-weight: bold; font-size: 0.85rem; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<div class="watermark">DATA FIKTIF UNTUK DEMO</div>
+
+<div class="header">
+  <h1>Layar Konfirmasi SPJ-2026-010</h1>
+  <p>Dedi Kurniawan — Papua — 2026-10-05 s/d 2026-10-09</p>
+</div>
+
+<div class="card">
+  <div class="summary">
+    <div class="summary-item">
+      <div class="label">Total Diajukan</div>
+      <div class="value">Rp 16,480,000</div>
+    </div>
+    <div class="summary-item">
+      <div class="label">Total Dibayar</div>
+      <div class="value">Rp 16,480,000</div>
+    </div>
+    <div class="summary-item">
+      <div class="label">Selisih</div>
+      <div class="value">Rp 0</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Daftar Temuan</h3>
+  <div class="card temuan-tinggi">
+    <span class="badge badge-tinggi">TINGGI</span>
+    <strong>R10</strong><br>
+    Total Rp 16.480.000 > Rp 10.000.000 → wajib konfirmasi bendahara
+  </div>
+
+</div>
+
+<div class="card">
+  <h3>Sidik Keamanan rekap.xlsx</h3>
+  <p class="hash">SHA-256: ff2d0c412018f53e955507cb688045e3c2e12e99b97d29c39d0d3a2e6a43fd60</p>
+</div>
+
+<div class="instruksi">
+  <strong>Instruksi Persetujuan:</strong><br>
+  Ketik: <code>SETUJUI SPJ-2026-010</code>
+</div>
+
+</body>
+</html>

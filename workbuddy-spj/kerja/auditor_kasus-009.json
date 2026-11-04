@@ -1,60 +1,65 @@
 {
   "kasus_id": "kasus-009",
+  "agen": "auditor",
+  "sumber_hasil": "kerja/verifikator-sbm_kasus-009.json",
+  "waktu_hasil_tool": "2026-10-31T21:22:05+07:00",
   "timeline": [
     {
       "tanggal": "2026-08-15",
-      "event": "SPT_mulai",
-      "sumber": "SPT-2026-009.json"
+      "peristiwa": "Keberangkatan UPG-CGK (GA 640); check-in Hotel Senayan City Suites; taksi Bandara Soekarno-Hatta - Hotel Senayan City",
+      "sumber": ["SPT-2026-009.json", "tiket_berangkat.txt", "invoice_hotel.txt", "struk_taksi_1.txt"]
     },
     {
-      "tanggal": "2026-08-15",
-      "event": "tiket_berangkat",
-      "sumber": "tiket_berangkat.txt"
-    },
-    {
-      "tanggal": "2026-08-15",
-      "event": "hotel_checkin",
-      "sumber": "invoice_hotel.txt"
-    },
-    {
-      "tanggal": "2026-08-15",
-      "event": "taksi",
-      "sumber": "struk_taksi_1.txt"
+      "tanggal": "2026-08-17",
+      "peristiwa": "Hari Kemerdekaan RI, berada dalam rentang masa SPT (disebut pada pesan pegawai)",
+      "sumber": ["SPT-2026-009.json", "pesan_pegawai.txt"]
     },
     {
       "tanggal": "2026-08-18",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-009.json"
-    },
-    {
-      "tanggal": "2026-08-18",
-      "event": "tiket_kembali",
-      "sumber": "tiket_kembali.txt"
-    },
-    {
-      "tanggal": "2026-08-18",
-      "event": "hotel_checkout",
-      "sumber": "invoice_hotel.txt"
+      "peristiwa": "Check-out hotel setelah 3 malam; penerbangan kembali CGK-UPG (GA 641)",
+      "sumber": ["invoice_hotel.txt", "tiket_kembali.txt", "SPT-2026-009.json"]
     }
   ],
   "kontradiksi": [],
-  "temuan": [
+  "temuan_tool": [
     {
-      "kode_temuan": "R07",
-      "level_risiko": "SEDANG",
-      "deskripsi": "Tanggal 17 Agustus 2026 (Hari Kemerdekaan) berada di dalam masa SPT. Biaya di hari libur nasional di dalam SPT diberi catatan 'perlu justifikasi'.",
-      "tindak_lanjut": "Perlu justifikasi dari atasan mengapa rapat dijadwalkan pada hari libur nasional."
+      "level": "SEDANG",
+      "aturan": "R07",
+      "deskripsi": "Masa SPT mencakup 2026-08-17 (Hari Kemerdekaan RI); perlu justifikasi perjalanan di hari libur",
+      "sumber": null
     },
     {
-      "kode_temuan": "R10",
-      "level_risiko": "TINGGI",
-      "deskripsi": "Total yang diajukan Rp 13.270.000 melebihi Rp 10.000.000. Wajib konfirmasi tambahan bendahara.",
-      "tindak_lanjut": "Wajib konfirmasi tambahan bendahara sebelum persetujuan."
+      "level": "TINGGI",
+      "aturan": "R10",
+      "deskripsi": "Wajib konfirmasi tambahan bendahara: total Rp13.270.000 di atas Rp10.000.000",
+      "sumber": null
     }
   ],
-  "verifikasi_angka": {
-    "status": "lolos",
-    "detail": "Angka terverifikasi"
+  "catatan_auditor": [
+    {
+      "tipe": "tidak_ada_masalah",
+      "deskripsi": "Empat berkas bukti (tiket_berangkat.txt, tiket_kembali.txt, invoice_hotel.txt, struk_taksi_1.txt) semuanya memiliki item_periksa B01-B04; tidak ada item terlewat dan tidak ada salah jenis (2 tiket, 1 hotel, 1 taksi). Tanggal terbaca persis: tiket 15 Agustus 2026 dan 18 Agustus 2026, check-in 15 Agustus 2026 / check-out 18 Agustus 2026, struk taksi 15 Agustus 2026. Nominal hotel memakai TOTAL Rp 2.970.000 (termasuk Pajak & Service 10% Rp 270.000), bukan tarif per malam Rp 900.000 maupun Total Biaya Menginap Rp 2.700.000. Nominal taksi memakai TOTAL Rp 250.000 (Tarif Rp 210.000 + Tambahan Tol Rp 40.000), komponen tol tidak terlewat. Nama dikutip persis 'Ahmad Fauzi' pada B01, B02, B03; B04 kosong karena struk taksi memang tidak memuat nama penumpang. nomor_bukti terisi semua: GAR5500, GAR5501, INV/SCS/2026/0817, TX-170822. pesan_pegawai.txt bukan bukti biaya sehingga tidak perlu item_periksa. Jumlah item pada argumen tool (4) sesuai jumlah bukti.",
+      "tindakan": "tidak_ada",
+      "status": "selesai"
+    }
+  ],
+  "temuan_final": [
+    {
+      "level": "SEDANG",
+      "aturan": "R07",
+      "deskripsi": "Masa SPT mencakup 2026-08-17 (Hari Kemerdekaan RI); perlu justifikasi perjalanan di hari libur",
+      "sumber": null
+    },
+    {
+      "level": "TINGGI",
+      "aturan": "R10",
+      "deskripsi": "Wajib konfirmasi tambahan bendahara: total Rp13.270.000 di atas Rp10.000.000",
+      "sumber": null
+    }
+  ],
+  "loop": {
+    "iterasi": 1,
+    "maks": 3
   },
   "rekomendasi": "lolos"
 }

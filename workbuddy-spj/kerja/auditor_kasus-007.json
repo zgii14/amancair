@@ -1,0 +1,156 @@
+{
+  "kasus_id": "kasus-007",
+  "agen": "auditor",
+  "sumber_hasil": "kerja/verifikator-sbm_kasus-007.json",
+  "waktu_hasil_tool": "2026-11-04T13:51:50+07:00",
+  "timeline": [
+    {
+      "tanggal": "2026-10-18",
+      "event": "Masa SPT mulai (Minggu). Tujuan Makassar, maksud \"Monitoring layanan digital kecamatan\", lama_hari 2. Folder kasus-007 hanya berisi 2 berkas (struk_taksi_1.txt dan pesan_pegawai.txt): tidak ada tiket, boarding pass, invoice hotel, maupun struk makan, sehingga tidak ada bukti keberangkatan sama sekali.",
+      "sumber": "SPT-2026-007.json, isi folder kasus-007"
+    },
+    {
+      "tanggal": "2026-10-18",
+      "event": "Struk Blue Bird Taxi rute Terminal Malengkeri - Hotel Wisata, pembayaran Tunai. Tanggal terbaca (\"Tanggal: 18 Oktober 2026\"), tetapi bagian angka BURAM: \"Nomor Struk: TX-55??21\", \"Nama Pengemudi: Pak ???\", \"Jarak: ?? km\", \"Tarif: Rp 1?5.0?0\", \"Tambahan Tol: Rp ??.000\", \"TOTAL: Rp ???.000\". Pesan pegawai menyertai berkas ini: \"Bagian harganya agak luntur kehujanan, saya coba foto ulang tapi tetap blur. Tolong dicek ya bu.\" (pesan tidak bertanggal; menyebut \"kemarin\").",
+      "sumber": "struk_taksi_1.txt, pesan_pegawai.txt"
+    },
+    {
+      "tanggal": "2026-10-19",
+      "event": "Masa SPT berakhir (tanggal_kembali 2026-10-19, Senin). Tidak ada invoice/bukti penginapan untuk 1 malam, padahal rute struk taksi menuju \"Hotel Wisata\".",
+      "sumber": "SPT-2026-007.json, struk_taksi_1.txt, isi folder kasus-007"
+    },
+    {
+      "tanggal": "2026-10-19",
+      "event": "Satu-satunya komponen yang diajukan dan dibayar adalah uang harian 2 hari (Rp400.000); tidak ada klaim tiket, hotel, maupun taksi karena nominal struk taksi tidak terbaca (B01 nilai 0/0).",
+      "sumber": "SPT-2026-007.json, struk_taksi_1.txt"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan_tool": [
+    {
+      "level": "SEDANG",
+      "aturan": "KELENGKAPAN",
+      "deskripsi": "Perjalanan 2 hari tanpa bukti penginapan; perlu justifikasi atau bukti tambahan",
+      "sumber": null
+    }
+  ],
+  "catatan_auditor": [
+    {
+      "tipe": "kelengkapan_item",
+      "item": "B01",
+      "deskripsi": "Folder kasus-007 hanya berisi 2 berkas: struk_taksi_1.txt (bukti biaya) dan pesan_pegawai.txt (bukan bukti biaya). Tool memproses 1 item (B01) = 1 berkas bukti biaya. Tidak ada item terlewat dan tidak ada item hantu; ketiadaan tiket/hotel bukan item terlewat melainkan kekosongan bukti.",
+      "tindakan": "Tidak ada tindakan; jumlah item sesuai.",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "salah_baca",
+      "item": "B01",
+      "deskripsi": "Tanggal terbaca benar: tool 2026-10-18 = \"Tanggal: 18 Oktober 2026\"; jenis \"taksi\" benar; kota Makassar benar (rute Terminal Malengkeri - Hotel Wisata). Nominal TIDAK ditebak oleh pembaca (nominal null, yakin \"rendah\", perlu_cek_manusia true) dan nomor_bukti disalin apa adanya termasuk karakter \"?\". Tidak ada salah baca tanggal/jenis/nama.",
+      "tindakan": "Tidak ada; tidak ada yang perlu dikembalikan ke pembaca.",
+      "status": "bersih"
+    },
+    {
+      "tipe": "nama_di_bukti",
+      "item": "B01",
+      "deskripsi": "nama_di_bukti kosong dan itu benar: struk hanya memuat \"Nama Pengemudi: Pak ???\" (nama pengemudi, bukan penumpang, dan tidak terbaca). R02 mengikat tiket/boarding pass/invoice hotel, tidak mengikat struk taksi, sehingga tidak ada pelanggaran nama.",
+      "tindakan": "Tidak ada tindakan; bukan temuan R02.",
+      "status": "bukan_temuan"
+    },
+    {
+      "tipe": "nomor_bukti",
+      "item": "B01",
+      "deskripsi": "nomor_bukti terisi \"TX-55??21\" apa adanya (tidak dikosongkan, tidak ditebak) - ini sikap yang benar. Namun bentuk bertanda \"?\" bukan pengenal yang dapat diverifikasi, sehingga: (a) dalam kasus ini tidak berdampak karena hanya ada 1 struk sehingga duplikat tidak mungkin; (b) untuk R06 ke depan, pencocokan hanya sah bila pola bertopeng identik persis, dan dua struk BERBEDA yang berbeda hanya pada digit tertutup tidak dapat dipisahkan; (c) nomor ini tidak boleh dipakai sebagai kunci lintas kasus. Deteksi struk ganda pada bukti buram harus berakhir di pemeriksaan manusia.",
+      "tindakan": "Tidak ada tindakan pada nilai; dicatat sebagai keterbatasan R06 (bukan pelanggaran).",
+      "status": "perlu_diketahui_bendahara"
+    },
+    {
+      "tipe": "R08_nominal_tidak_terbaca",
+      "item": "B01",
+      "deskripsi": "Terpicu tetapi tidak dijalankan tool. R08: \"Nominal tidak terbaca / bukti buram -> 'perlu_cek_manusia', jangan menebak.\" Bukti memang buram (\"TOTAL: Rp ???.000\"). Pembaca sudah benar mengirim nominal null + perlu_cek_manusia true, tetapi tool memetakan null menjadi 0 dan mengembalikan status SESUAI dengan rumus \"Dibayar sesuai bukti\", tanpa temuan R08. Akibatnya B01 tampak seperti bukti yang sudah diverifikasi dan selesai, padahal belum pernah terbaca. Temuan AUDITOR dibuat untuk menutup celah ini (lihat temuan_final).",
+      "tindakan": "B01 wajib berstatus PERLU_CEK_MANUSIA dan tidak boleh dianggap selesai sampai ada pemeriksaan petugas.",
+      "status": "perlu_cek_manusia"
+    },
+    {
+      "tipe": "perilaku_tool",
+      "item": "B01",
+      "deskripsi": "Cacat perilaku tool, bukan kesalahan agen: nominal null (tidak diketahui) dikoersi menjadi 0 (nilai numerik) lalu dilabeli SESUAI/\"Dibayar sesuai bukti\". Nilai 0 dan nilai tidak diketahui adalah dua hal berbeda; koersi ini menghapus jejak bahwa bukti tidak terbaca. Pembaca (null + perlu_cek_manusia) dan verifikator (mencatat perilaku ini di penjelasan) sudah benar, sehingga tidak ada yang perlu dikembalikan ke agen.",
+      "tindakan": "Dilaporkan sebagai isu sistem untuk perbaikan tool (null harus mempertahankan status PERLU_CEK_MANUSIA, bukan 0/SESUAI); bukan objek loop perbaikan agen.",
+      "status": "isu_sistem"
+    },
+    {
+      "tipe": "sumber_temuan_tool",
+      "item": "temuan_tool",
+      "deskripsi": "Temuan KELENGKAPAN dari tool punya \"sumber\": null, sehingga tidak menunjuk berkas mana pun. Sumber faktualnya adalah ketiadaan berkas invoice/bukti penginapan di folder kasus-007. Saya tidak mengubah temuan tool; ini hanya keterangan agar temuan dapat ditelusuri.",
+      "tindakan": "Bendahara membaca temuan itu dengan sumber = folder kasus-007 (tidak ada invoice hotel).",
+      "status": "perlu_diketahui_bendahara"
+    },
+    {
+      "tipe": "kelengkapan_bukti",
+      "item": "tiket / boarding pass",
+      "deskripsi": "Perjalanan dinas 2 hari ke Makassar tidak didukung tiket, boarding pass, maupun bukti keberangkatan apa pun, dan bukti yang ada (struk taksi) justru tidak terbaca nominalnya. Ketiadaan tiket TIDAK dibuat sebagai temuan tersendiri karena: (a) tidak ada nilai transportasi/penginapan yang diklaim (total diajukan Rp400.000 murni uang harian, yang menurut R04 tidak perlu bukti) sehingga tidak ada kerugian; (b) tool sudah mengeluarkan temuan KELENGKAPAN level SEDANG untuk kekosongan bukti perjalanan, dan menambah temuan kedua akan menduplikasi isu yang sama. pesan_pegawai.txt menambah satu hal yang relevan: kerusakan bukti diakui dan pegawai meminta dicek, sehingga tidak ada kesan menutupi - tetapi pengakuan itu tidak menggantikan bukti.",
+      "tindakan": "Bendahara diminta memperluas permintaan justifikasi pada temuan KELENGKAPAN agar mencakup bukti keberangkatan (tiket/boarding pass), bukan hanya penginapan.",
+      "status": "perlu_konfirmasi_bendahara"
+    },
+    {
+      "tipe": "R07_hari_libur",
+      "item": "2026-10-18 s.d. 2026-10-19",
+      "deskripsi": "Tidak ada tanggal kasus ini di data/libur/libur.json (hanya 2026-06-01, 2026-08-17, 2026-12-25). Namun 2026-10-18 adalah Minggu (akhir pekan) dan 2026-10-19 Senin, keduanya di dalam masa SPT. Tidak ada biaya yang diklaim untuk hari itu selain uang harian yang bersifat flat per hari (R04), sehingga R07 tidak berdampak nilai.",
+      "tindakan": "Tidak dibuat temuan; sekadar catatan bila bendahara memakai R07 (\"perlu justifikasi\" untuk biaya di akhir pekan).",
+      "status": "tidak_berdampak"
+    },
+    {
+      "tipe": "R10_konfirmasi_tambahan",
+      "item": "seluruh kasus",
+      "deskripsi": "R10 tidak terpicu secara harfiah: total diajukan Rp400.000 jauh di bawah Rp10.000.000, dan tidak ada item berstatus DITOLAK. Perlu dicatat nuansanya: B01 punya nilai_dibayar 0, tetapi statusnya SESUAI (bukan DITOLAK) karena tidak ada nilai yang diajukan - nol di sini berasal dari nominal tidak terbaca, bukan dari penolakan. Jika bendahara membaca \"item ditolak\" secara longgar sebagai \"item yang tidak dibayarkan\", R10 dapat dianggap terpicu.",
+      "tindakan": "Saya menilai R10 tidak terpicu dan tidak mengarang temuan; namun konfirmasi bendahara tetap dibutuhkan lewat jalur R08 + KELENGKAPAN, sehingga hasil praktisnya sama.",
+      "status": "tidak_terpicu"
+    },
+    {
+      "tipe": "R06_struk_ganda",
+      "item": "semua bukti",
+      "deskripsi": "Hanya ada 1 bukti biaya (struk TX-55??21), sehingga struk ganda di dalam kasus tidak mungkin terjadi. Sinyal struk ganda lintas kasus tidak diperiksa karena auditor dilarang membaca kasus lain; bila koordinator menemukannya, itu INDIKASI untuk diputuskan bendahara.",
+      "tindakan": "Tidak ada tindakan.",
+      "status": "tidak_ada"
+    },
+    {
+      "tipe": "R09_perintah_tersisip",
+      "item": "semua bukti",
+      "deskripsi": "Tidak ada teks perintah di dalam bukti maupun pesan pegawai; \"Tolong dicek ya bu\" adalah permintaan pemeriksaan biasa, bukan instruksi untuk menyetujui atau mengubah nilai. perintah_tersisip kosong pada B01.",
+      "tindakan": "Tidak ada tindakan; tidak dibuat temuan.",
+      "status": "tidak_terpicu"
+    },
+    {
+      "tipe": "R01_masa_spt",
+      "item": "B01",
+      "deskripsi": "Tanggal bukti 2026-10-18 berada di dalam masa SPT 2026-10-18 s.d. 2026-10-19; tidak ada bukti bertanggal di luar masa SPT.",
+      "tindakan": "Tidak ada tindakan; R01 tidak terpicu.",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "kesesuaian_data_pegawai",
+      "item": "SPT vs tool",
+      "deskripsi": "Nama Nurul Hidayah, NIP 199210202018032005, golongan II/c, provinsi Sulawesi Selatan, tanggal 2026-10-18 s.d. 2026-10-19, dan lama_hari 2 seluruhnya cocok antara SPT-2026-007.json dan argumen tool; SBM terpakai golongan II sesuai golongan II/c.",
+      "tindakan": "Tidak ada tindakan.",
+      "status": "sesuai"
+    }
+  ],
+  "temuan_final": [
+    {
+      "level": "SEDANG",
+      "aturan": "KELENGKAPAN",
+      "deskripsi": "Perjalanan 2 hari tanpa bukti penginapan; perlu justifikasi atau bukti tambahan",
+      "sumber": null
+    },
+    {
+      "level": "SEDANG",
+      "aturan": "AUDITOR",
+      "deskripsi": "R08 terpicu tetapi tidak dijalankan tool: bukti B01 buram sehingga nominal tidak terbaca, namun tool mengubah nominal null menjadi 0 dan memberi status SESUAI (\"Dibayar sesuai bukti\") tanpa temuan R08. B01 seharusnya berstatus PERLU_CEK_MANUSIA agar struk tidak lewat tanpa tanda. Dampak uang nol karena tidak ada nilai yang diklaim, tetapi verifikasi manusia wajib sebelum B01 dianggap selesai.",
+      "sumber": "struk_taksi_1.txt: \"TOTAL: Rp ???.000\" / \"Tarif: Rp 1?5.0?0\" / \"Tambahan Tol: Rp ??.000\" / \"Nomor Struk: TX-55??21\" / \"Jarak: ?? km\" / \"Nama Pengemudi: Pak ???\""
+    }
+  ],
+  "loop": {
+    "iterasi": 1,
+    "maks": 3
+  },
+  "rekomendasi": "lolos"
+}

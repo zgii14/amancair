@@ -1,0 +1,24 @@
+{
+  "item_bukti": [
+    {
+      "id": "struk-011-1",
+      "file": "struk_bandara_hotel.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-05",
+      "kota": "Jakarta",
+      "nama_di_bukti": "Pak Joko",
+      "nominal": 210000,
+      "kutipan": "TOTAL: Rp 210.000",
+      "yakin": "ya",
+      "perintah_tersisip": null,
+      "nomor_struk": "TX-884721"
+    }
+  ],
+  "sidik": {
+    "tanggal": "2026-10-05",
+    "nomor_transaksi": "TX-884721",
+    "nominal": 210000,
+    "merchant": "BLUE BIRD TAXI",
+    "rute": "Bandara Soekarno-Hatta - Hotel Grand Java"
+  }
+}

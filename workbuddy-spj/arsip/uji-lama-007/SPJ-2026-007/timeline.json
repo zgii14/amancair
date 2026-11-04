@@ -1,0 +1,19 @@
+{
+  "timeline": [
+    {
+      "tanggal": "2026-10-18",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-007.json"
+    },
+    {
+      "tanggal": "2026-10-18",
+      "event": "struk_taksi",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-19",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-007.json"
+    }
+  ]
+}

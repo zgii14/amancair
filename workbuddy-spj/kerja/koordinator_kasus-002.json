@@ -1,0 +1,88 @@
+{
+  "kasus_id": "kasus-002",
+  "spt_terpilih": "SPT-2026-002",
+  "pegawai": {
+    "nip": "198712042009041004",
+    "nama": "Dedi Kurniawan",
+    "golongan": "III/d"
+  },
+  "tujuan": "Jakarta",
+  "tanggal_spt": {
+    "berangkat": "2026-10-12",
+    "kembali": "2026-10-14",
+    "lama_hari": 3
+  },
+  "arsip_lama": {
+    "folder": "arsip/uji-lama-002/",
+    "isi": [
+      "SPJ-2026-002 (draf lama)",
+      "auditor_kasus-002.json",
+      "pembaca-hotel_kasus-002.json",
+      "pembaca-struk_kasus-002.json",
+      "pembaca-tiket_kasus-002.json",
+      "penyusun-spj_kasus-002.json",
+      "verifikator-sbm_kasus-002.json"
+    ],
+    "catatan": "Dipindahkan, tidak dihapus."
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt"], "id": ["B01"] },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.txt"], "id": ["B02"] },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt", "struk_taksi_2.txt", "struk_makan_1.txt"], "id": ["B03", "B04", "B05"] }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "13:23:17", "selesai": "13:23:39", "durasi_detik": 22, "berkas": "kerja/pembaca-tiket_kasus-002.json" },
+    { "agen": "pembaca-hotel", "mulai": "13:23:17", "selesai": "13:23:43", "durasi_detik": 26, "berkas": "kerja/pembaca-hotel_kasus-002.json" },
+    { "agen": "pembaca-struk", "mulai": "13:23:17", "selesai": "13:23:53", "durasi_detik": 36, "berkas": "kerja/pembaca-struk_kasus-002.json" },
+    { "agen": "verifikator-sbm", "mulai": "13:23:54", "selesai": "13:24:48", "durasi_detik": 54, "berkas": "kerja/verifikator-sbm_kasus-002.json" },
+    { "agen": "auditor", "mulai": "13:24:49", "selesai": "13:29:20", "durasi_detik": 271, "berkas": "kerja/auditor_kasus-002.json", "catatan": "percobaan pertama (auditor-2) gagal karena error jaringan 502/ENOTFOUND pada 13:25:47 tanpa berkas hasil; diulang auditor-2b lalu direvisi (temuan R10 AUDITOR ditambahkan)" },
+    { "agen": "penyusun-spj", "mulai": "13:29:21", "selesai": "13:30:12", "durasi_detik": 51, "berkas": "keluar/draf/SPJ-2026-002/" }
+  ],
+  "total_durasi": { "mulai": "13:23:17", "selesai": "13:30:12", "durasi_detik": 415, "durasi": "6 menit 55 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 4581000,
+    "total_dibayar": 4364000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 1850000, "dibayar": 1850000, "status": "SESUAI" },
+      { "id": "B02", "jenis": "hotel", "diajukan": 1144000, "dibayar": 1144000, "status": "SESUAI", "alasan": "2 dari 2 malam x min(572.000, pagu 800.000)" },
+      { "id": "B03", "jenis": "taksi", "diajukan": 170000, "dibayar": 170000, "status": "SESUAI" },
+      { "id": "B04", "jenis": "taksi", "diajukan": 170000, "dibayar": 0, "status": "GANDA", "alasan": "R06, nomor TX-990021 sama dengan B03" },
+      { "id": "B05", "jenis": "makan", "diajukan": 47000, "dibayar": 0, "status": "TERMASUK_UANG_HARIAN", "alasan": "R11" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 1200000, "dibayar": 1200000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "SEDANG", "aturan": "R06", "sumber": "struk_taksi_1.txt, struk_taksi_2.txt" },
+      { "level": "RENDAH", "aturan": "R11", "sumber": "struk_makan_1.txt" }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 2,
+    "temuan_auditor": 1,
+    "temuan_final_auditor": 3,
+    "temuan_manual": 0,
+    "catatan": "Auditor menambah 1 temuan AUDITOR/TINGGI untuk R10 (wajib konfirmasi tambahan bendahara) yang tidak dikeluarkan tool meski ada item tidak dibayar. Tidak ada salah baca data; loop perbaikan tidak diperlukan."
+  },
+  "deteksi_lintas_spj": {
+    "nomor_bukti": "TX-990021",
+    "status": "duplikat DI DALAM kasus ini (B03 vs B04), bukan lintas SPJ; B04 GANDA dibayar 0"
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "dipanggil": true,
+    "nomor": "SPJ-2026-002",
+    "versi": 2,
+    "ok": true,
+    "risiko": "tinggi",
+    "manifest_hash": "0549e74c26dfab0771213f074be68a35cb4cb743c1be98cb6b8dc1e2ce367754",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "Pesan pegawai meminta 'yang dobel dihapus aja' — arahan TIDAK dieksekusi. Kedua struk tetap dicatat (B03, B04); hanya nilai bayar B04 = 0 lewat R06, berkas tidak dihapus demi jejak audit.",
+    "Tidak ada tiket kaki kembali (2026-10-14). Tidak ada biaya kembali yang diklaim, sehingga tidak menjadi temuan; dicatat auditor sebagai perlu_konfirmasi_bendahara.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

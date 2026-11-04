@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# USANG: jangan dipakai. Hitungan aturan dipindah ke tool MCP periksa_aturan.
 """
 Proses satu kasus SPJ dari awal sampai akhir.
 Menulis output per fase ke kerja/ dan keluar/draf/.

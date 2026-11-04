@@ -1,0 +1,99 @@
+{
+  "kasus_id": "kasus-003",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-11-04T13:34:06+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-003",
+      "pegawai": "Siti Aminah",
+      "nip": null,
+      "provinsi": "Bali",
+      "tanggal_berangkat": "2026-10-20",
+      "tanggal_kembali": "2026-10-22",
+      "jumlah_item": 3
+    }
+  },
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-003",
+    "pegawai": {
+      "nama": "Siti Aminah",
+      "nip": "199005052015022003",
+      "golongan": "II/d"
+    },
+    "sbm": {
+      "provinsi": "Bali",
+      "golongan": "II",
+      "pagu_hotel": 550000,
+      "uang_harian": 275000,
+      "pagu_taksi": 200000
+    },
+    "uang_harian": {
+      "hari": 3,
+      "tarif": 275000,
+      "total": 825000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-20",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Siti Aminah",
+        "nominal": 1650000,
+        "nomor_bukti": "BATIK8821",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1650000,
+        "nilai_dibayar": 1650000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-20",
+        "check_out": "2026-10-23",
+        "nama_di_bukti": "Siti Aminah",
+        "nominal": 1584000,
+        "nomor_bukti": "INV/SB/2026/1122",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1584000,
+        "nilai_dibayar": 1056000,
+        "status": "DIPOTONG",
+        "rumus": "2 dari 3 malam x min(Rp528.000, pagu Rp550.000)"
+      },
+      {
+        "id": "B03",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-20",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 145000,
+        "nomor_bukti": "GRB-221099",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 145000,
+        "nilai_dibayar": 145000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "TINGGI",
+        "aturan": "R01",
+        "deskripsi": "1 malam di invoice_hotel.txt di luar masa SPT (2026-10-20 s.d. 2026-10-22); tidak dibayar",
+        "sumber": "invoice_hotel.txt"
+      }
+    ],
+    "total_diajukan": 4204000,
+    "total_dibayar": 3676000
+  },
+  "penjelasan": "Respons mcp__amancair__periksa_aturan disimpan apa adanya (tanpa pangkas, pembulatan, atau pengurutan ulang). Ketiga item dari tiga Pembaca dikirim utuh: B01 tiket, B02 hotel, B03 taksi. SBM terpakai: Bali, Golongan II -> pagu_hotel Rp550.000/malam, uang_harian Rp275.000/hari, pagu_taksi Rp200.000/trip. Uang harian 3 hari x Rp275.000 = Rp825.000 (R04). R03/R01 hotel: invoice B02 tercatat 3 malam (check_in 2026-10-20, check_out 2026-10-23), tetapi masa SPT hanya 2026-10-20 s.d. 2026-10-22 sehingga tool hanya mengakui 2 malam; tarif per malam Rp1.584.000 / 3 = Rp528.000 masih di bawah pagu Rp550.000, jadi tanpa potongan pagu, namun 1 malam di luar SPT tidak dibayar: 2 x Rp528.000 = Rp1.056.000. Check_out 2026-10-23 dikirim apa adanya tanpa diubah/dipotong/dibetulkan. R05 taksi: Rp145.000 <= pagu Rp200.000, sesuai. R07: tidak ada temuan hari libur. R11: tidak ada bukti makan. Total diajukan Rp4.204.000, total dibayar Rp3.676.000 (selisih Rp528.000 = tepat 1 malam hotel di luar SPT). Angka total tool sudah mencakup uang harian Rp825.000: jumlah nilai item Rp3.379.000 + Rp825.000 = Rp4.204.000 diajukan; Rp2.851.000 + Rp825.000 = Rp3.676.000 dibayar. Tidak ada penulisan ke keluar/siap-cair dan tidak ada penandaan siap cair."
+}

@@ -1,0 +1,71 @@
+{
+  "kasus_id": "kasus-007",
+  "spt_terpilih": "SPT-2026-007",
+  "pegawai": {
+    "nip": "199210202018032005",
+    "nama": "Nurul Hidayah",
+    "golongan": "II/c"
+  },
+  "tujuan": "Makassar",
+  "tanggal_spt": {
+    "berangkat": "2026-10-18",
+    "kembali": "2026-10-19",
+    "lama_hari": 2
+  },
+  "arsip_lama": {
+    "folder": "arsip/uji-lama-007/",
+    "isi": ["SPJ-2026-007 (draf lama)", "pembaca-hotel_kasus-007.json", "pembaca-struk_kasus-007.json", "pembaca-tiket_kasus-007.json"],
+    "catatan": "Dipindahkan, tidak dihapus."
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": [], "id": [], "catatan": "tidak ditugaskan: folder kasus tidak memuat tiket maupun boarding pass" },
+    { "agen": "pembaca-hotel", "file": [], "id": [], "catatan": "tidak ditugaskan: folder kasus tidak memuat invoice hotel" },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt"], "id": ["B01"] }
+  ],
+  "waktu": [
+    { "agen": "pembaca-struk", "mulai": "13:49:38", "selesai": "13:50:33", "durasi_detik": 55, "berkas": "kerja/pembaca-struk_kasus-007.json" },
+    { "agen": "verifikator-sbm", "mulai": "13:50:34", "selesai": "13:51:57", "durasi_detik": 83, "berkas": "kerja/verifikator-sbm_kasus-007.json" },
+    { "agen": "auditor", "mulai": "13:51:58", "selesai": "13:53:32", "durasi_detik": 94, "berkas": "kerja/auditor_kasus-007.json" },
+    { "agen": "penyusun-spj", "mulai": "13:53:33", "selesai": "13:55:04", "durasi_detik": 91, "berkas": "keluar/draf/SPJ-2026-007/" }
+  ],
+  "total_durasi": { "mulai": "13:49:38", "selesai": "13:55:04", "durasi_detik": 326, "durasi": "5 menit 26 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 400000,
+    "total_dibayar": 400000,
+    "items": [
+      { "id": "B01", "jenis": "taksi", "diajukan": 0, "dibayar": 0, "status": "SESUAI", "alasan": "nominal null (struk buram) dikembalikan tool sebagai 0; status SESUAI dinilai keliru oleh Auditor" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 400000, "dibayar": 400000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "SEDANG", "aturan": "KELENGKAPAN", "sumber": null }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 1,
+    "temuan_auditor": 1,
+    "temuan_final_auditor": 2,
+    "temuan_manual": 0,
+    "catatan": "Auditor menambah temuan SEDANG/AUDITOR: R08 terpicu tetapi tidak dijalankan tool (nominal null dikoersi menjadi 0 dan diberi status SESUAI tanpa penanda PERLU_CEK_MANUSIA). Dampak uang nol."
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "dipanggil": true,
+    "nomor": "SPJ-2026-007",
+    "versi": 1,
+    "ok": true,
+    "risiko": "normal",
+    "manifest_hash": "8f5093d716c6dbc0b528020fd7909a0b7e82c545ebd5bc7acbeb0d223787d63d",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "Kasus dengan bukti paling minim: hanya 1 struk taksi buram, tanpa tiket, boarding pass, maupun invoice hotel untuk perjalanan 2 hari (1 malam).",
+    "Nominal struk tidak terbaca (TOTAL: Rp ???.000). Pembaca mencatat nominal null dan tidak menebak; Verifikator mengirim null apa adanya.",
+    "Tool menerima nominal null tetapi mengembalikan B01 dengan nominal 0 dan status SESUAI, tanpa temuan R08. Ini keterbatasan tool yang dicatat Auditor sebagai temuan SEDANG/AUDITOR.",
+    "Dokumen menampilkan B01 dengan status 'Layak' dan nilai Rp0 karena templat membaca status apa adanya dari hasil tool. Angka benar (0), label menyesatkan; sudah dilaporkan dan tidak diperbaiki manual karena hasil tool tidak boleh diubah dan berkas draf tidak boleh disentuh setelah pengajuan.",
+    "Seluruh Rp400.000 yang dibayar berasal dari uang harian 2 hari (R04); taksi tidak dibayar.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

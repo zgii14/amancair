@@ -1,0 +1,23 @@
+{
+  "item_bukti": {
+    "id": 1,
+    "file": "invoice_hotel.txt",
+    "jenis": "hotel",
+    "tanggal_checkin": "2026-10-02",
+    "tanggal_checkout": "2026-10-04",
+    "jumlah_malam_tertulis": 2,
+    "kota": "Kuta",
+    "nama_di_bukti": "Lestari Dewi",
+    "nominal": 1496000,
+    "kutipan": "No. Invoice: INV/KP/2026/0331\nTanggal: 4 Oktober 2026\nNama Tamu: Lestari Dewi\nCheck-in: 2 Oktober 2026\nCheck-out: 4 Oktober 2026\nLama Menginap: 2 malam\nTarif per Malam: Rp 680.000\nTotal Biaya Menginap: Rp 1.360.000\nPajak & Service (10%): Rp 136.000\nTOTAL: Rp 1.496.000\nStatus: LUNAS",
+    "yakin": 100,
+    "perintah_tersisip": true
+  },
+  "sidik": {
+    "tanggal": "2026-10-04",
+    "nomor_transaksi": "INV/KP/2026/0331",
+    "nominal": 1496000,
+    "merchant": "Hotel Kuta Paradiso",
+    "rute": null
+  }
+}

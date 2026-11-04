@@ -1,0 +1,131 @@
+{
+  "kasus_id": "kasus-001",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-11-04T13:18:52+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-001",
+      "pegawai": "Budi Santoso",
+      "nip": null,
+      "provinsi": "DKI Jakarta",
+      "tanggal_berangkat": "2026-10-05",
+      "tanggal_kembali": "2026-10-08",
+      "jumlah_item": 5
+    }
+  },
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-001",
+    "pegawai": {
+      "nama": "Budi Santoso",
+      "nip": "198501152010011001",
+      "golongan": "III/c"
+    },
+    "sbm": {
+      "provinsi": "DKI Jakarta",
+      "golongan": "III",
+      "pagu_hotel": 800000,
+      "uang_harian": 400000,
+      "pagu_taksi": 250000
+    },
+    "uang_harian": {
+      "hari": 4,
+      "tarif": 400000,
+      "total": 1600000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.pdf",
+        "jenis": "tiket",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Budi Santoso",
+        "nominal": 2450000,
+        "nomor_bukti": "ABC123",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 2450000,
+        "nilai_dibayar": 2450000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "tiket_kembali.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-08",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Budi Santoso",
+        "nominal": 2380000,
+        "nomor_bukti": "ABC124",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 2380000,
+        "nilai_dibayar": 2380000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B03",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-05",
+        "check_out": "2026-10-08",
+        "nama_di_bukti": "Budi Santoso",
+        "nominal": 2310000,
+        "nomor_bukti": "INV/GJ/2026/0847",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 2310000,
+        "nilai_dibayar": 2310000,
+        "status": "SESUAI",
+        "rumus": "3 dari 3 malam x min(Rp770.000, pagu Rp800.000)"
+      },
+      {
+        "id": "B04",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 210000,
+        "nomor_bukti": "TX-884721",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 210000,
+        "nilai_dibayar": 210000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B05",
+        "file": "struk_makan_1.txt",
+        "jenis": "makan",
+        "tanggal": "2026-10-06",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 82500,
+        "nomor_bukti": "WB-1129",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 82500,
+        "nilai_dibayar": 0,
+        "status": "TERMASUK_UANG_HARIAN",
+        "rumus": "Makan sudah termasuk uang harian (R11)"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "RENDAH",
+        "aturan": "R11",
+        "deskripsi": "Struk makan struk_makan_1.txt Rp82.500 tidak dibayar; sudah termasuk uang harian",
+        "sumber": "struk_makan_1.txt"
+      }
+    ],
+    "total_diajukan": 9032500,
+    "total_dibayar": 8950000
+  },
+  "penjelasan": "Tool periksa_aturan dijalankan untuk SPJ-2026-001 atas nama Budi Santoso (Golongan III/c, SBM DKI Jakarta golongan III). Lima bukti diperiksa. Empat bukti dibayar penuh sesuai bukti: tiket berangkat, tiket kembali, hotel (3 malam, biaya per malam di bawah pagu hotel sehingga tidak ada potongan), dan taksi (di bawah pagu taksi). Struk makan tidak dibayar karena sudah termasuk uang harian (R11) dan dicatat sebagai bukti pendukung. Uang harian dihitung 4 hari sesuai masa SPT. Terdapat 1 temuan tingkat RENDAH pada aturan R11 untuk struk makan. Tidak ada temuan kritis, tinggi, maupun sedang, dan tidak ada perintah tersisip di dalam dokumen."
+}

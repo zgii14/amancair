@@ -1,0 +1,89 @@
+{
+  "kasus_id": "kasus-001",
+  "spt_terpilih": "SPT-2026-001",
+  "pegawai": {
+    "nip": "198501152010011001",
+    "nama": "Budi Santoso",
+    "golongan": "III/c"
+  },
+  "tujuan": "Jakarta",
+  "tanggal_spt": {
+    "berangkat": "2026-10-05",
+    "kembali": "2026-10-08",
+    "lama_hari": 4
+  },
+  "arsip_lama": {
+    "folder": "arsip/uji-lama-001/",
+    "isi": ["SPJ-2026-001 (draf lama: rekap.xlsx, draf_spj.docx, layar_konfirmasi.html, timeline.json, manifest.json, kerja/)"],
+    "catatan": "Tidak ada berkas kerja/*_kasus-001.json sebelum proses ini; hanya folder draf lama yang dipindahkan. Berkas tidak dihapus."
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.pdf", "tiket_kembali.txt"], "id": ["B01", "B02"] },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.txt"], "id": ["B03"] },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt", "struk_makan_1.txt"], "id": ["B04", "B05"] }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "13:17:24", "selesai": "13:17:58", "durasi_detik": 34, "berkas": "kerja/pembaca-tiket_kasus-001.json" },
+    { "agen": "pembaca-hotel", "mulai": "13:17:24", "selesai": "13:18:01", "durasi_detik": 37, "berkas": "kerja/pembaca-hotel_kasus-001.json" },
+    { "agen": "pembaca-struk", "mulai": "13:17:24", "selesai": "13:18:10", "durasi_detik": 46, "berkas": "kerja/pembaca-struk_kasus-001.json" },
+    { "agen": "verifikator-sbm", "mulai": "13:18:11", "selesai": "13:18:59", "durasi_detik": 48, "berkas": "kerja/verifikator-sbm_kasus-001.json" },
+    { "agen": "auditor", "mulai": "13:18:59", "selesai": "13:21:00", "durasi_detik": 121, "berkas": "kerja/auditor_kasus-001.json" },
+    { "agen": "penyusun-spj", "mulai": "13:21:00", "selesai": "13:21:55", "durasi_detik": 55, "berkas": "keluar/draf/SPJ-2026-001/" }
+  ],
+  "total_durasi": { "mulai": "13:17:24", "selesai": "13:21:55", "durasi_detik": 271, "durasi": "4 menit 31 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 9032500,
+    "total_dibayar": 8950000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 2450000, "dibayar": 2450000, "status": "SESUAI" },
+      { "id": "B02", "jenis": "tiket", "diajukan": 2380000, "dibayar": 2380000, "status": "SESUAI" },
+      { "id": "B03", "jenis": "hotel", "diajukan": 2310000, "dibayar": 2310000, "status": "SESUAI", "alasan": "3 dari 3 malam x min(770.000, pagu 800.000)" },
+      { "id": "B04", "jenis": "taksi", "diajukan": 210000, "dibayar": 210000, "status": "SESUAI" },
+      { "id": "B05", "jenis": "makan", "diajukan": 82500, "dibayar": 0, "status": "TERMASUK_UANG_HARIAN", "alasan": "R11" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 1600000, "dibayar": 1600000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "RENDAH", "aturan": "R11", "sumber": "struk_makan_1.txt" }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 1,
+    "temuan_auditor": 1,
+    "temuan_final_auditor": 2,
+    "temuan_manual": 0,
+    "catatan": "Auditor menambah 1 temuan AUDITOR/KRITIS (struk taksi TX-884721 juga dipakai di kasus-011). Tidak ada salah baca data; loop perbaikan tidak diperlukan."
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "dipanggil": false,
+    "nomor": "SPJ-2026-001",
+    "versi": null,
+    "alasan": "SPJ-2026-001 sudah disetujui sebelumnya (keluar/siap-cair/SPJ-2026-001); backend menolak pengajuan ulang. Perintah user: jangan panggil ajukan_spj."
+  },
+  "perbandingan_dengan_persetujuan_lama": {
+    "sumber_lama": "keluar/siap-cair/SPJ-2026-001/rekap.xlsx (disetujui 23 Okt)",
+    "total_diajukan_lama": 9032500,
+    "total_dibayar_lama": 8950000,
+    "total_diajukan_baru": 9032500,
+    "total_dibayar_baru": 8950000,
+    "selisih_dibayar": 0,
+    "rincian_lama": [
+      { "id": "B01", "jenis": "tiket", "dibayar": 2450000 },
+      { "id": "B02", "jenis": "tiket", "dibayar": 2380000 },
+      { "id": "B03", "jenis": "hotel", "dibayar": 2310000 },
+      { "id": "B04", "jenis": "taksi", "dibayar": 210000 },
+      { "id": "B05", "jenis": "makan", "dibayar": 0 },
+      { "id": "UH", "jenis": "uang_harian", "dibayar": 1600000 }
+    ],
+    "kesimpulan": "Total layak dibayar identik dengan yang dulu disetujui (Rp8.950.000). Rincian per item juga identik. Yang berbeda hanya komposisi temuan: R11 tetap RENDAH, ditambah temuan AUDITOR/KRITIS soal TX-884721 yang juga dipakai di SPJ-2026-011."
+  },
+  "catatan": [
+    "Kasus tanpa boarding pass; 5 berkas bukti = 5 item.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh.",
+    "Temuan AUDITOR/KRITIS tidak muncul dari tool karena nomor SPJ sama (SPJ-2026-001); berasal dari pemeriksaan auditor lintas berkas kasus."
+  ]
+}

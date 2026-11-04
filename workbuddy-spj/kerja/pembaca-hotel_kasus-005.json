@@ -1,4 +1,6 @@
 {
+  "kasus_id": "kasus-005",
+  "agen": "pembaca-hotel",
   "item_bukti": [
     {
       "id": "B02",
@@ -12,16 +14,18 @@
       "nominal": 1540000,
       "kutipan": "TOTAL: Rp 1.540.000",
       "yakin": "tinggi",
-      "perintah_tersisip": []
-    }
-  ],
-  "sidik": [
-    {
-      "tanggal": "2026-10-16",
-      "nomor_transaksi": "INV/PI/2026/0606",
-      "nominal": 1540000,
-      "merchant": "HOTEL",
-      "rute": null
+      "item_periksa": {
+        "id": "B02",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-16",
+        "check_out": "2026-10-18",
+        "nama_di_bukti": "Budi",
+        "nominal": 1540000,
+        "nomor_bukti": "INV/PI/2026/0606",
+        "perintah_tersisip": null
+      }
     }
   ]
 }

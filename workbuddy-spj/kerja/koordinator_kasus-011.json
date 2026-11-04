@@ -1,0 +1,78 @@
+{
+  "kasus_id": "kasus-011",
+  "spt_terpilih": "SPT-2026-011",
+  "pegawai": {
+    "nip": "199507082019042007",
+    "nama": "Lestari Dewi",
+    "golongan": "III/a"
+  },
+  "tujuan": "Jakarta",
+  "tanggal_spt": {
+    "berangkat": "2026-10-05",
+    "kembali": "2026-10-07",
+    "lama_hari": 3
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt"], "id": ["B01"] },
+    { "agen": "pembaca-struk", "file": ["struk_bandara_hotel.txt"], "id": ["B02"] },
+    { "agen": "pembaca-hotel", "file": [], "id": [], "catatan": "tidak ditugaskan: kasus ini tidak memuat invoice hotel" }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "12:10:46", "selesai": "12:11:03", "durasi_detik": 17, "berkas": "kerja/pembaca-tiket_kasus-011.json" },
+    { "agen": "pembaca-struk", "mulai": "12:10:46", "selesai": "12:11:07", "durasi_detik": 21, "berkas": "kerja/pembaca-struk_kasus-011.json" },
+    { "agen": "verifikator-sbm", "mulai": "12:11:29", "selesai": "12:12:13", "durasi_detik": 44, "berkas": "kerja/verifikator-sbm_kasus-011.json" },
+    { "agen": "auditor", "mulai": "12:12:57", "selesai": "12:15:12", "durasi_detik": 135, "berkas": "kerja/auditor_kasus-011.json" },
+    { "agen": "penyusun-spj", "mulai": "12:15:49", "selesai": "12:16:59", "durasi_detik": 70, "berkas": "keluar/draf/SPJ-2026-011/" }
+  ],
+  "total_durasi": { "mulai": "12:10:46", "selesai": "12:16:59", "durasi_detik": 373, "durasi": "6 menit 13 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 3090000,
+    "total_dibayar": 2880000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 1680000, "dibayar": 1680000, "status": "SESUAI" },
+      { "id": "B02", "jenis": "taksi", "diajukan": 210000, "dibayar": 0, "status": "DITAHAN", "alasan": "R06 struk ganda lintas SPJ" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 1200000, "dibayar": 1200000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "KRITIS", "aturan": "R06", "sumber": "struk_bandara_hotel.txt" },
+      { "level": "SEDANG", "aturan": "KELENGKAPAN", "sumber": null },
+      { "level": "TINGGI", "aturan": "R10", "sumber": null }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 3,
+    "temuan_auditor": 0,
+    "temuan_final_auditor": 3,
+    "temuan_manual": 0,
+    "catatan": "Auditor tidak menambah temuan; kekurangan bukti penginapan sudah ditangani tool lewat KELENGKAPAN, tidak diduplikasi."
+  },
+  "deteksi_lintas_spj": {
+    "nomor_bukti": "TX-884721",
+    "terdeteksi_di": "SPJ-2026-001",
+    "status": "KRITIS R06, item B02 ditahan (dibayar 0)"
+  },
+  "format_timeline": { "standar": "{tanggal, event, sumber}", "sumber_string": true, "jumlah_entri": 2, "sesuai": true },
+  "kebersihan_rekap": {
+    "max_row": 5,
+    "baris_total_tanpa_status": true,
+    "baris_kosong_di_bawah_total": 0
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "nomor": "SPJ-2026-011",
+    "versi": 1,
+    "ok": true,
+    "risiko": "tinggi",
+    "manifest_hash": "9e6d273e2252e4d9e1cf4a1f0233eb2713576c13b9653f02a2aff6963828c8d2",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "Kasus tanpa invoice hotel; pembaca-hotel tidak ditugaskan.",
+    "R06 lintas SPJ terdeteksi tool: TX-884721 sudah diajukan di SPJ-2026-001.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual. proses_kasus.py tidak dipakai.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

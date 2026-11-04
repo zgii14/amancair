@@ -1,0 +1,54 @@
+{
+  "kasus_id": "kasus-007",
+  "agen": "penyusun-spj",
+  "nomor_spj": "SPJ-2026-007",
+  "versi_pengajuan": 1,
+  "total_diajukan": 400000,
+  "total_dibayar": 400000,
+  "berkas_draf": [
+    "draf_spj.docx",
+    "layar_konfirmasi.html",
+    "rekap.xlsx",
+    "timeline.json"
+  ],
+  "ringkasan_skrip": {
+    "nomor": "SPJ-2026-007",
+    "pegawai": "Nurul Hidayah",
+    "tujuan": "Makassar",
+    "tanggal_spt": "2026-10-18 s.d. 2026-10-19",
+    "total_diajukan": 400000,
+    "total_dibayar": 400000,
+    "temuan": [
+      {
+        "level": "SEDANG",
+        "aturan": "KELENGKAPAN",
+        "deskripsi": "Perjalanan 2 hari tanpa bukti penginapan; perlu justifikasi atau bukti tambahan",
+        "sumber": null
+      },
+      {
+        "level": "SEDANG",
+        "aturan": "AUDITOR",
+        "deskripsi": "R08 terpicu tetapi tidak dijalankan tool: bukti B01 buram sehingga nominal tidak terbaca, namun tool mengubah nominal null menjadi 0 dan memberi status SESUAI (\"Dibayar sesuai bukti\") tanpa temuan R08. B01 seharusnya berstatus PERLU_CEK_MANUSIA agar struk tidak lewat tanpa tanda. Dampak uang nol karena tidak ada nilai yang diklaim, tetapi verifikasi manusia wajib sebelum B01 dianggap selesai.",
+        "sumber": "struk_taksi_1.txt: \"TOTAL: Rp ???.000\" / \"Tarif: Rp 1?5.0?0\" / \"Tambahan Tol: Rp ??.000\" / \"Nomor Struk: TX-55??21\" / \"Jarak: ?? km\" / \"Nama Pengemudi: Pak ???\""
+      }
+    ],
+    "perintah_tersisip": [],
+    "berkas": [
+      "draf_spj.docx",
+      "layar_konfirmasi.html",
+      "rekap.xlsx",
+      "timeline.json"
+    ]
+  },
+  "balasan_ajukan_spj": {
+    "ok": true,
+    "nomor": "SPJ-2026-007",
+    "versi": 1,
+    "risiko": "normal",
+    "manifest_hash": "8f5093d716c6dbc0b528020fd7909a0b7e82c545ebd5bc7acbeb0d223787d63d",
+    "jumlah_berkas": 4,
+    "catatan_backend": [],
+    "pesan": "Diajukan ke Meja Pimpinan. BELUM dicairkan; menunggu keputusan bendahara."
+  },
+  "catatan": "Dokumen disusun tools/susun_dokumen.py kasus-007 (stdout dipakai apa adanya). Folder keluar/draf/SPJ-2026-007/ dibuat baru, tepat 4 berkas, tidak diubah setelah pengajuan. TEMUAN PENYUSUN (dilaporkan, tidak diperbaiki manual): baris B01 pada rekap.xlsx dan layar_konfirmasi.html berstatus 'Layak' dengan keterangan 'Sesuai bukti', padahal nominal struk tidak terbaca (nominal null dikoersi tool menjadi 0 dengan status SESUAI). Seharusnya 'Perlu dicek petugas'. Penyebab: template memetakan status tool 'SESUAI' -> 'Layak' dan sumber status satu-satunya adalah kunci hasil pada kerja/verifikator-sbm_kasus-007.json; koreksi status hanya bisa lewat Auditor merevisi hasil atau lewat patch templat, bukan oleh Penyusun. Mitigasi yang ada di dokumen: temuan SEDANG/AUDITOR R08 tampil utuh di bagian C dan sheet 'Hal yang Perlu Diperhatikan' dengan tindak lanjut 'Minta penjelasan atau bukti tambahan dari pegawai.' Nilai Rp0 pada B01 wajar (nominal tidak terbaca), bukan kesalahan hitung: total Rp400.000 seluruhnya uang harian 2 hari. Cacat redaksi 'di di' tidak muncul pada kasus ini. Tidak ada penulisan ke keluar/siap-cair dan tidak ada penandaan siap cair."
+}

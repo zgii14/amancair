@@ -1,0 +1,99 @@
+{
+  "kasus_id": "kasus-004",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-11-04T13:43:51+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-004",
+      "pegawai": "Rudi Hartono",
+      "nip": null,
+      "provinsi": "DKI Jakarta",
+      "tanggal_berangkat": "2026-10-10",
+      "tanggal_kembali": "2026-10-12",
+      "jumlah_item": 3
+    }
+  },
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-004",
+    "pegawai": {
+      "nama": "Rudi Hartono",
+      "nip": "197502281996121006",
+      "golongan": "IV/c"
+    },
+    "sbm": {
+      "provinsi": "DKI Jakarta",
+      "golongan": "IV",
+      "pagu_hotel": 1000000,
+      "uang_harian": 500000,
+      "pagu_taksi": 250000
+    },
+    "uang_harian": {
+      "hari": 3,
+      "tarif": 500000,
+      "total": 1500000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-10",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Rudi Hartono",
+        "nominal": 3200000,
+        "nomor_bukti": "GAR0099",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 3200000,
+        "nilai_dibayar": 3200000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "invoice_hotel.pdf",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-10",
+        "check_out": "2026-10-12",
+        "nama_di_bukti": "Rudi Hartono",
+        "nominal": 2640000,
+        "nomor_bukti": "INV/TGP/2026/0555",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 2640000,
+        "nilai_dibayar": 2000000,
+        "status": "DIPOTONG",
+        "rumus": "2 dari 2 malam x min(Rp1.320.000, pagu Rp1.000.000)"
+      },
+      {
+        "id": "B03",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-10",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 230000,
+        "nomor_bukti": "TX-771100",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 230000,
+        "nilai_dibayar": 230000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "TINGGI",
+        "aturan": "R03",
+        "deskripsi": "Hotel Rp1.320.000/malam (termasuk pajak) melewati pagu Rp1.000.000; kelebihan tidak dibayar",
+        "sumber": "invoice_hotel.pdf"
+      }
+    ],
+    "total_diajukan": 7570000,
+    "total_dibayar": 6930000
+  },
+  "penjelasan": "Respons mcp__amancair__periksa_aturan disimpan apa adanya (tanpa pangkas, pembulatan, atau pengurutan ulang). Ketiga item dikirim utuh: B01 tiket, B02 hotel (nominal TOTAL invoice termasuk pajak, 2 malam, tidak dipotong sendiri), B03 taksi. SBM terpakai: DKI Jakarta, Golongan IV -> pagu_hotel Rp1.000.000/malam, uang_harian Rp500.000/hari, pagu_taksi Rp250.000/trip. Uang harian 3 hari x Rp500.000 = Rp1.500.000 (R04). R03 hotel: biaya per malam = Rp2.640.000 / 2 malam = Rp1.320.000 (termasuk pajak), melewati pagu Rp1.000.000, sehingga yang dibayar 2 x Rp1.000.000 = Rp2.000.000 dan kelebihan Rp640.000 tidak dibayar; temuan level TINGGI. R05 taksi: Rp230.000 <= pagu Rp250.000, sesuai. R01: check_in/check_out B02 (2026-10-10 s.d. 2026-10-12) berada di dalam masa SPT, tanggal B01 dan B03 (2026-10-10) juga di dalam masa SPT. R07: tidak ada temuan hari libur. R11: tidak ada bukti makan. Total diajukan Rp7.570.000, total dibayar Rp6.930.000 (selisih Rp640.000 = kelebihan pagu hotel). Angka total tool sudah mencakup uang harian Rp1.500.000: jumlah nilai item Rp6.070.000 + Rp1.500.000 = Rp7.570.000 diajukan; Rp5.430.000 + Rp1.500.000 = Rp6.930.000 dibayar. Tidak ada penulisan ke keluar/siap-cair dan tidak ada penandaan siap cair."
+}

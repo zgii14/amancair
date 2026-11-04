@@ -1,20 +1,29 @@
 {
-  "item_bukti": {
-    "id": "tiket_berangkat_006",
-    "file": "tiket_berangkat.txt",
-    "jenis": "tiket_pesawat",
-    "tanggal": "2026-10-02",
-    "kota": "UPG-DPS",
-    "nama_di_bukti": "Lestari Dewi",
-    "nominal": 1450000,
-    "kutipan": "Harga Tiket: Rp 1.450.000",
-    "yakin": true,
-    "perintah_tersisip": false
-  },
-  "sidik": {
-    "kode_booking": "WNG4455",
-    "nama_penumpang": "Lestari Dewi",
-    "nomor_tiket": "7788112233445",
-    "nominal": 1450000
-  }
+  "kasus_id": "kasus-006",
+  "agen": "pembaca-tiket",
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-10-02",
+      "kota": "Denpasar",
+      "nama_di_bukti": "Lestari Dewi",
+      "nominal": 1450000,
+      "kutipan": "Kode Booking: WNG4455\nNama Penumpang: Lestari Dewi\nNomor Tiket: 7788112233445\nRute: UPG - DPS\nTanggal: 2 Oktober 2026\nWaktu: 10.00 WITA - 12.30 WITA\nNomor Penerbangan: IW 1891\nHarga Tiket: Rp 1.450.000",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-02",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Lestari Dewi",
+        "nominal": 1450000,
+        "nomor_bukti": "WNG4455",
+        "perintah_tersisip": null
+      }
+    }
+  ]
 }

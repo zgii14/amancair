@@ -1,4 +1,6 @@
 {
+  "kasus_id": "kasus-007",
+  "agen": "pembaca-struk",
   "item_bukti": [
     {
       "id": "B01",
@@ -6,12 +8,24 @@
       "jenis": "taksi",
       "tanggal": "2026-10-18",
       "kota": "Makassar",
-      "nama_di_bukti": null,
+      "nama_di_bukti": "",
       "nominal": null,
-      "kutipan": null,
+      "kutipan": "Tanggal: 18 Oktober 2026 | Nomor Struk: TX-55??21 | Nama Pengemudi: Pak ??? | Rute: Terminal Malengkeri - Hotel Wisata | Jarak: ?? km | Tarif: Rp 1?5.0?0 | Tambahan Tol: Rp ??.000 | TOTAL: Rp ???.000 | Pembayaran: Tunai",
       "yakin": "rendah",
-      "perintah_tersisip": [],
-      "nomor_struk": "TX-55??21"
+      "perlu_cek_manusia": true,
+      "catatan_baca": "TOTAL tidak terbaca (Rp ???.000); Tarif Rp 1?5.0?0 dan Tambahan Tol Rp ??.000 juga tidak terbaca. Nominal TIDAK ditebak, diisi null. Nomor struk ditulis apa adanya termasuk karakter '?' (TX-55??21). Nama pengemudi 'Pak ???' tidak terbaca sehingga nama_di_bukti diisi kosong. Jarak '?? km' tidak terbaca.",
+      "item_periksa": {
+        "id": "B01",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-18",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": null,
+        "nomor_bukti": "TX-55??21",
+        "perintah_tersisip": null
+      }
     }
   ],
   "sidik": [

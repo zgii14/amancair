@@ -1,0 +1,77 @@
+{
+  "kasus_id": "kasus-008",
+  "spt_terpilih": "SPT-2026-008",
+  "pegawai": {
+    "nip": "199805152022021008",
+    "nama": "Bayu Wijaya",
+    "golongan": "II/b"
+  },
+  "tujuan": "Jakarta",
+  "tanggal_spt": {
+    "berangkat": "2026-10-06",
+    "kembali": "2026-10-08",
+    "lama_hari": 3
+  },
+  "arsip_lama": {
+    "folder": "arsip/uji-lama-008/",
+    "isi": ["SPJ-2026-008 (draf lama)", "pembaca-tiket_kasus-008.json"],
+    "catatan": "Dipindahkan, tidak dihapus. Berkas pembaca-tiket lama sempat dibaca verifikator sebagai artefak run lama; dinyatakan tidak dipakai."
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt", "boarding_pass.txt"], "id": ["B01", "B02"] },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.txt"], "id": ["B03"] },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt"], "id": ["B04"], "catatan": "kasus ini tidak memuat struk makan" }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "13:52:55", "selesai": "13:53:18", "durasi_detik": 23, "berkas": "kerja/pembaca-tiket_kasus-008.json" },
+    { "agen": "pembaca-hotel", "mulai": "13:52:55", "selesai": "13:53:32", "durasi_detik": 37, "berkas": "kerja/pembaca-hotel_kasus-008.json" },
+    { "agen": "pembaca-struk", "mulai": "13:52:55", "selesai": "13:53:54", "durasi_detik": 59, "berkas": "kerja/pembaca-struk_kasus-008.json" },
+    { "agen": "verifikator-sbm", "mulai": "13:53:55", "selesai": "13:54:51", "durasi_detik": 56, "berkas": "kerja/verifikator-sbm_kasus-008.json" },
+    { "agen": "auditor", "mulai": "13:54:52", "selesai": "13:57:07", "durasi_detik": 135, "berkas": "kerja/auditor_kasus-008.json" },
+    { "agen": "penyusun-spj", "mulai": "13:57:08", "selesai": "13:58:45", "durasi_detik": 97, "berkas": "keluar/draf/SPJ-2026-008/" }
+  ],
+  "total_durasi": { "mulai": "13:52:55", "selesai": "13:58:45", "durasi_detik": 350, "durasi": "5 menit 50 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 3649000,
+    "total_dibayar": 3649000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 1450000, "dibayar": 1450000, "status": "SESUAI" },
+      { "id": "B02", "jenis": "boarding_pass", "diajukan": 0, "dibayar": 0, "status": "DITAHAN", "alasan": "R02: nama Andi Wijaya tidak cocok dengan pegawai Bayu Wijaya" },
+      { "id": "B03", "jenis": "hotel", "diajukan": 1144000, "dibayar": 1144000, "status": "SESUAI", "alasan": "2 dari 2 malam x min(572.000, pagu 600.000)" },
+      { "id": "B04", "jenis": "taksi", "diajukan": 155000, "dibayar": 155000, "status": "SESUAI" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 900000, "dibayar": 900000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "KRITIS", "aturan": "R02", "sumber": "boarding_pass.txt" },
+      { "level": "TINGGI", "aturan": "R10", "sumber": null }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 2,
+    "temuan_auditor": 1,
+    "temuan_final_auditor": 3,
+    "temuan_manual": 0,
+    "catatan": "Auditor menambah KRITIS/AUDITOR: pengakuan pegawai bahwa boarding pass milik teman yang batal menambah fakta baru di luar R02 (tidak ada bukti keberangkatan atas nama pegawai sendiri), sementara tiket Rp1.450.000 tetap dibayar penuh."
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "dipanggil": true,
+    "nomor": "SPJ-2026-008",
+    "versi": 2,
+    "ok": true,
+    "risiko": "tinggi",
+    "manifest_hash": "062fea7ccb8861a75547da397a064efe91bb1fd07a105e084371dc6477b0ef8b",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "KRITIS R02: boarding_pass.txt atas nama Andi Wijaya, sedangkan SPT, tiket, dan invoice hotel atas nama Bayu Wijaya.",
+    "total_dibayar = total_diajukan = 3.649.000 BUKAN berarti kasus bersih: boarding pass tidak memuat harga sehingga B02 bernilai 0 sejak awal, dan KRITIS R02 tidak mengurangi pembayaran. Temuan diselesaikan lewat konfirmasi bendahara (R10 TINGGI), bukan lewat potongan.",
+    "Auditor menambah KRITIS/AUDITOR karena pesan pegawai mengakui boarding pass milik orang lain; pengakuan memperkuat temuan, bukan menghapusnya.",
+    "Pembaca tiket awalnya (run lama) mengisi nama boarding pass null; pada run ini diisi persis 'Andi Wijaya' sehingga R02 dapat dinilai tool. Tanpa itu temuan KRITIS akan hilang.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

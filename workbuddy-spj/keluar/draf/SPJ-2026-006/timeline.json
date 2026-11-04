@@ -1,0 +1,19 @@
+{
+  "timeline": [
+    {
+      "tanggal": "2026-10-02",
+      "event": "Tanggal berangkat menurut SPT; penerbangan UPG - DPS pukul 10.00-12.30 WITA; check-in hotel",
+      "sumber": "data/spt/SPT-2026-006.json (\"tanggal_berangkat\": \"2026-10-02\"); data/kasus/kasus-006/tiket_berangkat.txt (\"Tanggal: 2 Oktober 2026\"); data/kasus/kasus-006/invoice_hotel.txt (\"Check-in: 2 Oktober 2026\")"
+    },
+    {
+      "tanggal": "2026-10-03",
+      "event": "Struk makan Warung Tepi Pantai Rp83.000 (WTP-441)",
+      "sumber": "data/kasus/kasus-006/struk_makan_1.txt (\"Tanggal: 3 Oktober 2026\")"
+    },
+    {
+      "tanggal": "2026-10-04",
+      "event": "Check-out hotel (2 malam) dan tanggal invoice; tanggal kembali menurut SPT",
+      "sumber": "data/kasus/kasus-006/invoice_hotel.txt (\"Check-out: 4 Oktober 2026\", \"Tanggal: 4 Oktober 2026\"); data/spt/SPT-2026-006.json (\"tanggal_kembali\": \"2026-10-04\")"
+    }
+  ]
+}

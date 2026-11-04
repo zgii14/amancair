@@ -1,51 +1,107 @@
 {
-  "hasil_verifikasi": [
-    {
-      "id": "B01",
-      "status": "sesuai",
-      "dibayar": 1920000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "tiket_berangkat.txt: Harga Tiket: Rp 1.920.000",
-      "rumus_hitung": "Tiket sesuai bukti riil = 1920000",
-      "level_risiko": null
+  "kasus_id": "kasus-005",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-10-31T20:59:50+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-005b",
+      "pegawai": "Budi Prasetyo",
+      "nip": "197803101999031002",
+      "provinsi": "DKI Jakarta",
+      "tanggal_berangkat": "2026-10-16",
+      "tanggal_kembali": "2026-10-18",
+      "jumlah_item": 3
     },
-    {
-      "id": "B02",
-      "status": "sesuai",
-      "dibayar": 1540000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "invoice_hotel.txt: TOTAL: Rp 1.540.000",
-      "rumus_hitung": "2 malam x 770,000 = 1,540,000; dalam pagu 1,000,000",
-      "level_risiko": null
-    },
-    {
-      "id": "B03",
-      "status": "sesuai",
-      "dibayar": 165000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "struk_taksi_1.txt: TOTAL: Rp 165.000",
-      "rumus_hitung": "Taksi dalam pagu = 165,000",
-      "level_risiko": null
-    },
-    {
-      "id": "UH",
-      "status": "sesuai",
-      "dibayar": 1500000,
-      "aturan": "R04",
-      "alasan": "Uang harian 3 hari x 500,000 = 1,500,000",
-      "sumber": "SPT",
-      "rumus_hitung": "3 hari x 500,000 = 1,500,000 (R04)",
-      "level_risiko": null
-    }
-  ],
-  "uang_harian": {
-    "hari": 3,
-    "tarif": 500000,
-    "total": 1500000,
-    "rumus": "3 hari x 500,000 = 1,500,000 (R04)"
+    "versi_panggilan": 2,
+    "alasan_panggilan_ulang": "Kalkulator periksa_aturan diperbaiki: nama tidak lengkap di bukti tidak lagi dianggap nama orang lain (R02 sebelumnya terlalu ketat)."
   },
-  "temuan": []
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-005b",
+    "pegawai": {
+      "nama": "Budi Prasetyo",
+      "nip": "197803101999031002",
+      "golongan": "IV/a"
+    },
+    "sbm": {
+      "provinsi": "DKI Jakarta",
+      "golongan": "IV",
+      "pagu_hotel": 1000000,
+      "uang_harian": 500000,
+      "pagu_taksi": 250000
+    },
+    "uang_harian": {
+      "hari": 3,
+      "tarif": 500000,
+      "total": 1500000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-16",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Budi",
+        "nominal": 1920000,
+        "nomor_bukti": "LION9900",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1920000,
+        "nilai_dibayar": 1920000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-16",
+        "check_out": "2026-10-18",
+        "nama_di_bukti": "Budi",
+        "nominal": 1540000,
+        "nomor_bukti": "INV/PI/2026/0606",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1540000,
+        "nilai_dibayar": 1540000,
+        "status": "SESUAI",
+        "rumus": "2 dari 2 malam x min(Rp770.000, pagu Rp1.000.000)"
+      },
+      {
+        "id": "B03",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-16",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 165000,
+        "nomor_bukti": "GRB-334466",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 165000,
+        "nilai_dibayar": 165000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "RENDAH",
+        "aturan": "R02",
+        "deskripsi": "Nama di tiket_berangkat.txt hanya \"Budi\"; identitas Budi Prasetyo dipastikan pengelola SPJ lewat NIP 197803101999031002",
+        "sumber": "tiket_berangkat.txt"
+      },
+      {
+        "level": "RENDAH",
+        "aturan": "R02",
+        "deskripsi": "Nama di invoice_hotel.txt hanya \"Budi\"; identitas Budi Prasetyo dipastikan pengelola SPJ lewat NIP 197803101999031002",
+        "sumber": "invoice_hotel.txt"
+      }
+    ],
+    "total_diajukan": 5125000,
+    "total_dibayar": 5125000
+  },
+  "penjelasan": "Panggilan ulang (versi 2) dengan NIP 197803101999031002 setelah kalkulator periksa_aturan diperbaiki. Nama tidak lengkap \"Budi\" pada tiket dan invoice hotel kini dikenali sebagai Budi Prasetyo, sehingga kedua bukti tidak lagi ditahan dan dibayar sesuai bukti. Tidak ada perhitungan manual; seluruh angka disalin dari respons tool."
 }

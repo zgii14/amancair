@@ -1,0 +1,56 @@
+{
+  "kasus_id": "kasus-001",
+  "timeline": [
+    {
+      "tanggal": "2026-10-05",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-001.json"
+    },
+    {
+      "tanggal": "2026-10-05",
+      "event": "tiket_berangkat",
+      "sumber": "tiket_berangkat.pdf"
+    },
+    {
+      "tanggal": "2026-10-05",
+      "event": "hotel_checkin",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-05",
+      "event": "taksi_bandara_hotel",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "event": "makan",
+      "sumber": "struk_makan_1.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "hotel_checkout",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "tiket_kembali",
+      "sumber": "tiket_kembali.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-001.json"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan": [
+    {
+      "id_bukti": "B05",
+      "level": "RENDAH",
+      "tipe": "makan",
+      "aturan": "R11",
+      "deskripsi": "Struk makan ditolak karena biaya makan sudah termasuk dalam uang harian (R04), tidak dapat diajukan terpisah."
+    }
+  ],
+  "rekomendasi": "lolos"
+}

@@ -1,0 +1,97 @@
+{
+  "kasus_id": "kasus-005",
+  "spt_terpilih": "SPT-2026-005b",
+  "pegawai": {
+    "nip": "197803101999031002",
+    "nama": "Budi Prasetyo",
+    "golongan": "IV/a"
+  },
+  "tujuan": "Jakarta",
+  "tanggal_spt": {
+    "berangkat": "2026-10-16",
+    "kembali": "2026-10-18",
+    "lama_hari": 3
+  },
+  "keputusan_ambiguitas": {
+    "masalah": "Pesan pegawai hanya menyebut \"Pak Budi\"; dua SPT ke Jakarta (005a Budi Santoso 15-17 Okt, 005b Budi Prasetyo 16-18 Okt).",
+    "petunjuk": "Tiket 16 Okt, check-in 16 Okt, check-out 18 Okt = tanggal kembali SPT-2026-005b. Pada 005a check-out 18 Okt akan di luar SPT.",
+    "diputuskan_oleh": "user",
+    "jawaban": "Budi Prasetyo (SPT-2026-005b)"
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt"], "id": "B01" },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.txt"], "id": "B02" },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt"], "id": "B03" }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "putaran": 1, "mulai": "19:39:09", "selesai": "19:39:41", "durasi_detik": 32, "berkas": "kerja/pembaca-tiket_kasus-005.json" },
+    { "agen": "pembaca-hotel", "putaran": 1, "mulai": "19:39:09", "selesai": "19:39:31", "durasi_detik": 22, "berkas": "kerja/pembaca-hotel_kasus-005.json" },
+    { "agen": "pembaca-struk", "putaran": 1, "mulai": "19:39:09", "selesai": "19:39:30", "durasi_detik": 21, "berkas": "kerja/pembaca-struk_kasus-005.json" },
+    { "agen": "verifikator-sbm", "putaran": 1, "mulai": "19:40:11", "selesai": "19:40:34", "durasi_detik": 23, "berkas": "kerja/verifikator-sbm_kasus-005.json" },
+    { "agen": "auditor", "putaran": 1, "mulai": "19:40:57", "selesai": "19:41:44", "durasi_detik": 47, "berkas": "kerja/auditor_kasus-005.json" },
+    { "agen": "penyusun-spj", "putaran": 1, "mulai": "19:42:07", "selesai": "19:43:28", "durasi_detik": 81, "berkas": "keluar/draf/SPJ-2026-005b/" }
+  ],
+  "total_durasi_putaran_1": { "mulai": "19:39:09", "selesai": "19:43:28", "durasi_detik": 259, "durasi": "4 menit 19 detik" },
+  "revisi_v2": {
+    "alasan": "Kalkulator periksa_aturan diperbaiki: nama di bukti yang tidak lengkap (\"Budi\" untuk \"Budi Prasetyo\") tidak lagi dianggap nama orang lain. Aturan R02 sebelumnya terlalu ketat.",
+    "verifikator_sbm": { "mulai": "20:59:23", "selesai": "20:59:57", "catatan": "panggilan ulang dengan nip 197803101999031002" },
+    "auditor": { "selesai": "21:00:47", "catatan": "mulai tidak dicatat terpisah; berkas ditulis 21:00:47" },
+    "penyusun_spj": { "mulai": "21:01:31", "selesai": "21:02:54", "catatan": "berkas draf diperbarui; timeline.json tidak berubah" }
+  },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 2, "maks": 3, "perbaikan_data": 0, "pemicu_iterasi_2": "perbaikan kalkulator, bukan kesalahan agen" },
+  "riwayat_versi": [
+    {
+      "versi": 1,
+      "status": "ditarik",
+      "total_diajukan": 5125000,
+      "total_dibayar": 1665000,
+      "temuan": ["KRITIS R02 x2", "TINGGI R10"],
+      "risiko": "tinggi",
+      "manifest_hash": "d618b4865a568f7779f12952c6cfcb183bb8ae75f020ec6a99ce87dc3a3fa461",
+      "alasan_tarik": "Aturan R02 pada kalkulator terlalu ketat: tiket dan hotel ditahan hanya karena dokumen mencetak nama depan.",
+      "bukti": "arsip/uji-lama-005/v1-ditarik/"
+    },
+    {
+      "versi": 2,
+      "status": "diajukan",
+      "total_diajukan": 5125000,
+      "total_dibayar": 5125000,
+      "temuan": ["RENDAH R02 x2"],
+      "risiko": "normal",
+      "manifest_hash": "2fa1451bcd1850b8f2a129903d5894dfe6f6c6177d345f71346a640c2637d7f6"
+    }
+  ],
+  "hasil_periksa_aturan_terakhir": {
+    "tool": "periksa_aturan",
+    "versi_panggilan": 2,
+    "nip": "197803101999031002",
+    "total_diajukan": 5125000,
+    "total_dibayar": 5125000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 1920000, "dibayar": 1920000, "status": "SESUAI" },
+      { "id": "B02", "jenis": "hotel", "diajukan": 1540000, "dibayar": 1540000, "status": "SESUAI" },
+      { "id": "B03", "jenis": "taksi", "diajukan": 165000, "dibayar": 165000, "status": "SESUAI" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 1500000, "dibayar": 1500000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "RENDAH", "aturan": "R02", "sumber": "tiket_berangkat.txt" },
+      { "level": "RENDAH", "aturan": "R02", "sumber": "invoice_hotel.txt" }
+    ]
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "nomor": "SPJ-2026-005b",
+    "versi": 2,
+    "ok": true,
+    "risiko": "normal",
+    "manifest_hash": "2fa1451bcd1850b8f2a129903d5894dfe6f6c6177d345f71346a640c2637d7f6",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "Putaran 1 memakai kalkulator lama; hasilnya ditarik, bukan dihapus.",
+    "Putaran 2 memakai nip yang dipastikan user; semua item SESUAI dan dibayar penuh.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual. proses_kasus.py tidak dipakai.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

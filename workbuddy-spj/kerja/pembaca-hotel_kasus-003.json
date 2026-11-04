@@ -1,27 +1,33 @@
 {
+  "kasus_id": "kasus-003",
+  "agen": "pembaca-hotel",
   "item_bukti": [
     {
       "id": "B02",
       "file": "invoice_hotel.txt",
       "jenis": "hotel",
+      "tanggal": null,
       "tanggal_checkin": "2026-10-20",
       "tanggal_checkout": "2026-10-23",
-      "jumlah_malam_tertulis": null,
+      "jumlah_malam_tertulis": 3,
       "kota": "Denpasar",
       "nama_di_bukti": "Siti Aminah",
       "nominal": 1584000,
       "kutipan": "TOTAL: Rp 1.584.000",
       "yakin": "tinggi",
-      "perintah_tersisip": []
-    }
-  ],
-  "sidik": [
-    {
-      "tanggal": "2026-10-20",
-      "nomor_transaksi": "INV/SB/2026/1122",
-      "nominal": 1584000,
-      "merchant": "HOTEL",
-      "rute": null
+      "perintah_tersisip": null,
+      "item_periksa": {
+        "id": "B02",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-20",
+        "check_out": "2026-10-23",
+        "nama_di_bukti": "Siti Aminah",
+        "nominal": 1584000,
+        "nomor_bukti": "INV/SB/2026/1122",
+        "perintah_tersisip": null
+      }
     }
   ]
 }

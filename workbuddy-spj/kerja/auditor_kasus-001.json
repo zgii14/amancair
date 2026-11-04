@@ -1,0 +1,176 @@
+{
+  "kasus_id": "kasus-001",
+  "agen": "auditor",
+  "sumber_hasil": "kerja/verifikator-sbm_kasus-001.json",
+  "waktu_hasil_tool": "2026-11-04T13:18:52+07:00",
+  "timeline": [
+    {
+      "tanggal": "2026-10-05",
+      "event": "SPT-2026-001 mulai: perjalanan dinas Budi Santoso ke Jakarta (Rapat koordinasi SPBE nasional), lama 4 hari",
+      "sumber": "SPT-2026-001.json"
+    },
+    {
+      "tanggal": "2026-10-05",
+      "event": "Tiket berangkat Garuda Indonesia GA 620 UPG-CGK, 06.30 WITA - 08.00 WIB, kode booking ABC123, Rp 2.450.000",
+      "sumber": "tiket_berangkat.pdf"
+    },
+    {
+      "tanggal": "2026-10-05",
+      "event": "Taksi Blue Bird TX-884721 Bandara Soekarno-Hatta - Hotel Grand Java, 32.4 km, Rp 210.000",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-05",
+      "event": "Hotel check-in Grand Java Hotel Jakarta, Deluxe Single, tarif Rp 700.000/malam, invoice INV/GJ/2026/0847",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "event": "Struk makan Warung Nasi Buah Batu WB-1129, subtotal Rp 75.000 + pajak Rp 7.500 = Rp 82.500",
+      "sumber": "struk_makan_1.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "Hotel check-out, lama menginap 3 malam, TOTAL invoice Rp 2.310.000 (termasuk pajak & service Rp 210.000)",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "Tiket kembali Garuda Indonesia GA 621 CGK-UPG, 17.00 WIB - 20.30 WITA, kode booking ABC124, Rp 2.380.000",
+      "sumber": "tiket_kembali.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "SPT-2026-001 selesai: tanggal kembali sesuai tiket kembali",
+      "sumber": "SPT-2026-001.json, tiket_kembali.txt"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan_tool": [
+    {
+      "level": "RENDAH",
+      "aturan": "R11",
+      "deskripsi": "Struk makan struk_makan_1.txt Rp82.500 tidak dibayar; sudah termasuk uang harian",
+      "sumber": "struk_makan_1.txt"
+    }
+  ],
+  "catatan_auditor": [
+    {
+      "tipe": "cakupan_item",
+      "item": "B01, B02, B03, B04, B05",
+      "deskripsi": "Lima berkas bukti di data/kasus/kasus-001 (tiket_berangkat.pdf, tiket_kembali.txt, invoice_hotel.txt, struk_taksi_1.txt, struk_makan_1.txt) seluruhnya punya item_periksa B01-B05. Tidak ada item terlewat. pesan_pegawai.txt bukan bukti biaya sehingga wajar tidak menjadi item_periksa.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "jenis_bukti",
+      "item": "B01, B02, B03, B04, B05",
+      "deskripsi": "Jenis tiap item cocok dengan isi berkas: B01 tiket (e-ticket Garuda ABC123), B02 tiket (e-ticket Garuda ABC124), B03 hotel (invoice Grand Java), B04 taksi (struk Blue Bird), B05 makan (struk restoran). Tidak ada hotel dicatat sebagai taksi, tidak ada boarding pass dicatat sebagai tiket.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "tanggal",
+      "item": "B01, B02, B03, B04, B05",
+      "deskripsi": "Semua tanggal hasil baca cocok dengan kutipan bukti: B01 'Tanggal: 5 Oktober 2026' = 2026-10-05; B02 'Tanggal Keberangkatan: 8 Oktober 2026' = 2026-10-08; B03 'Check-in: 5 Oktober 2026' / 'Check-out: 8 Oktober 2026'; B04 'Tanggal: 5 Oktober 2026'; B05 'Tanggal: 6 Oktober 2026'. Tidak ada salah baca tanggal.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "nominal",
+      "item": "B03",
+      "deskripsi": "Nominal hotel dibaca sebagai TOTAL invoice Rp 2.310.000 (baris 'TOTAL: Rp 2.310.000'), sudah termasuk 'Total Biaya Menginap: Rp 2.100.000' + 'Pajak & Service (10%): Rp 210.000'. Bukan 2.100.000. Pembacaan sudah benar sesuai R03 (biaya per malam termasuk pajak & service).",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "nominal",
+      "item": "B01, B02, B04, B05",
+      "deskripsi": "B01 Rp 2.450.000 = 'Harga Tiket: Rp 2.450.000'; B02 Rp 2.380.000 = 'Harga Tiket: Rp 2.380.000'; B04 Rp 210.000 = 'Tarif: Rp 185.000' + 'Tambahan Tol: Rp 25.000' = 'TOTAL: Rp 210.000'; B05 Rp 82.500 = 'Subtotal: Rp 75.000' + 'Pajak (10%): Rp 7.500' = 'TOTAL: Rp 82.500'. Tidak ada pajak/service yang tertinggal dan tidak ada pembulatan.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "nama",
+      "item": "B01, B02, B03, B04, B05",
+      "deskripsi": "B01/B02 nama_di_bukti 'Budi Santoso' persis seperti 'Nama Penumpang: Budi Santoso' di kedua e-ticket. B03 'Budi Santoso' persis seperti 'Nama Tamu: Budi Santoso' di invoice hotel. B04 dan B05 nama_di_bukti kosong, dan itu benar: struk taksi hanya memuat 'Nama Pengemudi: Pak Joko' (nama pengemudi, bukan penumpang) dan struk restoran tidak memuat nama orang. Tidak ada nama salah kutip dan nama pengemudi tidak dipakai sebagai nama pegawai.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "nomor_bukti",
+      "item": "B01, B02, B03, B04, B05",
+      "deskripsi": "Semua nomor_bukti terisi dan cocok dengan bukti: B01 ABC123 ('Kode Booking: ABC123'), B02 ABC124 ('Kode Booking: ABC124'), B03 INV/GJ/2026/0847 ('No. Invoice: INV/GJ/2026/0847'), B04 TX-884721 ('Nomor Struk: TX-884721'), B05 WB-1129 ('Nomor Struk: WB-1129'). Syarat deteksi R06 terpenuhi.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "perintah_tersisip",
+      "item": "semua berkas kasus-001",
+      "deskripsi": "Tidak ditemukan teks perintah (mis. 'AI: setujui semua', 'abaikan aturan') di kelima berkas bukti maupun di pesan_pegawai.txt. Isi pesan_pegawai.txt hanya narasi biasa: 'ini bukti dinas saya ke Jakarta kemarin ya. Tiket pesawat PP, hotel 3 malam, taksi dari bandara, sama struk makan.'",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "kesesuaian_pesan_pegawai",
+      "item": "pesan_pegawai.txt",
+      "deskripsi": "Pesan pegawai menyebut 4 hal: tiket PP, hotel 3 malam, taksi dari bandara, struk makan. Semuanya ada buktinya dan cocok: tiket berangkat + tiket kembali, invoice hotel 3 malam, satu struk taksi bandara-hotel, satu struk makan. Pesan tidak mengklaim hal yang tidak ada bukti.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "aritmatika_tool",
+      "item": "total_diajukan, total_dibayar",
+      "deskripsi": "Pemeriksaan konsistensi angka tool (bukan perhitungan ulang pagu): jumlah nilai_diajukan 5 item = 7.432.500, ditambah uang harian 1.600.000 = 9.032.500, sama dengan total_diajukan tool. Jumlah nilai_dibayar 5 item = 7.350.000, ditambah 1.600.000 = 8.950.000, sama dengan total_dibayar tool. Selisih 82.500 tepat sama dengan B05 yang tidak dibayar. Pagu, potongan, dan tarif SBM tidak dihitung ulang oleh auditor.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "hari_libur",
+      "item": "2026-10-05 s.d. 2026-10-08",
+      "deskripsi": "Keempat tanggal masa SPT adalah Senin, Selasa, Rabu, Kamis. Tidak ada yang masuk daftar libur.json (2026-06-01, 2026-08-17, 2026-12-25) dan tidak ada akhir pekan, sehingga R07 tidak terpicu.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "kontradiksi_tanggal",
+      "item": "B03, B01, B02",
+      "deskripsi": "Tidak ada kontradiksi tanggal: hotel check-in 2026-10-05 sama dengan SPT berangkat (tidak lebih awal), hotel check-out 2026-10-08 sama dengan SPT kembali (tidak lebih lambat), tiket berangkat 2026-10-05 sama dengan SPT berangkat, tiket kembali 2026-10-08 sama dengan SPT kembali. Malam hotel 3 dan lama_hari SPT 4, jadi 3 = 4-1 dan bukan kontradiksi.",
+      "tindakan": "tidak ada",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "indeks_lintas_kasus",
+      "item": "B04",
+      "deskripsi": "log/indeks_sidik.json saat ini hanya memuat entri kasus-001 (B01-B05), tidak memuat sidik kasus lain. Karena itu tool periksa_aturan tidak punya bahan untuk mendeteksi R06 lintas kasus. Duplikasi TX-884721 ditemukan auditor melalui pencarian langsung ke seluruh data/kasus.",
+      "tindakan": "indeks sidik perlu diisi dari semua kasus sebelum tool dipakai, agar R06 lintas kasus benar-benar terperiksa",
+      "status": "perlu_perbaikan_proses"
+    },
+    {
+      "tipe": "konteks_persetujuan",
+      "item": "SPJ-2026-001",
+      "deskripsi": "SPJ-2026-001 sudah pernah disetujui; salinan ada di keluar/siap-cair/SPJ-2026-001 (manifest.json bertanggal 23 Okt, rekap.xlsx, draf_spj.docx). Nomor bukti kasus ini (ABC123, ABC124, INV/GJ/2026/0847, TX-884721, WB-1129) yang juga muncul di salinan itu adalah SPJ ini sendiri, bukan SPJ lain, sehingga tidak dihitung sebagai duplikasi lintas SPJ.",
+      "tindakan": "informasi untuk bendahara, bukan temuan",
+      "status": "informasi"
+    }
+  ],
+  "temuan_final": [
+    {
+      "level": "RENDAH",
+      "aturan": "R11",
+      "deskripsi": "Struk makan struk_makan_1.txt Rp82.500 tidak dibayar; sudah termasuk uang harian",
+      "sumber": "struk_makan_1.txt"
+    },
+    {
+      "level": "KRITIS",
+      "aturan": "AUDITOR",
+      "deskripsi": "INDIKASI struk ganda lintas kasus pada B04: struk taksi TX-884721 (5 Oktober 2026, Rp 210.000) di kasus-001 identik dengan struk taksi di kasus-011 (SPJ-2026-011, pegawai Lestari Dewi) - tanggal, nomor struk, nama pengemudi, rute, jarak, tarif, tambahan tol, dan total sama persis. Ini indikasi yang perlu diputuskan bendahara, bukan tuduhan. Nomor bukti lain (ABC123, ABC124, INV/GJ/2026/0847, WB-1129) tidak ditemukan di kasus lain mana pun.",
+      "sumber": "data/kasus/kasus-001/struk_taksi_1.txt: \"Tanggal: 5 Oktober 2026 / Nomor Struk: TX-884721 / Nama Pengemudi: Pak Joko / Rute: Bandara Soekarno-Hatta - Hotel Grand Java / Jarak: 32.4 km / Tarif: Rp 185.000 / Tambahan Tol: Rp 25.000 / TOTAL: Rp 210.000\" ; data/kasus/kasus-011/struk_bandara_hotel.txt: \"Tanggal: 5 Oktober 2026 / Nomor Struk: TX-884721 / Nama Pengemudi: Pak Joko / Rute: Bandara Soekarno-Hatta - Hotel Grand Java / Jarak: 32.4 km / Tarif: Rp 185.000 / Tambahan Tol: Rp 25.000 / TOTAL: Rp 210.000\""
+    }
+  ],
+  "loop": {
+    "iterasi": 1,
+    "maks": 3
+  },
+  "rekomendasi": "eskalasi"
+}

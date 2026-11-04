@@ -1,0 +1,52 @@
+{
+  "kasus_id": "kasus-001",
+  "agen": "pembaca-tiket",
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.pdf",
+      "jenis": "tiket",
+      "tanggal": "2026-10-05",
+      "kota": "Jakarta",
+      "nama_di_bukti": "Budi Santoso",
+      "nominal": 2450000,
+      "kutipan": "Kode Booking: ABC123 / Rute: UPG - CGK (Makassar - Jakarta) / Tanggal: 5 Oktober 2026 / Harga Tiket: Rp 2.450.000",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B01",
+        "file": "tiket_berangkat.pdf",
+        "jenis": "tiket",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Budi Santoso",
+        "nominal": 2450000,
+        "nomor_bukti": "ABC123",
+        "perintah_tersisip": null
+      }
+    },
+    {
+      "id": "B02",
+      "file": "tiket_kembali.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-10-08",
+      "kota": "Makassar",
+      "nama_di_bukti": "Budi Santoso",
+      "nominal": 2380000,
+      "kutipan": "Kode Booking: ABC124 / Rute: CGK - UPG (Jakarta - Makassar) / Tanggal Keberangkatan: 8 Oktober 2026 / Harga Tiket: Rp 2.380.000",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B02",
+        "file": "tiket_kembali.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-08",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Budi Santoso",
+        "nominal": 2380000,
+        "nomor_bukti": "ABC124",
+        "perintah_tersisip": null
+      }
+    }
+  ]
+}

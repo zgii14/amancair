@@ -1,0 +1,55 @@
+{
+  "kasus_id": "kasus-006",
+  "spt_terpilih": "SPT-2026-006",
+  "pegawai": {
+    "nip": "199507082019042007",
+    "nama": "Lestari Dewi",
+    "golongan": "III/a"
+  },
+  "tujuan": "Denpasar, Bali",
+  "tanggal_spt": {
+    "berangkat": "2026-10-02",
+    "kembali": "2026-10-04",
+    "lama_hari": 3
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt"], "id": "B01" },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.txt"], "id": "B02" },
+    { "agen": "pembaca-struk", "file": ["struk_makan_1.txt"], "id": "B03" }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "19:22:01", "selesai": "19:22:34", "durasi_detik": 33, "berkas": "kerja/pembaca-tiket_kasus-006.json", "mtime_berkas": "19:22:34" },
+    { "agen": "pembaca-hotel", "mulai": "19:22:01", "selesai": "19:22:29", "durasi_detik": 28, "berkas": "kerja/pembaca-hotel_kasus-006.json", "mtime_berkas": "19:22:29" },
+    { "agen": "pembaca-struk", "mulai": "19:22:01", "selesai": "19:22:29", "durasi_detik": 28, "berkas": "kerja/pembaca-struk_kasus-006.json", "mtime_berkas": "19:22:29" },
+    { "agen": "verifikator-sbm", "mulai": "19:22:51", "selesai": "19:23:14", "durasi_detik": 23, "berkas": "kerja/verifikator-sbm_kasus-006.json", "mtime_berkas": "19:23:14" },
+    { "agen": "auditor", "mulai": "19:23:31", "selesai": "19:24:14", "durasi_detik": 43, "berkas": "kerja/auditor_kasus-006.json", "mtime_berkas": "19:24:14" },
+    { "agen": "penyusun-spj", "mulai": "19:25:14", "selesai": "19:26:40", "durasi_detik": 86, "berkas": "keluar/draf/SPJ-2026-006/", "mtime_berkas": "19:26:40" }
+  ],
+  "total_durasi": { "mulai": "19:22:01", "selesai": "19:26:40", "durasi_detik": 279, "durasi": "4 menit 39 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 4154000,
+    "total_dibayar": 4071000,
+    "temuan": [
+      { "level": "KRITIS", "aturan": "R09", "sumber": "invoice_hotel.txt" },
+      { "level": "RENDAH", "aturan": "R11", "sumber": "struk_makan_1.txt" }
+    ]
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "nomor": "SPJ-2026-006",
+    "ok": true,
+    "versi": 1,
+    "risiko": "tinggi",
+    "manifest_hash": "2a708b9d6f7e9ad571b91ed321bcb66fe3c8d207ab1c5ad60639529b49f3a382",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "Semua hitungan aturan berasal dari tool MCP periksa_aturan; tidak ada hitungan manual oleh agen.",
+    "proses_kasus.py tidak dipakai (ditandai USANG).",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh.",
+    "rekap.xlsx menyimpan formula tanpa nilai cache (keterbatasan openpyxl); Excel akan menghitung saat dibuka. Nilai literal terverifikasi: 1.450.000 + 1.496.000 + 0 + 1.125.000 = 4.071.000."
+  ]
+}

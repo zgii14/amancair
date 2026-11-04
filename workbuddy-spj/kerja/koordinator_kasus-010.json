@@ -1,0 +1,75 @@
+{
+  "kasus_id": "kasus-010",
+  "spt_terpilih": "SPT-2026-010",
+  "pegawai": {
+    "nip": "198712042009041004",
+    "nama": "Dedi Kurniawan",
+    "golongan": "III/d"
+  },
+  "tujuan": "Jayapura, Papua",
+  "tanggal_spt": {
+    "berangkat": "2026-10-05",
+    "kembali": "2026-10-09",
+    "lama_hari": 5
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt", "tiket_kembali.txt"], "id": ["B01", "B02"] },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.txt"], "id": ["B03"] },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt", "struk_taksi_2.txt"], "id": ["B04", "B05"] }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "11:57:12", "selesai": "11:57:52", "durasi_detik": 40, "berkas": "kerja/pembaca-tiket_kasus-010.json" },
+    { "agen": "pembaca-hotel", "mulai": "11:57:12", "selesai": "11:57:37", "durasi_detik": 25, "berkas": "kerja/pembaca-hotel_kasus-010.json" },
+    { "agen": "pembaca-struk", "mulai": "11:57:12", "selesai": "11:57:36", "durasi_detik": 24, "berkas": "kerja/pembaca-struk_kasus-010.json" },
+    { "agen": "verifikator-sbm", "mulai": "11:58:15", "selesai": "11:58:40", "durasi_detik": 25, "berkas": "kerja/verifikator-sbm_kasus-010.json", "catatan": "mulai = saat dispatch, tepat setelah verifikasi berkas Pembaca selesai" },
+    { "agen": "auditor", "mulai": "11:59:00", "selesai": "11:59:53", "durasi_detik": 53, "berkas": "kerja/auditor_kasus-010.json" },
+    { "agen": "penyusun-spj", "mulai": "12:00:29", "selesai": "12:01:45", "durasi_detik": 76, "berkas": "keluar/draf/SPJ-2026-010/" }
+  ],
+  "total_durasi": { "mulai": "11:57:12", "selesai": "12:01:45", "durasi_detik": 273, "durasi": "4 menit 33 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 16480000,
+    "total_dibayar": 16480000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 4500000, "dibayar": 4500000, "status": "SESUAI" },
+      { "id": "B02", "jenis": "tiket", "diajukan": 4200000, "dibayar": 4200000, "status": "SESUAI" },
+      { "id": "B03", "jenis": "hotel", "diajukan": 4400000, "dibayar": 4400000, "status": "SESUAI" },
+      { "id": "B04", "jenis": "taksi", "diajukan": 350000, "dibayar": 350000, "status": "SESUAI" },
+      { "id": "B05", "jenis": "taksi", "diajukan": 280000, "dibayar": 280000, "status": "SESUAI" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 2750000, "dibayar": 2750000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "TINGGI", "aturan": "R10", "sumber": null }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 1,
+    "temuan_final_auditor": 1,
+    "identik": true,
+    "temuan_tambahan_manual": 0
+  },
+  "format_timeline": {
+    "standar": "{tanggal, event, sumber}",
+    "sumber_string": true,
+    "jumlah_entri": 4,
+    "sesuai": true
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "nomor": "SPJ-2026-010",
+    "versi": 2,
+    "ok": true,
+    "risiko": "tinggi",
+    "manifest_hash": "5cd9b6385edd0096f7148e680422e4420e0a80bccc37801a2babbe0f1ae252f3",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan",
+    "catatan": "Backend mengembalikan versi 2, bukan 1 — SPJ-2026-010 sudah pernah diajukan pada sesi sebelumnya. Arsip lokal tidak mereset riwayat backend."
+  },
+  "catatan": [
+    "Hotel 4 malam tepat di pagu: 4 x min(1.100.000, pagu 1.100.000) = 4.400.000.",
+    "Kedua struk taksi berbeda nomor (JT-551100, JT-551101), tidak ada indikasi ganda.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual. proses_kasus.py tidak dipakai.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

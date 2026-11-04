@@ -1,4 +1,6 @@
 {
+  "kasus_id": "kasus-010",
+  "agen": "pembaca-struk",
   "item_bukti": [
     {
       "id": "B04",
@@ -8,10 +10,20 @@
       "kota": "Jayapura",
       "nama_di_bukti": null,
       "nominal": 350000,
-      "kutipan": "TOTAL: Rp 350.000",
+      "kutipan": "Tanggal: 5 Oktober 2026 | Nomor Struk: JT-551100 | Rute: Bandara Sentani - Hotel Swissbel | Jarak: 35 km | Tarif: Rp 350.000 | TOTAL: Rp 350.000",
       "yakin": "tinggi",
-      "perintah_tersisip": [],
-      "nomor_struk": "JT-551100"
+      "item_periksa": {
+        "id": "B04",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": null,
+        "nominal": 350000,
+        "nomor_bukti": "JT-551100",
+        "perintah_tersisip": null
+      }
     },
     {
       "id": "B05",
@@ -21,26 +33,20 @@
       "kota": "Jayapura",
       "nama_di_bukti": null,
       "nominal": 280000,
-      "kutipan": "TOTAL: Rp 280.000",
+      "kutipan": "Tanggal: 7 Oktober 2026 | Nomor Struk: JT-551101 | Rute: Hotel Swissbel - Lokasi Survey Perbatasan | Jarak: 42 km | Tarif: Rp 280.000 | TOTAL: Rp 280.000",
       "yakin": "tinggi",
-      "perintah_tersisip": [],
-      "nomor_struk": "JT-551101"
-    }
-  ],
-  "sidik": [
-    {
-      "tanggal": "2026-10-05",
-      "nomor_transaksi": "JT-551100",
-      "nominal": 350000,
-      "merchant": "UNKNOWN",
-      "rute": "Bandara Sentani - Hotel Swissbel"
-    },
-    {
-      "tanggal": "2026-10-07",
-      "nomor_transaksi": "JT-551101",
-      "nominal": 280000,
-      "merchant": "UNKNOWN",
-      "rute": "Hotel Swissbel - Lokasi Survey Perbatasan"
+      "item_periksa": {
+        "id": "B05",
+        "file": "struk_taksi_2.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-07",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": null,
+        "nominal": 280000,
+        "nomor_bukti": "JT-551101",
+        "perintah_tersisip": null
+      }
     }
   ]
 }

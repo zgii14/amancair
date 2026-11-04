@@ -1,0 +1,45 @@
+{
+  "kasus_id": "kasus-001",
+  "agen": "penyusun-spj",
+  "nomor_spj": "SPJ-2026-001",
+  "versi_pengajuan": null,
+  "total_diajukan": 9032500,
+  "total_dibayar": 8950000,
+  "berkas_draf": [
+    "draf_spj.docx",
+    "layar_konfirmasi.html",
+    "rekap.xlsx",
+    "timeline.json"
+  ],
+  "ringkasan_skrip": {
+    "nomor": "SPJ-2026-001",
+    "pegawai": "Budi Santoso",
+    "tujuan": "Jakarta",
+    "tanggal_spt": "2026-10-05 s.d. 2026-10-08",
+    "total_diajukan": 9032500,
+    "total_dibayar": 8950000,
+    "temuan": [
+      {
+        "level": "KRITIS",
+        "aturan": "AUDITOR",
+        "deskripsi": "INDIKASI struk ganda lintas kasus pada B04: struk taksi TX-884721 (5 Oktober 2026, Rp 210.000) di kasus-001 identik dengan struk taksi di kasus-011 (SPJ-2026-011, pegawai Lestari Dewi) - tanggal, nomor struk, nama pengemudi, rute, jarak, tarif, tambahan tol, dan total sama persis. Ini indikasi yang perlu diputuskan bendahara, bukan tuduhan. Nomor bukti lain (ABC123, ABC124, INV/GJ/2026/0847, WB-1129) tidak ditemukan di kasus lain mana pun.",
+        "sumber": "data/kasus/kasus-001/struk_taksi_1.txt: \"Tanggal: 5 Oktober 2026 / Nomor Struk: TX-884721 / Nama Pengemudi: Pak Joko / Rute: Bandara Soekarno-Hatta - Hotel Grand Java / Jarak: 32.4 km / Tarif: Rp 185.000 / Tambahan Tol: Rp 25.000 / TOTAL: Rp 210.000\" ; data/kasus/kasus-011/struk_bandara_hotel.txt: \"Tanggal: 5 Oktober 2026 / Nomor Struk: TX-884721 / Nama Pengemudi: Pak Joko / Rute: Bandara Soekarno-Hatta - Hotel Grand Java / Jarak: 32.4 km / Tarif: Rp 185.000 / Tambahan Tol: Rp 25.000 / TOTAL: Rp 210.000\""
+      },
+      {
+        "level": "RENDAH",
+        "aturan": "R11",
+        "deskripsi": "Struk makan struk_makan_1.txt Rp82.500 tidak dibayar; sudah termasuk uang harian",
+        "sumber": "struk_makan_1.txt"
+      }
+    ],
+    "perintah_tersisip": [],
+    "berkas": [
+      "draf_spj.docx",
+      "layar_konfirmasi.html",
+      "rekap.xlsx",
+      "timeline.json"
+    ]
+  },
+  "balasan_ajukan_spj": null,
+  "catatan": "ajukan_spj TIDAK dipanggil: SPJ-2026-001 sudah disetujui sebelumnya dan backend menolak pengajuan ulang (perintah Koordinator)."
+}

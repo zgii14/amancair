@@ -2,32 +2,37 @@
   "timeline": [
     {
       "tanggal": "2026-10-20",
-      "event": "SPT_mulai",
-      "sumber": "SPT-2026-003.json"
+      "event": "Masa SPT mulai. Pegawai berangkat Makassar (UPG) - Denpasar (DPS) 07.00-09.30 WITA, kode booking BATIK8821, nomor tiket 3388112244556, harga tiket Rp1.650.000. Tiket berangkat jatuh tepat pada tanggal_berangkat SPT (bukan H-1).",
+      "sumber": "tiket_berangkat.txt, SPT-2026-003.json"
     },
     {
       "tanggal": "2026-10-20",
-      "event": "tiket_berangkat",
-      "sumber": "tiket_berangkat.txt"
-    },
-    {
-      "tanggal": "2026-10-20",
-      "event": "hotel_checkin",
+      "event": "Check-in Hotel Sanur Beach Bali atas nama Siti Aminah, invoice INV/SB/2026/1122.",
       "sumber": "invoice_hotel.txt"
     },
     {
       "tanggal": "2026-10-20",
-      "event": "taksi_bandara_hotel",
+      "event": "Taksi Grab Bandara Ngurah Rai - Hotel Sanur Beach, Rp145.000, nomor pesanan GRB-221099, metode QRIS.",
       "sumber": "struk_taksi_1.txt"
     },
     {
       "tanggal": "2026-10-22",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-003.json"
+      "event": "Masa SPT berakhir (tanggal_kembali 2026-10-22). Pegawai menyatakan memperpanjang 1 hari untuk liburan sehingga struk hotel sampai 23 Okt. Tidak ada tiket pulang DPS-UPG maupun boarding pass di folder kasus.",
+      "sumber": "SPT-2026-003.json, pesan_pegawai.txt, isi folder kasus-003"
+    },
+    {
+      "tanggal": "2026-10-22",
+      "event": "Malam ke-3 hotel berjalan 22 Okt -> check-out 23 Okt, yaitu setelah masa SPT berakhir.",
+      "sumber": "invoice_hotel.txt, SPT-2026-003.json"
     },
     {
       "tanggal": "2026-10-23",
-      "event": "hotel_checkout",
+      "event": "Check-out hotel dan tanggal penerbitan invoice (23 Oktober 2026), status LUNAS.",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-23",
+      "event": "Rentang menginap 20 s.d. 23 Okt = 3 malam; tarif Rp480.000/malam, subtotal Rp1.440.000 + pajak & service 10% Rp144.000 = TOTAL Rp1.584.000 (aritmetika internal dokumen konsisten).",
       "sumber": "invoice_hotel.txt"
     }
   ]

@@ -1,77 +1,131 @@
 {
-  "hasil_verifikasi": [
-    {
-      "id": "B01",
-      "status": "sesuai",
-      "dibayar": 4500000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "tiket_berangkat.txt: Harga Tiket: Rp 4.500.000",
-      "rumus_hitung": "Tiket sesuai bukti riil = 4500000",
-      "level_risiko": null
-    },
-    {
-      "id": "B02",
-      "status": "sesuai",
-      "dibayar": 4200000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "tiket_kembali.txt: Harga Tiket: Rp 4.200.000",
-      "rumus_hitung": "Tiket sesuai bukti riil = 4200000",
-      "level_risiko": null
-    },
-    {
-      "id": "B03",
-      "status": "sesuai",
-      "dibayar": 4400000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "invoice_hotel.txt: TOTAL: Rp 4.400.000",
-      "rumus_hitung": "4 malam x 1,100,000 = 4,400,000; dalam pagu 1,100,000",
-      "level_risiko": null
-    },
-    {
-      "id": "B04",
-      "status": "sesuai",
-      "dibayar": 350000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "struk_taksi_1.txt: TOTAL: Rp 350.000",
-      "rumus_hitung": "Taksi dalam pagu = 350,000",
-      "level_risiko": null
-    },
-    {
-      "id": "B05",
-      "status": "sesuai",
-      "dibayar": 280000,
-      "aturan": null,
-      "alasan": "Sesuai",
-      "sumber": "struk_taksi_2.txt: TOTAL: Rp 280.000",
-      "rumus_hitung": "Taksi dalam pagu = 280,000",
-      "level_risiko": null
-    },
-    {
-      "id": "UH",
-      "status": "sesuai",
-      "dibayar": 2750000,
-      "aturan": "R04",
-      "alasan": "Uang harian 5 hari x 550,000 = 2,750,000",
-      "sumber": "SPT",
-      "rumus_hitung": "5 hari x 550,000 = 2,750,000 (R04)",
-      "level_risiko": null
+  "kasus_id": "kasus-010",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-11-04T11:58:34+07:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-010",
+      "pegawai": "Dedi Kurniawan",
+      "nip": null,
+      "provinsi": "Papua",
+      "tanggal_berangkat": "2026-10-05",
+      "tanggal_kembali": "2026-10-09",
+      "jumlah_item": 5
     }
-  ],
-  "uang_harian": {
-    "hari": 5,
-    "tarif": 550000,
-    "total": 2750000,
-    "rumus": "5 hari x 550,000 = 2,750,000 (R04)"
   },
-  "temuan": [
-    {
-      "kode": "R10",
-      "level": "TINGGI",
-      "deskripsi": "Total yang diajukan Rp 16.480.000 melebihi Rp 10.000.000. Wajib konfirmasi tambahan bendahara."
-    }
-  ]
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-010",
+    "pegawai": {
+      "nama": "Dedi Kurniawan",
+      "nip": "198712042009041004",
+      "golongan": "III/d"
+    },
+    "sbm": {
+      "provinsi": "Papua",
+      "golongan": "III",
+      "pagu_hotel": 1100000,
+      "uang_harian": 550000,
+      "pagu_taksi": 400000
+    },
+    "uang_harian": {
+      "hari": 5,
+      "tarif": 550000,
+      "total": 2750000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Dedi Kurniawan",
+        "nominal": 4500000,
+        "nomor_bukti": "LION8811",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 4500000,
+        "nilai_dibayar": 4500000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "tiket_kembali.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-09",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Dedi Kurniawan",
+        "nominal": 4200000,
+        "nomor_bukti": "LION8812",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 4200000,
+        "nilai_dibayar": 4200000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B03",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-05",
+        "check_out": "2026-10-09",
+        "nama_di_bukti": "Dedi Kurniawan",
+        "nominal": 4400000,
+        "nomor_bukti": "INV/SJ/2026/1005",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 4400000,
+        "nilai_dibayar": 4400000,
+        "status": "SESUAI",
+        "rumus": "4 dari 4 malam x min(Rp1.100.000, pagu Rp1.100.000)"
+      },
+      {
+        "id": "B04",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 350000,
+        "nomor_bukti": "JT-551100",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 350000,
+        "nilai_dibayar": 350000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B05",
+        "file": "struk_taksi_2.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-07",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 280000,
+        "nomor_bukti": "JT-551101",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 280000,
+        "nilai_dibayar": 280000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "TINGGI",
+        "aturan": "R10",
+        "deskripsi": "Wajib konfirmasi tambahan bendahara: total Rp16.480.000 di atas Rp10.000.000",
+        "sumber": null
+      }
+    ],
+    "total_diajukan": 16480000,
+    "total_dibayar": 16480000
+  },
+  "penjelasan": "Seluruh 5 item bukti berstatus SESUAI dengan pagu SBM Papua golongan III. Satu temuan R10 level TINGGI: total melebihi batas Rp10.000.000 sehingga perlu konfirmasi tambahan bendahara. Nama pegawai tidak kembar; tool mengembalikan NIP 198712042009041004."
 }

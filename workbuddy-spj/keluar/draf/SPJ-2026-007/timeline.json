@@ -2,18 +2,23 @@
   "timeline": [
     {
       "tanggal": "2026-10-18",
-      "event": "SPT_mulai",
-      "sumber": "SPT-2026-007.json"
+      "event": "Masa SPT mulai (Minggu). Tujuan Makassar, maksud \"Monitoring layanan digital kecamatan\", lama_hari 2. Folder kasus-007 hanya berisi 2 berkas (struk_taksi_1.txt dan pesan_pegawai.txt): tidak ada tiket, boarding pass, invoice hotel, maupun struk makan, sehingga tidak ada bukti keberangkatan sama sekali.",
+      "sumber": "SPT-2026-007.json, isi folder kasus-007"
     },
     {
       "tanggal": "2026-10-18",
-      "event": "struk_taksi",
-      "sumber": "struk_taksi_1.txt"
+      "event": "Struk Blue Bird Taxi rute Terminal Malengkeri - Hotel Wisata, pembayaran Tunai. Tanggal terbaca (\"Tanggal: 18 Oktober 2026\"), tetapi bagian angka BURAM: \"Nomor Struk: TX-55??21\", \"Nama Pengemudi: Pak ???\", \"Jarak: ?? km\", \"Tarif: Rp 1?5.0?0\", \"Tambahan Tol: Rp ??.000\", \"TOTAL: Rp ???.000\". Pesan pegawai menyertai berkas ini: \"Bagian harganya agak luntur kehujanan, saya coba foto ulang tapi tetap blur. Tolong dicek ya bu.\" (pesan tidak bertanggal; menyebut \"kemarin\").",
+      "sumber": "struk_taksi_1.txt, pesan_pegawai.txt"
     },
     {
       "tanggal": "2026-10-19",
-      "event": "SPT_selesai",
-      "sumber": "SPT-2026-007.json"
+      "event": "Masa SPT berakhir (tanggal_kembali 2026-10-19, Senin). Tidak ada invoice/bukti penginapan untuk 1 malam, padahal rute struk taksi menuju \"Hotel Wisata\".",
+      "sumber": "SPT-2026-007.json, struk_taksi_1.txt, isi folder kasus-007"
+    },
+    {
+      "tanggal": "2026-10-19",
+      "event": "Satu-satunya komponen yang diajukan dan dibayar adalah uang harian 2 hari (Rp400.000); tidak ada klaim tiket, hotel, maupun taksi karena nominal struk taksi tidak terbaca (B01 nilai 0/0).",
+      "sumber": "SPT-2026-007.json, struk_taksi_1.txt"
     }
   ]
 }

@@ -1,66 +1,98 @@
 {
+  "kasus_id": "kasus-002",
+  "agen": "pembaca-struk",
   "item_bukti": [
     {
       "id": "B03",
-      "file": "struk_makan_1.txt",
-      "jenis": "makan",
-      "tanggal": "2026-10-13",
-      "kota": "Jakarta",
-      "nama_di_bukti": null,
-      "nominal": 47000,
-      "kutipan": "TOTAL: Rp 47.000",
-      "yakin": "tinggi",
-      "perintah_tersisip": [],
-      "nomor_struk": "KKG-778"
-    },
-    {
-      "id": "B04",
       "file": "struk_taksi_1.txt",
       "jenis": "taksi",
       "tanggal": "2026-10-12",
       "kota": "Jakarta",
-      "nama_di_bukti": null,
+      "nama_di_bukti": "",
       "nominal": 170000,
-      "kutipan": "TOTAL: Rp 170.000",
+      "kutipan": "Tanggal: 12 Oktober 2026 | Nomor Struk: TX-990021 | Nama Pengemudi: Pak Budi | Rute: Bandara Soekarno-Hatta - Hotel Melati | Jarak: 31.2 km | Tarif: Rp 150.000 | Tambahan Tol: Rp 20.000 | TOTAL: Rp 170.000 | Pembayaran: Tunai",
       "yakin": "tinggi",
-      "perintah_tersisip": [],
-      "nomor_struk": "TX-990021"
+      "item_periksa": {
+        "id": "B03",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-12",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 170000,
+        "nomor_bukti": "TX-990021",
+        "perintah_tersisip": null
+      }
     },
     {
-      "id": "B05",
+      "id": "B04",
       "file": "struk_taksi_2.txt",
       "jenis": "taksi",
       "tanggal": "2026-10-12",
       "kota": "Jakarta",
-      "nama_di_bukti": null,
+      "nama_di_bukti": "",
       "nominal": 170000,
-      "kutipan": "TOTAL: Rp 170.000",
+      "kutipan": "Tanggal: 12 Oktober 2026 | Nomor Struk: TX-990021 | Nama Pengemudi: Pak Budi | Rute: Bandara Soekarno-Hatta - Hotel Melati | Jarak: 31.2 km | Tarif: Rp 150.000 | Tambahan Tol: Rp 20.000 | TOTAL: Rp 170.000 | Pembayaran: Tunai",
       "yakin": "tinggi",
-      "perintah_tersisip": [],
-      "nomor_struk": "TX-990021"
+      "item_periksa": {
+        "id": "B04",
+        "file": "struk_taksi_2.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-12",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 170000,
+        "nomor_bukti": "TX-990021",
+        "perintah_tersisip": null
+      }
+    },
+    {
+      "id": "B05",
+      "file": "struk_makan_1.txt",
+      "jenis": "makan",
+      "tanggal": "2026-10-13",
+      "kota": null,
+      "nama_di_bukti": "",
+      "nominal": 47000,
+      "kutipan": "Tanggal: 13 Oktober 2026 | Nomor Struk: KKG-778 | Nasi Campur Rp 35.000 | Es Jeruk Rp 12.000 | TOTAL: Rp 47.000",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B05",
+        "file": "struk_makan_1.txt",
+        "jenis": "makan",
+        "tanggal": "2026-10-13",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 47000,
+        "nomor_bukti": "KKG-778",
+        "perintah_tersisip": null
+      }
     }
   ],
   "sidik": [
     {
+      "tanggal": "2026-10-12",
+      "nomor_transaksi": "TX-990021",
+      "nominal": 170000,
+      "merchant": "BLUE BIRD TAXI",
+      "rute": "Bandara Soekarno-Hatta - Hotel Melati"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "nomor_transaksi": "TX-990021",
+      "nominal": 170000,
+      "merchant": "BLUE BIRD TAXI",
+      "rute": "Bandara Soekarno-Hatta - Hotel Melati"
+    },
+    {
       "tanggal": "2026-10-13",
       "nomor_transaksi": "KKG-778",
       "nominal": 47000,
-      "merchant": "RESTORAN",
+      "merchant": "KANTIN KARYAWAN GKM",
       "rute": null
-    },
-    {
-      "tanggal": "2026-10-12",
-      "nomor_transaksi": "TX-990021",
-      "nominal": 170000,
-      "merchant": "BLUE BIRD TAXI",
-      "rute": "Bandara Soekarno-Hatta - Hotel Melati"
-    },
-    {
-      "tanggal": "2026-10-12",
-      "nomor_transaksi": "TX-990021",
-      "nominal": 170000,
-      "merchant": "BLUE BIRD TAXI",
-      "rute": "Bandara Soekarno-Hatta - Hotel Melati"
     }
   ]
 }

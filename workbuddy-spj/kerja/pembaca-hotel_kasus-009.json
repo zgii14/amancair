@@ -1,4 +1,6 @@
 {
+  "kasus_id": "kasus-009",
+  "agen": "pembaca-hotel",
   "item_bukti": [
     {
       "id": "B03",
@@ -6,22 +8,24 @@
       "jenis": "hotel",
       "tanggal_checkin": "2026-08-15",
       "tanggal_checkout": "2026-08-18",
-      "jumlah_malam_tertulis": null,
+      "jumlah_malam_tertulis": 3,
       "kota": "Jakarta",
       "nama_di_bukti": "Ahmad Fauzi",
       "nominal": 2970000,
       "kutipan": "TOTAL: Rp 2.970.000",
       "yakin": "tinggi",
-      "perintah_tersisip": []
-    }
-  ],
-  "sidik": [
-    {
-      "tanggal": "2026-08-15",
-      "nomor_transaksi": "INV/SCS/2026/0817",
-      "nominal": 2970000,
-      "merchant": "HOTEL",
-      "rute": null
+      "item_periksa": {
+        "id": "B03",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-08-15",
+        "check_out": "2026-08-18",
+        "nama_di_bukti": "Ahmad Fauzi",
+        "nominal": 2970000,
+        "nomor_bukti": "INV/SCS/2026/0817",
+        "perintah_tersisip": null
+      }
     }
   ]
 }

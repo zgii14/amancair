@@ -1,65 +1,95 @@
 {
-  "kasus": "kasus-011",
-  "spt": "SPT-2026-011",
-  "pegawai": {
-    "nama": "Lestari Dewi",
-    "nip": "199507082019042007",
-    "golongan": "III/a"
-  },
-  "tujuan": "Jakarta, Provinsi DKI Jakarta",
-  "tanggal_spt": {
-    "mulai": "2026-10-05",
-    "selesai": "2026-10-07",
-    "jumlah_hari": 3
-  },
-  "sbm": {
-    "pagu_hotel_per_malam": 800000,
-    "uang_harian_per_hari": 400000,
-    "pagu_taksi_per_perjalanan": 250000
-  },
-  "verifikasi": [
-    {
-      "kode_bukti": "B01",
-      "jenis": "tiket",
-      "penyedia": "Super Air Jet",
-      "rute": "UPG-CGK",
-      "tanggal": "2026-10-05",
-      "nama_pada_bukti": "Lestari Dewi",
-      "jumlah": 1680000,
-      "hasil": "VALID",
-      "catatan": "Tanggal dalam masa SPT, nama sesuai dengan pegawai"
-    },
-    {
-      "kode_bukti": "B02",
-      "jenis": "taksi",
-      "penyedia": "Blue Bird Taxi",
-      "tanggal": "2026-10-05",
-      "rute": "Bandara Soekarno-Hatta - Hotel Grand Java",
-      "jumlah": 210000,
-      "sbm_pagu": 250000,
-      "hasil": "VALID",
-      "catatan": "Tanggal dalam masa SPT, jumlah tidak melebihi pagu SBM"
-    },
-    {
-      "kode_bukti": null,
-      "jenis": "hotel",
-      "hasil": "TIDAK_ADA_BUKTI",
-      "catatan": "Tidak ada invoice hotel"
-    },
-    {
-      "jenis": "uang_harian",
-      "jumlah_hari": 3,
-      "sbm_per_hari": 400000,
-      "total": 1200000,
-      "hasil": "VALID",
-      "catatan": "Sesuai SBM, tidak memerlukan bukti (R04)"
+  "kasus_id": "kasus-011",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-11-04T13:12:07+08:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-011",
+      "pegawai": "Lestari Dewi",
+      "nip": null,
+      "provinsi": "DKI Jakarta",
+      "tanggal_berangkat": "2026-10-05",
+      "tanggal_kembali": "2026-10-07",
+      "jumlah_item": 2
     }
-  ],
-  "ringkasan": {
-    "total_tiket": 1680000,
-    "total_taksi": 210000,
-    "total_uang_harian": 1200000,
-    "total_hotel": 0,
-    "grand_total": 3090000
-  }
+  },
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-011",
+    "pegawai": {
+      "nama": "Lestari Dewi",
+      "nip": "199507082019042007",
+      "golongan": "III/a"
+    },
+    "sbm": {
+      "provinsi": "DKI Jakarta",
+      "golongan": "III",
+      "pagu_hotel": 800000,
+      "uang_harian": 400000,
+      "pagu_taksi": 250000
+    },
+    "uang_harian": {
+      "hari": 3,
+      "tarif": 400000,
+      "total": 1200000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Lestari Dewi",
+        "nominal": 1680000,
+        "nomor_bukti": "SAJ7788",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1680000,
+        "nilai_dibayar": 1680000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      },
+      {
+        "id": "B02",
+        "file": "struk_bandara_hotel.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-05",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 210000,
+        "nomor_bukti": "TX-884721",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 210000,
+        "nilai_dibayar": 0,
+        "status": "DITAHAN",
+        "rumus": "Sudah diajukan di SPJ-2026-001 (R06 lintas SPJ)"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "KRITIS",
+        "aturan": "R06",
+        "deskripsi": "struk_bandara_hotel.txt (nomor TX-884721) sudah pernah diajukan di SPJ-2026-001",
+        "sumber": "struk_bandara_hotel.txt"
+      },
+      {
+        "level": "SEDANG",
+        "aturan": "KELENGKAPAN",
+        "deskripsi": "Perjalanan 3 hari tanpa bukti penginapan; perlu justifikasi atau bukti tambahan",
+        "sumber": null
+      },
+      {
+        "level": "TINGGI",
+        "aturan": "R10",
+        "deskripsi": "Wajib konfirmasi tambahan bendahara: ada item ditolak atau ditahan",
+        "sumber": null
+      }
+    ],
+    "total_diajukan": 3090000,
+    "total_dibayar": 2880000
+  },
+  "penjelasan": "Dua bukti diperiksa: tiket B01 sesuai dan dibayar penuh; taksi B02 ditahan karena nomor struk yang sama sudah diajukan di SPJ lain (R06). Perjalanan juga belum dilengkapi bukti penginapan sehingga perlu justifikasi, dan item yang ditahan memerlukan konfirmasi bendahara (R10)."
 }

@@ -1,0 +1,38 @@
+{
+  "kasus_id": "kasus-008",
+  "agen": "pembaca-struk",
+  "item_bukti": [
+    {
+      "id": "B04",
+      "file": "struk_taksi_1.txt",
+      "jenis": "taksi",
+      "tanggal": "2026-10-06",
+      "kota": "Jakarta",
+      "nama_di_bukti": "",
+      "nominal": 155000,
+      "kutipan": "Tanggal: 6 Oktober 2026 | Nomor Pesanan: GRB-556677 | Rute: Bandara Soekarno-Hatta - Hotel Cempaka | Total: Rp 155.000 | Metode: QRIS",
+      "yakin": "tinggi",
+      "item_periksa": {
+        "id": "B04",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-06",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 155000,
+        "nomor_bukti": "GRB-556677",
+        "perintah_tersisip": null
+      }
+    }
+  ],
+  "sidik": [
+    {
+      "tanggal": "2026-10-06",
+      "nomor_transaksi": "GRB-556677",
+      "nominal": 155000,
+      "merchant": "GRAB",
+      "rute": "Bandara Soekarno-Hatta - Hotel Cempaka"
+    }
+  ]
+}

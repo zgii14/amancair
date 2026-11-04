@@ -1,0 +1,69 @@
+{
+  "kasus_id": "kasus-009",
+  "spt_terpilih": "SPT-2026-009",
+  "pegawai": {
+    "nip": "196705121990031002",
+    "nama": "Ahmad Fauzi",
+    "golongan": "IV/b"
+  },
+  "tujuan": "Jakarta",
+  "tanggal_spt": {
+    "berangkat": "2026-08-15",
+    "kembali": "2026-08-18",
+    "lama_hari": 4
+  },
+  "rencana_tugas": [
+    { "agen": "pembaca-tiket", "file": ["tiket_berangkat.txt", "tiket_kembali.txt"], "id": ["B01", "B02"] },
+    { "agen": "pembaca-hotel", "file": ["invoice_hotel.txt"], "id": ["B03"] },
+    { "agen": "pembaca-struk", "file": ["struk_taksi_1.txt"], "id": ["B04"] }
+  ],
+  "waktu": [
+    { "agen": "pembaca-tiket", "mulai": "21:20:38", "selesai": "21:21:25", "durasi_detik": 47, "berkas": "kerja/pembaca-tiket_kasus-009.json" },
+    { "agen": "pembaca-hotel", "mulai": "21:20:38", "selesai": "21:21:26", "durasi_detik": 48, "berkas": "kerja/pembaca-hotel_kasus-009.json" },
+    { "agen": "pembaca-struk", "mulai": "21:20:38", "selesai": "21:21:35", "durasi_detik": 57, "berkas": "kerja/pembaca-struk_kasus-009.json" },
+    { "agen": "verifikator-sbm", "mulai": "21:21:54", "selesai": "21:22:15", "durasi_detik": 21, "berkas": "kerja/verifikator-sbm_kasus-009.json" },
+    { "agen": "auditor", "mulai": "21:22:36", "selesai": "21:23:13", "durasi_detik": 37, "berkas": "kerja/auditor_kasus-009.json" },
+    { "agen": "penyusun-spj", "mulai": "21:25:01", "selesai": "21:28:06", "durasi_detik": 185, "berkas": "keluar/draf/SPJ-2026-009/" }
+  ],
+  "total_durasi": { "mulai": "21:20:38", "selesai": "21:28:06", "durasi_detik": 448, "durasi": "7 menit 28 detik" },
+  "status_loop": "selesai",
+  "loop": { "iterasi": 1, "maks": 3, "perbaikan_data": 0 },
+  "hasil_periksa_aturan": {
+    "tool": "periksa_aturan",
+    "total_diajukan": 13270000,
+    "total_dibayar": 13270000,
+    "items": [
+      { "id": "B01", "jenis": "tiket", "diajukan": 4100000, "dibayar": 4100000, "status": "SESUAI" },
+      { "id": "B02", "jenis": "tiket", "diajukan": 3950000, "dibayar": 3950000, "status": "SESUAI" },
+      { "id": "B03", "jenis": "hotel", "diajukan": 2970000, "dibayar": 2970000, "status": "SESUAI" },
+      { "id": "B04", "jenis": "taksi", "diajukan": 250000, "dibayar": 250000, "status": "SESUAI" },
+      { "id": "UH", "jenis": "uang_harian", "diajukan": 2000000, "dibayar": 2000000, "status": "SESUAI" }
+    ],
+    "temuan": [
+      { "level": "SEDANG", "aturan": "R07", "sumber": "SPT-2026-009 / 2026-08-17" },
+      { "level": "TINGGI", "aturan": "R10", "sumber": null }
+    ]
+  },
+  "integritas_temuan": {
+    "temuan_tool": 2,
+    "temuan_final_auditor": 2,
+    "identik": true,
+    "temuan_tambahan_manual": 0,
+    "catatan": "Tidak ada temuan yang ditambahkan secara manual; temuan_final = hasil periksa_aturan."
+  },
+  "pengajuan": {
+    "tool": "ajukan_spj",
+    "nomor": "SPJ-2026-009",
+    "versi": 1,
+    "ok": true,
+    "risiko": "tinggi",
+    "manifest_hash": "5d6a640bcd0d3dcf027ee4a0d1985e55fd6cd2a205a89d7dec24423551c5989d",
+    "status": "menunggu keputusan bendahara di Meja Pimpinan"
+  },
+  "catatan": [
+    "17 Agustus 2026 (Hari Kemerdekaan RI) masuk masa SPT; tool menilai R07 SEDANG, bukan agen.",
+    "Total 13.270.000 melewati batas Rp10 juta; tool menilai R10 TINGGI dan backend menandai risiko tinggi.",
+    "Semua angka dari periksa_aturan; tidak ada hitungan manual. proses_kasus.py tidak dipakai.",
+    "Tidak ada agen yang menyetujui/mencairkan; keluar/siap-cair/ tidak disentuh."
+  ]
+}

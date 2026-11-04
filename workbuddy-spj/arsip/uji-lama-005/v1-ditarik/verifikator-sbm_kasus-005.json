@@ -1,0 +1,111 @@
+{
+  "kasus_id": "kasus-005",
+  "agen": "verifikator-sbm",
+  "meta": {
+    "tool": "periksa_aturan",
+    "waktu_panggil": "2026-10-31T20:40:28+08:00",
+    "argumen": {
+      "nomor_spj": "SPJ-2026-005b",
+      "pegawai": "Budi Prasetyo",
+      "nip": null,
+      "provinsi": "DKI Jakarta",
+      "tanggal_berangkat": "2026-10-16",
+      "tanggal_kembali": "2026-10-18",
+      "jumlah_item": 3
+    }
+  },
+  "hasil": {
+    "ok": true,
+    "nomor_spj": "SPJ-2026-005b",
+    "pegawai": {
+      "nama": "Budi Prasetyo",
+      "nip": "197803101999031002",
+      "golongan": "IV/a"
+    },
+    "sbm": {
+      "provinsi": "DKI Jakarta",
+      "golongan": "IV",
+      "pagu_hotel": 1000000,
+      "uang_harian": 500000,
+      "pagu_taksi": 250000
+    },
+    "uang_harian": {
+      "hari": 3,
+      "tarif": 500000,
+      "total": 1500000
+    },
+    "items": [
+      {
+        "id": "B01",
+        "file": "tiket_berangkat.txt",
+        "jenis": "tiket",
+        "tanggal": "2026-10-16",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "Budi",
+        "nominal": 1920000,
+        "nomor_bukti": "LION9900",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1920000,
+        "nilai_dibayar": 0,
+        "status": "DITAHAN",
+        "rumus": "Nama tidak cocok, ditahan sampai ada penjelasan (R02)"
+      },
+      {
+        "id": "B02",
+        "file": "invoice_hotel.txt",
+        "jenis": "hotel",
+        "tanggal": null,
+        "check_in": "2026-10-16",
+        "check_out": "2026-10-18",
+        "nama_di_bukti": "Budi",
+        "nominal": 1540000,
+        "nomor_bukti": "INV/PI/2026/0606",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 1540000,
+        "nilai_dibayar": 0,
+        "status": "DITAHAN",
+        "rumus": "Nama tidak cocok, ditahan sampai ada penjelasan (R02)"
+      },
+      {
+        "id": "B03",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-16",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 165000,
+        "nomor_bukti": "GRB-334466",
+        "perintah_tersisip": "",
+        "nilai_diajukan": 165000,
+        "nilai_dibayar": 165000,
+        "status": "SESUAI",
+        "rumus": "Dibayar sesuai bukti"
+      }
+    ],
+    "temuan": [
+      {
+        "level": "KRITIS",
+        "aturan": "R02",
+        "deskripsi": "Nama di tiket_berangkat.txt \"Budi\" tidak sama dengan pegawai Budi Prasetyo",
+        "sumber": "tiket_berangkat.txt"
+      },
+      {
+        "level": "KRITIS",
+        "aturan": "R02",
+        "deskripsi": "Nama di invoice_hotel.txt \"Budi\" tidak sama dengan pegawai Budi Prasetyo",
+        "sumber": "invoice_hotel.txt"
+      },
+      {
+        "level": "TINGGI",
+        "aturan": "R10",
+        "deskripsi": "Wajib konfirmasi tambahan bendahara: ada item ditolak atau ditahan",
+        "sumber": null
+      }
+    ],
+    "total_diajukan": 5125000,
+    "total_dibayar": 1665000
+  },
+  "penjelasan": "Hasil disalin utuh dari tool periksa_aturan. Tiket dan hotel ditahan karena nama pada bukti hanya tertulis \"Budi\", berbeda dari nama pegawai di SPT; taksi dibayar sesuai bukti. Perlu penjelasan/konfirmasi bendahara sebelum lanjut."
+}

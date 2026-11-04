@@ -1,0 +1,34 @@
+{
+  "timeline": [
+    {
+      "tanggal": "2026-10-10",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-004.json"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "tiket_berangkat",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "hotel_checkin",
+      "sumber": "invoice_hotel.pdf"
+    },
+    {
+      "tanggal": "2026-10-10",
+      "event": "taksi_bandara_hotel",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "hotel_checkout",
+      "sumber": "invoice_hotel.pdf"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-004.json"
+    }
+  ]
+}

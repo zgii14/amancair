@@ -1,4 +1,6 @@
 {
+  "kasus_id": "kasus-003",
+  "agen": "pembaca-struk",
   "item_bukti": [
     {
       "id": "B03",
@@ -6,13 +8,31 @@
       "jenis": "taksi",
       "tanggal": "2026-10-20",
       "kota": "Denpasar",
-      "nama_di_bukti": null,
-      "nominal": null,
-      "kutipan": null,
+      "nama_di_bukti": "",
+      "nominal": 145000,
+      "kutipan": "Tanggal: 20 Oktober 2026 | Nomor Pesanan: GRB-221099 | Rute: Bandara Ngurah Rai - Hotel Sanur Beach | Total: Rp 145.000 | Metode: QRIS",
       "yakin": "tinggi",
-      "perintah_tersisip": [],
-      "nomor_struk": null
+      "item_periksa": {
+        "id": "B03",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-10-20",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": "",
+        "nominal": 145000,
+        "nomor_bukti": "GRB-221099",
+        "perintah_tersisip": null
+      }
     }
   ],
-  "sidik": []
+  "sidik": [
+    {
+      "tanggal": "2026-10-20",
+      "nomor_transaksi": "GRB-221099",
+      "nominal": 145000,
+      "merchant": "GRAB",
+      "rute": "Bandara Ngurah Rai - Hotel Sanur Beach"
+    }
+  ]
 }

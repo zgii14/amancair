@@ -1,0 +1,56 @@
+{
+  "kasus_id": "kasus-002",
+  "timeline": [
+    {
+      "tanggal": "2026-10-12",
+      "event": "SPT_mulai",
+      "sumber": "SPT-2026-002.json"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "tiket_berangkat",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "hotel_checkin",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "taksi",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-12",
+      "event": "taksi",
+      "sumber": "struk_taksi_2.txt"
+    },
+    {
+      "tanggal": "2026-10-13",
+      "event": "makan",
+      "sumber": "struk_makan_1.txt"
+    },
+    {
+      "tanggal": "2026-10-14",
+      "event": "SPT_selesai",
+      "sumber": "SPT-2026-002.json"
+    },
+    {
+      "tanggal": "2026-10-14",
+      "event": "hotel_checkout",
+      "sumber": "invoice_hotel.txt"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan": [
+    {
+      "id": "B05",
+      "level": "SEDANG",
+      "tipe": "struk_ganda",
+      "deskripsi": "Struk struk_taksi_2.txt identik dalam kasus ini (nomor TX-990021) — hanya satu yang dihitung",
+      "aturan": "R06"
+    }
+  ],
+  "rekomendasi": "lolos"
+}

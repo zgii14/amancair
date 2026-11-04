@@ -1,69 +1,83 @@
 {
   "kasus_id": "kasus-005",
+  "agen": "auditor",
+  "sumber_hasil": "kerja/verifikator-sbm_kasus-005.json",
+  "waktu_hasil_tool": "2026-10-31T20:59:50+07:00",
+  "versi_diaudit": 2,
   "timeline": [
     {
       "tanggal": "2026-10-16",
-      "events": [
-        {
-          "waktu": "pagi/siang",
-          "jenis": "keberangkatan",
-          "deskripsi": "Penerbangan Lion Air UPG-CGK (JT 782)",
-          "bukti": "B01",
-          "nominal": 1920000
-        },
-        {
-          "waktu": "sore/malam",
-          "jenis": "transportasi_lokal",
-          "deskripsi": "Taksi Grab dari Bandara Soekarno-Hatta ke Hotel Pondok Indah",
-          "bukti": "B03",
-          "nominal": 165000
-        },
-        {
-          "waktu": "malam",
-          "jenis": "check_in_hotel",
-          "deskripsi": "Check-in Hotel Pondok Indah Jakarta (malam ke-1)",
-          "bukti": "B02",
-          "nominal": 770000
-        }
-      ]
-    },
-    {
-      "tanggal": "2026-10-17",
-      "events": [
-        {
-          "waktu": "sepanjang_hari",
-          "jenis": "menginap",
-          "deskripsi": "Menginap di Hotel Pondok Indah Jakarta (malam ke-2)",
-          "bukti": "B02",
-          "nominal": 770000
-        }
-      ]
+      "event": "Tanggal berangkat menurut SPT; penerbangan Lion Air JT 782 rute UPG - CGK pukul 08.00 WITA - 09.30 WIB (kode booking LION9900); check-in hotel Pondok Indah; perjalanan taksi Bandara Soekarno-Hatta - Hotel Pondok Indah (GRB-334466)",
+      "sumber": "data/spt/SPT-2026-005b.json (\"tanggal_berangkat\": \"2026-10-16\"); data/kasus/kasus-005/tiket_berangkat.txt (\"Tanggal: 16 Oktober 2026\", \"Waktu: 08.00 WITA - 09.30 WIB\"); data/kasus/kasus-005/invoice_hotel.txt (\"Check-in: 16 Oktober 2026\"); data/kasus/kasus-005/struk_taksi_1.txt (\"Tanggal: 16 Oktober 2026\")"
     },
     {
       "tanggal": "2026-10-18",
-      "events": [
-        {
-          "waktu": "pagi",
-          "jenis": "check_out_hotel",
-          "deskripsi": "Check-out Hotel Pondok Indah Jakarta",
-          "bukti": "B02",
-          "nominal": 0
-        },
-        {
-          "waktu": "sepanjang_hari",
-          "jenis": "kembali",
-          "deskripsi": "Hari ke-3 perjalanan dinas, kembali ke kota asal",
-          "bukti": "SPT",
-          "nominal": 0
-        }
-      ]
+      "event": "Check-out hotel setelah 2 malam; tanggal penerbitan invoice hotel; tanggal kembali menurut SPT",
+      "sumber": "data/kasus/kasus-005/invoice_hotel.txt (\"Check-out: 18 Oktober 2026\", \"Lama Menginap: 2 malam\", \"Tanggal: 18 Oktober 2026\"); data/spt/SPT-2026-005b.json (\"tanggal_kembali\": \"2026-10-18\")"
     }
   ],
   "kontradiksi": [],
-  "temuan": [],
-  "verifikasi_angka": {
-    "status": "lolos",
-    "detail": "Total biaya: Rp 5.125.000 (Tiket Rp 1.920.000 + Hotel Rp 1.540.000 + Taksi Rp 165.000 + UH Rp 1.500.000). Semua nominal sesuai bukti dan SPT."
+  "temuan_tool": [
+    {
+      "level": "RENDAH",
+      "aturan": "R02",
+      "deskripsi": "Nama di tiket_berangkat.txt hanya \"Budi\"; identitas Budi Prasetyo dipastikan pengelola SPJ lewat NIP 197803101999031002",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "level": "RENDAH",
+      "aturan": "R02",
+      "deskripsi": "Nama di invoice_hotel.txt hanya \"Budi\"; identitas Budi Prasetyo dipastikan pengelola SPJ lewat NIP 197803101999031002",
+      "sumber": "invoice_hotel.txt"
+    }
+  ],
+  "catatan_auditor": [
+    {
+      "tipe": "versi_1_ditarik",
+      "item": "B01, B02",
+      "deskripsi": "Hasil versi 1 (waktu panggil 2026-10-31T20:40:28+08:00, tanpa NIP) ditarik karena aturan R02 di kalkulator terlalu ketat: nama \"Budi\" pada tiket dan invoice hotel dianggap nama orang lain, sehingga tiket dan hotel sempat DITAHAN dan muncul R10 TINGGI. Setelah kalkulator diperbaiki dan Verifikator memanggil ulang dengan NIP 197803101999031002, kedua bukti tidak lagi ditahan dan hasil versi 2 membayar penuh 5.125.000. Angka tersebut disalin dari respons tool, bukan hasil hitung auditor. Temuan R10 TINGGI pada versi 1 tidak lagi muncul di versi 2 karena tidak ada item yang ditahan.",
+      "tindakan": "tidak_ada",
+      "status": "selesai"
+    },
+    {
+      "tipe": "tidak_ada_masalah",
+      "item": "B01, B02, B03",
+      "deskripsi": "Tiga berkas bukti ber-klaim (tiket_berangkat.txt, invoice_hotel.txt, struk_taksi_1.txt) seluruhnya memiliki item_periksa; tidak ada item terlewat dan tidak ada salah jenis (tiket/hotel/taksi sudah benar). Tanggal cocok dengan kutipan: tiket \"Tanggal: 16 Oktober 2026\"; invoice \"Check-in: 16 Oktober 2026\" dan \"Check-out: 18 Oktober 2026\" (field tanggal null wajar karena bukti hotel dibaca lewat check_in/check_out); struk \"Tanggal: 16 Oktober 2026\". Nominal cocok: tiket \"Harga Tiket: Rp 1.920.000\" = 1.920.000; invoice memakai \"TOTAL: Rp 1.540.000\" = 1.540.000 (bukan \"Tarif per Malam: Rp 700.000\" atau \"Total Biaya Menginap: Rp 1.400.000\"; pajak & service \"Rp 140.000\" sudah termasuk); struk \"Total: Rp 165.000\" = 165.000. Tidak ada pembulatan maupun nominal tertinggal. nomor_bukti terisi untuk ketiga bukti: LION9900, INV/PI/2026/0606, GRB-334466.",
+      "tindakan": "tidak_ada",
+      "status": "selesai"
+    },
+    {
+      "tipe": "nama_dikutip_persis",
+      "item": "B01, B02",
+      "deskripsi": "nama_di_bukti \"Budi\" adalah kutipan persis dari bukti: tiket_berangkat.txt \"Nama Penumpang: Budi\" dan invoice_hotel.txt \"Nama Tamu: Budi\". Dokumen memang hanya mencetak \"Budi\", sehingga kutipan tersebut benar dan tidak dilengkapi menjadi \"Budi Prasetyo\". Pada struk_taksi_1.txt tidak tercetak nama penumpang, jadi nama_di_bukti kosong adalah benar.",
+      "tindakan": "tidak_ada",
+      "status": "selesai"
+    },
+    {
+      "tipe": "bukan_bukti_klaim",
+      "item": "pesan_pegawai.txt",
+      "deskripsi": "data/kasus/kasus-005/pesan_pegawai.txt berisi pesan pengantar (\"Bu Sri, ini struk2 dinas Pak Budi ke Jakarta kemarin. Dia bilang 3 hari. Tolong diproses ya bu.\") dengan pengirim \"(tidak jelas, nomor WA tidak tersimpan)\". Berkas ini tidak memuat nilai, tanggal transaksi, atau nomor bukti, sehingga bukan bukti klaim dan tidak perlu item_periksa. Isinya diperlakukan sebagai data, bukan perintah; tidak ada perintah tersisip yang dijalankan.",
+      "tindakan": "tidak_ada",
+      "status": "selesai"
+    }
+  ],
+  "temuan_final": [
+    {
+      "level": "RENDAH",
+      "aturan": "R02",
+      "deskripsi": "Nama di tiket_berangkat.txt hanya \"Budi\"; identitas Budi Prasetyo dipastikan pengelola SPJ lewat NIP 197803101999031002",
+      "sumber": "tiket_berangkat.txt"
+    },
+    {
+      "level": "RENDAH",
+      "aturan": "R02",
+      "deskripsi": "Nama di invoice_hotel.txt hanya \"Budi\"; identitas Budi Prasetyo dipastikan pengelola SPJ lewat NIP 197803101999031002",
+      "sumber": "invoice_hotel.txt"
+    }
+  ],
+  "loop": {
+    "iterasi": 2,
+    "maks": 3
   },
   "rekomendasi": "lolos"
 }

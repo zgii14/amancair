@@ -1,0 +1,22 @@
+{
+  "agen": "penyusun-spj",
+  "kasus": "kasus-009",
+  "spj_no": "SPJ-2026-009",
+  "waktu": "2026-10-31T17:25:00.000000+08:00",
+  "total_diajukan": 13270000,
+  "total_dibayar": 13270000,
+  "selisih": 0,
+  "temuan": [
+    {
+      "kode": "R07",
+      "level": "SEDANG",
+      "deskripsi": "17 Agustus 2026 (Hari Kemerdekaan) di dalam masa SPT → perlu justifikasi"
+    },
+    {
+      "kode": "R10",
+      "level": "TINGGI",
+      "deskripsi": "Total Rp 13.270.000 > Rp 10.000.000 → wajib konfirmasi bendahara"
+    }
+  ],
+  "rekap_hash": "c5437c757e57f6041fc080ab7cf9543e0e8ca25ff5134f1ef7b0fa7ee1798841"
+}

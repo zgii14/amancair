@@ -1,0 +1,24 @@
+{
+  "item_bukti": [
+    {
+      "id": "B01",
+      "file": "tiket_berangkat.txt",
+      "jenis": "tiket",
+      "tanggal": "2026-10-12",
+      "kota": "Jakarta",
+      "nama_di_bukti": "Dedi Kurniawan",
+      "nominal": 1850000,
+      "kutipan": "Harga Tiket: Rp 1.850.000",
+      "yakin": "tinggi",
+      "perintah_tersisip": []
+    }
+  ],
+  "sidik": [
+    {
+      "kode_booking": "LION4455",
+      "nama_penumpang": "Dedi Kurniawan",
+      "nomor_tiket": "2267100554433",
+      "nominal": 1850000
+    }
+  ]
+}

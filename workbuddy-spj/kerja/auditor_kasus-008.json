@@ -1,0 +1,178 @@
+{
+  "kasus_id": "kasus-008",
+  "agen": "auditor",
+  "sumber_hasil": "kerja/verifikator-sbm_kasus-008.json",
+  "waktu_hasil_tool": "2026-11-04T13:54:41+07:00",
+  "timeline": [
+    {
+      "tanggal": "2026-10-06",
+      "event": "Masa SPT mulai (Selasa). Tiket Super Air Jet kode booking SAJ2233 a.n. Bayu Wijaya, nomor tiket 9900112233445, rute UPG - CGK, penerbangan IU 550, 11.00 WITA - 12.30 WIB, harga tiket Rp1.450.000. Tiket berangkat tepat pada tanggal_berangkat SPT (bukan H-1).",
+      "sumber": "tiket_berangkat.txt, SPT-2026-008.json"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "event": "Boarding pass Super Air Jet penerbangan IU 550, rute UPG - CGK, atas nama \"Andi Wijaya\" (bukan Bayu Wijaya), waktu boarding 10.20 WITA, Gate 4, Seat 12A. Dokumen tidak memuat baris harga.",
+      "sumber": "boarding_pass.txt"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "event": "Taksi Grab Bandara Soekarno-Hatta - Hotel Cempaka, nomor pesanan GRB-556677, Rp155.000, metode QRIS.",
+      "sumber": "struk_taksi_1.txt"
+    },
+    {
+      "tanggal": "2026-10-06",
+      "event": "Check-in Hotel Cempaka Jakarta atas nama Bayu Wijaya, invoice INV/CJ/2026/0707.",
+      "sumber": "invoice_hotel.txt"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "Check-out hotel (bertepatan dengan tanggal_kembali SPT) dan tanggal penerbitan invoice, status LUNAS. Rentang 6-8 Okt = 2 malam; tarif Rp520.000/malam + pajak & service Rp104.000 = TOTAL Rp1.144.000 (aritmetika internal dokumen konsisten).",
+      "sumber": "invoice_hotel.txt, SPT-2026-008.json"
+    },
+    {
+      "tanggal": "2026-10-08",
+      "event": "Masa SPT berakhir. Tidak ada tiket pulang CGK-UPG maupun boarding pass pulang di folder. pesan_pegawai.txt menyatakan boarding pass yang dipakai adalah tiket teman yang batal (\"Boarding pass-nya pakai tiket teman saya yang batal, tapi saya yang naik. Semoga gak masalah ya bu.\").",
+      "sumber": "SPT-2026-008.json, pesan_pegawai.txt, isi folder kasus-008"
+    }
+  ],
+  "kontradiksi": [],
+  "temuan_tool": [
+    {
+      "level": "KRITIS",
+      "aturan": "R02",
+      "deskripsi": "Nama di boarding_pass.txt \"Andi Wijaya\" tidak sama dengan pegawai Bayu Wijaya",
+      "sumber": "boarding_pass.txt"
+    },
+    {
+      "level": "TINGGI",
+      "aturan": "R10",
+      "deskripsi": "Wajib konfirmasi tambahan bendahara: ada item ditolak atau ditahan",
+      "sumber": null
+    }
+  ],
+  "catatan_auditor": [
+    {
+      "tipe": "kelengkapan_item",
+      "item": "B01, B02, B03, B04",
+      "deskripsi": "Folder kasus-008 berisi 5 berkas: 4 bukti (tiket_berangkat.txt, boarding_pass.txt, invoice_hotel.txt, struk_taksi_1.txt) + 1 pesan_pegawai.txt. Tool memproses 4 item (B01 tiket, B02 boarding_pass, B03 hotel, B04 taksi) = 4 berkas bukti. Boarding pass masuk sebagai item tersendiri dengan jenis \"boarding_pass\" dan TIDAK digabung ke tiket B01 - ini benar, karena boarding pass adalah bukti identitas/keberangkatan, bukan duplikat tiket, dan justru dari item inilah KRITIS R02 muncul.",
+      "tindakan": "Tidak ada tindakan; jumlah item dan pemisahan jenis sesuai.",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "salah_baca",
+      "item": "B01, B02, B03, B04",
+      "deskripsi": "Tidak ada salah baca. B01: tanggal 2026-10-06 = \"Tanggal: 6 Oktober 2026\", nama \"Bayu Wijaya\" = \"Nama Penumpang: Bayu Wijaya\", nominal 1.450.000 = \"Harga Tiket: Rp 1.450.000\". B02: nama \"Andi Wijaya\" dikutip PERSIS = \"Nama Penumpang: Andi Wijaya\" (tidak dibetulkan menjadi Bayu - ini kunci temuan R02), tanggal 2026-10-06 benar, nominal tidak ditebak karena dokumen tidak memuat harga. B03: check_in 2026-10-06 / check_out 2026-10-08 = \"Check-in: 6 Oktober 2026\" / \"Check-out: 8 Oktober 2026\", nominal 1.144.000 = \"TOTAL: Rp 1.144.000\" (1.040.000 + 104.000, konsisten). B04: tanggal 2026-10-06, nominal 155.000 = \"Total: Rp 155.000\".",
+      "tindakan": "Tidak ada; tidak ada yang perlu dikembalikan ke pembaca.",
+      "status": "bersih"
+    },
+    {
+      "tipe": "nomor_bukti",
+      "item": "B01, B02, B03, B04",
+      "deskripsi": "nomor_bukti terisi untuk KEEMPAT item: B01 \"SAJ2233\" (Kode Booking), B02 \"IU 550\" (Nomor Penerbangan), B03 \"INV/CJ/2026/0707\" (No. Invoice), B04 \"GRB-556677\" (Nomor Pesanan). Catatan mutu: boarding pass tidak mencetak kode booking, sehingga \"IU 550\" adalah nomor penerbangan - pengenal yang tidak unik per penumpang dan sama dengan nomor penerbangan pada tiket B01. Untuk R06 di dalam kasus ini tidak menimbulkan masalah (SAJ2233 vs IU 550 berbeda, hanya 1 boarding pass), tetapi nomor penerbangan tidak boleh dipakai sebagai kunci deteksi ganda lintas kasus karena akan menabrak penumpang lain di penerbangan yang sama.",
+      "tindakan": "Tidak ada tindakan pada nilai; dicatat sebagai keterbatasan identifikasi.",
+      "status": "perlu_diketahui_bendahara"
+    },
+    {
+      "tipe": "selisih_nol_menyesatkan",
+      "item": "total_diajukan vs total_dibayar",
+      "deskripsi": "total_dibayar = total_diajukan = Rp3.649.000, TIDAK ada selisih. Ini BUKAN tanda kasus bersih: B02 (boarding pass) bernilai 0 sejak awal karena dokumen tidak memuat harga, sehingga KRITIS R02 tidak memotong pembayaran sepeser pun. Dengan kata lain tool 'menahan' satu item yang nilainya nol, sementara seluruh nilai riil (B01 tiket Rp1.450.000, B03 hotel Rp1.144.000, B04 taksi Rp155.000, plus uang harian) tetap dibayar 100%.",
+      "tindakan": "Ditegaskan: kasus ini TIDAK boleh ditandai siap cair dan tidak boleh dibaca 'tanpa selisih = bersih'. Penyelesaian KRITIS harus lewat konfirmasi bendahara, bukan lewat potongan.",
+      "status": "perlu_ditegaskan"
+    },
+    {
+      "tipe": "pesan_pegawai",
+      "item": "pesan_pegawai.txt",
+      "deskripsi": "Isi pesan menambah fakta baru di luar R02, bukan sekadar mengulang: (a) boarding pass yang dipakai adalah milik orang lain (\"tiket teman saya yang batal\"), (b) pegawai mengaku ia sendiri yang naik dengan dokumen itu, (c) akibatnya tidak ada bukti keberangkatan atas nama Bayu Wijaya, padahal tiket B01 atas namanya sudah dibayar penuh. Kalimat \"Semoga gak masalah ya bu\" adalah permohonan, bukan izin, dan bukan perintah tersisip (R09 tidak terpicu); teks dokumen tetap DATA, bukan persetujuan.",
+      "tindakan": "Dijadikan temuan AUDITOR tersendiri (lihat temuan_final) karena objeknya berbeda dari R02: R02 menilai kecocokan nama pada dokumen, sedangkan temuan AUDITOR menilai akibatnya - pemakaian dokumen perjalanan orang lain dan pembayaran B01 tanpa bukti keberangkatan yang sah.",
+      "status": "temuan_auditor"
+    },
+    {
+      "tipe": "R10_konfirmasi_tambahan",
+      "item": "temuan_tool R10",
+      "deskripsi": "R10 tepat dikeluarkan: ada item yang tidak dibayar dan menunggu penjelasan (B02 DITAHAN), sehingga bendahara memang wajib mengonfirmasi sebelum kasus ditutup. Catatan istilah: teks R10 berbunyi \"ada item ditolak\", sedangkan status B02 adalah DITAHAN (ditangguhkan, bukan ditolak) - pemicunya tepat secara maksud, tetapi istilahnya perlu dirapikan agar konsisten. Level TINGGI dapat diterima karena R10 menandai kasus yang tidak boleh ditutup tanpa konfirmasi; namun R10 bersifat prosedural, bukan penyimpangan nilai uang, sehingga tidak boleh dibaca sebagai 'ada uang yang salah'. Temuan R10 juga bersumber null (tidak menunjuk berkas); sumber faktualnya adalah boarding_pass.txt (item B02 DITAHAN).",
+      "tindakan": "Tidak mengubah temuan tool; hanya menerangkan agar bendahara membaca R10 sebagai kewajiban konfirmasi, bukan pelanggaran nilai.",
+      "status": "tepat_dengan_catatan_istilah"
+    },
+    {
+      "tipe": "R08_nominal",
+      "item": "B02",
+      "deskripsi": "R08 TIDAK terpicu di kasus ini dan tidak boleh disamakan dengan kasus buram: boarding pass memang tidak memuat baris harga (bukan harga yang tidak terbaca), seluruh teks dokumen tajam dan terbaca, dan pembaca menandai yakin \"tinggi\". Nominal 0 pada B02 adalah koersi dari null (tidak ada harga), bukan hasil pembacaan. Berbeda dari kasus lain di mana koersi null->0 pada bukti BURAM melabeli item SESUAI; di sini statusnya DITAHAN sehingga tidak menimbulkan tafsir 'sudah diverifikasi'. Koersi null->0 tetap dicatat sebagai isu sistem yang sama, tetapi tanpa dampak pada kasus ini.",
+      "tindakan": "Tidak dibuat temuan R08; cukup dicatat.",
+      "status": "tidak_terpicu"
+    },
+    {
+      "tipe": "konsistensi_nama_hotel",
+      "item": "B03 vs B04",
+      "deskripsi": "Struk taksi menulis rute \"Bandara Soekarno-Hatta - Hotel Cempaka\", invoice menulis \"HOTEL CEMPAKA JAKARTA\". Entitas sama, invoice hanya menambahkan kota; tidak ada dua hotel berbeda dan tidak ada kontradiksi. Kota konsisten (Jakarta) pada tiket, boarding pass, struk, dan invoice.",
+      "tindakan": "Tidak ada tindakan; tidak dibuat temuan.",
+      "status": "konsisten"
+    },
+    {
+      "tipe": "konsistensi_penerbangan",
+      "item": "B01 vs B02",
+      "deskripsi": "Tiket dan boarding pass sama-sama penerbangan IU 550, tanggal 6 Oktober 2026, rute UPG - CGK. Waktu juga konsisten: boarding 10.20 WITA untuk keberangkatan 11.00 WITA. Jadi tidak ada kontradiksi pada data penerbangan, tanggal, maupun rute; satu-satunya yang tidak konsisten adalah NAMA PENUMPANG (Bayu Wijaya vs Andi Wijaya) - dan itu sudah ditangani tool sebagai KRITIS R02. Fakta bahwa nomor penerbangan dan tanggalnya sama justru memperkuat cerita pesan pegawai bahwa boarding pass milik teman pada penerbangan yang sama dipakai.",
+      "tindakan": "Tidak ada tindakan; tidak dibuat temuan tambahan.",
+      "status": "konsisten"
+    },
+    {
+      "tipe": "kelengkapan_bukti",
+      "item": "tiket kembali",
+      "deskripsi": "Tidak ada tiket pulang CGK-UPG maupun boarding pass pulang di folder, padahal SPT menetapkan tanggal_kembali 2026-10-08 dan tidak ada nilai tiket pulang yang diklaim. Ini kekurangan kelengkapan, bukan item terlewat.",
+      "tindakan": "Bukan temuan tersendiri (tidak ada nilai diklaim); dicatat agar bendahara menanyakannya bila perjalanan pulang ditagihkan kemudian.",
+      "status": "perlu_konfirmasi_bendahara"
+    },
+    {
+      "tipe": "R01_masa_spt",
+      "item": "B01, B02, B03, B04",
+      "deskripsi": "Seluruh tanggal bukti berada di dalam masa SPT 2026-10-06 s.d. 2026-10-08: tiket dan boarding pass 2026-10-06, check_in 2026-10-06, check_out 2026-10-08, struk taksi 2026-10-06. 2 malam = lama_hari 3 - 1, check-in tepat tanggal berangkat dan check-out tepat tanggal kembali, sehingga tidak ada kontradiksi masa.",
+      "tindakan": "Tidak ada tindakan; R01 tidak terpicu.",
+      "status": "sesuai"
+    },
+    {
+      "tipe": "R07_hari_libur",
+      "item": "2026-10-06 s.d. 2026-10-08",
+      "deskripsi": "Tanggal kasus tidak ada di data/libur/libur.json (hanya 2026-06-01, 2026-08-17, 2026-12-25); 6-8 Oktober 2026 adalah Selasa, Rabu, dan Kamis, bukan akhir pekan. R07 tidak terpicu.",
+      "tindakan": "Tidak ada tindakan.",
+      "status": "tidak_terpicu"
+    },
+    {
+      "tipe": "R06_struk_ganda",
+      "item": "semua bukti",
+      "deskripsi": "Tidak ada struk ganda di dalam kasus: SAJ2233 (tiket), IU 550 (boarding pass), INV/CJ/2026/0707 (hotel), GRB-556677 (taksi) semuanya berbeda. Sinyal struk ganda lintas kasus tidak diperiksa karena auditor dilarang membaca kasus lain; bila koordinator menemukannya, itu INDIKASI untuk diputuskan bendahara.",
+      "tindakan": "Tidak ada tindakan.",
+      "status": "tidak_ada"
+    },
+    {
+      "tipe": "kesesuaian_data_pegawai",
+      "item": "SPT vs tool",
+      "deskripsi": "Nama Bayu Wijaya, NIP 199805152022021008, golongan II/b, provinsi DKI Jakarta, tanggal 2026-10-06 s.d. 2026-10-08, lama_hari 3, dan jumlah_item 4 seluruhnya cocok antara SPT-2026-008.json dan argumen tool; SBM terpakai golongan II sesuai golongan II/b.",
+      "tindakan": "Tidak ada tindakan.",
+      "status": "sesuai"
+    }
+  ],
+  "temuan_final": [
+    {
+      "level": "KRITIS",
+      "aturan": "R02",
+      "deskripsi": "Nama di boarding_pass.txt \"Andi Wijaya\" tidak sama dengan pegawai Bayu Wijaya",
+      "sumber": "boarding_pass.txt"
+    },
+    {
+      "level": "TINGGI",
+      "aturan": "R10",
+      "deskripsi": "Wajib konfirmasi tambahan bendahara: ada item ditolak atau ditahan",
+      "sumber": null
+    },
+    {
+      "level": "KRITIS",
+      "aturan": "AUDITOR",
+      "deskripsi": "Pengakuan pegawai menambah fakta baru di luar R02: boarding pass yang dipakai adalah milik orang lain (\"pakai tiket teman saya yang batal\"), sehingga tidak ada bukti keberangkatan atas nama Bayu Wijaya. Karena B02 bernilai 0 sejak awal, KRITIS R02 tidak memotong apa pun dan B01 (tiket Rp1.450.000) tetap dibayar penuh tanpa bukti keberangkatan yang sah; total_dibayar sama dengan total_diajukan bukan berarti bersih. Ini pemakaian dokumen perjalanan orang lain yang harus diputuskan bendahara, bukan sekadar salah tulis nama.",
+      "sumber": "pesan_pegawai.txt: \"Boarding pass-nya pakai tiket teman saya yang batal, tapi saya yang naik. Semoga gak masalah ya bu.\" / boarding_pass.txt: \"Nama Penumpang: Andi Wijaya\""
+    }
+  ],
+  "loop": {
+    "iterasi": 1,
+    "maks": 3
+  },
+  "rekomendasi": "eskalasi"
+}

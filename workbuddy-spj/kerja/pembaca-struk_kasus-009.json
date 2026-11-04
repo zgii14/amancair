@@ -1,4 +1,6 @@
 {
+  "kasus_id": "kasus-009",
+  "agen": "pembaca-struk",
   "item_bukti": [
     {
       "id": "B04",
@@ -8,19 +10,20 @@
       "kota": "Jakarta",
       "nama_di_bukti": null,
       "nominal": 250000,
-      "kutipan": "TOTAL: Rp 250.000",
+      "kutipan": "TOTAL: Rp 250.000 (Tarif: Rp 210.000 + Tambahan Tol: Rp 40.000)",
       "yakin": "tinggi",
-      "perintah_tersisip": [],
-      "nomor_struk": "TX-170822"
-    }
-  ],
-  "sidik": [
-    {
-      "tanggal": "2026-08-15",
-      "nomor_transaksi": "TX-170822",
-      "nominal": 250000,
-      "merchant": "BLUE BIRD TAXI",
-      "rute": "Bandara Soekarno-Hatta - Hotel Senayan City"
+      "item_periksa": {
+        "id": "B04",
+        "file": "struk_taksi_1.txt",
+        "jenis": "taksi",
+        "tanggal": "2026-08-15",
+        "check_in": null,
+        "check_out": null,
+        "nama_di_bukti": null,
+        "nominal": 250000,
+        "nomor_bukti": "TX-170822",
+        "perintah_tersisip": null
+      }
     }
   ]
 }
