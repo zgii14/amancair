@@ -434,3 +434,12 @@ a.ringkas:hover { border-color: var(--stempel); color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .samping { transition: none; }
 }
+
+/* ---------- daftar periksa berkas fisik ---------- */
+.periksa-fisik { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.periksa-fisik label { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; cursor: pointer; padding: 8px 10px; border: 1px solid var(--garis-tipis); border-radius: 6px; }
+.periksa-fisik label:has(input:checked) { border-color: var(--hijau); background: var(--hijau-muda); }
+.periksa-fisik input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--hijau); flex: none; }
+
+/* beri ruang agar bilah keputusan tidak menutupi isi terakhir */
+.isi .wadah:has(.keputusan) { padding-bottom: 320px; }

@@ -70,10 +70,26 @@ def _risiko(p: PengajuanSPJ) -> tuple[str, list[str]]:
     return ("tinggi" if alasan else "normal"), alasan
 
 
+BATAS_METERAI = 5_000_000
+
+
+def daftar_periksa_fisik(total_dibayar: int) -> list[dict]:
+    """Hal yang tidak bisa diperiksa dari salinan digital; bendahara wajib memastikannya sebelum menyetujui."""
+    daftar = [
+        {"id": "sppd_bercap", "label": "SPPD sudah ditandatangani dan dicap pejabat di tempat tujuan"},
+        {"id": "bukti_asli", "label": "Bukti asli sudah diterima, bukan hanya foto atau salinan"},
+        {"id": "laporan", "label": "Laporan perjalanan dinas sudah dilampirkan"},
+    ]
+    if total_dibayar > BATAS_METERAI:
+        daftar.append({"id": "meterai", "label": "Kuitansi bernilai di atas Rp5.000.000 sudah bermeterai Rp10.000"})
+    return daftar
+
+
 def _baris(r: sqlite3.Row) -> dict:
     data = json.loads(r["data_json"])
     data["temuan"] = sorted(data.get("temuan", []), key=lambda t: URUTAN_LEVEL[t["level"]])
     return {**data, "pengaju": r["pengaju"], "manifest": json.loads(r["manifest_json"]), "manifest_hash": r["manifest_hash"],
+            "periksa_fisik": daftar_periksa_fisik(data["total_dibayar"]),
             "risiko": r["risiko"], "alasan_risiko": _risiko(PengajuanSPJ(**json.loads(r["data_json"])))[1],
             "status": r["status"], "versi": r["versi"], "diajukan": r["diajukan"],
             "diputuskan_oleh": r["diputuskan_oleh"], "alasan": r["alasan"]}
@@ -178,7 +194,8 @@ def seed(conn: sqlite3.Connection, draf_root: Path, berkas: Path, now: datetime)
 
 
 def setujui(conn: sqlite3.Connection, draf_root: Path, siap_root: Path, nomor: str, oleh: str,
-            konfirmasi_risiko: bool, now: datetime) -> dict:
+            konfirmasi_risiko: bool, now: datetime, periksa_fisik: list[str] | None = None) -> dict:
+    """periksa_fisik: id daftar periksa berkas fisik yang dicentang bendahara (wajib lewat API)."""
     r = ambil(conn, nomor)
     if r is None:
         raise SPJError("SPJ tidak ditemukan")
@@ -186,6 +203,10 @@ def setujui(conn: sqlite3.Connection, draf_root: Path, siap_root: Path, nomor: s
         raise SPJError(f"SPJ berstatus {r['status']}")
     if r["risiko"] == "tinggi" and not konfirmasi_risiko:
         raise SPJError("Risiko tinggi: perlu konfirmasi tambahan bendahara")
+    if periksa_fisik is not None:
+        kurang = [d["label"] for d in r["periksa_fisik"] if d["id"] not in set(periksa_fisik)]
+        if kurang:
+            raise SPJError("Daftar periksa berkas fisik belum lengkap (perlu konfirmasi): " + "; ".join(kurang))
     sekarang = hitung_manifest(draf_root / nomor)
     if hash_manifest(sekarang) != r["manifest_hash"]:
         beda = sorted(set(sekarang.items()) ^ set(r["manifest"].items()))
@@ -208,7 +229,8 @@ def setujui(conn: sqlite3.Connection, draf_root: Path, siap_root: Path, nomor: s
     with conn:
         conn.execute("UPDATE spj SET status='DICAIRKAN', diputuskan_oleh=? WHERE nomor=?", (oleh, nomor))
         audit.catat(conn, oleh, "spj_dicairkan",
-                    {"nomor": nomor, "versi": r["versi"], "manifest_hash": r["manifest_hash"], "total_dibayar": r["total_dibayar"]}, now)
+                    {"nomor": nomor, "versi": r["versi"], "manifest_hash": r["manifest_hash"], "total_dibayar": r["total_dibayar"],
+                     "periksa_fisik": sorted(periksa_fisik) if periksa_fisik is not None else None}, now)
     return ambil(conn, nomor)
 
 

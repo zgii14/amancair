@@ -98,6 +98,7 @@ export type SPJ = {
   pengaju: string;
   manifest: Record<string, string>;
   manifest_hash: string;
+  periksa_fisik: { id: string; label: string }[];
   risiko: "normal" | "tinggi";
   alasan_risiko: string[];
   status: StatusSPJ;

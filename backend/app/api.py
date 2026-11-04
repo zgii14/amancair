@@ -31,6 +31,8 @@ class LoginBody(BaseModel):
 
 class SetujuiBody(BaseModel):
     konfirmasi_risiko: bool = False
+    # Id daftar periksa berkas fisik yang dicentang bendahara (khusus SPJ).
+    periksa_fisik: list[str] = []
 
 
 class TolakBody(BaseModel):
@@ -228,7 +230,8 @@ def buat_app(
         if not j.boleh_menyetujui:
             raise HTTPException(403, "Jabatan Anda tidak berwenang menyetujui SPJ")
         try:
-            return spj.setujui(c, draf, siap, nomor, u["username"], body.konfirmasi_risiko, jam())
+            return spj.setujui(c, draf, siap, nomor, u["username"], body.konfirmasi_risiko, jam(),
+                               periksa_fisik=body.periksa_fisik)
         except spj.SPJError as e:
             raise HTTPException(428 if "konfirmasi" in str(e) else 409, str(e))
 

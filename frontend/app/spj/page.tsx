@@ -29,7 +29,7 @@ function DaftarSPJ() {
   return (
     <>
       <h1 className="judul-halaman">SPJ menunggu keputusan</h1>
-      <p className="sub-halaman">Sudah diperiksa tim pemeriksa otomatis. Tidak ada dana yang cair sebelum Anda menyetujuinya di sini.</p>
+      <p className="sub-halaman">Sudah diperiksa tim pemeriksa otomatis. Tidak ada yang dibayar sebelum Anda menyetujuinya di sini.</p>
       {daftar === null ? (
         <p className="info" role="status">Memuat…</p>
       ) : menunggu.length === 0 ? (

@@ -61,7 +61,7 @@ function Beranda() {
           <span className="ringkas-ket">pengajuan yang belum selesai diperiksa</span>
         </Link>
         <div className="ringkas" data-nada="aman">
-          <span className="ringkas-label">Sudah dicairkan</span>
+          <span className="ringkas-label">Disetujui untuk dibayar</span>
           <span className="ringkas-angka">{cair.length}</span>
           <span className="ringkas-ket">senilai {rupiah(jumlah(cair))}</span>
         </div>
@@ -134,7 +134,7 @@ function Beranda() {
                     <td className="r">{rupiah(s.total_dibayar)}</td>
                     <td>
                       <span className={`lencana ${s.status === "DICAIRKAN" ? "aman" : "bahaya"}`}>
-                        {s.status === "DICAIRKAN" ? "Dicairkan" : "Ditolak"}
+                        {s.status === "DICAIRKAN" ? "Disetujui" : "Ditolak"}
                       </span>
                     </td>
                     <td className="redup">{s.diputuskan_oleh ?? "-"}</td>

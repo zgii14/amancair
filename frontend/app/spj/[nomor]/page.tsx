@@ -10,8 +10,8 @@ import { alasanSederhana, HAL, KELAS_TINGKAT, NAMA_BERKAS, penjelasan, TINGKAT }
 import { rupiah } from "@/lib/rupiah";
 
 const CAP: Record<string, { teks: string; warna?: string; kecil: string }> = {
-  DICAIRKAN: { teks: "Dicairkan", kecil: "salinan identik terverifikasi" },
-  DITOLAK: { teks: "Ditolak", warna: "merah", kecil: "tidak dicairkan" },
+  DICAIRKAN: { teks: "Disetujui untuk dibayar", kecil: "berkas identik dengan yang diajukan" },
+  DITOLAK: { teks: "Ditolak", warna: "merah", kecil: "tidak dibayar" },
 };
 
 
@@ -23,6 +23,7 @@ function LembarSPJ() {
   const [mode, setMode] = useState<"lihat" | "tolak">("lihat");
   const [alasan, setAlasan] = useState("");
   const [cek, setCek] = useState(false);
+  const [fisik, setFisik] = useState<string[]>([]);
   const [galat, setGalat] = useState("");
   const [proses, setProses] = useState(false);
   const [capBaru, setCapBaru] = useState(false);
@@ -47,7 +48,7 @@ function LembarSPJ() {
     setProses(true);
     setGalat("");
     try {
-      await post(`/spj/${nomor}/${aksi}`, aksi === "setujui" ? { konfirmasi_risiko: cek } : { alasan: alasan.trim() });
+      await post(`/spj/${nomor}/${aksi}`, aksi === "setujui" ? { konfirmasi_risiko: cek, periksa_fisik: fisik } : { alasan: alasan.trim() });
       setCapBaru(true);
       setMode("lihat");
       await muat();
@@ -73,6 +74,8 @@ function LembarSPJ() {
   const tinggi = s.risiko === "tinggi";
   const bisaPutuskan = s.status === "PENDING" && me.boleh_menyetujui;
   const berkas = Object.keys(s.manifest);
+  const fisikLengkap = s.periksa_fisik.every((d) => fisik.includes(d.id));
+  const ubahFisik = (id: string, on: boolean) => setFisik((f) => (on ? [...f, id] : f.filter((x) => x !== id)));
   const url = (rel: string) => `/api/spj/${s.nomor}/berkas/${rel}`;
 
   return (
@@ -149,16 +152,35 @@ function LembarSPJ() {
           </ul>
         </section>
 
+        {bisaPutuskan && (
+          <section className="bagian" aria-labelledby="fisik">
+            <h2 id="fisik">Pemeriksaan berkas fisik oleh bendahara</h2>
+            <p className="info" style={{ marginBottom: 8 }}>
+              Bagian ini tidak dapat diperiksa dari salinan digital. Pastikan sendiri sebelum menyetujui.
+            </p>
+            <ul className="periksa-fisik">
+              {s.periksa_fisik.map((d) => (
+                <li key={d.id}>
+                  <label>
+                    <input type="checkbox" checked={fisik.includes(d.id)} onChange={(e) => ubahFisik(d.id, e.target.checked)} />
+                    <span>{d.label}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {s.status !== "PENDING" && (
           <section className="bagian">
             <h2>Keputusan</h2>
-            <p>{s.status === "DICAIRKAN" ? "Disetujui dan dicairkan" : "Ditolak"} oleh {s.diputuskan_oleh}{s.alasan ? ` — “${s.alasan}”` : ""}.</p>
+            <p>{s.status === "DICAIRKAN" ? "Disetujui untuk dibayar" : "Ditolak"} oleh {s.diputuskan_oleh}{s.alasan ? ` — “${s.alasan}”` : ""}.</p>
           </section>
         )}
 
         <footer className="sidik">
           Kode pengaman <code>{s.manifest_hash.slice(0, 16)}</code> mencatat isi {berkas.length} berkas saat diajukan.
-          Jika ada berkas yang berubah setelah ini, pencairan otomatis ditolak.
+          Jika ada berkas yang berubah setelah ini, persetujuan otomatis ditolak.
         </footer>
       </article>
 
@@ -174,10 +196,13 @@ function LembarSPJ() {
                     <span><strong>Perlu persetujuan khusus:</strong> {s.alasan_risiko.map(alasanSederhana).join("; ")}. Saya sudah memeriksa catatan dan dokumennya.</span>
                   </label>
                 )}
+                {!fisikLengkap && (
+                  <p className="info">Centang pemeriksaan berkas fisik ({fisik.length} dari {s.periksa_fisik.length}) sebelum menyetujui.</p>
+                )}
                 <div className="keputusan-tombol">
                   <button type="button" className="tombol" onClick={() => { setMode("tolak"); setGalat(""); }} disabled={proses}>Tolak</button>
-                  <button type="button" className="tombol-utama" onClick={() => putuskan("setujui")} disabled={proses || (tinggi && !cek)}>
-                    {proses ? "Mencairkan…" : "Setujui & cairkan"}
+                  <button type="button" className="tombol-utama" onClick={() => putuskan("setujui")} disabled={proses || (tinggi && !cek) || !fisikLengkap}>
+                    {proses ? "Memproses…" : "Setujui untuk dibayar"}
                   </button>
                 </div>
               </>

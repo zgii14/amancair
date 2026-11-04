@@ -67,7 +67,7 @@ def test_setujui_risiko_tinggi_lalu_cair(env):
     app, _, siap = env
     k = klien(app, "sri")
     assert k.post("/api/spj/SPJ-2026-006/setujui", json={}).status_code == 428
-    r = k.post("/api/spj/SPJ-2026-006/setujui", json={"konfirmasi_risiko": True})
+    r = k.post("/api/spj/SPJ-2026-006/setujui", json={"konfirmasi_risiko": True, "periksa_fisik": ["sppd_bercap", "bukti_asli", "laporan"]})
     assert r.status_code == 200 and r.json()["status"] == "DICAIRKAN"
     assert (siap / "SPJ-2026-006" / "rekap.xlsx").read_bytes() == b"rekap"
 
@@ -75,7 +75,7 @@ def test_setujui_risiko_tinggi_lalu_cair(env):
 def test_berkas_diubah_ditolak_409(env):
     app, draf, siap = env
     (draf / "SPJ-2026-006" / "rekap.xlsx").write_bytes(b"diubah agen")
-    r = klien(app, "sri").post("/api/spj/SPJ-2026-006/setujui", json={"konfirmasi_risiko": True})
+    r = klien(app, "sri").post("/api/spj/SPJ-2026-006/setujui", json={"konfirmasi_risiko": True, "periksa_fisik": ["sppd_bercap", "bukti_asli", "laporan"]})
     assert r.status_code == 409 and "berubah" in r.json()["detail"]
     assert not siap.exists()
 
@@ -84,3 +84,22 @@ def test_tolak(env):
     app, _, _ = env
     r = klien(app, "sri").post("/api/spj/SPJ-2026-006/tolak", json={"alasan": "perlu klarifikasi"})
     assert r.json()["status"] == "DITOLAK"
+
+
+def test_setujui_wajib_daftar_periksa_berkas_fisik(env):
+    app, _, siap = env
+    k = klien(app, "sri")
+    detail = k.get("/api/spj/SPJ-2026-006").json()
+    assert [d["id"] for d in detail["periksa_fisik"]] == ["sppd_bercap", "bukti_asli", "laporan"]
+    r = k.post("/api/spj/SPJ-2026-006/setujui", json={"konfirmasi_risiko": True, "periksa_fisik": ["sppd_bercap"]})
+    assert r.status_code == 428 and "Bukti asli" in r.json()["detail"] and "Laporan" in r.json()["detail"]
+    assert not siap.exists()
+    r = k.post("/api/spj/SPJ-2026-006/setujui",
+               json={"konfirmasi_risiko": True, "periksa_fisik": ["sppd_bercap", "bukti_asli", "laporan"]})
+    assert r.status_code == 200 and r.json()["status"] == "DICAIRKAN"
+
+
+def test_meterai_wajib_bila_di_atas_lima_juta():
+    from app.spj import daftar_periksa_fisik
+    assert "meterai" not in [d["id"] for d in daftar_periksa_fisik(5_000_000)]
+    assert "meterai" in [d["id"] for d in daftar_periksa_fisik(5_000_001)]

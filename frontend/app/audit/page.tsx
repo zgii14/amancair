@@ -18,9 +18,9 @@ const KEJADIAN: Record<string, string> = {
   kasus_diajukan: "Pegawai mengajukan SPJ",
   spj_diperiksa_aturan: "Biaya dihitung sesuai aturan",
   spj_diajukan: "SPJ selesai diperiksa dan diajukan ke bendahara",
-  spj_dicairkan: "Bendahara menyetujui, dana dicairkan",
+  spj_dicairkan: "Bendahara menyetujui untuk dibayar",
   spj_ditolak: "Bendahara menolak SPJ",
-  spj_pencairan_ditolak: "Pencairan ditolak sistem karena berkas berubah",
+  spj_pencairan_ditolak: "Persetujuan ditolak sistem karena berkas berubah",
 };
 
 function Rincian({ c }: { c: CatatanAudit }) {
