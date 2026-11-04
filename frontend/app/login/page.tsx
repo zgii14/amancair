@@ -34,7 +34,7 @@ export default function LoginPage() {
     setGalat("");
     try {
       const me = await post<{ jabatan: string }>("/login", { profil, username: username.trim(), password });
-      window.location.href = profil !== "diskominfo" ? "/" : me.jabatan === "Staf" ? "/pengajuan" : "/spj";
+      window.location.href = profil !== "diskominfo" ? "/" : me.jabatan === "Staf" ? "/pengajuan" : "/beranda";
     } catch {
       setGalat("ID pegawai atau kata sandi salah.");
       setProses(false);

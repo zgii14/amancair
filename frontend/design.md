@@ -31,7 +31,10 @@ Biru dipakai hemat: tombol utama, tautan, tab aktif. Merah dan hijau hanya untuk
 - Kode/sidik: IBM Plex Mono, ukuran kecil, hanya di bagian teknis (sidik berkas).
 
 ## Komponen
-- Kepala: putih, garis biru 4px di atas, tab navigasi bergaris bawah biru saat aktif.
+- Tata letak: menu samping putih 248px (logo, nama dinas, menu berikon garis, pengguna + Keluar di bawah) dan area isi maksimal 1040px. Di bawah 900px menu samping menjadi laci yang dibuka tombol Menu; tutup dengan mengetuk di luar atau Esc.
+- Menu aktif: latar biru muda, teks biru. Jumlah SPJ menunggu tampil sebagai angka di kanan menu.
+- Beranda bendahara: empat kotak ringkasan dari data asli (menunggu, perlu persetujuan khusus, sedang diperiksa, dicairkan), lalu tabel SPJ menunggu dan tabel keputusan terakhir. Tidak ada angka karangan.
+- Tabel: kepala abu-abu muda, teks 12.5px tebal; angka uang rata kanan; nomor SPJ huruf mono kecil.
 - Kartu: putih, garis 1px, sudut 8px, tanpa garis warna di sisi.
 - Label status: kotak kecil sudut 4px, teks 12px tebal, warna sesuai status.
 - Tombol utama: biru penuh; tombol kedua: putih bergaris; tombol bahaya: putih bergaris merah.
