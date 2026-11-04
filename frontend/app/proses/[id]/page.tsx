@@ -92,7 +92,7 @@ function ProsesKasus() {
       <p className="remah"><Link href={me.jabatan === "Staf" ? "/pengajuan" : "/proses"}>← Kembali</Link></p>
       <h1 className="judul-halaman">
         {k.nomor_spj}
-        {live && <span className="lencana-live" role="status"><i aria-hidden="true" /> Live</span>}
+        {live && <span className="lencana-live" role="status"><i aria-hidden="true" /> Sedang berjalan</span>}
         {putar !== null && <span className="lencana-live putar" role="status">Putar ulang</span>}
       </h1>
       <p className="sub-halaman">
@@ -126,10 +126,10 @@ function ProsesKasus() {
       <div className="proses-kisi">
         <section aria-labelledby="judul-tim">
           <div className="judul-baris">
-            <h2 id="judul-tim" className="subjudul">Tim agen WorkBuddy</h2>
+            <h2 id="judul-tim" className="subjudul">Tahapan pemeriksaan</h2>
             {progres.length > 0 && !live && (
               <button type="button" className="tombol kecil" onClick={() => setPutar(0)} disabled={putar !== null}>
-                ▶ Putar ulang
+                Putar ulang
               </button>
             )}
           </div>

@@ -43,7 +43,7 @@ function Antrean() {
                     <span className={`lencana ${r.surat.sifat === "rahasia" ? "bahaya" : "stempel"}`}>{SIFAT[r.surat.sifat]}</span>
                   )}
                   {r.risiko === "tinggi" && <span className="lencana bahaya">Risiko tinggi</span>}
-                  {r.peringatan.length > 0 && <span className="lencana bahaya">⚠ {r.peringatan.length} peringatan</span>}
+                  {r.peringatan.length > 0 && <span className="lencana bahaya">{r.peringatan.length} peringatan</span>}
                   <span className="lencana">{r.aksi.map((a) => JENIS_AKSI[a.jenis]).join(" · ")}</span>
                 </div>
               </Link>

@@ -1,21 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Bitter, IBM_Plex_Mono, Public_Sans } from "next/font/google";
+import { IBM_Plex_Mono, Public_Sans } from "next/font/google";
 import "./globals.css";
 
-const bitter = Bitter({ subsets: ["latin"], variable: "--font-judul", weight: ["500", "700", "800"] });
-const publicSans = Public_Sans({ subsets: ["latin"], variable: "--font-isi" });
+const publicSans = Public_Sans({ subsets: ["latin"], variable: "--font-isi", weight: ["400", "600", "700"] });
 const plexMono = IBM_Plex_Mono({ subsets: ["latin"], variable: "--font-data", weight: ["400", "500"] });
 
 export const metadata: Metadata = {
   title: "Meja Pimpinan",
-  description: "Tinjau dan putuskan rencana aksi yang disiapkan agent disposisi.",
+  description: "Tinjau dan putuskan SPJ perjalanan dinas yang sudah diperiksa.",
 };
 
-export const viewport: Viewport = { themeColor: "#E6EBE3", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#FFFFFF", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className={`${bitter.variable} ${publicSans.variable} ${plexMono.variable}`}>
+    <html lang="id" className={`${publicSans.variable} ${plexMono.variable}`}>
       <body>{children}</body>
     </html>
   );

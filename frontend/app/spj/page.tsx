@@ -51,10 +51,10 @@ function DaftarSPJ() {
                   <h2>{s.pegawai} — {s.tujuan}</h2>
                   <p>Diajukan {rupiah(s.total_diajukan)} · dibayar {rupiah(s.total_dibayar)}</p>
                   <div className="lencana-baris">
-                    {kritis > 0 && <span className="lencana bahaya">{kritis} KRITIS</span>}
-                    {s.risiko === "tinggi" && <span className="lencana bahaya">Risiko tinggi</span>}
-                    {s.perintah_tersisip.length > 0 && <span className="lencana bahaya">⚠ Perintah tersisip</span>}
-                    <span className="lencana">{s.temuan.length} temuan</span>
+                    {kritis > 0 && <span className="lencana bahaya">{kritis} sangat penting</span>}
+                    {s.risiko === "tinggi" && <span className="lencana bahaya">Perlu persetujuan khusus</span>}
+                    {s.perintah_tersisip.length > 0 && <span className="lencana bahaya">Ada tulisan perintah di bukti</span>}
+                    <span className="lencana">{s.temuan.length} catatan</span>
                   </div>
                 </Link>
               </li>

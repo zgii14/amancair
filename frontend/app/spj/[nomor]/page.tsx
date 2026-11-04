@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import Shell, { useSesi } from "@/components/Shell";
 import { api, ApiError, post, type SPJ } from "@/lib/api";
 import { waktuLokal } from "@/lib/format";
+import { alasanSederhana, HAL, KELAS_TINGKAT, NAMA_BERKAS, penjelasan, TINGKAT } from "@/lib/label";
 import { rupiah } from "@/lib/rupiah";
 
 const CAP: Record<string, { teks: string; warna?: string; kecil: string }> = {
@@ -13,7 +14,6 @@ const CAP: Record<string, { teks: string; warna?: string; kecil: string }> = {
   DITOLAK: { teks: "Ditolak", warna: "merah", kecil: "tidak dicairkan" },
 };
 
-const KELAS_LEVEL: Record<string, string> = { KRITIS: "bahaya", TINGGI: "bahaya", SEDANG: "stempel", RENDAH: "" };
 
 function LembarSPJ() {
   const { nomor } = useParams<{ nomor: string }>();
@@ -92,32 +92,32 @@ function LembarSPJ() {
         </header>
         <dl className="kisi">
           <div className="kotak"><dt>Masa SPT</dt><dd>{s.tanggal_spt}</dd></div>
-          <div className="kotak"><dt>Diajukan agen</dt><dd>{waktuLokal(s.diajukan)}</dd></div>
+          <div className="kotak"><dt>Diajukan</dt><dd>{waktuLokal(s.diajukan)}</dd></div>
           <div className="kotak"><dt>Total diajukan</dt><dd>{rupiah(s.total_diajukan)}</dd></div>
           <div className="kotak"><dt>Akan dibayar</dt><dd>{rupiah(s.total_dibayar)}</dd></div>
         </dl>
 
         {s.perintah_tersisip.length > 0 && (
           <section className="peringatan" role="alert" aria-label="Perintah tersisip">
-            <h2>Perintah tersisip di dokumen — diabaikan agen</h2>
+            <h2>Ada tulisan berisi perintah di dalam bukti. Tulisan ini tidak diikuti.</h2>
             <ul>{s.perintah_tersisip.map((p) => <li key={p}>“{p}”</li>)}</ul>
           </section>
         )}
 
         <section className="bagian" aria-labelledby="temuan">
-          <h2 id="temuan">Temuan ({s.temuan.length})</h2>
+          <h2 id="temuan">Hal yang perlu diperhatikan ({s.temuan.length})</h2>
           {s.temuan.length === 0 ? (
-            <p className="info">Tidak ada temuan. Semua bukti sesuai SPT dan SBM.</p>
+            <p className="info">Tidak ada. Semua bukti sesuai surat tugas dan batas biaya.</p>
           ) : (
             <ul className="daftar" style={{ border: 0 }}>
               {s.temuan.map((t, i) => (
                 <li key={i}>
                   <div className="baris-atas">
-                    <span className={`lencana ${KELAS_LEVEL[t.level]}`}>{t.level}</span>
-                    <span>{t.aturan}</span>
+                    <strong>{HAL[t.aturan] ?? "Catatan"}</strong>
+                    <span className={`lencana ${KELAS_TINGKAT[t.level]}`}>{TINGKAT[t.level] ?? t.level}</span>
                   </div>
-                  <span>{t.deskripsi}</span>
-                  {t.sumber && <code>Sumber: {t.sumber}</code>}
+                  <span>{penjelasan(t)}</span>
+                  {t.sumber && <span className="info">Bukti: {t.sumber}</span>}
                 </li>
               ))}
             </ul>
@@ -125,19 +125,19 @@ function LembarSPJ() {
         </section>
 
         <section className="bagian" aria-labelledby="berkas">
-          <h2 id="berkas">Berkas yang disusun agen</h2>
+          <h2 id="berkas">Dokumen pendukung</h2>
           <p className="info" style={{ marginBottom: 8 }}>
-            Periksa rincian per angka di rekap dan layar konfirmasi agen sebelum memutuskan.{" "}
-            <Link href={`/proses/kasus-${s.nomor.slice(9, 12)}`}>Lihat proses tim agen →</Link>
+            Rincian per bukti ada di ringkasan pemeriksaan dan rekap biaya.{" "}
+            <Link href={`/proses/kasus-${s.nomor.slice(9, 12)}`}>Lihat tahapan pemeriksaan</Link>
           </p>
           <ul style={{ margin: 0, paddingLeft: 18 }}>
             {berkas.filter((b) => !b.startsWith("kerja/")).map((b) => (
-              <li key={b}><a href={url(b)} target="_blank" rel="noreferrer">{b}</a></li>
+              <li key={b}><a href={url(b)} target="_blank" rel="noreferrer">{NAMA_BERKAS[b] ?? b}</a></li>
             ))}
             {berkas.some((b) => b.startsWith("kerja/")) && (
               <li>
                 <details>
-                  <summary>Hasil kerja tiap agen ({berkas.filter((b) => b.startsWith("kerja/")).length} berkas)</summary>
+                  <summary>Catatan kerja tiap tahap ({berkas.filter((b) => b.startsWith("kerja/")).length} berkas)</summary>
                   <ul>
                     {berkas.filter((b) => b.startsWith("kerja/")).map((b) => (
                       <li key={b}><a href={url(b)} target="_blank" rel="noreferrer">{b.replace("kerja/", "")}</a></li>
@@ -157,8 +157,8 @@ function LembarSPJ() {
         )}
 
         <footer className="sidik">
-          Sidik versi <code>{s.manifest_hash.slice(0, 16)}</code> dihitung backend atas {berkas.length} berkas saat diajukan.
-          Bila agen mengubah satu berkas pun setelah ini, pencairan otomatis ditolak.
+          Kode pengaman <code>{s.manifest_hash.slice(0, 16)}</code> mencatat isi {berkas.length} berkas saat diajukan.
+          Jika ada berkas yang berubah setelah ini, pencairan otomatis ditolak.
         </footer>
       </article>
 
@@ -171,7 +171,7 @@ function LembarSPJ() {
                 {tinggi && (
                   <label className="cek-risiko">
                     <input type="checkbox" checked={cek} onChange={(e) => setCek(e.target.checked)} />
-                    <span><strong>Risiko tinggi:</strong> {s.alasan_risiko.join("; ")}. Saya sudah memeriksa temuan dan berkasnya.</span>
+                    <span><strong>Perlu persetujuan khusus:</strong> {s.alasan_risiko.map(alasanSederhana).join("; ")}. Saya sudah memeriksa catatan dan dokumennya.</span>
                   </label>
                 )}
                 <div className="keputusan-tombol">

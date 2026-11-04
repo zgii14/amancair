@@ -24,7 +24,7 @@ const SYARAT: Record<string, string[]> = {
   "penyusun-spj": ["auditor"],
 };
 
-const LABEL: Record<Keadaan, string> = { menunggu: "Menunggu giliran", bekerja: "Sedang bekerja", selesai: "Selesai" };
+const LABEL: Record<Keadaan, string> = { menunggu: "Menunggu giliran", bekerja: "Sedang diproses", selesai: "Selesai" };
 
 function jam(iso: string) {
   return new Intl.DateTimeFormat("id-ID", { hour: "2-digit", minute: "2-digit", second: "2-digit" }).format(new Date(iso));
@@ -52,21 +52,17 @@ export function keadaanAgen(progres: Progres[], status: StatusKasus, aktif: bool
 
 export default function PapanAgen({ progres, status, aktif }: { progres: Progres[]; status: StatusKasus; aktif: boolean }) {
   const k = keadaanAgen(progres, status, aktif);
-  const kartu = (id: string) => {
+  const kartu = (id: string, nomor: number) => {
     const a = AGEN.find((x) => x.id === id)!;
     const s = k[id];
     return (
       <li key={id} className="agen" data-keadaan={s.keadaan}>
-        <div className="agen-ikon" aria-hidden="true">
-          <span className="agen-mata" />
-          <span className="agen-mata" />
-        </div>
+        <div className="agen-ikon" aria-hidden="true">{s.keadaan === "selesai" ? "✓" : nomor}</div>
         <div className="agen-isi">
           <strong>{a.nama}</strong>
           <span className="agen-tugas">{a.tugas}</span>
           <span className="agen-status">
             {LABEL[s.keadaan]}
-            {s.keadaan === "bekerja" && <span className="titik-titik" aria-hidden="true"><i /><i /><i /></span>}
             {s.waktu && s.keadaan === "selesai" ? ` · ${jam(s.waktu)}` : ""}
           </span>
           {s.pesan && s.keadaan === "selesai" && <span className="agen-pesan">{s.pesan}</span>}
@@ -79,22 +75,19 @@ export default function PapanAgen({ progres, status, aktif }: { progres: Progres
 
   return (
     <div className="papan">
-      <ul className="papan-baris">{kartu("koordinator")}</ul>
-      <div className="alur" aria-hidden="true" />
-      <ul className="papan-baris tiga">{["pembaca-tiket", "pembaca-hotel", "pembaca-struk"].map(kartu)}</ul>
-      <div className="alur" aria-hidden="true" />
-      <ul className="papan-baris">{kartu("verifikator-sbm")}</ul>
-      <div className="alur" aria-hidden="true" />
-      <ul className="papan-baris">{kartu("auditor")}</ul>
-      <div className="alur" aria-hidden="true" />
-      <ul className="papan-baris">{kartu("penyusun-spj")}</ul>
-      <div className="alur" aria-hidden="true" />
+      <ul className="papan-baris">{kartu("koordinator", 1)}</ul>
+      <ul className="papan-baris tiga">
+        {["pembaca-tiket", "pembaca-hotel", "pembaca-struk"].map((id) => kartu(id, 2))}
+      </ul>
+      <ul className="papan-baris">{kartu("verifikator-sbm", 3)}</ul>
+      <ul className="papan-baris">{kartu("auditor", 4)}</ul>
+      <ul className="papan-baris">{kartu("penyusun-spj", 5)}</ul>
       <ul className="papan-baris">
-        <li className="agen manusia" data-keadaan={diputuskan ? "selesai" : menungguBendahara ? "bekerja" : "menunggu"}>
-          <div className="agen-ikon manusia-ikon" aria-hidden="true">B</div>
+        <li className="agen manusia" data-keadaan={diputuskan ? "selesai" : menungguBendahara ? "giliran" : "menunggu"}>
+          <div className="agen-ikon manusia-ikon" aria-hidden="true">{diputuskan ? "✓" : 6}</div>
           <div className="agen-isi">
-            <strong>Bendahara (manusia)</strong>
-            <span className="agen-tugas">Satu-satunya yang bisa mencairkan</span>
+            <strong>Bendahara Pengeluaran</strong>
+            <span className="agen-tugas">Satu-satunya yang dapat menyetujui pencairan</span>
             <span className="agen-status">
               {diputuskan ? (status === "DICAIRKAN" ? "Sudah menyetujui" : "Menolak") : menungguBendahara ? "Menunggu keputusan" : "Belum giliran"}
             </span>
