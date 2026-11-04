@@ -2,14 +2,14 @@ import type { StatusKasus } from "@/lib/api";
 
 const LANGKAH: { id: StatusKasus; label: string }[] = [
   { id: "DITERIMA", label: "Diterima" },
-  { id: "DIPERIKSA_AGEN", label: "Diperiksa tim agen" },
+  { id: "DIPERIKSA_AGEN", label: "Sedang diperiksa" },
   { id: "MENUNGGU_BENDAHARA", label: "Menunggu bendahara" },
   { id: "DICAIRKAN", label: "Dicairkan" },
 ];
 
 export const LABEL_STATUS: Record<StatusKasus, string> = {
   DITERIMA: "Diterima",
-  DIPERIKSA_AGEN: "Diperiksa tim agen",
+  DIPERIKSA_AGEN: "Sedang diperiksa",
   MENUNGGU_BENDAHARA: "Menunggu bendahara",
   DICAIRKAN: "Dicairkan",
   DITOLAK: "Ditolak",

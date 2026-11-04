@@ -10,7 +10,7 @@ jabatan:
 kontak:
   - {id: sri, nama: Sri Wahyuni, jabatan: bendahara, email: sri.wahyuni@sejahtera.example, zona: WITA}
   - {id: ahmad, nama: Ahmad Fauzi, jabatan: kepala_dinas, email: ahmad.fauzi@sejahtera.example, zona: WITA}
-  - {id: tim_spj, nama: Tim Agen SPJ, jabatan: pengelola_spj, email: tim.spj@sejahtera.example, zona: WITA}
+  - {id: tim_spj, nama: Tim Pemeriksa Otomatis, jabatan: pengelola_spj, email: tim.spj@sejahtera.example, zona: WITA}
   - {id: budi_santoso, nama: Budi Santoso, jabatan: staf, email: budi.santoso@sejahtera.example, zona: WITA}
   - {id: budi_prasetyo, nama: Budi Prasetyo, jabatan: staf, email: budi.prasetyo@sejahtera.example, zona: WITA}
   - {id: lestari, nama: Lestari Dewi, jabatan: staf, email: lestari.dewi@sejahtera.example, zona: WITA}

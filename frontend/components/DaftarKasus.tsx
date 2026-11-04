@@ -39,13 +39,13 @@ export default function DaftarKasus({ kosong }: { kosong: React.ReactNode }) {
                 {LABEL_STATUS[k.status]}
               </span>
             </div>
-            <h2>{k.nama_pegawai ?? "Kasus uji proyek WorkBuddy"}{k.tujuan ? ` — ${k.tujuan}` : ""}</h2>
+            <h2>{k.nama_pegawai ?? "Data uji coba"}{k.tujuan ? ` — ${k.tujuan}` : ""}</h2>
             <p>
               {k.spj
-                ? `Diajukan ${rupiah(k.spj.total_diajukan)} · dibayar ${rupiah(k.spj.total_dibayar)} · ${k.spj.jumlah_temuan} temuan`
+                ? `Diminta ${rupiah(k.spj.total_diajukan)} · layak dibayar ${rupiah(k.spj.total_dibayar)} · ${k.spj.jumlah_temuan} catatan`
                 : k.status === "DITERIMA"
-                  ? "Menunggu diambil tim agen"
-                  : `${k.jumlah_progres} aktivitas agen tercatat`}
+                  ? "Menunggu diperiksa"
+                  : `${k.jumlah_progres} langkah pemeriksaan tercatat`}
             </p>
           </Link>
         </li>

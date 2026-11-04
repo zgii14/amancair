@@ -5,13 +5,13 @@ import type { Progres, StatusKasus } from "@/lib/api";
 type Keadaan = "menunggu" | "bekerja" | "selesai";
 
 const AGEN: { id: string; nama: string; tugas: string }[] = [
-  { id: "koordinator", nama: "Case Coordinator", tugas: "Membagi tugas dan menjaga urutan" },
-  { id: "pembaca-tiket", nama: "Pembaca Tiket", tugas: "Tiket pesawat dan boarding pass" },
-  { id: "pembaca-hotel", nama: "Pembaca Hotel", tugas: "Invoice dan malam menginap" },
-  { id: "pembaca-struk", nama: "Pembaca Struk", tugas: "Taksi, makan, sidik struk" },
-  { id: "verifikator-sbm", nama: "Verifikator SBM", tugas: "Cocokkan SPT, pagu, libur" },
-  { id: "auditor", nama: "Auditor", tugas: "Periksa ulang, struk lintas SPJ" },
-  { id: "penyusun-spj", nama: "Penyusun SPJ", tugas: "Rekap .xlsx, draf .docx" },
+  { id: "koordinator", nama: "Koordinator", tugas: "Membagi tugas dan menjaga urutan pemeriksaan" },
+  { id: "pembaca-tiket", nama: "Pembaca Tiket", tugas: "Membaca tiket pesawat dan boarding pass" },
+  { id: "pembaca-hotel", nama: "Pembaca Hotel", tugas: "Membaca tagihan hotel dan jumlah malam" },
+  { id: "pembaca-struk", nama: "Pembaca Struk", tugas: "Membaca struk taksi dan makan" },
+  { id: "verifikator-sbm", nama: "Pemeriksa Batas Biaya", tugas: "Mencocokkan dengan surat tugas, batas biaya, dan hari libur" },
+  { id: "auditor", nama: "Pemeriksa Ulang", tugas: "Memeriksa ulang dan mencari struk yang dipakai dua kali" },
+  { id: "penyusun-spj", nama: "Penyusun Dokumen", tugas: "Menyusun rekap biaya dan draf SPJ" },
 ];
 
 // Siapa harus selesai dulu sebelum agen ini bisa mulai (urutan di skill tim).
@@ -42,7 +42,8 @@ export function keadaanAgen(progres: Progres[], status: StatusKasus, aktif: bool
       : { keadaan: berjalan && siap ? "bekerja" : "menunggu" };
   }
   const semuaSelesai = AGEN.slice(1).every((a) => hasil[a.id].keadaan === "selesai");
-  const terakhirKoor = progres.filter((p) => p.agen === "koordinator").at(-1);
+  // Kartu hanya menampilkan ringkasan hasil kerja (kejadian "selesai"); log mentah agen tetap ada di jejak aktivitas.
+  const terakhirKoor = progres.filter((p) => p.agen === "koordinator" && p.aksi === "selesai").at(-1);
   const lewat = status === "MENUNGGU_BENDAHARA" || status === "DICAIRKAN" || status === "DITOLAK";
   hasil.koordinator = semuaSelesai || lewat
     ? { keadaan: "selesai", waktu: terakhirKoor?.waktu, pesan: terakhirKoor?.pesan }

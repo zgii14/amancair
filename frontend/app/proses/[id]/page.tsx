@@ -15,11 +15,11 @@ const NAMA_AGEN: Record<string, string> = {
   "pembaca-tiket": "Pembaca Tiket",
   "pembaca-hotel": "Pembaca Hotel",
   "pembaca-struk": "Pembaca Struk",
-  "verifikator-sbm": "Verifikator SBM",
-  auditor: "Auditor",
-  "penyusun-spj": "Penyusun SPJ",
-  jembatan: "Jembatan",
-  pipeline_skrip: "Pipeline skrip",
+  "verifikator-sbm": "Pemeriksa Batas Biaya",
+  auditor: "Pemeriksa Ulang",
+  "penyusun-spj": "Penyusun Dokumen",
+  jembatan: "Sistem",
+  pipeline_skrip: "Skrip otomatis lama",
 };
 
 function jam(iso: string) {
@@ -96,7 +96,7 @@ function ProsesKasus() {
         {putar !== null && <span className="lencana-live putar" role="status">Putar ulang</span>}
       </h1>
       <p className="sub-halaman">
-        {k.nama_pegawai ?? "Kasus uji proyek WorkBuddy"}{k.tujuan ? ` · ${k.tujuan}` : ""}
+        {k.nama_pegawai ?? "Data uji coba"}{k.tujuan ? ` · ${k.tujuan}` : ""}
         {k.tanggal_berangkat && k.tanggal_kembali ? ` · ${tanggal(k.tanggal_berangkat)} s.d. ${tanggal(k.tanggal_kembali)}` : ""}
       </p>
 
@@ -104,8 +104,8 @@ function ProsesKasus() {
 
       {k.spj && (
         <div className="ringkas-spj">
-          <span>Diajukan {rupiah(k.spj.total_diajukan)} · akan dibayar <strong>{rupiah(k.spj.total_dibayar)}</strong></span>
-          <span>{k.spj.jumlah_temuan} temuan{k.spj.risiko === "tinggi" ? " · risiko tinggi" : ""}</span>
+          <span>Diminta {rupiah(k.spj.total_diajukan)} · layak dibayar <strong>{rupiah(k.spj.total_dibayar)}</strong></span>
+          <span>{k.spj.jumlah_temuan} catatan{k.spj.risiko === "tinggi" ? " · perlu persetujuan khusus" : ""}</span>
           {k.spj.alasan && <span className="galat">Alasan ditolak: {k.spj.alasan}</span>}
           {me.boleh_menyetujui && <Link href={`/spj/${k.spj.nomor}`}>Buka lembar SPJ →</Link>}
         </div>
@@ -119,7 +119,7 @@ function ProsesKasus() {
 
       {pakaiSkrip && (
         <p className="peringatan-kecil">
-          Sebagian kasus ini diproses pipeline skrip, bukan tim agen terpisah. Ditampilkan apa adanya.
+          Sebagian langkah pada data ini dikerjakan skrip otomatis lama, bukan tim pemeriksa. Ditampilkan apa adanya.
         </p>
       )}
 

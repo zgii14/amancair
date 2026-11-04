@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Shell, { useSesi } from "@/components/Shell";
 import { api, type CatatanAudit } from "@/lib/api";
 import { waktuLokal } from "@/lib/format";
+import { rupiah } from "@/lib/rupiah";
 
 const KEJADIAN: Record<string, string> = {
   rencana_diajukan: "Agent mengajukan rencana",
@@ -14,12 +15,22 @@ const KEJADIAN: Record<string, string> = {
   token_ditolak: "Eksekusi ditolak: persetujuan tidak sah",
   aksi_dieksekusi: "Aksi dikirim",
   rencana_dibatalkan: "Pengiriman dibatalkan",
+  kasus_diajukan: "Pegawai mengajukan SPJ",
+  spj_diperiksa_aturan: "Biaya dihitung sesuai aturan",
+  spj_diajukan: "SPJ selesai diperiksa dan diajukan ke bendahara",
+  spj_dicairkan: "Bendahara menyetujui, dana dicairkan",
+  spj_ditolak: "Bendahara menolak SPJ",
+  spj_pencairan_ditolak: "Pencairan ditolak sistem karena berkas berubah",
 };
 
 function Rincian({ c }: { c: CatatanAudit }) {
   const p = c.payload as Record<string, unknown>;
   const bagian: React.ReactNode[] = [];
   if (typeof p.rencana_id === "string") bagian.push(<Link key="r" href={`/rencana/${p.rencana_id}`}>Lihat rencana</Link>);
+  if (typeof p.nomor === "string") bagian.push(<Link key="n" href={`/spj/${p.nomor}`}>{p.nomor}</Link>);
+  if (typeof p.kasus === "string") bagian.push(<span key="k">Pengajuan {p.kasus.replace("kasus-", "no. ")}</span>);
+  if (typeof p.total_dibayar === "number") bagian.push(<span key="t">Layak dibayar {rupiah(p.total_dibayar)}</span>);
+  if (typeof p.versi === "number" && p.versi > 1) bagian.push(<span key="v">Revisi ke-{p.versi - 1}</span>);
   if (typeof p.alasan === "string") bagian.push(<span key="a">Alasan: {p.alasan}</span>);
   if (Array.isArray(p.pelanggaran)) {
     bagian.push(<span key="p">{(p.pelanggaran as { pesan: string }[]).map((x) => x.pesan).join(" ")}</span>);
@@ -47,8 +58,8 @@ function Audit() {
       {rantai && (
         <div className="rantai" data-utuh={rantai.valid ? "ya" : "tidak"} role="status">
           {rantai.valid
-            ? `Rantai utuh: ${catatan?.length ?? 0} catatan, tidak ada yang diubah atau dihapus.`
-            : `Rantai rusak mulai catatan #${rantai.seq_rusak}. Ada catatan yang diubah atau dihapus.`}
+            ? `Catatan utuh: ${catatan?.length ?? 0} catatan, tidak ada yang diubah atau dihapus.`
+            : `Ada catatan yang diubah atau dihapus, mulai catatan #${rantai.seq_rusak}.`}
         </div>
       )}
       {catatan === null ? (
@@ -63,7 +74,7 @@ function Audit() {
               </div>
               <span className="utama">{KEJADIAN[c.kejadian] ?? c.kejadian}</span>
               <Rincian c={c} />
-              <code>{c.hash.slice(0, 16)}</code>
+              <code title="Kode pengaman catatan">{c.hash.slice(0, 16)}</code>
             </li>
           ))}
         </ol>

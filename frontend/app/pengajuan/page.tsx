@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <Shell>
       <h1 className="judul-halaman">SPJ saya</h1>
-      <p className="sub-halaman">Pantau pengajuan Anda: kapan diperiksa tim agen, kapan diputuskan bendahara.</p>
+      <p className="sub-halaman">Pantau pengajuan Anda: kapan selesai diperiksa dan kapan diputuskan bendahara.</p>
       <p style={{ marginBottom: 16 }}>
         <Link className="tombol tombol-utama" href="/pengajuan/baru">+ Ajukan SPJ baru</Link>
       </p>

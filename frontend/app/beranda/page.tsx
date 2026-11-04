@@ -58,7 +58,7 @@ function Beranda() {
         <Link href="/proses" className="ringkas">
           <span className="ringkas-label">Sedang diperiksa</span>
           <span className="ringkas-angka">{diperiksa.length}</span>
-          <span className="ringkas-ket">pengajuan belum selesai diperiksa</span>
+          <span className="ringkas-ket">pengajuan yang belum selesai diperiksa</span>
         </Link>
         <div className="ringkas" data-nada="aman">
           <span className="ringkas-label">Sudah dicairkan</span>
@@ -82,9 +82,9 @@ function Beranda() {
                   <th>Nomor</th>
                   <th>Pegawai</th>
                   <th>Tujuan</th>
-                  <th className="r">Dibayar</th>
+                  <th className="r">Layak dibayar</th>
                   <th>Catatan</th>
-                  <th>Diajukan</th>
+                  <th>Masuk</th>
                   <th><span className="sr-only">Aksi</span></th>
                 </tr>
               </thead>
@@ -124,7 +124,7 @@ function Beranda() {
           <div className="tabel-gulir">
             <table className="tabel">
               <thead>
-                <tr><th>Nomor</th><th>Pegawai</th><th className="r">Dibayar</th><th>Status</th><th>Oleh</th></tr>
+                <tr><th>Nomor</th><th>Pegawai</th><th className="r">Layak dibayar</th><th>Status</th><th>Oleh</th></tr>
               </thead>
               <tbody>
                 {diputuskan.map((s) => (

@@ -46,7 +46,7 @@ export default function LoginPage() {
       <form onSubmit={masuk} noValidate>
         <div>
           <h1>Meja Pimpinan</h1>
-          <p className="info">{profil === "diskominfo" ? "Pegawai mengajukan SPJ, tim agen memeriksa, bendahara memutuskan." : "Tinjau rencana yang disiapkan agent, lalu putuskan."}</p>
+          <p className="info">{profil === "diskominfo" ? "Pegawai mengajukan SPJ, sistem memeriksa, bendahara memutuskan." : "Tinjau rencana yang disiapkan agent, lalu putuskan."}</p>
         </div>
         <label>
           Organisasi

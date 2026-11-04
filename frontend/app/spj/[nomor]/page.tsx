@@ -41,7 +41,7 @@ function LembarSPJ() {
 
   async function putuskan(aksi: "setujui" | "tolak") {
     if (aksi === "tolak" && !alasan.trim()) {
-      setGalat("Tulis alasan agar tim agen bisa memperbaiki dan mengajukan ulang.");
+      setGalat("Tulis alasan agar SPJ bisa diperbaiki dan diajukan ulang.");
       return;
     }
     setProses(true);
@@ -86,15 +86,15 @@ function LembarSPJ() {
           </div>
         )}
         <header className="kop">
-          <div className="kop-label">Surat pertanggungjawaban · {s.nomor} · versi {s.versi}</div>
+          <div className="kop-label">Surat pertanggungjawaban · {s.nomor}{s.versi > 1 ? ` · revisi ke-${s.versi - 1}` : ""}</div>
           <h1 id="judul-spj">{s.pegawai} — {s.tujuan}</h1>
           {cap && <p className="sr-only">Status: {cap.teks}</p>}
         </header>
         <dl className="kisi">
-          <div className="kotak"><dt>Masa SPT</dt><dd>{s.tanggal_spt}</dd></div>
-          <div className="kotak"><dt>Diajukan</dt><dd>{waktuLokal(s.diajukan)}</dd></div>
-          <div className="kotak"><dt>Total diajukan</dt><dd>{rupiah(s.total_diajukan)}</dd></div>
-          <div className="kotak"><dt>Akan dibayar</dt><dd>{rupiah(s.total_dibayar)}</dd></div>
+          <div className="kotak"><dt>Masa tugas (SPT)</dt><dd>{s.tanggal_spt}</dd></div>
+          <div className="kotak"><dt>Tanggal masuk</dt><dd>{waktuLokal(s.diajukan)}</dd></div>
+          <div className="kotak"><dt>Diminta pegawai</dt><dd>{rupiah(s.total_diajukan)}</dd></div>
+          <div className="kotak"><dt>Layak dibayar</dt><dd>{rupiah(s.total_dibayar)}</dd></div>
         </dl>
 
         {s.perintah_tersisip.length > 0 && (
@@ -184,7 +184,7 @@ function LembarSPJ() {
             )}
             {bisaPutuskan && mode === "tolak" && (
               <>
-                <label className="label" htmlFor="alasan">Alasan penolakan (dibaca tim agen untuk perbaikan)</label>
+                <label className="label" htmlFor="alasan">Alasan penolakan (diteruskan untuk perbaikan)</label>
                 <textarea id="alasan" value={alasan} onChange={(e) => setAlasan(e.target.value)} placeholder="Mis. boarding pass atas nama orang lain, minta bukti pengganti" autoFocus />
                 <div className="keputusan-tombol">
                   <button type="button" className="tombol" onClick={() => { setMode("lihat"); setGalat(""); }} disabled={proses}>Kembali</button>

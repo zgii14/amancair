@@ -70,7 +70,7 @@ function FormPengajuan() {
     return (
       <div className="kosong" style={{ marginTop: 24 }}>
         <h2>Pengajuan {hasil.nomor_spj} diterima</h2>
-        <p>Tim agen akan memeriksa bukti Anda. Anda bisa melihat prosesnya secara langsung.</p>
+        <p>Bukti Anda akan diperiksa otomatis. Anda bisa memantau prosesnya dari halaman SPJ saya.</p>
         <p style={{ marginTop: 12 }}>
           <Link className="tombol tombol-utama" href={`/proses/${hasil.id}`}>Lihat proses</Link>
         </p>
@@ -81,7 +81,7 @@ function FormPengajuan() {
   return (
     <form className="form-pengajuan" onSubmit={kirim} noValidate>
       <h1 className="judul-halaman">Ajukan SPJ perjalanan dinas</h1>
-      <p className="sub-halaman">Unggah bukti apa adanya. Tim agen yang membaca, menghitung, dan mencocokkan dengan aturan.</p>
+      <p className="sub-halaman">Unggah bukti apa adanya. Sistem yang membaca, menghitung, dan mencocokkan dengan aturan.</p>
       <label>
         Kota tujuan
         <input value={tujuan} onChange={(e) => setTujuan(e.target.value)} placeholder="Makassar" />

@@ -29,13 +29,13 @@ function DaftarSPJ() {
   return (
     <>
       <h1 className="judul-halaman">SPJ menunggu keputusan</h1>
-      <p className="sub-halaman">Disusun tim agen di WorkBuddy. Tidak ada yang dicairkan sebelum Anda menyetujuinya di sini.</p>
+      <p className="sub-halaman">Sudah diperiksa tim pemeriksa otomatis. Tidak ada dana yang cair sebelum Anda menyetujuinya di sini.</p>
       {daftar === null ? (
         <p className="info" role="status">Memuat…</p>
       ) : menunggu.length === 0 ? (
         <div className="kosong">
           <h2>Tidak ada SPJ menunggu</h2>
-          <p>SPJ muncul di sini setelah tim agen menyelesaikan pemeriksaan dan mengajukannya.</p>
+          <p>SPJ muncul di sini setelah selesai diperiksa.</p>
         </div>
       ) : (
         <ul className="antrean">
@@ -45,11 +45,11 @@ function DaftarSPJ() {
               <li key={s.nomor}>
                 <Link className="kartu" href={`/spj/${s.nomor}`} data-sifat={s.risiko === "tinggi" ? "rahasia" : "biasa"}>
                   <div className="kartu-atas">
-                    <span>{s.nomor} · versi {s.versi}</span>
+                    <span>{s.nomor}{s.versi > 1 ? ` · revisi ke-${s.versi - 1}` : ""}</span>
                     <span>{waktuLokal(s.diajukan)}</span>
                   </div>
                   <h2>{s.pegawai} — {s.tujuan}</h2>
-                  <p>Diajukan {rupiah(s.total_diajukan)} · dibayar {rupiah(s.total_dibayar)}</p>
+                  <p>Diminta {rupiah(s.total_diajukan)} · layak dibayar {rupiah(s.total_dibayar)}</p>
                   <div className="lencana-baris">
                     {kritis > 0 && <span className="lencana bahaya">{kritis} sangat penting</span>}
                     {s.risiko === "tinggi" && <span className="lencana bahaya">Perlu persetujuan khusus</span>}
