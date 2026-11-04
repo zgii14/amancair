@@ -7,9 +7,10 @@
 | **Skill (SKILL.md) level proyek** | Setiap agen punya kontrak perilaku tertulis: tujuan, input/output JSON, aturan, larangan, kapan bertanya/eskalasi — bisa di-export (`export/spj-agent-team/`) |
 | **Akses file lokal** | Agen membaca langsung bukti asli (TXT/PDF), Excel master (pegawai, SBM), dan menulis hasil ke folder draf tanpa unggah ke cloud |
 | **Output dokumen kantor** | Rekap `.xlsx` berformula, draf SPJ `.docx`, layar konfirmasi HTML |
-| **Konektor MCP kustom** | Tool `ajukan_spj` menghubungkan tim agen ke gerbang persetujuan di backend |
+| **Konektor MCP kustom** | Tool `periksa_aturan` (kalkulator aturan) dan `ajukan_spj` (gerbang persetujuan) di backend; dipasang lewat Connectors → Custom connectors |
 | **Mode Craft & memori proyek** | Proyek bisa dilanjutkan di sesi baru dari `README`, `DESAIN.md`, dan memori harian |
 | **Model routing** | Pekerjaan dijalankan dengan model "Balanced"; kredit terpakai rendah (±21 kredit untuk satu kasus penuh beserta revisinya) |
+| **Pemulihan anggota gagal** | Saat satu Auditor gagal karena gangguan jaringan, Koordinator mengulang dengan agen baru tanpa meninggalkan berkas setengah jadi |
 
 WorkBuddy juga dipakai untuk **membangun** proyek: membuat data dummy, menulis skill tiap agen, menyusun Expert Team, dan menjalankan kasus uji — prosesnya terekam sebagai bukti pemakaian.
 
@@ -36,5 +37,20 @@ Yang berhasil: menjalankan kasus lewat **Expert Team "SPJ Agent Team"** langsung
 - **Zona waktu itu penting untuk audit.** Log campuran UTC dan waktu lokal membuat urutan kejadian tampak terbalik; semua waktu kini ISO 8601 dengan offset WITA.
 - **Pemahaman domain menambah kepercayaan.** Aturan R11 (makan sudah termasuk uang harian) mencegah pembayaran ganda yang mudah terlewat.
 
+## Insight ketiga: pisahkan "menilai" dari "menghitung"
+Di putaran awal, model menghitung sendiri pagu hotel, malam di luar masa tugas, dan batas Rp10 juta. Hasilnya lambat (17–25 menit per kasus) dan dua kasus gagal karena aturan terlewat. Kami memindahkan semua hitungan ke tool `periksa_aturan` di backend, dan pembuatan dokumen ke skrip templat. Agen tetap membaca bukti, menilai, bertanya, dan memeriksa ulang.
+
+Hasilnya: satu kasus kini 4–9 menit, kasus yang dulu gagal (libur nasional, total di atas Rp10 juta) terdeteksi otomatis, dan backend bisa membandingkan angka yang diajukan agen dengan hasil kalkulator.
+
+## Insight keempat: agen yang mengawasi bisa menemukan kesalahan pengawasnya
+Saat batch terakhir, Auditor menemukan dua celah di kalkulator kami sendiri: struk ganda tidak memicu persetujuan khusus, dan nominal buram lolos sebagai "Sesuai" karena Pemeriksa Batas Biaya mengubah nilai kosong menjadi nol. Auditor tidak mengubah angka diam-diam. Ia menambah temuan berlabel `AUDITOR`, dan kami memperbaiki kalkulatornya. Kombinasi kode yang tegas dan agen pemeriksa yang kritis ternyata lebih kuat daripada salah satunya.
+
+## Pelajaran tambahan dari minggu terakhir
+- **Agen menulis angka dari ingatan.** Koordinator dua kali menulis kode sidik berkas dari ingatan, lalu mengoreksi sendiri dari balasan tool. Ini tidak berbahaya karena backend menghitung sidiknya sendiri, tapi menegaskan bahwa nilai penting tidak boleh dipercayakan pada ingatan model.
+- **Jam di log bisa dikarang.** Baris log sempat tercatat lebih awal dari kejadian sebenarnya. Sekarang jam diisi alat dari jam komputer, dan klaim jam dari agen disimpan terpisah.
+- **Rantai hash benar-benar menangkap perubahan.** Pemeriksa log menemukan baris yang ditulis skrip dengan hash tidak cocok. Baris itu dibiarkan sebagai bukti dan dikoreksi lewat baris baru, bukan ditulis ulang.
+- **Instruksi Expert Team ada di dua tempat.** Mengubah `skills/` saja tidak berpengaruh; tim membaca instruksi di berkas agen plugin. Pelajaran ini menghemat banyak waktu begitu ditemukan.
+- **AI tidak bisa memeriksa berkas fisik.** SPPD bercap, bukti asli, dan meterai tetap tugas bendahara. Kami menjadikannya daftar periksa wajib, bukan menyembunyikan batasannya.
+
 ## Rencana pengembangan
-Integrasi dengan sistem persuratan/keuangan instansi lewat konektor, tabel SBM resmi per tahun anggaran, deteksi duplikasi berbasis citra struk, dan dasbor prioritas pemeriksaan untuk bendahara.
+Mode periksa cepat (target di bawah 90 detik) untuk Demo Day; aturan kelas kabin dan pagu tiket; Daftar Pengeluaran Riil dan pola uang muka (panjar); tabel SBM resmi per tahun anggaran; deteksi duplikasi berbasis citra struk; integrasi dengan sistem keuangan instansi.
