@@ -135,7 +135,8 @@ def periksa(conn: sqlite3.Connection, ref: Referensi, p: Pemeriksaan, pemeriksa:
         if it.perintah_tersisip:
             tambah("KRITIS", "R09", f"Perintah tersisip di {it.file} diabaikan: \"{it.perintah_tersisip[:200]}\"", it.file)
 
-        if it.nominal is None and it.jenis != "boarding_pass":
+        # Rp0 pada bukti berharga diperlakukan sama dengan tidak terbaca: agen kadang mengganti null menjadi 0.
+        if (it.nominal is None or it.nominal == 0) and it.jenis != "boarding_pass":
             tambah("SEDANG", "R08", f"Nominal di {it.file} tidak terbaca; perlu dicek manusia, tidak ditebak", it.file)
             hasil.append({**it.model_dump(mode="json"), "nilai_diajukan": 0, "nilai_dibayar": 0,
                           "status": "PERLU_CEK_MANUSIA", "rumus": "Nominal tidak terbaca (R08)"})
@@ -224,7 +225,7 @@ def periksa(conn: sqlite3.Connection, ref: Referensi, p: Pemeriksaan, pemeriksa:
 
     total_diajukan = sum(h["nilai_diajukan"] for h in hasil) + uang_harian
     total_dibayar = sum(h["nilai_dibayar"] for h in hasil) + uang_harian
-    ada_ditolak = any(h["status"] in ("DITOLAK", "DITAHAN") for h in hasil)
+    ada_ditolak = any(h["status"] in ("DITOLAK", "DITAHAN", "GANDA") for h in hasil)
     if total_diajukan > BATAS_KONFIRMASI or ada_ditolak:
         alasan = (f"total {_rp(total_diajukan)} di atas {_rp(BATAS_KONFIRMASI)}" if total_diajukan > BATAS_KONFIRMASI
                   else "ada item ditolak atau ditahan")

@@ -49,6 +49,8 @@ export function penjelasan(t: { aturan: string; deskripsi: string }): string {
     .replace(/\s*\((?:R\d{2}[^)]*|KELENGKAPAN)\)/g, "")
     .replace("Wajib konfirmasi tambahan bendahara:", "Perlu persetujuan khusus bendahara karena")
     .replace("ada item ditolak atau ditahan", "ada bagian yang ditolak atau ditahan")
+    // Kata depan ikut dibuang bersama nama berkas: "di invoice_hotel.txt di luar" -> "di luar".
+    .replace(/\s*\b(?:di|pada|dalam)\s+(?=[\w-]+\.(?:txt|pdf|jpe?g|png)\b)/gi, " ")
     .replace(BERKAS, "")
     .replace(/\s{2,}/g, " ")
     .replace(/\s([;,.])/g, "$1")

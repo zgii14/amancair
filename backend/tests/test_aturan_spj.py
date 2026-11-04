@@ -48,7 +48,8 @@ def test_002_struk_ganda_dihitung_sekali(conn, now):
                 {"id": "B02", "file": "struk_taksi_1.txt", **taksi}, {"id": "B03", "file": "struk_taksi_2.txt", **taksi}])
     assert [i["status"] for i in h["items"]] == ["SESUAI", "SESUAI", "GANDA"]
     assert h["total_diajukan"] - h["total_dibayar"] == 217_000
-    assert aturan(h) == [("R06", "SEDANG")]
+    # Struk ganda yang tidak dibayar ikut memicu persetujuan khusus (ditemukan Auditor saat uji kasus-002).
+    assert aturan(h) == [("R06", "SEDANG"), ("R10", "TINGGI")]
 
 
 def test_003_malam_di_luar_spt(conn, now):
@@ -220,3 +221,14 @@ def test_pemilik_asli_struk_tidak_dituduh_ganda_saat_diperiksa_ulang(conn, now):
                                            items=[{"id": "B01", "file": "struk_bandara_hotel.txt", "jenis": "taksi",
                                                    "tanggal": "2026-10-05", "nominal": 210_000,
                                                    "nomor_bukti": "TX-884721"}]))
+
+
+def test_007_nominal_nol_dari_agen_tetap_dianggap_tidak_terbaca(conn, now):
+    """Verifikator pernah mengganti null menjadi 0; kalkulator tidak boleh menganggapnya Sesuai."""
+    h = cek(conn, now, nomor_spj="SPJ-2026-007", pegawai="Nurul Hidayah", provinsi="Sulawesi Selatan",
+            tanggal_berangkat="2026-10-18", tanggal_kembali="2026-10-19",
+            items=[{"id": "B01", "file": "struk_taksi_1.txt", "jenis": "taksi", "tanggal": "2026-10-18", "nominal": 0,
+                    "nomor_bukti": "TX-55??21"}])
+    assert h["items"][0]["status"] == "PERLU_CEK_MANUSIA"
+    assert ("R08", "SEDANG") in aturan(h)
+    assert h["total_dibayar"] == 400_000
